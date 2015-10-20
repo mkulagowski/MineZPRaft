@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9ab29df4_0adb1e1c",
+        "filename": "perlin_initial/Perlin.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-10-20T13:23:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_c31f5908",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 18
+      },
+      "revId": "33fbc6896081cc6f565e1c9b16a540cddc65f40b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_e31c5d16",
         "filename": "perlin_initial/Perlin.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-10-19T07:59:54Z",
       "side": 1,
       "message": "Following Linux variant of K\u0026R, this should be in another line",
+      "range": {
+        "startLine": 5,
+        "startChar": 21,
+        "endLine": 5,
+        "endChar": 22
+      },
+      "revId": "33fbc6896081cc6f565e1c9b16a540cddc65f40b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_2ad8e21c",
+        "filename": "perlin_initial/Perlin.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-10-20T13:23:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_e31c5d16",
       "range": {
         "startLine": 5,
         "startChar": 21,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "9ab29df4_4a04367e",
+        "filename": "perlin_initial/Perlin.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-10-20T13:23:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_03beb1ff",
+      "revId": "33fbc6896081cc6f565e1c9b16a540cddc65f40b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_e3f53dcc",
         "filename": "perlin_initial/Perlin.cpp",
         "patchSetId": 1
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "9ab29df4_6a09fa94",
+        "filename": "perlin_initial/Perlin.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-10-20T13:23:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_e3f53dcc",
+      "revId": "33fbc6896081cc6f565e1c9b16a540cddc65f40b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_c3f839c7",
         "filename": "perlin_initial/Perlin.cpp",
         "patchSetId": 1
@@ -93,6 +177,30 @@
       "writtenOn": "2015-10-19T07:59:54Z",
       "side": 1,
       "message": "We shouldn\u0027t do this on stack. There are some reasons:\n\n* C++11 standard resolves multithread-related issues when you do this with static variable (no double-locking pattern will be needed here).\n* It will be faster to allocate.\n* We will be able to avoid pointers.\n\nSo, I would see the function as follows:\n\nNoiseGenerator\u0026 NoiseGenerator::GetInstance() {\n    static NoiseGenerator instance;\n    return instance;\n}\n\nI\u0027m not 100% sure this will compile (I wrote it without testing it), but you\u0027ll get the basic idea.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 33
+      },
+      "revId": "33fbc6896081cc6f565e1c9b16a540cddc65f40b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_2aef02b2",
+        "filename": "perlin_initial/Perlin.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-10-20T13:23:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_c3f839c7",
       "range": {
         "startLine": 55,
         "startChar": 0,
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "9ab29df4_4a2b56eb",
+        "filename": "perlin_initial/Perlin.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-10-20T13:23:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_030311b9",
+      "range": {
+        "startLine": 63,
+        "startChar": 4,
+        "endLine": 63,
+        "endChar": 5
+      },
+      "revId": "33fbc6896081cc6f565e1c9b16a540cddc65f40b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_230015aa",
         "filename": "perlin_initial/Perlin.cpp",
         "patchSetId": 1
@@ -145,6 +277,24 @@
     },
     {
       "key": {
+        "uuid": "9ab29df4_6a301a57",
+        "filename": "perlin_initial/Perlin.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-10-20T13:23:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_230015aa",
+      "revId": "33fbc6896081cc6f565e1c9b16a540cddc65f40b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_432c294b",
         "filename": "perlin_initial/Perlin.cpp",
         "patchSetId": 1
@@ -156,6 +306,30 @@
       "writtenOn": "2015-10-19T07:59:54Z",
       "side": 1,
       "message": "lerp might be useful in other parts of the project. Add a comment: \"TODO consider moving to common library\"",
+      "range": {
+        "startLine": 92,
+        "startChar": 23,
+        "endLine": 92,
+        "endChar": 27
+      },
+      "revId": "33fbc6896081cc6f565e1c9b16a540cddc65f40b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_aa3a3234",
+        "filename": "perlin_initial/Perlin.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-10-20T13:23:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_432c294b",
       "range": {
         "startLine": 92,
         "startChar": 23,
@@ -191,6 +365,30 @@
     },
     {
       "key": {
+        "uuid": "9ab29df4_ca3e8629",
+        "filename": "perlin_initial/Perlin.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-10-20T13:23:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_031a3117",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 1
+      },
+      "revId": "33fbc6896081cc6f565e1c9b16a540cddc65f40b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_a32b452f",
         "filename": "perlin_initial/Perlin.cpp",
         "patchSetId": 1
@@ -202,6 +400,24 @@
       "writtenOn": "2015-10-19T07:59:54Z",
       "side": 1,
       "message": "Writing variables on console won\u0027t tell us much (at least reading random numbers is not my kind of thing). Consider writing these as raw data to a file, so we will be able to look it up in IrfanView as a raw texture file and see the results :)",
+      "revId": "33fbc6896081cc6f565e1c9b16a540cddc65f40b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_ea3b4a36",
+        "filename": "perlin_initial/Perlin.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-10-20T13:23:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_a32b452f",
       "revId": "33fbc6896081cc6f565e1c9b16a540cddc65f40b",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false

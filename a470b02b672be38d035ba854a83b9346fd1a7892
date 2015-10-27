@@ -1,0 +1,192 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab29df4_4df999c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-10-27T12:56:15Z",
+      "side": 1,
+      "message": "Missing Change-Id: line in commit message.",
+      "revId": "a470b02b672be38d035ba854a83b9346fd1a7892",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_edbfcdce",
+        "filename": "window_initial/Window.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-10-27T12:56:15Z",
+      "side": 1,
+      "message": "I suggest moving this file to Win directory for easier maintenance.",
+      "revId": "a470b02b672be38d035ba854a83b9346fd1a7892",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_6de49d0d",
+        "filename": "window_initial/Window.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-10-27T12:56:15Z",
+      "side": 1,
+      "message": "What?",
+      "range": {
+        "startLine": 31,
+        "startChar": 39,
+        "endLine": 31,
+        "endChar": 47
+      },
+      "revId": "a470b02b672be38d035ba854a83b9346fd1a7892",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_0ddec13f",
+        "filename": "window_initial/Window.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-10-27T12:56:15Z",
+      "side": 1,
+      "message": "Add documentation boilerplate.",
+      "revId": "a470b02b672be38d035ba854a83b9346fd1a7892",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_2de38508",
+        "filename": "window_initial/Window.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-10-27T12:56:15Z",
+      "side": 1,
+      "message": "This needs to be corrected. It works on Windows but not on Linux.\n\nI still haven\u0027t figured it out how to do it correctly. Such enum class is not the best solution IMO. For now, let\u0027s delete that and use plain values extracted from macros.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 2
+      },
+      "revId": "a470b02b672be38d035ba854a83b9346fd1a7892",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_4de7d912",
+        "filename": "window_initial/Window.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-10-27T12:56:15Z",
+      "side": 1,
+      "message": "What engine?",
+      "range": {
+        "startLine": 181,
+        "startChar": 22,
+        "endLine": 181,
+        "endChar": 29
+      },
+      "revId": "a470b02b672be38d035ba854a83b9346fd1a7892",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_cdba09e1",
+        "filename": "window_initial/WindowL.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-10-27T12:56:15Z",
+      "side": 1,
+      "message": "I suggest moving this file to Linux directory for easier maintenance",
+      "revId": "a470b02b672be38d035ba854a83b9346fd1a7892",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_8df1f1cf",
+        "filename": "window_initial/WindowL.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-10-27T12:56:15Z",
+      "side": 1,
+      "message": "rm this one and below.",
+      "revId": "a470b02b672be38d035ba854a83b9346fd1a7892",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_adeeb5ea",
+        "filename": "window_initial/WindowL.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-10-27T12:56:15Z",
+      "side": 1,
+      "message": "IMO we could already create and make OGL context current here. Add a TODO for this version and Windows version.",
+      "revId": "a470b02b672be38d035ba854a83b9346fd1a7892",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_0db5e1ed",
+        "filename": "window_initial/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-10-27T12:56:15Z",
+      "side": 1,
+      "message": "Create a main loop for the program.",
+      "revId": "a470b02b672be38d035ba854a83b9346fd1a7892",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

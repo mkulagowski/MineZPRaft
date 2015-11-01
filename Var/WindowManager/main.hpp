@@ -1,8 +1,8 @@
 /**
-* @file
-* @author mkkulagowski (mkkulagowski(at)gmail.com)
-* @brief  WindowManagerDemo declaration.
-*/
+ * @file
+ * @author mkkulagowski (mkkulagowski(at)gmail.com)
+ * @brief  WindowManager Demo declaration.
+ */
 
 #pragma once
 

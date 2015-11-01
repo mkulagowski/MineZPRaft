@@ -1,8 +1,8 @@
 /**
-* @file
-* @author mkkulagowski (mkkulagowski(at)gmail.com)
-* @brief  WindowManager class Windows implementation.
-*/
+ * @file
+ * @author mkkulagowski (mkkulagowski(at)gmail.com)
+ * @brief  WindowManager class implementation.
+ */
 
 #include "../Window.hpp"
 

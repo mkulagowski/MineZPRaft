@@ -1,8 +1,8 @@
 /**
-* @file
-* @author mkkulagowski (mkkulagowski(at)gmail.com)
-* @brief  WindowManagerDemo implementation.
-*/
+ * @file
+ * @author mkkulagowski (mkkulagowski(at)gmail.com)
+ * @brief  WindowManager Demo implementation.
+ */
 
 #include "Window.hpp"
 #include "main.hpp"

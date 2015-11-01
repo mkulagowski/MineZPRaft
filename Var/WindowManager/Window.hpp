@@ -1,8 +1,8 @@
 /**
-* @file
-* @author mkkulagowski (mkkulagowski(at)gmail.com)
-* @brief  WindowManager class declaration.
-*/
+ * @file
+ * @author mkkulagowski (mkkulagowski(at)gmail.com)
+ * @brief  WindowManager class declaration.
+ */
 
 #pragma once
 
@@ -23,10 +23,12 @@
 // TODO: Move this to some helper functions file.
 static std::string UTF16ToUTF8(const std::wstring &s)
 {
-    const int size = ::WideCharToMultiByte(CP_UTF8, 0, s.c_str(), -1, NULL, 0, 0, NULL);
+    const int size = ::WideCharToMultiByte(CP_UTF8, 0, s.c_str(), -1, NULL,
+                                           0, 0, NULL);
 
     std::vector<char> buf(size);
-    int charsConverted = ::WideCharToMultiByte(CP_UTF8, 0, s.c_str(), -1, &buf[0], size, 0, NULL);
+    int charsConverted = ::WideCharToMultiByte(CP_UTF8, 0, s.c_str(), -1,
+                                               &buf[0], size, 0, NULL);
     if (charsConverted == 0)
         return std::string();
 
@@ -35,12 +37,16 @@ static std::string UTF16ToUTF8(const std::wstring &s)
 
 static std::wstring UTF8ToUTF16(const std::string &s)
 {
-    size_t charsNeeded = ::MultiByteToWideChar(CP_UTF8, 0, s.data(), (int)s.size(), NULL, 0);
+    int strSize = static_cast<int>(s.size());
+    size_t charsNeeded = ::MultiByteToWideChar(CP_UTF8, 0, s.data(), strSize,
+                                               NULL, 0);
     if (charsNeeded == 0)
         return std::wstring();
 
     std::vector<wchar_t> buffer(charsNeeded);
-    int charsConverted = ::MultiByteToWideChar(CP_UTF8, 0, s.data(), (int)s.size(), &buffer[0], buffer.size());
+    int bufferSize = static_cast<int>(buffer.size());
+    int charsConverted = ::MultiByteToWideChar(CP_UTF8, 0, s.data(), strSize,
+                                               &buffer[0], bufferSize);
     if (charsConverted == 0)
         return std::wstring();
 
@@ -56,7 +62,8 @@ class WindowManager
 {
 private:
 #if defined(WIN32)
-    static LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+    static LRESULT CALLBACK WndProc(HWND hWnd, UINT message,
+                                    WPARAM wParam, LPARAM lParam);
     HWND mHandle;
     HINSTANCE mInstance;
     int mLeft;
@@ -100,29 +107,100 @@ public:
     WindowManager();
     ~WindowManager();
 
+
+    /**
+     * Open window
+     * @return true on success.
+     */
     bool Open();
+
+    /**
+     * Close window
+     * @return true on success.
+     */
     bool Close();
 
+
+    /**
+     * Get window handle
+     */
     void* GetHandle() const;
+
+    /**
+     * Get windows size
+     * @param width variable for storing windows width
+     * @param height variable for storing windows height
+     */
     void GetSize(uint32_t& width, uint32_t& height) const;
+
+    /**
+     * Get windows aspect ratio
+     * @return windows width divided by height
+     */
     float GetAspectRatio() const;
+
+    /**
+     * Get fullscreen mode setting
+     * @return true if fullscreen is on
+     */
     bool GetFullscreenMode() const;
 
+    /**
+     * Checks if mouse button is pressed down
+     * @param button button identifier
+     * @return true if given button is pressed down
+     */
     bool IsMouseButtonDown(uint32_t button) const;
+
+    /**
+     * Checks if key is pressed down
+     * @param key key identifier
+     * @return true if given key is pressed down
+     */
     bool IsKeyPressed(int key) const;
 
+
+    /**
+     * Set windows size
+     * @param width wanted windows width
+     * @param height wanted windows height
+     */
     void SetSize(uint32_t width, uint32_t height);
+    /**
+     * Set fullscreen mode
+     * @param enable true turns fullscreen on, false does otherwise
+     */
     void SetFullscreenMode(bool enabled);
+    /**
+     * Set windows title
+     * @param title wanted windows title
+     */
     void SetTitle(const char* title);
+
 
     // WARNING: only game manager should call this function
     void SetResizeCallback(WindowResizeCallback func, void* userData);
 
+
+    /**
+     * Processes events currently stored in event queue
+     */
     void ProcessMessages();
+
+    /**
+     * Checks if window is closed
+     * @return true if window is closed
+     */
     bool IsClosed() const;
+
+    /**
+     * Checks if window is in focus
+     * @return true if window is in focus
+     */
     bool HasFocus() const;
 
-    // callbacks
+
+    // Callback functions
     virtual void OnClose();
     virtual void OnResize(uint32_t width, uint32_t height);
     virtual void OnKeyPress(int key);

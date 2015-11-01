@@ -1,8 +1,8 @@
 /**
-* @file
-* @author mkkulagowski (mkkulagowski(at)gmail.com)
-* @brief  WindowManager class declaration.
-*/
+ * @file
+ * @author mkkulagowski (mkkulagowski(at)gmail.com)
+ * @brief  WindowManager class declaration.
+ */
 
 #pragma once
 
@@ -23,10 +23,12 @@
 // TODO: Move this to some helper functions file.
 static std::string UTF16ToUTF8(const std::wstring &s)
 {
-    const int size = ::WideCharToMultiByte(CP_UTF8, 0, s.c_str(), -1, NULL, 0, 0, NULL);
+    const int size = ::WideCharToMultiByte(CP_UTF8, 0, s.c_str(), -1, NULL,
+                                           0, 0, NULL);
 
     std::vector<char> buf(size);
-    int charsConverted = ::WideCharToMultiByte(CP_UTF8, 0, s.c_str(), -1, &buf[0], size, 0, NULL);
+    int charsConverted = ::WideCharToMultiByte(CP_UTF8, 0, s.c_str(), -1,
+                                               &buf[0], size, 0, NULL);
     if (charsConverted == 0)
         return std::string();
 
@@ -35,12 +37,16 @@ static std::string UTF16ToUTF8(const std::wstring &s)
 
 static std::wstring UTF8ToUTF16(const std::string &s)
 {
-    size_t charsNeeded = ::MultiByteToWideChar(CP_UTF8, 0, s.data(), (int)s.size(), NULL, 0);
+    int strSize = static_cast<int>(s.size());
+    size_t charsNeeded = ::MultiByteToWideChar(CP_UTF8, 0, s.data(), strSize,
+                                               NULL, 0);
     if (charsNeeded == 0)
         return std::wstring();
 
     std::vector<wchar_t> buffer(charsNeeded);
-    int charsConverted = ::MultiByteToWideChar(CP_UTF8, 0, s.data(), (int)s.size(), &buffer[0], buffer.size());
+    int bufferSize = static_cast<int>(buffer.size());
+    int charsConverted = ::MultiByteToWideChar(CP_UTF8, 0, s.data(), strSize,
+                                               &buffer[0], bufferSize);
     if (charsConverted == 0)
         return std::wstring();
 
@@ -56,7 +62,8 @@ class WindowManager
 {
 private:
 #if defined(WIN32)
-    static LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+    static LRESULT CALLBACK WndProc(HWND hWnd, UINT message,
+                                    WPARAM wParam, LPARAM lParam);
     HWND mHandle;
     HINSTANCE mInstance;
     int mLeft;

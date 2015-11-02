@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab29df4_1f6975f9",
+        "filename": "window_initial/Win/Window.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-02T09:15:55Z",
+      "side": 1,
+      "message": "The style with brackets should be consistent (look 8 lines above - it is written differently there). I would prefer removing the brackets.",
+      "revId": "fdf51ab67996afa095c029c6043b86809347fed6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_3f6e3902",
+        "filename": "window_initial/Win/Window.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-02T09:15:55Z",
+      "side": 1,
+      "message": "As above",
+      "revId": "fdf51ab67996afa095c029c6043b86809347fed6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_5f73ede8",
+        "filename": "window_initial/Win/Window.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-02T09:15:55Z",
+      "side": 1,
+      "message": "Add a newline",
+      "revId": "fdf51ab67996afa095c029c6043b86809347fed6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_9f74a5d0",
+        "filename": "window_initial/Win/Window.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-02T09:15:55Z",
+      "side": 1,
+      "message": "On Windows it is not so obvious if the context should be created here. Nevertheless, the comment should stay. I\u0027m still investigating if it would be better for us to keep the context inside Window, or inside Renderer.",
+      "revId": "fdf51ab67996afa095c029c6043b86809347fed6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_ff184186",
+        "filename": "window_initial/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-02T09:15:55Z",
+      "side": 1,
+      "message": "This is unnecessary",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 17
+      },
+      "revId": "fdf51ab67996afa095c029c6043b86809347fed6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

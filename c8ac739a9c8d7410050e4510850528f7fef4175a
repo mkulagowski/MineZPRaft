@@ -1,0 +1,279 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab29df4_5f320311",
+        "filename": "Var/PerlinNoiseGenerator/Perlin.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-04T07:34:43Z",
+      "side": 1,
+      "message": "The only problem I see right now, is that there is no way to provide a custom Seed for the generator.\n\nFrom my 5-minute-long reading on the subject I assume, the seed is used to generate above permutation table, which is used to generate Perlin Noise, which we will use to generate our Minecrafty world. Correct me if I\u0027m wrong.\n\nI suggest leaving this as a default permutation table for now (it will aid us in debugging) and add a function, which will generate new permutation table using int64 argument and do whatever I wrote above. Of course, assuming I\u0027m correct, so it would be a good idea to do some investigation first.",
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_bfecff90",
+        "filename": "Var/PerlinNoiseGenerator/Perlin.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-04T07:34:43Z",
+      "side": 1,
+      "message": "mPermutationTable, remove brackets",
+      "range": {
+        "startLine": 11,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 23
+      },
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_5fef6387",
+        "filename": "Var/PerlinNoiseGenerator/Perlin.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-04T07:34:43Z",
+      "side": 1,
+      "message": "use spaces",
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_df02933d",
+        "filename": "Var/PerlinNoiseGenerator/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-04T07:34:43Z",
+      "side": 1,
+      "message": "use spaces",
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_5f9683f1",
+        "filename": "Var/PerlinNoiseGenerator/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-04T07:34:43Z",
+      "side": 1,
+      "message": "int, otherwise you\u0027ll have warning about type comparison losing precision",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 12
+      },
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_7f99871e",
+        "filename": "Var/PerlinNoiseGenerator/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-04T07:34:43Z",
+      "side": 1,
+      "message": "int, otherwise as above",
+      "range": {
+        "startLine": 15,
+        "startChar": 7,
+        "endLine": 15,
+        "endChar": 13
+      },
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_df89b3cb",
+        "filename": "Var/PerlinNoiseGenerator/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-04T07:34:43Z",
+      "side": 1,
+      "message": "Cast x and width to double",
+      "range": {
+        "startLine": 17,
+        "startChar": 19,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_ff84b7b2",
+        "filename": "Var/PerlinNoiseGenerator/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-04T07:34:43Z",
+      "side": 1,
+      "message": "Cast y and height to double",
+      "range": {
+        "startLine": 18,
+        "startChar": 19,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_7fc0a7e0",
+        "filename": "Var/PerlinNoiseGenerator/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-04T07:34:43Z",
+      "side": 1,
+      "message": "index++",
+      "range": {
+        "startLine": 22,
+        "startChar": 14,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_9fb73b86",
+        "filename": "Var/PerlinNoiseGenerator/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-04T07:34:43Z",
+      "side": 1,
+      "message": "index++",
+      "range": {
+        "startLine": 23,
+        "startChar": 14,
+        "endLine": 23,
+        "endChar": 23
+      },
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_bfba3f6c",
+        "filename": "Var/PerlinNoiseGenerator/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-04T07:34:43Z",
+      "side": 1,
+      "message": "index++",
+      "range": {
+        "startLine": 24,
+        "startChar": 14,
+        "endLine": 24,
+        "endChar": 23
+      },
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_dfb0d38d",
+        "filename": "Var/PerlinNoiseGenerator/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-04T07:34:43Z",
+      "side": 1,
+      "message": "Having \"index++\" above, you can now remove this line.",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 14
+      },
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_ff2037b2",
+        "filename": "Var/WindowManager/WindowManager.vcxproj",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-04T07:34:43Z",
+      "side": 1,
+      "message": "Indeed, I forgot about that. Please, add this correction to MineZPRft vcxproj as well.",
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9ab29df4_e8415f3a",
+        "filename": "Var/PerlinNoiseGenerator/Perlin.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-04T14:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_5f320311",
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_bfecff90",
         "filename": "Var/PerlinNoiseGenerator/Perlin.hpp",
         "patchSetId": 2
@@ -59,6 +77,48 @@
     },
     {
       "key": {
+        "uuid": "9ab29df4_c5bac66d",
+        "filename": "Var/PerlinNoiseGenerator/Perlin.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-04T14:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_bfecff90",
+      "range": {
+        "startLine": 11,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 23
+      },
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_a5b79285",
+        "filename": "Var/PerlinNoiseGenerator/Perlin.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-04T14:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_5fef6387",
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_df02933d",
         "filename": "Var/PerlinNoiseGenerator/main.cpp",
         "patchSetId": 2
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "9ab29df4_05acbe34",
+        "filename": "Var/PerlinNoiseGenerator/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-04T14:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_df02933d",
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_5f9683f1",
         "filename": "Var/PerlinNoiseGenerator/main.cpp",
         "patchSetId": 2
@@ -87,6 +165,30 @@
       "writtenOn": "2015-11-04T07:34:43Z",
       "side": 1,
       "message": "int, otherwise you\u0027ll have warning about type comparison losing precision",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 12
+      },
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_25ab821e",
+        "filename": "Var/PerlinNoiseGenerator/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-04T14:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_5f9683f1",
       "range": {
         "startLine": 14,
         "startChar": 6,
@@ -122,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "9ab29df4_65649a22",
+        "filename": "Var/PerlinNoiseGenerator/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-04T14:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_7f99871e",
+      "range": {
+        "startLine": 15,
+        "startChar": 7,
+        "endLine": 15,
+        "endChar": 13
+      },
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_df89b3cb",
         "filename": "Var/PerlinNoiseGenerator/main.cpp",
         "patchSetId": 2
@@ -133,6 +259,30 @@
       "writtenOn": "2015-11-04T07:34:43Z",
       "side": 1,
       "message": "Cast x and width to double",
+      "range": {
+        "startLine": 17,
+        "startChar": 19,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_8567ee24",
+        "filename": "Var/PerlinNoiseGenerator/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-04T14:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_df89b3cb",
       "range": {
         "startLine": 17,
         "startChar": 19,
@@ -168,6 +318,30 @@
     },
     {
       "key": {
+        "uuid": "9ab29df4_a56eb2ff",
+        "filename": "Var/PerlinNoiseGenerator/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-04T14:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_ff84b7b2",
+      "range": {
+        "startLine": 18,
+        "startChar": 19,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_7fc0a7e0",
         "filename": "Var/PerlinNoiseGenerator/main.cpp",
         "patchSetId": 2
@@ -179,6 +353,30 @@
       "writtenOn": "2015-11-04T07:34:43Z",
       "side": 1,
       "message": "index++",
+      "range": {
+        "startLine": 22,
+        "startChar": 14,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_c571e6e1",
+        "filename": "Var/PerlinNoiseGenerator/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-04T14:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_7fc0a7e0",
       "range": {
         "startLine": 22,
         "startChar": 14,
@@ -214,6 +412,30 @@
     },
     {
       "key": {
+        "uuid": "9ab29df4_e577cad2",
+        "filename": "Var/PerlinNoiseGenerator/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-04T14:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_9fb73b86",
+      "range": {
+        "startLine": 23,
+        "startChar": 14,
+        "endLine": 23,
+        "endChar": 23
+      },
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_bfba3f6c",
         "filename": "Var/PerlinNoiseGenerator/main.cpp",
         "patchSetId": 2
@@ -225,6 +447,30 @@
       "writtenOn": "2015-11-04T07:34:43Z",
       "side": 1,
       "message": "index++",
+      "range": {
+        "startLine": 24,
+        "startChar": 14,
+        "endLine": 24,
+        "endChar": 23
+      },
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_0573dee7",
+        "filename": "Var/PerlinNoiseGenerator/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-04T14:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_bfba3f6c",
       "range": {
         "startLine": 24,
         "startChar": 14,
@@ -260,6 +506,30 @@
     },
     {
       "key": {
+        "uuid": "9ab29df4_2582a294",
+        "filename": "Var/PerlinNoiseGenerator/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-04T14:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_dfb0d38d",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 14
+      },
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_8208c492",
         "filename": "Var/PerlinNoiseGenerator/main.cpp",
         "patchSetId": 2
@@ -283,6 +553,30 @@
     },
     {
       "key": {
+        "uuid": "9ab29df4_457dd6b0",
+        "filename": "Var/PerlinNoiseGenerator/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-04T14:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_8208c492",
+      "range": {
+        "startLine": 29,
+        "startChar": 15,
+        "endLine": 29,
+        "endChar": 24
+      },
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_ff2037b2",
         "filename": "Var/WindowManager/WindowManager.vcxproj",
         "patchSetId": 2
@@ -294,6 +588,24 @@
       "writtenOn": "2015-11-04T07:34:43Z",
       "side": 1,
       "message": "Indeed, I forgot about that. Please, add this correction to MineZPRft vcxproj as well.",
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab29df4_a545d271",
+        "filename": "Var/WindowManager/WindowManager.vcxproj",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-04T14:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab29df4_ff2037b2",
       "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false

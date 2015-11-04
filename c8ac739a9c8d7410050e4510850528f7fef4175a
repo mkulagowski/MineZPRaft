@@ -260,6 +260,29 @@
     },
     {
       "key": {
+        "uuid": "9ab29df4_8208c492",
+        "filename": "Var/PerlinNoiseGenerator/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-04T09:32:08Z",
+      "side": 1,
+      "message": "\"perlin.raw\" should be enough. There is no need to repeat \"raw\" word twice ;)",
+      "range": {
+        "startLine": 29,
+        "startChar": 15,
+        "endLine": 29,
+        "endChar": 24
+      },
+      "revId": "c8ac739a9c8d7410050e4510850528f7fef4175a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab29df4_ff2037b2",
         "filename": "Var/WindowManager/WindowManager.vcxproj",
         "patchSetId": 2

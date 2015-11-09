@@ -124,7 +124,7 @@ bool WindowManager::Open()
     int fbCount;
     GLXFBConfig* fbc = glXChooseFBConfig(mDisplay, DefaultScreen(mDisplay), fbAttribs, &fbCount);
 
-    printf("Found %d matching FB configs:", fbCount);
+    printf("Found %d matching FB configs:\n", fbCount);
 
     // Select the best FB Config according to highest GLX_SAMPLES attribute value
     int bestFBID = -1, maxSamples = 16;
@@ -137,7 +137,7 @@ bool WindowManager::Open()
             int samples;
             glXGetFBConfigAttrib(mDisplay, fbc[i], GLX_SAMPLE_BUFFERS, &sampleBuffers);
             glXGetFBConfigAttrib(mDisplay, fbc[i], GLX_SAMPLES, &samples);
-            printf("  #%d: visualID 0x%2lu, SAMPLE_BUFFERS = %d, SAMPLES = %d",
+            printf("  #%d: visualID 0x%2lu, SAMPLE_BUFFERS = %d, SAMPLES = %d\n",
                      i, vi->visualid, sampleBuffers, samples);
 
             if (samples < maxSamples)
@@ -149,7 +149,7 @@ bool WindowManager::Open()
         XFree(vi);
     }
 
-    printf("Choosing FB config #%d", bestFBID);
+    printf("Choosing FB config #%d\n", bestFBID);
     GLXFBConfig bestFB = fbc[bestFBID];
     XFree(fbc);
 

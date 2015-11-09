@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_d31c8b16",
+        "filename": "Var/PerlinNoiseGenerator/Perlin.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-09T14:54:35Z",
+      "side": 1,
+      "message": "Ya, it sounds right. I left CustomPermutationTable here because it was previously a constructor. Gonna change it.",
+      "parentUuid": "7ac7a964_c0c90f5c",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 1
+      },
+      "revId": "dc6cf5638102ef7d657601a50202e8daa0ad49cf",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_e0c60b49",
         "filename": "Var/PerlinNoiseGenerator/main.cpp",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2015-11-09T08:12:28Z",
       "side": 1,
       "message": "For more flexibility and for testing purposes, I would like to see a possibility to add custom seed through argc/argv. This way we could check how CustomPermutationTable works. A syntax would be as follows:\n\n  WhateverPerlinNoiseGeneratorExecutableIsCalled.exe 674812943154",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "dc6cf5638102ef7d657601a50202e8daa0ad49cf",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_f3198723",
+        "filename": "Var/PerlinNoiseGenerator/main.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-09T14:54:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_e0c60b49",
       "range": {
         "startLine": 13,
         "startChar": 4,

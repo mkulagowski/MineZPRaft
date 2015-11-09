@@ -4,6 +4,12 @@
 *.vcxproj.user
 /.vs
 
+# CMake specific files
+Makefile
+CMakeFiles
+CMakeCache.txt
+cmake_install.cmake
+
 # Compilation results
 /Bin
 /Obj

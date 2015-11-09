@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ac7a964_1646f1bf",
+        "filename": "Var/PerlinNoiseGenerator/main.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-09T15:55:31Z",
+      "side": 1,
+      "message": "\u003e\u003d 2 sounds better and works for higher range of args ;)",
+      "range": {
+        "startLine": 14,
+        "startChar": 13,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "ea5eb0f879556fcf4d7b5bf9e8966e30c833ecdd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

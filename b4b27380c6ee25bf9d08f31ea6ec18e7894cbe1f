@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_4e68b7ba",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-15T10:22:44Z",
+      "side": 1,
+      "message": "Dunno, some BS project I based this CMake from.",
+      "parentUuid": "7ac7a964_b9b525cf",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "b4b27380c6ee25bf9d08f31ea6ec18e7894cbe1f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_19c4593f",
         "filename": "CMakeLists.txt",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_6e6573e0",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-15T10:22:44Z",
+      "side": 1,
+      "message": "As above",
+      "parentUuid": "7ac7a964_19c4593f",
+      "range": {
+        "startLine": 28,
+        "startChar": 65,
+        "endLine": 28,
+        "endChar": 69
+      },
+      "revId": "b4b27380c6ee25bf9d08f31ea6ec18e7894cbe1f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_39c1152f",
         "filename": "Scripts/clean.sh",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2015-11-12T00:02:57Z",
       "side": 1,
       "message": "We have this file?",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "b4b27380c6ee25bf9d08f31ea6ec18e7894cbe1f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_8e62cfd6",
+        "filename": "Scripts/clean.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-15T10:22:44Z",
+      "side": 1,
+      "message": "No, but we have *.sdf files.\n\nDone",
+      "parentUuid": "7ac7a964_39c1152f",
       "range": {
         "startLine": 10,
         "startChar": 6,

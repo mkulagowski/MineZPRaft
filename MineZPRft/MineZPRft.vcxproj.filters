@@ -13,5 +13,33 @@
     <Filter Include="Terrain">
       <UniqueIdentifier>{c34226c0-c72f-4f41-8eb1-f12602736ca9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{b1ebe2ce-f415-4a99-9ebd-1e783e7632c6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Game\GameWindow.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\main.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\WindowTest.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\Win\Window.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game\GameWindow.hpp">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Window.hpp">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\WindowTest.hpp">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -5,7 +5,7 @@
  */
 
 #include "Window.hpp"
-#include "main.hpp"
+#include "WindowTest.hpp"
 
 #if defined(__LINUX__) | defined(__linux__)
 #define RMB 2
@@ -39,7 +39,7 @@ void DemoWindow::OnKeyPress(int key)
     SetTitle((title + std::to_string(titleCounter) + keyPressed).c_str());
 }
 
-int main()
+int test()
 {
     DemoWindow window;
     window.SetSize(500, 500);

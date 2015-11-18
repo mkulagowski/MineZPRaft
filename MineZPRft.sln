@@ -7,9 +7,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MineZPRft", "MineZPRft\Mine
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Var", "Var", "{33CB6295-01E3-4DF6-8BA3-19D25D154BFD}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WindowManager", "Var\WindowManager\WindowManager.vcxproj", "{500F5D6B-01B5-497F-95F0-BA666F09992F}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Perlin", "Var\PerlinNoiseGenerator\Perlin.vcxproj", "{3173BCB6-37AE-4AC3-BC50-C97DEFC29363}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PerlinNoiseGenerator", "Var\PerlinNoiseGenerator\Perlin.vcxproj", "{3173BCB6-37AE-4AC3-BC50-C97DEFC29363}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,14 +25,6 @@ Global
 		{FF5ECD0B-2B27-4195-8349-9440A16B82E3}.Release|x64.Build.0 = Release|x64
 		{FF5ECD0B-2B27-4195-8349-9440A16B82E3}.Release|x86.ActiveCfg = Release|Win32
 		{FF5ECD0B-2B27-4195-8349-9440A16B82E3}.Release|x86.Build.0 = Release|Win32
-		{500F5D6B-01B5-497F-95F0-BA666F09992F}.Debug|x64.ActiveCfg = Debug|x64
-		{500F5D6B-01B5-497F-95F0-BA666F09992F}.Debug|x64.Build.0 = Debug|x64
-		{500F5D6B-01B5-497F-95F0-BA666F09992F}.Debug|x86.ActiveCfg = Debug|Win32
-		{500F5D6B-01B5-497F-95F0-BA666F09992F}.Debug|x86.Build.0 = Debug|Win32
-		{500F5D6B-01B5-497F-95F0-BA666F09992F}.Release|x64.ActiveCfg = Release|x64
-		{500F5D6B-01B5-497F-95F0-BA666F09992F}.Release|x64.Build.0 = Release|x64
-		{500F5D6B-01B5-497F-95F0-BA666F09992F}.Release|x86.ActiveCfg = Release|Win32
-		{500F5D6B-01B5-497F-95F0-BA666F09992F}.Release|x86.Build.0 = Release|Win32
 		{3173BCB6-37AE-4AC3-BC50-C97DEFC29363}.Debug|x64.ActiveCfg = Debug|x64
 		{3173BCB6-37AE-4AC3-BC50-C97DEFC29363}.Debug|x64.Build.0 = Debug|x64
 		{3173BCB6-37AE-4AC3-BC50-C97DEFC29363}.Debug|x86.ActiveCfg = Debug|Win32
@@ -48,7 +38,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{500F5D6B-01B5-497F-95F0-BA666F09992F} = {33CB6295-01E3-4DF6-8BA3-19D25D154BFD}
 		{3173BCB6-37AE-4AC3-BC50-C97DEFC29363} = {33CB6295-01E3-4DF6-8BA3-19D25D154BFD}
 	EndGlobalSection
 EndGlobal

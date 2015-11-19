@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_4fba60df",
+        "filename": "MineZPRft/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-19T21:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_6f3abcce",
+      "range": {
+        "startLine": 26,
+        "startChar": 22,
+        "endLine": 27,
+        "endChar": 43
+      },
+      "revId": "4559541036265941e337df077183b90e4f5a9ed2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_af6214d6",
         "filename": "MineZPRft/Game/GameManager.cpp",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2015-11-19T19:46:54Z",
       "side": 1,
       "message": "Add boilerplate",
+      "revId": "4559541036265941e337df077183b90e4f5a9ed2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_6fa39c9e",
+        "filename": "MineZPRft/Game/GameManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-19T21:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_af6214d6",
       "revId": "4559541036265941e337df077183b90e4f5a9ed2",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_8fa0f891",
+        "filename": "MineZPRft/Game/GameManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-19T21:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_cf48305e",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 37
+      },
+      "revId": "4559541036265941e337df077183b90e4f5a9ed2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_ef740c9e",
         "filename": "MineZPRft/Game/GameManager.cpp",
         "patchSetId": 3
@@ -76,6 +142,24 @@
       "writtenOn": "2015-11-19T19:46:54Z",
       "side": 1,
       "message": "Add a TODO: \"add possibility to change the resolution\"",
+      "revId": "4559541036265941e337df077183b90e4f5a9ed2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_afadb48a",
+        "filename": "MineZPRft/Game/GameManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-19T21:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_ef740c9e",
       "revId": "4559541036265941e337df077183b90e4f5a9ed2",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_0fbce8ba",
+        "filename": "MineZPRft/Game/GameManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-19T21:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_0f7a2888",
+      "range": {
+        "startLine": 8,
+        "startChar": 23,
+        "endLine": 8,
+        "endChar": 33
+      },
+      "revId": "4559541036265941e337df077183b90e4f5a9ed2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_2f6fe4c6",
         "filename": "MineZPRft/Game/GameManager.cpp",
         "patchSetId": 3
@@ -116,6 +224,24 @@
       "writtenOn": "2015-11-19T19:46:54Z",
       "side": 1,
       "message": "Remove",
+      "revId": "4559541036265941e337df077183b90e4f5a9ed2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_2fb1a4e1",
+        "filename": "MineZPRft/Game/GameManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-19T21:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_2f6fe4c6",
       "revId": "4559541036265941e337df077183b90e4f5a9ed2",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -139,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_4fb6e0da",
+        "filename": "MineZPRft/Game/GameManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-19T21:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_6f68fcba",
+      "revId": "4559541036265941e337df077183b90e4f5a9ed2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_8f3e38b7",
         "filename": "MineZPRft/Game/GameManager.hpp",
         "patchSetId": 3
@@ -150,6 +294,24 @@
       "writtenOn": "2015-11-19T19:46:54Z",
       "side": 1,
       "message": "Add boilerplate with documentation above #pragma once. We must keep track of this right now, since documentation is one of project\u0027s requirements.",
+      "revId": "4559541036265941e337df077183b90e4f5a9ed2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_cf73d04b",
+        "filename": "MineZPRft/Game/GameManager.hpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-19T21:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_8f3e38b7",
       "revId": "4559541036265941e337df077183b90e4f5a9ed2",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -173,6 +335,24 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_ef8fac21",
+        "filename": "MineZPRft/Game/GameManager.hpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-19T21:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_ef4dec73",
+      "revId": "4559541036265941e337df077183b90e4f5a9ed2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_0f530818",
         "filename": "MineZPRft/Game/GameManager.hpp",
         "patchSetId": 3
@@ -184,6 +364,24 @@
       "writtenOn": "2015-11-19T19:46:54Z",
       "side": 1,
       "message": "As above",
+      "revId": "4559541036265941e337df077183b90e4f5a9ed2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_0f95c832",
+        "filename": "MineZPRft/Game/GameManager.hpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-19T21:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_0f530818",
       "revId": "4559541036265941e337df077183b90e4f5a9ed2",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -236,6 +434,30 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_2f9a8463",
+        "filename": "MineZPRft/Game/GameManager.hpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-19T21:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_8f3718e3",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "4559541036265941e337df077183b90e4f5a9ed2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_cf3110ee",
         "filename": "MineZPRft/Game/GameManager.hpp",
         "patchSetId": 3
@@ -247,6 +469,30 @@
       "writtenOn": "2015-11-19T19:46:54Z",
       "side": 1,
       "message": "Remove. This will be added on as-needed basis.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 42
+      },
+      "revId": "4559541036265941e337df077183b90e4f5a9ed2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_4f9fc052",
+        "filename": "MineZPRft/Game/GameManager.hpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-19T21:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_cf3110ee",
       "range": {
         "startLine": 19,
         "startChar": 0,
@@ -276,6 +522,24 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_efddec15",
+        "filename": "MineZPRft/Game/GameWindow.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-19T21:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_0f886870",
+      "revId": "4559541036265941e337df077183b90e4f5a9ed2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_cfb6703d",
         "filename": "MineZPRft/Game/GameWindow.cpp",
         "patchSetId": 3
@@ -293,6 +557,24 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_6fd1dcfa",
+        "filename": "MineZPRft/Game/GameWindow.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-19T21:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_cfb6703d",
+      "revId": "4559541036265941e337df077183b90e4f5a9ed2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_4fab40d8",
         "filename": "MineZPRft/Game/GameWindow.cpp",
         "patchSetId": 3
@@ -304,6 +586,30 @@
       "writtenOn": "2015-11-19T19:46:54Z",
       "side": 1,
       "message": "IMO we should create a macro for such occasions.\n\n#define UNUSED(x) (void)x\n\nAdd it somewhere where this will be visible for all of the project.",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 17
+      },
+      "revId": "4559541036265941e337df077183b90e4f5a9ed2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_8fce3859",
+        "filename": "MineZPRft/Game/GameWindow.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-19T21:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_4fab40d8",
       "range": {
         "startLine": 23,
         "startChar": 4,
@@ -339,6 +645,30 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_afdbf419",
+        "filename": "MineZPRft/Game/GameWindow.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-19T21:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_0fa148f8",
+      "range": {
+        "startLine": 26,
+        "startChar": 12,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "4559541036265941e337df077183b90e4f5a9ed2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_2fa60411",
         "filename": "MineZPRft/Game/GameWindow.cpp",
         "patchSetId": 3
@@ -350,6 +680,30 @@
       "writtenOn": "2015-11-19T19:46:54Z",
       "side": 1,
       "message": "We will probably do this inside OnMouseDown, but this is just a guess",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "4559541036265941e337df077183b90e4f5a9ed2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_4fed00c3",
+        "filename": "MineZPRft/Game/GameWindow.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-19T21:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_2fa60411",
       "range": {
         "startLine": 41,
         "startChar": 0,
@@ -379,6 +733,24 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_8fc71845",
+        "filename": "MineZPRft/Game/GameWindow.hpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-19T21:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_cf5f500d",
+      "revId": "4559541036265941e337df077183b90e4f5a9ed2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_ef9b2cc7",
         "filename": "MineZPRft/Game/GameWindow.hpp",
         "patchSetId": 3
@@ -390,6 +762,24 @@
       "writtenOn": "2015-11-19T19:46:54Z",
       "side": 1,
       "message": "Separate #pragma once from #includes",
+      "revId": "4559541036265941e337df077183b90e4f5a9ed2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_afc4d440",
+        "filename": "MineZPRft/Game/GameWindow.hpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-19T21:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_ef9b2cc7",
       "revId": "4559541036265941e337df077183b90e4f5a9ed2",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -419,6 +809,30 @@
     },
     {
       "key": {
+        "uuid": "7ac7a964_cfc11030",
+        "filename": "MineZPRft/Game/GameWindow.hpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-19T21:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_8fac78ef",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 40
+      },
+      "revId": "4559541036265941e337df077183b90e4f5a9ed2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ac7a964_ef824c51",
         "filename": "MineZPRft/Game/main.cpp",
         "patchSetId": 3
@@ -430,6 +844,24 @@
       "writtenOn": "2015-11-19T19:46:54Z",
       "side": 1,
       "message": "Add boilerplate",
+      "revId": "4559541036265941e337df077183b90e4f5a9ed2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac7a964_cf1d90bf",
+        "filename": "MineZPRft/Game/main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-19T21:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac7a964_ef824c51",
       "revId": "4559541036265941e337df077183b90e4f5a9ed2",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false

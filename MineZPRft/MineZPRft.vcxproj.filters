@@ -16,23 +16,36 @@
     <Filter Include="Common">
       <UniqueIdentifier>{b1ebe2ce-f415-4a99-9ebd-1e783e7632c6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Common\Win">
+      <UniqueIdentifier>{b94bedb0-79f0-4a65-a616-cdea40e4a20b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game\GameWindow.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Game\main.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="Common\WindowTest.cpp">
-      <Filter>Common</Filter>
-    </ClCompile>
-    <ClCompile Include="Common\Win\Window.cpp">
       <Filter>Common</Filter>
     </ClCompile>
     <ClCompile Include="Game\GameManager.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\Win\Window.cpp">
+      <Filter>Common\Win</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\GameWindow.hpp">
@@ -52,6 +65,18 @@
     </ClInclude>
     <ClInclude Include="Common\UTFfuncs.hpp">
       <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.hpp">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.hpp">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.hpp">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.hpp">
+      <Filter>Renderer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

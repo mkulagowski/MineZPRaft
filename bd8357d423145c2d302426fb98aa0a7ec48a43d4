@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_750e4836",
+        "filename": "MineZPRft/Camera.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-22T02:04:18Z",
+      "side": 1,
+      "message": "rm",
+      "range": {
+        "startLine": 18,
+        "startChar": 24,
+        "endLine": 18,
+        "endChar": 28
+      },
+      "revId": "bd8357d423145c2d302426fb98aa0a7ec48a43d4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_95120457",
+        "filename": "MineZPRft/Renderer.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-22T02:04:18Z",
+      "side": 1,
+      "message": "add boilerplates/documentation",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 2
+      },
+      "revId": "bd8357d423145c2d302426fb98aa0a7ec48a43d4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_d51c7c6d",
+        "filename": "MineZPRft/Shader.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-22T02:04:18Z",
+      "side": 1,
+      "message": "Move file to \u0027~/MineZPRft/Renderer/\u0027 directory. You\u0027ve added proper filters in VS, but files aren\u0027t in the same structure on the HDD.\n\nDo this for all renderer files.",
+      "revId": "bd8357d423145c2d302426fb98aa0a7ec48a43d4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_b50f002e",
+        "filename": "MineZPRft/Shader.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-22T02:04:18Z",
+      "side": 1,
+      "message": "boilerplates/documentation",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 2
+      },
+      "revId": "bd8357d423145c2d302426fb98aa0a7ec48a43d4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

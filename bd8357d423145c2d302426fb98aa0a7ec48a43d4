@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_55ca2ca2",
+        "filename": "MineZPRft/Camera.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-22T10:15:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_750e4836",
+      "range": {
+        "startLine": 18,
+        "startChar": 24,
+        "endLine": 18,
+        "endChar": 28
+      },
+      "revId": "bd8357d423145c2d302426fb98aa0a7ec48a43d4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_95120457",
         "filename": "MineZPRft/Renderer.hpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-11-22T02:04:18Z",
       "side": 1,
       "message": "add boilerplates/documentation",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 2
+      },
+      "revId": "bd8357d423145c2d302426fb98aa0a7ec48a43d4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_35d5b043",
+        "filename": "MineZPRft/Renderer.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-22T10:15:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_95120457",
       "range": {
         "startLine": 14,
         "startChar": 0,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_15d0b452",
+        "filename": "MineZPRft/Shader.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-22T10:15:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_d51c7c6d",
+      "revId": "bd8357d423145c2d302426fb98aa0a7ec48a43d4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_b50f002e",
         "filename": "MineZPRft/Shader.hpp",
         "patchSetId": 1
@@ -76,6 +142,30 @@
       "writtenOn": "2015-11-22T02:04:18Z",
       "side": 1,
       "message": "boilerplates/documentation",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 2
+      },
+      "revId": "bd8357d423145c2d302426fb98aa0a7ec48a43d4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_75cf28b1",
+        "filename": "MineZPRft/Shader.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-22T10:15:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_b50f002e",
       "range": {
         "startLine": 9,
         "startChar": 0,

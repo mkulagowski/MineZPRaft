@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_ec5d18eb",
+        "filename": "MineZPRft/Common/Linux/FileSystem.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-26T18:33:12Z",
+      "side": 1,
+      "message": "Add apropriate directories to include dirs, so You dont need to use \"../\" prefix",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 26
+      },
+      "revId": "27677627af8af0cad74ab66b7be4c9043b8a8ee7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_0c72547c",
+        "filename": "MineZPRft/Common/Win/FileSystem.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-26T18:33:12Z",
+      "side": 1,
+      "message": "same as the last comment",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 26
+      },
+      "revId": "27677627af8af0cad74ab66b7be4c9043b8a8ee7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_4c6c4c9d",
+        "filename": "MineZPRft/Common/Win/FileSystem.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-26T18:33:12Z",
+      "side": 1,
+      "message": "Just move it to common dir, because it is not directly connected to FileSystem",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 1
+      },
+      "revId": "27677627af8af0cad74ab66b7be4c9043b8a8ee7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_6c69088b",
+        "filename": "MineZPRft/Common/Win/UTFfuncs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-26T18:33:12Z",
+      "side": 1,
+      "message": "same as the last comment",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "27677627af8af0cad74ab66b7be4c9043b8a8ee7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_ac0a40d0",
+        "filename": "MineZPRft/Game/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-26T18:33:12Z",
+      "side": 1,
+      "message": "add comment, because 3 \"/..\" look too mysterious, and this is our main.cpp",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 62
+      },
+      "revId": "27677627af8af0cad74ab66b7be4c9043b8a8ee7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

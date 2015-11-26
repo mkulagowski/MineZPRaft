@@ -11,7 +11,7 @@
  */
 struct CameraDesc
 {
-    // TODO initial data like fov, aspect ratio, etc
+    
 };
 
 /**

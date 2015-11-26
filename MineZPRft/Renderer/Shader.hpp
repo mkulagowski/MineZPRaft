@@ -6,12 +6,17 @@
 
 #pragma once
 
+#include "Common/Common.hpp"
+#include <string>
+
 /**
  * Structure describing data needed to initialize a Shader object
  */
 struct ShaderDesc
 {
-    // TODO paths to all needed shaders
+    std::string vsPath; ///< Path to Vertex Shader source
+    std::string gsPath; ///< Path to Geometry Shader source (optional)
+    std::string fsPath; ///< Path to Fragment Shader source
 };
 
 class Shader
@@ -40,5 +45,10 @@ public:
     void MakeCurrent() noexcept;
 
 private:
-    // TODO OpenGL Shader IDs and other required stuff
+    /**
+     * Creates a Shader object of specified type from specified shader path.
+     */
+    GLuint CreateShader(const GLenum shaderType, const std::string& shaderPath);
+
+    GLuint mShaderProgram; ///< OpenGL Shader Program ID
 };

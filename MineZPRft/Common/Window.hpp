@@ -1,6 +1,7 @@
 /**
  * @file
  * @author mkkulagowski (mkkulagowski(at)gmail.com)
+ * @author LKostyra (costyrra.xl@gmail.com)
  * @brief  WindowManager class declaration.
  */
 
@@ -14,6 +15,7 @@
 
 #if defined(__LINUX__) | defined(__linux__)
 #include <X11/Xlib.h>
+#include <GL/glx.h>
 #elif defined(WIN32)
 #define NOMINMAX
 #define UNICODE
@@ -34,6 +36,8 @@ private:
     static LRESULT CALLBACK WndProc(HWND hWnd, UINT message,
                                     WPARAM wParam, LPARAM lParam);
     HWND mHandle;
+    HDC mHDC;
+    HGLRC mHRC;
     HINSTANCE mInstance;
     int mLeft;
     int mTop;
@@ -43,6 +47,8 @@ private:
     ::Window mWindow;
     ::Window mRoot;
     static bool mWindowError;
+    GLXContext mContext;
+    GLXDrawable mDrawable;
     static int ErrorHandler(::Display* dpy, XErrorEvent *error);
 #else //...
 #error "Target not supported!"
@@ -167,6 +173,11 @@ public:
      * @return true if window is in focus
      */
     bool HasFocus() const;
+
+    /**
+     * Swap Front and Back Buffer.
+     */
+    void SwapBuffers() const;
 
 
     // Callback functions

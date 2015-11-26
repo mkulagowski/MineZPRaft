@@ -7,6 +7,7 @@
 #pragma once
 
 #include "GameWindow.hpp"
+#include "Renderer/Renderer.hpp"
 #include <memory>
 
 /**
@@ -32,4 +33,5 @@ private:
     ~GameManager();
 
     GameWindow mWindow;
+    Renderer mRenderer;
 };

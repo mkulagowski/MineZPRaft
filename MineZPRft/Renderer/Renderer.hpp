@@ -11,6 +11,7 @@
 
 #include "Mesh.hpp"
 #include "Camera.hpp"
+#include "Shader.hpp"
 
 /**
  * Structure with data needed to initialize Renderer object.
@@ -18,6 +19,8 @@
 struct RendererDesc
 {
     std::string shaderPath; ///< Path to directory with shaders used in Renderer
+    GLsizei windowWidth;    ///< Window width, to set up OpenGL Viewport
+    GLsizei windowHeight;   ///< Window height, to set up OpenGL Viewport
 };
 
 class Renderer
@@ -72,5 +75,8 @@ private:
     typedef std::vector<const Mesh*> MeshArrayType;
 
     Camera mCamera;
+    Shader mMainShader; // TODO name is subject to change
+    GLuint mVB; // TODO temporary, will be replaced by mMeshArray
+    GLuint mDummyVAO; // We don't need this, but OGL has its needs and won't cooperate without it
     MeshArrayType mMeshArray;
 };

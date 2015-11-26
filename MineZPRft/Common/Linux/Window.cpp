@@ -1,10 +1,14 @@
 /**
-* @file
-* @author mkkulagowski (mkkulagowski(at)gmail.com)
-* @brief  WindowManager class Linux implementation.
-*/
+ * @file
+ * @author mkkulagowski (mkkulagowski(at)gmail.com)
+ * @author LKostyra (costyrra.xl@gmail.com)
+ * @brief  WindowManager class Linux implementation.
+ */
 
 #include "../Window.hpp"
+
+#include <iostream>
+
 #include <GL/glx.h>
 
 ::Display* WindowManager::mDisplay;
@@ -20,6 +24,8 @@ WindowManager::WindowManager()
     mResizeCallback = nullptr;
     mResizeCallbackUserData = nullptr;
     mTitle = "Window";
+    mContext = 0;
+    mDrawable = 0;
 
     if (!mDisplay)
     {
@@ -42,6 +48,8 @@ WindowManager::WindowManager()
 WindowManager::~WindowManager()
 {
     Close();
+    glXMakeCurrent(mDisplay, None, 0);
+    glXDestroyContext(mDisplay, mContext);
     XSetScreenSaver(mDisplay, -1, 0, DontPreferBlanking, AllowExposures);
     XDestroyWindow(mDisplay, mWindow);
     XCloseDisplay(mDisplay);
@@ -126,7 +134,8 @@ bool WindowManager::Open()
 
     printf("Found %d matching FB configs:\n", fbCount);
 
-    // Select the best FB Config according to highest GLX_SAMPLES attribute value
+    // Select the best FB Config according to lowest GLX_SAMPLES attribute value
+    // TODO enable Multisampling if needed
     int bestFBID = -1, maxSamples = 16;
     for (int i = 0; i < fbCount; ++i)
     {
@@ -170,11 +179,72 @@ bool WindowManager::Open()
     }
     XSetErrorHandler(nullptr);
 
-    //TODO: Create and make OGL context current here
     XStoreName(mDisplay, mWindow, mTitle.c_str());
     ::Atom WmDelete = XInternAtom(mDisplay, "WM_DELETE_WINDOW", false);
     XSetWMProtocols(mDisplay, mWindow, &WmDelete, 1);
     XMapWindow(mDisplay, mWindow);
+
+    // Acquire glX extension needed for initialization
+    PFNGLXCREATECONTEXTATTRIBSARBPROC glXCreateContextAttribsARB =
+        reinterpret_cast<PFNGLXCREATECONTEXTATTRIBSARBPROC>(
+            glXGetProcAddress((const GLubyte*) "glXCreateContextAttribsARB")
+        );
+
+    if (glXCreateContextAttribsARB)
+    {
+        // try reaching for 3.3 core OpenGL context
+        int attribs[] =
+        {
+            GLX_CONTEXT_MAJOR_VERSION_ARB, 3,
+            GLX_CONTEXT_MINOR_VERSION_ARB, 3,
+            None
+        };
+
+        mContext = glXCreateContextAttribsARB(mDisplay, bestFB, NULL, GL_TRUE, attribs);
+        if (!mContext)
+        {
+            // TODO log warning
+            std::cerr << "GL 3.3 core profile not acquired. Falling back to old profile."
+                      << std::endl;
+            std::cerr << "Keep in mind, the renderer MIGHT NOT WORK due to too old OGL version!"
+                      << std::endl;
+            // failed, fallback to classic method
+            mContext = glXCreateNewContext(mDisplay, bestFB, GLX_RGBA_TYPE, NULL, GL_TRUE);
+            if (!mContext)
+            {
+                // TODO log
+                std::cerr << "Cannot create OpenGL Context." << std::endl;
+                // TODO exception
+                return false;
+            }
+        }
+    }
+    else
+    {
+        // TODO log warning
+        std::cerr << "glXCreateContextAttribsARB not available. Creating OGL context the old way."
+                  << std::endl;
+        std::cerr << "Keep in mind, the renderer MIGHT NOT WORK due to too old OGL version!"
+                  << std::endl;
+        mContext = glXCreateNewContext(mDisplay, bestFB, GLX_RGBA_TYPE, NULL, GL_TRUE);
+        if (!mContext)
+        {
+            // TODO log
+            std::cerr << "Cannot create OpenGL Context." << std::endl;
+            // TODO exception
+            return false;
+        }
+    }
+    glXMakeCurrent(mDisplay, mWindow, mContext);
+    mDrawable = glXGetCurrentDrawable();
+
+    // for information purposes
+    // TODO log info
+    if (!glXIsDirect(mDisplay, mContext))
+        std::cerr << "Indirect GLX rendering context obtained" << std::endl;
+    else
+        std::cerr << "Direct GLX rendering context obtained" << std::endl;
+
     mClosed = false;
     return true;
 }
@@ -350,6 +420,11 @@ bool WindowManager::GetFullscreenMode() const
 bool WindowManager::IsMouseButtonDown(uint32_t button) const
 {
     return mMouseButtons[button];
+}
+
+void WindowManager::SwapBuffers() const
+{
+    glXSwapBuffers(mDisplay, mDrawable);
 }
 
 void WindowManager::SetResizeCallback(WindowResizeCallback func, void* userData)

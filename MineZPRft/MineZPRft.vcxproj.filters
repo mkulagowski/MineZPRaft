@@ -55,6 +55,9 @@
     <ClCompile Include="Common\Win\Common.cpp">
       <Filter>Common\Win</Filter>
     </ClCompile>
+    <ClCompile Include="Renderer\Extensions.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\GameWindow.hpp">
@@ -88,6 +91,12 @@
       <Filter>Renderer</Filter>
     </ClInclude>
     <ClInclude Include="Common\FileSystem.hpp">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\Extensions.hpp">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\GetExtension.hpp">
       <Filter>Common</Filter>
     </ClInclude>
   </ItemGroup>

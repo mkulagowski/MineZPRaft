@@ -1,6 +1,7 @@
 /**
  * @file
  * @author mkkulagowski (mkkulagowski(at)gmail.com)
+ * @author LKostyra (costyrra.xl@gmail.com)
  * @brief  WindowManager class implementation.
  */
 
@@ -152,7 +153,26 @@ bool WindowManager::Open()
     if (!mHandle)
         return false;
 
-    //TODO: Create and make OGL context current here
+    // Create Pixel Format Descriptor
+    PIXELFORMATDESCRIPTOR pfd = { sizeof(PIXELFORMATDESCRIPTOR), 1,
+                                  PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER,
+                                  PFD_TYPE_RGBA, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16,
+                                  0, 0, PFD_MAIN_PLANE, 0, 0, 0, 0 };
+
+    mHDC = GetDC(mHandle);
+    if (!mHDC)
+        return false;
+
+    // Set Pixel Format according to PFD
+    unsigned int pixelFormat = ChoosePixelFormat(mHDC, &pfd);
+    SetPixelFormat(mHDC, pixelFormat, &pfd);
+
+    // Create a context and make it current
+    mHRC = wglCreateContext(mHDC);
+    if (!mHRC)
+        return false;
+    wglMakeCurrent(mHDC, mHRC);
+
     SetWindowLongPtr(mHandle, GWLP_USERDATA, (LONG_PTR)this);
     SetWindowText(mHandle, UTF8ToUTF16(mTitle).c_str());
     ShowWindow(mHandle, SW_SHOW);
@@ -167,6 +187,19 @@ bool WindowManager::Close()
 {
     if (mClosed)
         return false;
+
+    if (mHRC)
+    {
+        wglMakeCurrent(nullptr, nullptr);
+        wglDeleteContext(mHRC);
+        mHRC = nullptr;
+    }
+
+    if (mHDC)
+    {
+        ReleaseDC(mHandle, mHDC);
+        mHDC = nullptr;
+    }
 
     ShowWindow(mHandle, SW_HIDE);
     mClosed = true;
@@ -389,6 +422,11 @@ void WindowManager::ProcessMessages()
     }
 }
 
+void WindowManager::SwapBuffers() const
+{
+    ::SwapBuffers(mHDC);
+}
+
 void WindowManager::SetResizeCallback(WindowResizeCallback func, void* userData)
 {
     mResizeCallback = func;
@@ -434,4 +472,3 @@ void WindowManager::OnMouseUp(uint32_t button)
 {
     (void)button;
 }
-

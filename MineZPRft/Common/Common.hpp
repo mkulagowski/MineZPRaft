@@ -6,4 +6,5 @@
 
 #pragma once
 
+// Macro for unused parameters to supress warnings in skeletons
 #define UNUSED(x) (void)x

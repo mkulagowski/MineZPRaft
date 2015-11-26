@@ -6,8 +6,12 @@
 
 #include "GameManager.hpp"
 
+#include "Common/FileSystem.hpp"
+
 int main()
 {
+    FS::ChangeDirectory(FS::GetExecutableDir() + "/../../..");
+
     GameManager::GetInstance().GameLoop();
 
     return 0;

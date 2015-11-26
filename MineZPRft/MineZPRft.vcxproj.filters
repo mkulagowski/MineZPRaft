@@ -46,6 +46,12 @@
     <ClCompile Include="Renderer\Shader.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="Common\Win\FileSystem.cpp">
+      <Filter>Common\Win</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\Win\UTFfuncs.cpp">
+      <Filter>Common\Win</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\GameWindow.hpp">
@@ -77,6 +83,9 @@
     </ClInclude>
     <ClInclude Include="Renderer\Shader.hpp">
       <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\FileSystem.hpp">
+      <Filter>Common</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

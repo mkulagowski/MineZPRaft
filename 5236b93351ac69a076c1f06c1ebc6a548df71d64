@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_5673f74c",
+        "filename": "MineZPRft/Common/Linux/Window.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-28T22:35:44Z",
+      "side": 1,
+      "message": "lines too long",
+      "range": {
+        "startLine": 207,
+        "startChar": 12,
+        "endLine": 208,
+        "endChar": 110
+      },
+      "revId": "5236b93351ac69a076c1f06c1ebc6a548df71d64",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_768f1324",
+        "filename": "MineZPRft/Common/Linux/Window.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-28T22:35:44Z",
+      "side": 1,
+      "message": "lines too long",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 106
+      },
+      "revId": "5236b93351ac69a076c1f06c1ebc6a548df71d64",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_76b633de",
+        "filename": "MineZPRft/Renderer/Renderer.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-28T22:35:44Z",
+      "side": 1,
+      "message": "keep comments spacing consistent with the rest of the file",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 77
+      },
+      "revId": "5236b93351ac69a076c1f06c1ebc6a548df71d64",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_d6b547ce",
+        "filename": "MineZPRft/Renderer/Shader.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-11-28T22:35:44Z",
+      "side": 1,
+      "message": "is documentation needed for private methods?",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 7
+      },
+      "revId": "5236b93351ac69a076c1f06c1ebc6a548df71d64",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

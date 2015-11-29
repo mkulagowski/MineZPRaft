@@ -27,6 +27,8 @@
     <ClCompile Include="Game\GameManager.cpp" />
     <ClCompile Include="Game\GameWindow.cpp" />
     <ClCompile Include="Game\main.cpp" />
+    <ClCompile Include="Math\Matrix.cpp" />
+    <ClCompile Include="Math\Vector.cpp" />
     <ClCompile Include="Renderer\Camera.cpp" />
     <ClCompile Include="Renderer\Extensions.cpp" />
     <ClCompile Include="Renderer\Mesh.cpp" />
@@ -42,6 +44,8 @@
     <ClInclude Include="Common\WindowTest.hpp" />
     <ClInclude Include="Game\GameManager.hpp" />
     <ClInclude Include="Game\GameWindow.hpp" />
+    <ClInclude Include="Math\Matrix.hpp" />
+    <ClInclude Include="Math\Vector.hpp" />
     <ClInclude Include="Renderer\Camera.hpp" />
     <ClInclude Include="Renderer\Common.hpp" />
     <ClInclude Include="Renderer\Extensions.hpp" />

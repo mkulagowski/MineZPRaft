@@ -22,6 +22,30 @@
       "revId": "145491dd93cd1fdf5c8cc3be80cf525d7c522c25",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_31b9252f",
+        "filename": "MineZPRft/Renderer/Camera.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-29T09:01:57Z",
+      "side": 1,
+      "message": "Don\u0027t ask",
+      "parentUuid": "5ac4a560_d688e7e9",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 4
+      },
+      "revId": "145491dd93cd1fdf5c8cc3be80cf525d7c522c25",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }

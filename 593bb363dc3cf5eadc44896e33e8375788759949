@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_91875961",
+        "filename": "MineZPRft/Math/Matrix.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-29T09:06:33Z",
+      "side": 1,
+      "message": "rm",
+      "range": {
+        "startLine": 4,
+        "startChar": 24,
+        "endLine": 4,
+        "endChar": 25
+      },
+      "revId": "593bb363dc3cf5eadc44896e33e8375788759949",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_7182bd53",
+        "filename": "MineZPRft/Math/Matrix.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-29T09:06:33Z",
+      "side": 1,
+      "message": "Move to private, create a method \"data\" which will return a const float ptr to this array.",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "593bb363dc3cf5eadc44896e33e8375788759949",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_b17c5574",
+        "filename": "MineZPRft/Math/Vector.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-11-29T09:06:33Z",
+      "side": 1,
+      "message": "As with Matrix",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "593bb363dc3cf5eadc44896e33e8375788759949",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

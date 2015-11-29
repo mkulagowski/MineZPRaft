@@ -6,6 +6,8 @@
 
 #include "../Common.hpp"
 
+#include <Windows.h>
+
 std::string GetLastErrorString()
 {
     DWORD lastError = ::GetLastError();

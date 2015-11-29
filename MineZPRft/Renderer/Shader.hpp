@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "Common/Common.hpp"
+#include "Common.hpp"
 #include <string>
 
 /**

@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "Common/Common.hpp"
+#include "Common.hpp"
 #include "GL/glext.h"
 
 // Namespace wrapping OpenGL Extension Functions to avoid overwriting them on Linux

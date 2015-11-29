@@ -99,5 +99,8 @@
     <ClInclude Include="Common\GetExtension.hpp">
       <Filter>Common</Filter>
     </ClInclude>
+    <ClInclude Include="Renderer\Common.hpp">
+      <Filter>Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -13,8 +13,6 @@
 #include <Windows.h>
 #endif
 
-#include <GL/gl.h>
-
 
 // Macro for unused parameters to supress warnings in skeletons
 #define UNUSED(x) (void)x

@@ -44,33 +44,42 @@ public:
     float operator[](int index) const;
 
     // Addition
-    Vector& operator+(const Vector& other);
-    Vector& operator+(float value);
+    Vector& operator+=(const Vector& other);
+    Vector& operator+=(float value);
+    const Vector operator+(const Vector& other) const;
+    const Vector operator+(float value) const;
 
     // Subtraction
-    Vector& operator-(const Vector& other);
-    Vector& operator-(float value);
+    Vector& operator-=(const Vector& other);
+    Vector& operator-=(float value);
+    const Vector operator-(const Vector& other) const;
+    const Vector operator-(float value) const;
 
     // Multiplication
-    Vector& operator*(const Vector& other);
-    Vector& operator*(float value);
+    Vector& operator*=(const Vector& other);
+    Vector& operator*=(float value);
+    const Vector operator*(const Vector& other) const;
+    const Vector operator*(float value) const;
 
     // Division
-    Vector& operator/(const Vector& other);
-    Vector& operator/(float value);
+    Vector& operator/=(const Vector& other);
+    Vector& operator/=(float value);
+    const Vector operator/(const Vector& other) const;
+    const Vector operator/(float value) const;
 
     // Power
     Vector& operator^(float value);
 
-    // Dot product
-    float operator%(const Vector& other) const;
+    // Products
+    float Dot(const Vector& other);
+    Vector Cross(const Vector& other) const;
 
     // Comparison
-    bool operator==(const Vector& other);
-    bool operator<(const Vector& other);
-    bool operator>(const Vector& other);
-    bool operator<=(const Vector& other);
-    bool operator>=(const Vector& other);
+    bool operator==(const Vector& other) const;
+    bool operator<(const Vector& other) const;
+    bool operator>(const Vector& other) const;
+    bool operator<=(const Vector& other) const;
+    bool operator>=(const Vector& other) const;
 
 private:
     float f[4];

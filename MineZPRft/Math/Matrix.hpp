@@ -41,19 +41,26 @@ public:
     float operator[](int index) const;
 
     // Addition
-    Matrix& operator+(const Matrix& other);
-    Matrix& operator+(float value);
+    Matrix& operator+=(const Matrix& other);
+    Matrix& operator+=(float value);
+    const Matrix operator+(const Matrix& other) const;
+    const Matrix operator+(float value) const;
 
     // Subtraction
-    Matrix& operator-(const Matrix& other);
-    Matrix& operator-(float value);
+    Matrix& operator-=(const Matrix& other);
+    Matrix& operator-=(float value);
+    const Matrix operator-(const Matrix& other) const;
+    const Matrix operator-(float value) const;
 
     // Multiplication
-    Matrix& operator*(const Matrix& other);
-    Matrix& operator*(float value);
+    Matrix& operator*=(const Matrix& other);
+    Matrix& operator*=(float value);
+    const Matrix operator*(const Matrix& other) const;
+    const Matrix operator*(float value) const;
 
     // Division
-    Matrix& operator/(float value);
+    Matrix& operator/=(float value);
+    const Matrix operator/(float value) const;
 
     // Transposition
     Matrix& operator~();
@@ -62,11 +69,11 @@ public:
     Matrix& operator^(float value);
 
     // Comparison
-    bool operator==(const Matrix& other);
-    bool operator<(const Matrix& other);
-    bool operator>(const Matrix& other);
-    bool operator<=(const Matrix& other);
-    bool operator>=(const Matrix& other);
+    bool operator==(const Matrix& other) const;
+    bool operator<(const Matrix& other) const;
+    bool operator>(const Matrix& other) const;
+    bool operator<=(const Matrix& other) const;
+    bool operator>=(const Matrix& other) const;
 
     // Friendship
     friend Vector operator*(const Matrix& a, const Vector& b);
@@ -78,5 +85,33 @@ private:
 
 // External operators (cross-type)
 Vector operator*(const Matrix& a, const Vector& b);
+
+
+/**
+ * Creates right-handed Look At Matrix (aka. View Matrix)
+ *
+ * @param pos Position of camera
+ * @param dir Direction of camera (aka. Look At vector)
+ * @param up  Up Vector of the camera
+ *
+ * @return Calculated right-handed Look At Matrix
+ */
+Matrix CreateRHLookAtMatrix(const Vector& pos, const Vector& dir, const Vector& up);
+
+/**
+ * Creates a right-handed Perspective Matrix (aka. Projection Matrix)
+ *
+ * @param fov         Field of View
+ * @param aspectRatio Screen width to screen height ratio
+ * @param nearDist    Near distance of the Perspective. Any objects closer than this distance
+ *                    will clip.
+ * @param farDist     Far distance of the Perspective. Any objects further than this distance
+ *                    will clip.
+ *
+ * @return Right-handed perspective matrix.
+ */
+Matrix CreateRHPerspectiveMatrix(const float fov, const float aspectRatio,
+                                 const float nearDist, const float farDist);
+
 
 #endif // __MATH_MATRIX_HPP__

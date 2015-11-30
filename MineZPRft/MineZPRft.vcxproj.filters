@@ -57,7 +57,7 @@
     </ClCompile>
     <ClCompile Include="Renderer\Extensions.cpp">
       <Filter>Renderer</Filter>
-	</ClCompile>
+    </ClCompile>
     <ClCompile Include="Math\Matrix.cpp">
       <Filter>Math</Filter>
     </ClCompile>
@@ -104,7 +104,7 @@
     </ClInclude>
     <ClInclude Include="Common\GetExtension.hpp">
       <Filter>Common</Filter>
-	</ClInclude>
+    </ClInclude>
     <ClInclude Include="Math\Matrix.hpp">
       <Filter>Math</Filter>
     </ClInclude>
@@ -113,6 +113,9 @@
     </ClInclude>
     <ClInclude Include="Renderer\Common.hpp">
       <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Common.hpp">
+      <Filter>Math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

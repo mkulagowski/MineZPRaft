@@ -85,7 +85,10 @@ void Shader::MakeCurrent() noexcept
     glUseProgram(mShaderProgram);
 }
 
-// TODO setting uniform values
+GLint Shader::GetUniform(const char* name) noexcept
+{
+    return glGetUniformLocation(mShaderProgram, name);
+}
 
 GLuint Shader::CreateShader(const GLenum shaderType, const std::string& shaderPath)
 {

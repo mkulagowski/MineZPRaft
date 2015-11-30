@@ -43,6 +43,8 @@ extern PFNGLGETPROGRAMIVPROC glGetProgramiv;
 extern PFNGLGETPROGRAMINFOLOGPROC glGetProgramInfoLog;
 extern PFNGLDELETEPROGRAMPROC glDeleteProgram;
 extern PFNGLUSEPROGRAMPROC glUseProgram;
+extern PFNGLGETUNIFORMLOCATIONPROC glGetUniformLocation;
+extern PFNGLUNIFORMMATRIX4FVPROC glUniformMatrix4fv;
 
 /**
  * Initialize OpenGL extensions used by Renderer

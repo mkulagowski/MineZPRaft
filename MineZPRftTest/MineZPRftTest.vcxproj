@@ -147,7 +147,11 @@
   <ItemGroup>
     <ClCompile Include="..\MineZPRft\Common\Win\Common.cpp" />
     <ClCompile Include="..\MineZPRft\Common\Win\FileSystem.cpp" />
+    <ClCompile Include="..\MineZPRft\Math\Matrix.cpp" />
+    <ClCompile Include="..\MineZPRft\Math\Vector.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MatrixTest.cpp" />
+    <ClCompile Include="VectorTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

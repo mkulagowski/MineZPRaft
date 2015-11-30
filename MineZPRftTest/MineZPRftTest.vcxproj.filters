@@ -16,5 +16,13 @@
       <Filter>Requirements</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\MineZPRft\Math\Matrix.cpp">
+      <Filter>Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MineZPRft\Math\Vector.cpp">
+      <Filter>Units</Filter>
+    </ClCompile>
+    <ClCompile Include="MatrixTest.cpp" />
+    <ClCompile Include="VectorTest.cpp" />
   </ItemGroup>
 </Project>

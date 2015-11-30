@@ -49,7 +49,7 @@ float Vector::Length() const
 {
     Vector temp(*this);
 
-    return sqrtf(temp % temp);
+    return sqrtf(temp.Dot(temp));
 }
 
 void Vector::Normalize()
@@ -82,7 +82,7 @@ float Vector::operator[](int index) const
 }
 
 // Addition
-Vector& Vector::operator+(const Vector& other)
+Vector& Vector::operator+=(const Vector& other)
 {
     for (int i = 0; i < 4; i++)
         f[i] += other.f[i];
@@ -90,16 +90,26 @@ Vector& Vector::operator+(const Vector& other)
     return *this;
 }
 
-Vector& Vector::operator+(float value)
+Vector& Vector::operator+=(float value)
 {
-    for (auto i : f)
-        i += value;
+    for (int i = 0; i < 4; i++)
+        f[i] += value;
 
     return *this;
 }
 
+const Vector Vector::operator+(const Vector& other) const
+{
+    return Vector(*this) += other;
+}
+
+const Vector Vector::operator+(float value) const
+{
+    return Vector(*this) += value;
+}
+
 // Subtraction
-Vector& Vector::operator-(const Vector& other)
+Vector& Vector::operator-=(const Vector& other)
 {
     for (int i = 0; i < 4; i++)
         f[i] -= other.f[i];
@@ -107,16 +117,26 @@ Vector& Vector::operator-(const Vector& other)
     return *this;
 }
 
-Vector& Vector::operator-(float value)
+Vector& Vector::operator-=(float value)
 {
-    for (auto i : f)
-        i -= value;
+    for (int i = 0; i < 4; i++)
+        f[i] -= value;
 
     return *this;
 }
 
+const Vector Vector::operator-(const Vector& other) const
+{
+    return Vector(*this) -= other;
+}
+
+const Vector Vector::operator-(float value) const
+{
+    return Vector(*this) -= value;
+}
+
 // Multiplication
-Vector& Vector::operator*(const Vector& other)
+Vector& Vector::operator*=(const Vector& other)
 {
     for (int i = 0; i < 4; i++)
         f[i] *= other.f[i];
@@ -124,16 +144,26 @@ Vector& Vector::operator*(const Vector& other)
     return *this;
 }
 
-Vector& Vector::operator*(float value)
+Vector& Vector::operator*=(float value)
 {
-    for (auto i : f)
-        i *= value;
+    for (int i = 0; i < 4; i++)
+        f[i] *= value;
 
     return *this;
 }
 
+const Vector Vector::operator*(const Vector& other) const
+{
+    return Vector(*this) *= other;
+}
+
+const Vector Vector::operator*(float value) const
+{
+    return Vector(*this) *= value;
+}
+
 // Division
-Vector& Vector::operator/(const Vector& other)
+Vector& Vector::operator/=(const Vector& other)
 {
     for (int i = 0; i < 4; i++)
         f[i] /= other.f[i];
@@ -141,12 +171,22 @@ Vector& Vector::operator/(const Vector& other)
     return *this;
 }
 
-Vector& Vector::operator/(float value)
+Vector& Vector::operator/=(float value)
 {
-    for (auto i : f)
-        i /= value;
+    for (int i = 0; i < 4; i++)
+        f[i] /= value;
 
     return *this;
+}
+
+const Vector Vector::operator/(const Vector& other) const
+{
+    return Vector(*this) /= other;
+}
+
+const Vector Vector::operator/(float value) const
+{
+    return Vector(*this) /= value;
 }
 
 // Power
@@ -158,49 +198,62 @@ Vector& Vector::operator^(float value)
     return *this;
 }
 
-// Dot product
-float Vector::operator%(const Vector& other) const
+// Products
+float Vector::Dot(const Vector& other)
 {
     Vector tmp(*this);
     tmp = tmp * other;
 
     float result = 0;
-    for (auto i : f)
+    for (auto i : tmp.f)
         result += i;
 
     return result;
 }
 
+Vector Vector::Cross(const Vector& other) const
+{
+    Vector result(*this);
+
+    // assume this is a 3D vector and calculate cross according to xyzzy mnemonic
+    result.f[0] = this->f[1] * other.f[2] - this->f[2] * other.f[1];
+    result.f[1] = this->f[2] * other.f[0] - this->f[0] * other.f[2];
+    result.f[2] = this->f[0] * other.f[1] - this->f[1] * other.f[0];
+    // result.f[3] remains unchanged
+
+    return result;
+}
+
 // Comparison
-bool Vector::operator==(const Vector& other)
+bool Vector::operator==(const Vector& other) const
 {
     for (int i=0; i<4; ++i)
         if (f[i] != other.f[i]) return false;
     return true;
 }
 
-bool Vector::operator<(const Vector& other)
+bool Vector::operator<(const Vector& other) const
 {
     for (int i=0; i<4; ++i)
         if (f[i] >= other.f[i]) return false;
     return true;
 }
 
-bool Vector::operator>(const Vector& other)
+bool Vector::operator>(const Vector& other) const
 {
     for (int i=0; i<4; ++i)
         if (f[i] <= other.f[i]) return false;
     return true;
 }
 
-bool Vector::operator<=(const Vector& other)
+bool Vector::operator<=(const Vector& other) const
 {
     for (int i=0; i<4; ++i)
         if (f[i] > other.f[i]) return false;
     return true;
 }
 
-bool Vector::operator>=(const Vector& other)
+bool Vector::operator>=(const Vector& other) const
 {
     for (int i=0; i<4; ++i)
         if (f[i] < other.f[i]) return false;

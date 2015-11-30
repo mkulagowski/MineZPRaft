@@ -8,6 +8,7 @@
 
 #include <algorithm>
 #include <cstring>
+#include <cmath>
 
 Matrix::Matrix()
     : Matrix(0.0f)
@@ -85,7 +86,7 @@ float Matrix::operator[](int index) const
 }
 
 // Addition
-Matrix& Matrix::operator+(const Matrix& other)
+Matrix& Matrix::operator+=(const Matrix& other)
 {
     for (int i = 0; i < 4 * 4; i++)
         f[i] += other.f[i];
@@ -93,16 +94,26 @@ Matrix& Matrix::operator+(const Matrix& other)
     return *this;
 }
 
-Matrix& Matrix::operator+(float value)
+Matrix& Matrix::operator+=(float value)
 {
-    for (auto i : f)
+    for (auto& i : f)
         i += value;
 
     return *this;
 }
 
+const Matrix Matrix::operator+(const Matrix& other) const
+{
+    return Matrix(*this) += other;
+}
+
+const Matrix Matrix::operator+(float value) const
+{
+    return Matrix(*this) += value;
+}
+
 // Subtraction
-Matrix& Matrix::operator-(const Matrix& other)
+Matrix& Matrix::operator-=(const Matrix& other)
 {
     for (int i = 0; i < 4 * 4; i++)
         f[i] -= other.f[i];
@@ -110,16 +121,26 @@ Matrix& Matrix::operator-(const Matrix& other)
     return *this;
 }
 
-Matrix& Matrix::operator-(float value)
+Matrix& Matrix::operator-=(float value)
 {
-    for (auto i : f)
+    for (auto& i : f)
         i -= value;
 
     return *this;
 }
 
+const Matrix Matrix::operator-(const Matrix& other) const
+{
+    return Matrix(*this) -= other;
+}
+
+const Matrix Matrix::operator-(float value) const
+{
+    return Matrix(*this) -= value;
+}
+
 // Multiplication
-Matrix& Matrix::operator*(const Matrix& other)
+Matrix& Matrix::operator*=(const Matrix& other)
 {
     Matrix temp;
     float result;
@@ -138,21 +159,36 @@ Matrix& Matrix::operator*(const Matrix& other)
     return *this;
 }
 
-Matrix& Matrix::operator*(float value)
+Matrix& Matrix::operator*=(float value)
 {
-    for (auto i : f)
+    for (auto& i : f)
         i *= value;
 
     return *this;
 }
 
-// Division
-Matrix& Matrix::operator/(float value)
+const Matrix Matrix::operator*(const Matrix& other) const
 {
-    for (auto i : f)
+    return Matrix(*this) *= other;
+}
+
+const Matrix Matrix::operator*(float value) const
+{
+    return Matrix(*this) *= value;
+}
+
+// Division
+Matrix& Matrix::operator/=(float value)
+{
+    for (auto& i : f)
         i /= value;
 
     return *this;
+}
+
+const Matrix Matrix::operator/(float value) const
+{
+    return Matrix(*this) /= value;
 }
 
 // Transposition
@@ -179,35 +215,35 @@ Matrix& Matrix::operator^(float value)
 }
 
 // Comparison
-bool Matrix::operator==(const Matrix& other)
+bool Matrix::operator==(const Matrix& other) const
 {
     for (int i=0; i<16; ++i)
         if (f[i] != other.f[i]) return false;
     return true;
 }
 
-bool Matrix::operator<(const Matrix& other)
+bool Matrix::operator<(const Matrix& other) const
 {
     for (int i=0; i<16; ++i)
         if (f[i] >= other.f[i]) return false;
     return true;
 }
 
-bool Matrix::operator>(const Matrix& other)
+bool Matrix::operator>(const Matrix& other) const
 {
     for (int i=0; i<16; ++i)
         if (f[i] <= other.f[i]) return false;
     return true;
 }
 
-bool Matrix::operator<=(const Matrix& other)
+bool Matrix::operator<=(const Matrix& other) const
 {
     for (int i=0; i<16; ++i)
         if (f[i] > other.f[i]) return false;
     return true;
 }
 
-bool Matrix::operator>=(const Matrix& other)
+bool Matrix::operator>=(const Matrix& other) const
 {
     for (int i=0; i<16; ++i)
         if (f[i] < other.f[i]) return false;
@@ -222,7 +258,42 @@ Vector operator*(const Matrix& a, const Vector& b)
 
     for (int i=0; i<4; ++i)
         for (int j=0; j<4; ++j)
-            result[i] = a.f[i * 4 + j] * b[j];
+            result[i] += a.f[i * 4 + j] * b[j];
 
     return Vector(result[0], result[1], result[2], result[3]);
+}
+
+
+Matrix CreateRHLookAtMatrix(const Vector& pos, const Vector& dir, const Vector& up)
+{
+    Vector zAxis = pos - dir;
+    zAxis.Normalize();
+
+    Vector xAxis = up.Cross(zAxis);
+    xAxis.Normalize();
+
+    Vector yAxis = zAxis.Cross(xAxis);
+    // No normalization needed here, since we cross two already normalized vectors.
+
+    return Matrix(     xAxis[0],       yAxis[0],        zAxis[0], 0.0f,
+                       xAxis[1],       yAxis[1],        zAxis[1], 0.0f,
+                       xAxis[2],       yAxis[2],        zAxis[2], 0.0f,
+                  xAxis.Dot(dir), yAxis.Dot(dir), zAxis.Dot(dir), 1.0f);
+}
+
+Matrix CreateRHPerspectiveMatrix(const float fov, const float aspectRatio,
+                                 const float nearDist, const float farDist)
+{
+    float halfFov = fov / 2.0f;
+    float yScale = cos(halfFov) / sin(halfFov); // aka. ctg(halfFov), but more accurate than 1/tan
+    float xScale = yScale / aspectRatio;
+
+    float distDiff = nearDist - farDist;
+    float zVal1 = farDist / distDiff;
+    float zVal2 = (nearDist * farDist) / distDiff;
+
+    return Matrix(xScale,   0.0f,  0.0f, 0.0f,
+                    0.0f, yScale,  0.0f, 0.0f,
+                    0.0f,   0.0f, zVal1,-1.0f,
+                    0.0f,   0.0f, zVal2, 0.0f);
 }

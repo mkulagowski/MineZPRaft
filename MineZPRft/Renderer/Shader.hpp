@@ -44,6 +44,17 @@ public:
      */
     void MakeCurrent() noexcept;
 
+    /** !!!!!!TODO TO REWRITE!!!!!
+     * Updates uniform called @p name with @p data of size @p size.
+     *
+     * @param name Name of uniform to update
+     * @param data Pointer to data to send
+     * @param size Size of data to send
+     *
+     * @remarks The function will be used during main draw loop and for performance will not throw.
+     */
+    GLint GetUniform(const char* name) noexcept;
+
 private:
     /**
      * Creates a Shader object of specified type from specified shader path.

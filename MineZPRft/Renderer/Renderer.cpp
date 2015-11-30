@@ -16,6 +16,8 @@ using namespace OGLExt;
 Renderer::Renderer()
     : mCamera()
     , mMainShader()
+    , mMainShaderViewMatrixLoc(GL_NONE)
+    , mMainShaderPerspectiveMatrixLoc(GL_NONE)
     , mVB(GL_NONE)
     , mDummyVAO(GL_NONE)
 {
@@ -60,6 +62,8 @@ void Renderer::Init(const RendererDesc& desc)
     sd.vsPath = desc.shaderPath + "/MainVS.glsl";
     sd.fsPath = desc.shaderPath + "/MainFS.glsl";
     mMainShader.Init(sd);
+    mMainShaderViewMatrixLoc = mMainShader.GetUniform("viewMatrix");
+    mMainShaderPerspectiveMatrixLoc = mMainShader.GetUniform("perspMatrix");
 
     // Create VBO
     float verts[] =

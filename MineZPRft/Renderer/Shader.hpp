@@ -44,6 +44,15 @@ public:
      */
     void MakeCurrent() noexcept;
 
+    /**
+     * Retrieves @p name uniform from Shader Program.
+     *
+     * @param name Name of uniform to update
+     *
+     * @remarks The function will be used during main draw loop and for performance will not throw.
+     */
+    GLint GetUniform(const char* name) noexcept;
+
 private:
     /**
      * Creates a Shader object of specified type from specified shader path.

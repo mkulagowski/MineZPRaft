@@ -7,20 +7,33 @@
 #ifndef __RENDERER_CAMERA_HPP__
 #define __RENDERER_CAMERA_HPP__
 
+#include "Math/Vector.hpp"
+#include "Math/Matrix.hpp"
+
+
+/**
+ * Structure describing Camera parameters for regular update.
+ */
+struct CameraUpdateDesc
+{
+    Vector pos;     ///< Position of camera in 3D space
+    Vector dir;     ///< Direction of camera (aka. Look At vector)
+    Vector up;      ///< Camera's Up vector
+};
+
 /**
  * Structure describing Camera initial properties
  */
 struct CameraDesc
 {
-    // TODO initial data like fov, aspect ratio, etc
-};
+    /// Perspective info
+    float fov;          ///< Field of View in degrees.
+    float aspectRatio;  ///< Aspect Ratio (screen width / screen height).
+    float nearDist;     ///< Near distance (objects closer to camera than nearDist will clip)
+    float farDist;      ///< Far distance (objects further from camera than farDist will clip)
 
-/**
- * Structure describing Camera parameters to update.
- */
-struct CameraUpdateDesc
-{
-    // TODO update data - camera position, direction, etc
+    /// View initial info
+    CameraUpdateDesc initialView;
 };
 
 class Camera
@@ -51,8 +64,19 @@ public:
      */
     void Update(const CameraUpdateDesc& desc) noexcept;
 
+    /**
+     * Acquire pointer to raw data of Camera's View Matrix
+     */
+    const float* GetViewRaw() noexcept;
+
+    /**
+     * Acquire pointer to raw data of Camera's Perspective Matrix
+     */
+    const float* GetPerspectiveRaw() noexcept;
+
 private:
-    // TODO Matrices, vectors, constant buffers, whatevers are needed!
+    Matrix mView;
+    Matrix mPerspective;
 };
 
 #endif // __RENDERER_CAMERA_HPP__

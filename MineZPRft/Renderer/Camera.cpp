@@ -18,10 +18,27 @@ Camera::~Camera()
 
 void Camera::Init(const CameraDesc& desc)
 {
-    UNUSED(desc);
+    mView = CreateRHLookAtMatrix(desc.initialView.pos,
+                                 desc.initialView.dir,
+                                 desc.initialView.up);
+
+    mPerspective = CreateRHPerspectiveMatrix(desc.fov,
+                                             desc.aspectRatio,
+                                             desc.nearDist,
+                                             desc.farDist);
 }
 
 void Camera::Update(const CameraUpdateDesc& request) noexcept
 {
-    UNUSED(request);
+    mView = CreateRHLookAtMatrix(request.pos, request.dir, request.up);
+}
+
+const float* Camera::GetViewRaw() noexcept
+{
+    return mView.Data();
+}
+
+const float* Camera::GetPerspectiveRaw() noexcept
+{
+    return mPerspective.Data();
 }

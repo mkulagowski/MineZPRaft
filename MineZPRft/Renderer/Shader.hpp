@@ -8,6 +8,7 @@
 #define __RENDERER_SHADER_HPP__
 
 #include "Common.hpp"
+
 #include <string>
 
 /**
@@ -34,7 +35,7 @@ public:
      * The function creates loads sources from ShaderDesc, compiles them to OpenGL Shader Objects
      * and links them into one OpenGL Shader Program Object.
      *
-     * @remarks The function might throw when there is an error during Shader load.
+     * @remarks The function might throw when there is an error during Shader loading.
      */
     void Init(const ShaderDesc& desc);
 
@@ -44,6 +45,15 @@ public:
      * @remarks The function will be used during main draw loop and will not throw.
      */
     void MakeCurrent() noexcept;
+
+    /**
+     * Retrieves @p name uniform from Shader Program.
+     *
+     * @param name Name of uniform to update
+     *
+     * @remarks The function will be used during main draw loop and for performance will not throw.
+     */
+    GLint GetUniform(const char* name) noexcept;
 
 private:
     /**

@@ -38,7 +38,7 @@ public:
      * The function performs all OpenGL-related initialization work - extensions are initialized,
      * Shaders are loaded and all Rendering Pipeline States are set up for further work.
      *
-     * @note This function assumes that there currently is valid OpenGL context enabled.
+     * @note This function assumes that there is a valid OpenGL context enabled.
      *
      * @remarks This function might throw if Renderer cannot be initialized and exceptions cannot
      * be acquired from current OpenGL Context.
@@ -77,6 +77,8 @@ private:
 
     Camera mCamera;
     Shader mMainShader; // TODO name is subject to change
+    GLint mMainShaderViewMatrixLoc;
+    GLint mMainShaderPerspectiveMatrixLoc;
     GLuint mVB; // TODO temporary, will be replaced by mMeshArray
     GLuint mDummyVAO; // We don't need this, but OGL has its needs and won't cooperate without it
     MeshArrayType mMeshArray;

@@ -8,11 +8,11 @@
 
 #include "Extensions.hpp"
 
-using namespace OGLExt;
-
 #include <fstream>
 #include <vector>
 #include <iostream>
+
+using namespace OGLExt;
 
 namespace {
 
@@ -46,14 +46,16 @@ void Shader::Init(const ShaderDesc& desc)
 
     // link shaders into a shader program
     glAttachShader(mShaderProgram, vs);
-    if (gs != GL_NONE) glAttachShader(mShaderProgram, gs);
+    if (gs != GL_NONE)
+        glAttachShader(mShaderProgram, gs);
     glAttachShader(mShaderProgram, fs);
     glLinkProgram(mShaderProgram);
 
     // Cleanup shaders
     glDeleteShader(vs);
     glDeleteShader(fs);
-    if (gs) glDeleteShader(gs);
+    if (gs)
+        glDeleteShader(gs);
 
     int programStatus = 0;
     glGetProgramiv(mShaderProgram, GL_LINK_STATUS, &programStatus);
@@ -85,7 +87,10 @@ void Shader::MakeCurrent() noexcept
     glUseProgram(mShaderProgram);
 }
 
-// TODO setting uniform values
+GLint Shader::GetUniform(const char* name) noexcept
+{
+    return glGetUniformLocation(mShaderProgram, name);
+}
 
 GLuint Shader::CreateShader(const GLenum shaderType, const std::string& shaderPath)
 {

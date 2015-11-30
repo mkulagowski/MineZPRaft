@@ -6,6 +6,8 @@
 
 #include "Matrix.hpp"
 
+#include "Common.hpp"
+
 #include <algorithm>
 #include <cstring>
 #include <cmath>
@@ -285,17 +287,17 @@ Matrix CreateRHLookAtMatrix(const Vector& pos, const Vector& dir, const Vector& 
     Vector yAxis = zAxis.Cross(xAxis);
     // No normalization needed here, since we cross two already normalized vectors.
 
-    return Matrix(     xAxis[0],       yAxis[0],        zAxis[0], 0.0f,
-                       xAxis[1],       yAxis[1],        zAxis[1], 0.0f,
-                       xAxis[2],       yAxis[2],        zAxis[2], 0.0f,
-                  xAxis.Dot(dir), yAxis.Dot(dir), zAxis.Dot(dir), 1.0f);
+    return Matrix(         xAxis[0],          yAxis[0],          zAxis[0], 0.0f,
+                           xAxis[1],          yAxis[1],          zAxis[1], 0.0f,
+                           xAxis[2],          yAxis[2],          zAxis[2], 0.0f,
+                  -(xAxis.Dot(pos)), -(yAxis.Dot(pos)), -(zAxis.Dot(pos)), 1.0f);
 }
 
 Matrix CreateRHPerspectiveMatrix(const float fov, const float aspectRatio,
                                  const float nearDist, const float farDist)
 {
-    float halfFov = fov / 2.0f;
-    float yScale = cos(halfFov) / sin(halfFov); // aka. ctg(halfFov), but more accurate than 1/tan
+    float halfFovRad = (MATH_PIF/180.0f) * fov * 0.5f;
+    float yScale = cosf(halfFovRad) / sinf(halfFovRad); // aka. ctg(halfFov)
     float xScale = yScale / aspectRatio;
 
     float distDiff = nearDist - farDist;

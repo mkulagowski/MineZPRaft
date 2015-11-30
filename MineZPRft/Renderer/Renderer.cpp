@@ -8,6 +8,7 @@
 
 #include "Common/Common.hpp"
 #include "Extensions.hpp"
+#include "Math/Vector.hpp"
 
 #include <iostream>
 
@@ -16,6 +17,8 @@ using namespace OGLExt;
 Renderer::Renderer()
     : mCamera()
     , mMainShader()
+    , mMainShaderViewMatrixLoc(GL_NONE)
+    , mMainShaderPerspectiveMatrixLoc(GL_NONE)
     , mVB(GL_NONE)
     , mDummyVAO(GL_NONE)
 {
@@ -55,6 +58,17 @@ void Renderer::Init(const RendererDesc& desc)
     glGenVertexArrays(1, &mDummyVAO);
     glBindVertexArray(mDummyVAO);
 
+    // Load camera
+    CameraDesc cd;
+    cd.fov = 45.0f;
+    cd.aspectRatio = static_cast<float>(desc.windowWidth) / static_cast<float>(desc.windowHeight);
+    cd.nearDist = 0.1f;
+    cd.farDist = 1000.0f;
+    cd.initialView.pos = Vector(3.0f, 0.0f,-3.0f, 1.0f);
+    cd.initialView.dir = Vector(0.0f, 0.0f, 0.0f, 1.0f);
+    cd.initialView.up = Vector(0.0f, 1.0f, 0.0f, 0.0f);
+    mCamera.Init(cd);
+
     // Load shader
     ShaderDesc sd;
     sd.vsPath = desc.shaderPath + "/MainVS.glsl";
@@ -84,6 +98,14 @@ void Renderer::Init(const RendererDesc& desc)
 
     // Color used to clear buffers
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+
+    // Initialize uniforms constant throughout program lifetime
+    mMainShader.MakeCurrent();
+    mMainShaderViewMatrixLoc = mMainShader.GetUniform("viewMat");
+    mMainShaderPerspectiveMatrixLoc = mMainShader.GetUniform("perspMat");
+    // TODO throw if incorrect uniform locations
+
+    glUniformMatrix4fv(mMainShaderPerspectiveMatrixLoc, 1, false, mCamera.GetPerspectiveRaw());
 }
 
 void Renderer::AddMesh(const Mesh* mesh)
@@ -94,10 +116,11 @@ void Renderer::AddMesh(const Mesh* mesh)
 void Renderer::Draw() noexcept
 {
     // clear the buffer
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // drawing pass
     mMainShader.MakeCurrent();
+    glUniformMatrix4fv(mMainShaderViewMatrixLoc, 1, false, mCamera.GetViewRaw());
 
     glDrawArrays(GL_TRIANGLES, 0, 3);
     glFinish();

@@ -9,8 +9,10 @@ FILE(GLOB TEST_HEADERS       *.hpp)
 
 # Units
 # TODO uncomment and fill when units are available
-#FILE(GLOB TEST_UNIT_SOURCES  )
-#FILE(GLOB TEST_UNIT_HEADERS  )
+FILE(GLOB TEST_UNIT_SOURCES ${MZPR_ROOT_DIRECTORY}/MineZPRft/Math/Vector.cpp
+                            ${MZPR_ROOT_DIRECTORY}/MineZPRft/Math/Matrix.cpp)
+FILE(GLOB TEST_UNIT_HEADERS ${MZPR_ROOT_DIRECTORY}/MineZPRft/Math/Vector.hpp
+                            ${MZPR_ROOT_DIRECTORY}/MineZPRft/Math/Matrix.hpp)
 
 # Requirements
 FILE(GLOB TEST_REQ_SOURCES   ${MZPR_ROOT_DIRECTORY}/MineZPRft/Common/Linux/FileSystem.cpp
@@ -25,7 +27,7 @@ INCLUDE_DIRECTORIES(${MZPR_ROOT_DIRECTORY}/MineZPRft
 LINK_DIRECTORIES(${MZPR_OUTPUT_DIRECTORY})
 
 ADD_EXECUTABLE(MineZPRftTest ${TEST_SOURCES} ${TEST_HEADERS}
-#                            ${TEST_UNIT_SOURCES} ${TEST_UNIT_HEADERS}
+                             ${TEST_UNIT_SOURCES} ${TEST_UNIT_HEADERS}
                              ${TEST_REQ_SOURCES} ${TEST_REQ_HEADERS})
 
 # gtest requirement, which will come up during linking

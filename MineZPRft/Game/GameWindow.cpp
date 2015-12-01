@@ -6,15 +6,50 @@
 
 #include "GameWindow.hpp"
 #include "../Common/Common.hpp"
+#include "Math/Vector.hpp"
 
-GameWindow::GameWindow()
+GameWindow::GameWindow(GamePlayer* playerPtr)
+    : mPlayerPtr(playerPtr)
 {
+}
+
+void GameWindow::Update()
+{
+    Vector playerShift;
+
+    // get and calculate axes relative to Player's position and orientation
+    // TODO probably there is no need to recalculate these vectors.
+    //      They can be easily taken from Camera object hidden inside Player.
+    //      Needs investigation and rewriting.
+    const Vector& pos = mPlayerPtr->GetPosition();
+    const Vector& dir = mPlayerPtr->GetDirection();
+
+    Vector front = dir - pos;
+    front.Normalize();
+    Vector right = front.Cross(mPlayerPtr->GetUp());
+    right.Normalize();
+
+    if (IsKeyPressed(25))
+        playerShift += front;
+    if (IsKeyPressed(39))
+        playerShift -= front;
+    if (IsKeyPressed(38))
+        playerShift -= right;
+    if (IsKeyPressed(40))
+        playerShift += right;
+
+    playerShift.Normalize();
+    // TODO get delta time and scale playerShift according to it
+    playerShift *= 0.1f;
+
+    mPlayerPtr->Update(playerShift);
 }
 
 void GameWindow::OnKeyPress(int key)
 {
-    std::string keyPressed = std::to_string(key);
-    // wsad - movement (change playerPos)
+    std::string title = "Pressed " + std::to_string(key);
+    SetTitle(title.c_str());
+
     // q,e - switch cube types
     // shift - faster movement
 }

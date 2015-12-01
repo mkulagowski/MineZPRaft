@@ -32,6 +32,7 @@ private:
     GameManager& operator=(const GameManager&) = delete;
     ~GameManager();
 
+    GamePlayer mPlayer;
     GameWindow mWindow;
     Renderer mRenderer;
 };

@@ -6,6 +6,8 @@
 
 #pragma once
 
+#include <iostream>
+
 /**
  * Class used for vector operations.
  */
@@ -80,6 +82,9 @@ public:
     bool operator<=(const Vector& other) const;
     bool operator>=(const Vector& other) const;
 
+    // Friendships
+    friend std::ostream& operator<<(std::ostream& os, const Vector& v);
+
 private:
     float f[4];
 };
@@ -91,3 +96,13 @@ struct Vector4
 {
     Vector v[4];
 };
+
+/**
+ * Overloaded operator << for easier printing and debugging.
+ *
+ * @param os STL output stream.
+ * @param v Vector to print.
+ *
+ * @return STL output stream.
+ */
+std::ostream& operator<<(std::ostream& os, const Vector& v);

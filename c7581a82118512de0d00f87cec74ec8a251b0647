@@ -25,6 +25,53 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_71c46f40",
+        "filename": "MineZPRft/Game/GameWindow.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-01T22:30:12Z",
+      "side": 1,
+      "message": "Make 4 #defines  in Window.hpp or in GameWindow.hpp, that different between platforms using ifdef\u0027s",
+      "parentUuid": "5ac4a560_789c546a",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 29
+      },
+      "revId": "c7581a82118512de0d00f87cec74ec8a251b0647",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_b1dd2717",
+        "filename": "MineZPRft/Game/GameWindow.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-01T22:30:12Z",
+      "side": 1,
+      "message": "Not sure if u need them, BUT u need to define w,s,a,d",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 6
+      },
+      "revId": "c7581a82118512de0d00f87cec74ec8a251b0647",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_58587856",
         "filename": "MineZPRft/Game/GameWindow.hpp",
         "patchSetId": 1

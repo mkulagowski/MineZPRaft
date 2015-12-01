@@ -448,6 +448,11 @@ void WindowManager::OnKeyPress(int key)
     (void)key;
 }
 
+void WindowManager::OnKeyUp(int key)
+{
+    (void)key;
+}
+
 void WindowManager::OnScroll(int delta)
 {
     (void)delta;

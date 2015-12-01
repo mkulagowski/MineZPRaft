@@ -185,6 +185,7 @@ public:
     virtual void OnClose();
     virtual void OnResize(uint32_t width, uint32_t height);
     virtual void OnKeyPress(int key);
+    virtual void OnKeyUp(int key);
     virtual void OnScroll(int delta);
     virtual void OnMouseDown(uint32_t button, int x, int y);
     virtual void OnMouseMove(int x, int y, int deltaX, int deltaY);

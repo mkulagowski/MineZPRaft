@@ -72,6 +72,11 @@ public:
      */
     void Draw() noexcept;
 
+    /**
+     * Acquire pointer to Renderer's Camera
+     */
+    Camera* GetCameraPtr();
+
 private:
     typedef std::vector<const Mesh*> MeshArrayType;
 

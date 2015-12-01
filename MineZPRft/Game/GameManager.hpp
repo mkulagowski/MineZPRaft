@@ -9,6 +9,7 @@
 
 #include "GameWindow.hpp"
 #include "Renderer/Renderer.hpp"
+#include "Common/Timer.hpp"
 #include <memory>
 
 /**
@@ -33,6 +34,8 @@ private:
     GameManager& operator=(const GameManager&) = delete;
     ~GameManager();
 
+    Timer mFrameTimer;
+    GamePlayer mPlayer;
     GameWindow mWindow;
     Renderer mRenderer;
 };

@@ -8,24 +8,36 @@
 #define __GAME_GAMEWINDOW_HPP__
 
 #include "../Common/Window.hpp"
-#include <utility>
 
-#if defined(__LINUX__) | defined(__linux__)
-#define RMB 2
-#elif defined(WIN32)
-#define RMB 1
-#endif
+#include "GamePlayer.hpp"
+
+#include <utility>
 
 class GameWindow : public WindowManager
 {
 public:
-    GameWindow();
+    GameWindow(GamePlayer* playerPtr);
+
+    /**
+     * Update events which are to happen every frame.
+     *
+     * @param deltaTime Time taken to render a frame. Used to make calculations FPS-independent.
+     *
+     * The function takes over all events which should happen every frame - movement, reacting to
+     * held buttons on keyboard, recalculating new player position etc.
+     *
+     * @remarks The function will be called in a Game Loop and for performance reasons will not
+     *          throw an exception.
+     */
+    void Update(double deltaTime) noexcept;
 
 private:
     void OnKeyPress(int key);
     void OnMouseDown(uint32_t button, int x, int y);
     void OnMouseMove(int x, int y, int deltaX, int deltaY);
     void OnMouseUp(uint32_t button);
+
+    GamePlayer* mPlayerPtr;
 };
 
 #endif // __GAME_GAMEWINDOW_HPP__

@@ -325,6 +325,7 @@ void WindowManager::ProcessMessages()
             case KeyRelease:
             {
                 this->mKeys[event.xkey.keycode] = false;
+                OnKeyUp(static_cast<int>(event.xkey.keycode));
                 break;
             }
             case MotionNotify:
@@ -444,6 +445,11 @@ void WindowManager::OnResize(uint32_t width, uint32_t height)
 }
 
 void WindowManager::OnKeyPress(int key)
+{
+    (void)key;
+}
+
+void WindowManager::OnKeyUp(int key)
 {
     (void)key;
 }

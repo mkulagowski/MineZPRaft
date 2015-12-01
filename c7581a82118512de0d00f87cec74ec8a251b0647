@@ -22,6 +22,29 @@
       "revId": "c7581a82118512de0d00f87cec74ec8a251b0647",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_58587856",
+        "filename": "MineZPRft/Game/GameWindow.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-01T14:44:21Z",
+      "side": 1,
+      "message": "Undocumented",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 18
+      },
+      "revId": "c7581a82118512de0d00f87cec74ec8a251b0647",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }

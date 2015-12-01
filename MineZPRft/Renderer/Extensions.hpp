@@ -7,7 +7,7 @@
 #ifndef __RENDERER_EXTENSIONS_HPP__
 #define __RENDERER_EXTENSIONS_HPP__
 
-#include "Common.hpp"
+#include "Defines.hpp"
 #include "GL/glext.h"
 
 // Namespace wrapping OpenGL Extension Functions to avoid overwriting them on Linux

@@ -7,6 +7,8 @@
 #include "GameManager.hpp"
 
 GameManager::GameManager()
+    : mPlayer()
+    , mWindow(&mPlayer)
 {
     // TODO: Add possibility to change the resolution
     mWindow.SetSize(800, 600);
@@ -19,16 +21,17 @@ GameManager::GameManager()
     uint32_t width, height;
     mWindow.GetSize(width, height);
     RendererDesc desc;
-    desc.shaderPath = "Data/Shaders";
+    desc.shaderPath = SHADER_DIR;
     desc.windowWidth = static_cast<GLsizei>(width);
     desc.windowHeight = static_cast<GLsizei>(height);
     mRenderer.Init(desc);
+
+    // forward camera from Renderer to mPlayer
+    mPlayer.Init(mRenderer.GetCameraPtr());
 }
 
 GameManager::~GameManager()
 {
-    if (!mWindow.IsClosed())
-        mWindow.Close();
 }
 
 GameManager& GameManager::GetInstance()
@@ -39,9 +42,16 @@ GameManager& GameManager::GetInstance()
 
 void GameManager::GameLoop()
 {
+    mFrameTimer.Start();
+
+    double frameTime;
     while (!mWindow.IsClosed())
     {
+        frameTime = mFrameTimer.Stop();
+        mFrameTimer.Start();
+
         mWindow.ProcessMessages();
+        mWindow.Update(frameTime);
 
         // TODO terrain manager will have to update itself here
         mRenderer.Draw();

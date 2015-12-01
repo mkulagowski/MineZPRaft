@@ -64,6 +64,15 @@
     <ClCompile Include="Math\Vector.cpp">
       <Filter>Math</Filter>
     </ClCompile>
+    <ClCompile Include="Game\GamePlayer.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\Win\Timer.cpp">
+      <Filter>Common\Win</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer\Defines.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\GameWindow.hpp">
@@ -111,11 +120,20 @@
     <ClInclude Include="Math\Vector.hpp">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="Renderer\Common.hpp">
-      <Filter>Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="Math\Common.hpp">
       <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameKeycodes.hpp">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GamePlayer.hpp">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Timer.hpp">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\Defines.hpp">
+      <Filter>Renderer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

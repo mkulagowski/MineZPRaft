@@ -7,6 +7,8 @@
 
 #include "../Window.hpp"
 
+#include "../Common.hpp"
+
 namespace
 {
 const DWORD gWindowedExStyle = WS_EX_WINDOWEDGE;
@@ -288,13 +290,14 @@ LRESULT CALLBACK WindowManager::WndProc(HWND hWnd, UINT message, WPARAM wParam, 
         case WM_KEYDOWN:
         {
             Window->mKeys[wParam] = true;
-            Window->OnKeyPress((int)wParam);
+            Window->OnKeyPress(static_cast<int>(wParam));
             return 0;
         }
 
         case WM_KEYUP:
         {
             Window->mKeys[wParam] = false;
+            Window->OnKeyUp(static_cast<int>(wParam));
             return 0;
         }
 
@@ -439,36 +442,41 @@ void WindowManager::OnClose()
 
 void WindowManager::OnResize(uint32_t width, uint32_t height)
 {
-    (void)width;
-    (void)height;
+    UNUSED(width);
+    UNUSED(height);
 }
 
 void WindowManager::OnKeyPress(int key)
 {
-    (void)key;
+    UNUSED(key);
+}
+
+void WindowManager::OnKeyUp(int key)
+{
+    UNUSED(key);
 }
 
 void WindowManager::OnScroll(int delta)
 {
-    (void)delta;
+    UNUSED(delta);
 }
 
 void WindowManager::OnMouseDown(uint32_t button, int x, int y)
 {
-    (void)button;
-    (void)x;
-    (void)y;
+    UNUSED(button);
+    UNUSED(x);
+    UNUSED(y);
 }
 
 void WindowManager::OnMouseMove(int x, int y, int deltaX, int deltaY)
 {
-    (void)x;
-    (void)y;
-    (void)deltaX;
-    (void)deltaY;
+    UNUSED(x);
+    UNUSED(y);
+    UNUSED(deltaX);
+    UNUSED(deltaY);
 }
 
 void WindowManager::OnMouseUp(uint32_t button)
 {
-    (void)button;
+    UNUSED(button);
 }

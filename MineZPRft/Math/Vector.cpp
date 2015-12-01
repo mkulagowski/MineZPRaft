@@ -269,3 +269,10 @@ bool Vector::operator>=(const Vector& other) const
 
     return true;
 }
+
+// Friendships
+std::ostream& operator<<(std::ostream& os, const Vector& v)
+{
+    os << "[" << v.f[0] << ", " << v.f[1] << ", " << v.f[2] << ", " << v.f[3] << "]";
+    return os;
+}

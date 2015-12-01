@@ -130,3 +130,8 @@ void Renderer::Draw() noexcept
     glDrawArrays(GL_TRIANGLES, 0, 3);
     glFinish();
 }
+
+Camera* Renderer::GetCameraPtr()
+{
+    return &mCamera;
+}

@@ -7,7 +7,7 @@
 #ifndef __RENDERER_SHADER_HPP__
 #define __RENDERER_SHADER_HPP__
 
-#include "Common.hpp"
+#include "Defines.hpp"
 
 #include <string>
 

@@ -7,6 +7,8 @@
 
 #include "../Window.hpp"
 
+#include "../Common.hpp"
+
 #include <iostream>
 
 #include <GL/glx.h>
@@ -311,8 +313,8 @@ void WindowManager::ProcessMessages()
                 if (static_cast<Atom>(event.xclient.data.l[0]) ==
                     XInternAtom(mDisplay, "WM_DELETE_WINDOW", false))
                 {
-                    this->Close();
-                    this->OnClose();
+                    Close();
+                    OnClose();
                 }
                 break;
             }
@@ -324,33 +326,34 @@ void WindowManager::ProcessMessages()
             }
             case KeyRelease:
             {
-                this->mKeys[event.xkey.keycode] = false;
+                mKeys[event.xkey.keycode] = false;
+                OnKeyUp(static_cast<int>(event.xkey.keycode));
                 break;
             }
             case MotionNotify:
             {
-                this->MouseMove(event.xmotion.x, event.xmotion.y);
+                MouseMove(event.xmotion.x, event.xmotion.y);
                 break;
             }
             case ButtonPress:
             {
                 if (event.xbutton.button < 4) // 1-3 MBtns, 4-5 MWheel
                     //can be event.x_root,y_root - then it's relative to ROOT window instead
-                    this->MouseDown(event.xbutton.button - 1, event.xbutton.x, event.xbutton.y);
+                    MouseDown(event.xbutton.button - 1, event.xbutton.x, event.xbutton.y);
                 else if (event.xbutton.button == 4)
-                    this->OnScroll(1); // btn==4 is UP,
+                    OnScroll(1); // btn==4 is UP,
                 else
-                    this->OnScroll(-1); // btn==5 is DOWN
+                    OnScroll(-1); // btn==5 is DOWN
                 break;
             }
             case ButtonRelease:
             {
-                this->MouseUp(event.xbutton.button - 1);
+                MouseUp(event.xbutton.button - 1);
                 break;
             }
             case FocusOut:
             {
-                this->LostFocus();
+                LostFocus();
                 break;
             }
             case ConfigureNotify:
@@ -362,7 +365,7 @@ void WindowManager::ProcessMessages()
                 {
                     mWidth = confEvent.width;
                     mHeight = confEvent.height;
-                    this->OnResize(mWidth, mHeight);
+                    OnResize(mWidth, mHeight);
 
                     if (mResizeCallback)
                         mResizeCallback(mResizeCallbackUserData);
@@ -439,38 +442,43 @@ void WindowManager::OnClose()
 
 void WindowManager::OnResize(uint32_t width, uint32_t height)
 {
-    (void)width;
-    (void)height;
+    UNUSED(width);
+    UNUSED(height);
 }
 
 void WindowManager::OnKeyPress(int key)
 {
-    (void)key;
+    UNUSED(key);
+}
+
+void WindowManager::OnKeyUp(int key)
+{
+    UNUSED(key);
 }
 
 void WindowManager::OnScroll(int delta)
 {
-    (void)delta;
+    UNUSED(delta);
 }
 
 void WindowManager::OnMouseDown(uint32_t button, int x, int y)
 {
-    (void)button;
-    (void)x;
-    (void)y;
+    UNUSED(button);
+    UNUSED(x);
+    UNUSED(y);
 }
 
 void WindowManager::OnMouseMove(int x, int y, int deltaX, int deltaY)
 {
-    (void)x;
-    (void)y;
-    (void)deltaX;
-    (void)deltaY;
+    UNUSED(x);
+    UNUSED(y);
+    UNUSED(deltaX);
+    UNUSED(deltaY);
 }
 
 void WindowManager::OnMouseUp(uint32_t button)
 {
-    (void)button;
+    UNUSED(button);
 }
 
 int WindowManager::ErrorHandler(::Display *dpy, XErrorEvent *error)

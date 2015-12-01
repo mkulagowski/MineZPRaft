@@ -8,6 +8,7 @@
 #define __RENDERER_COMMON_HPP__
 
 #include <iostream>
+#include <string>
 
 #ifdef WIN32
 #include <Windows.h>
@@ -41,5 +42,7 @@ do                                                                              
 
 #endif // _DEBUG
 
+
+extern const std::string SHADER_DIR;
 
 #endif // __RENDERER_COMMON_HPP__

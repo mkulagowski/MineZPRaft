@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_ca2025fa",
+        "filename": "MineZPRft/Game/GameWindow.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-02T18:41:38Z",
+      "side": 1,
+      "message": "Done, however using enum instead of #defines. I prefer to avoid keeping constants in defines.",
+      "parentUuid": "5ac4a560_71c46f40",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 29
+      },
+      "revId": "c7581a82118512de0d00f87cec74ec8a251b0647",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_b1dd2717",
         "filename": "MineZPRft/Game/GameWindow.hpp",
         "patchSetId": 1
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_6a12b1b2",
+        "filename": "MineZPRft/Game/GameWindow.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-02T18:41:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_b1dd2717",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 6
+      },
+      "revId": "c7581a82118512de0d00f87cec74ec8a251b0647",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_58587856",
         "filename": "MineZPRft/Game/GameWindow.hpp",
         "patchSetId": 1
@@ -83,6 +131,30 @@
       "writtenOn": "2015-12-01T14:44:21Z",
       "side": 1,
       "message": "Undocumented",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 18
+      },
+      "revId": "c7581a82118512de0d00f87cec74ec8a251b0647",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_8a262d15",
+        "filename": "MineZPRft/Game/GameWindow.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-02T18:41:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_58587856",
       "range": {
         "startLine": 24,
         "startChar": 0,

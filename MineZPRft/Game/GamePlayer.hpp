@@ -10,8 +10,6 @@
 #include "Renderer/Camera.hpp"
 #include "Math/Vector.hpp"
 
-#include "GameKeycodes.hpp"
-
 class GamePlayer
 {
 public:
@@ -26,11 +24,21 @@ public:
     void Init(Camera* camera);
 
     /**
-     * Apply changes to GamePlayer attributes.
+     * Update Camera with current state of Player (position, direction, etc).
      *
-     * @param shift Vector which will be added to Player's position.
+     * @remarks The function will be used inside a main loop and will not throw for performance.
      */
-    void Update(const Vector& shift);
+    void Update() noexcept;
+
+    /**
+     * Set new Position vector
+     */
+    void SetPosition(const Vector& pos);
+
+    /**
+     * Set new Direction vector
+     */
+    void SetDirection(const Vector& dir);
 
     /**
      * Acquire Player position vector.

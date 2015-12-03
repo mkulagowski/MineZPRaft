@@ -309,3 +309,36 @@ Matrix CreateRHPerspectiveMatrix(const float fov, const float aspectRatio,
                     0.0f,   0.0f, zVal1,-1.0f,
                     0.0f,   0.0f, zVal2, 0.0f);
 }
+
+Matrix CreateRotationMatrixX(const float angle)
+{
+    float c = cosf(angle);
+    float s = sinf(angle);
+
+    return Matrix(1.0f, 0.0f, 0.0f, 0.0f,
+                  0.0f,    c,   -s, 0.0f,
+                  0.0f,    s,    c, 0.0f,
+                  0.0f, 0.0f, 0.0f, 1.0f);
+}
+
+Matrix CreateRotationMatrixY(const float angle)
+{
+    float c = cosf(angle);
+    float s = sinf(angle);
+
+    return Matrix(   c, 0.0f,    s, 0.0f,
+                  0.0f, 1.0f, 0.0f, 0.0f,
+                    -s, 0.0f,    c, 0.0f,
+                  0.0f, 0.0f, 0.0f, 1.0f);
+}
+
+Matrix CreateRotationMatrixZ(const float angle)
+{
+    float c = cosf(angle);
+    float s = sinf(angle);
+
+    return Matrix(   c,   -s, 0.0f, 0.0f,
+                     s,    c, 0.0f, 0.0f,
+                  0.0f, 0.0f, 1.0f, 0.0f,
+                  0.0f, 0.0f, 0.0f, 1.0f);
+}

@@ -11,7 +11,9 @@
 
 #include <Windows.h>
 
-/// keyboard key codes
+/**
+ * Keyboard key codes
+ */
 enum Key
 {
     /// On Windows regular keys match ASCII-table values of capital letters
@@ -25,15 +27,21 @@ enum Key
     LShift = VK_SHIFT
 };
 
-/// mouse key codes
+/**
+ * Mouse key codes
+ */
 enum Mouse
 {
+    LMB = 0,
+    MMB = 2,
     RMB = 1
 };
 
 #elif defined(__linux__) | defined(__LINUX__)
 
-/// Used keyboard key codes
+/**
+ * Keyboard key codes
+ */
 enum Key
 {
     W = 25,
@@ -43,9 +51,13 @@ enum Key
     LShift = 50
 };
 
-/// mouse key codes
+/**
+ * Mouse key codes
+ */
 enum Mouse
 {
+    LMB = 0,
+    MMB = 1,
     RMB = 2,
 };
 

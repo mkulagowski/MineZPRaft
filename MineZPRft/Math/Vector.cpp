@@ -5,6 +5,7 @@
  */
 
 #include "Vector.hpp"
+#include "Common\Exception.hpp"
 
 #include <algorithm>
 #include <cstring>
@@ -173,6 +174,8 @@ Vector& Vector::operator/=(const Vector& other)
 
 Vector& Vector::operator/=(float value)
 {
+    if (value == 0)
+        THROW(ExceptionType::Math, "Division by 0 is forbidden!");
     for (auto& i : f)
         i /= value;
 

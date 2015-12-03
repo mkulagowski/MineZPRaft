@@ -135,5 +135,11 @@
     <ClInclude Include="Renderer\Defines.hpp">
       <Filter>Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="Common\Exception.hpp">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\ExceptionType.hpp">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

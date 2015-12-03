@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\Common.hpp" />
+    <ClInclude Include="Common\Exception.hpp" />
+    <ClInclude Include="Common\ExceptionType.hpp" />
     <ClInclude Include="Common\FileSystem.hpp" />
     <ClInclude Include="Common\GetExtension.hpp" />
     <ClInclude Include="Common\Timer.hpp" />

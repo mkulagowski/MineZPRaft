@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_41ff9867",
+        "filename": "MineZPRft/Common/Linux/Timer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-03T13:44:42Z",
+      "side": 1,
+      "message": "static_cast?",
+      "range": {
+        "startLine": 28,
+        "startChar": 20,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "d6bc68ec86fe9678f52c9a93babc0facb2276802",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_2118dcd2",
+        "filename": "MineZPRft/Common/Linux/Window.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-03T13:44:42Z",
+      "side": 1,
+      "message": "I think we will need to swap most of \u0027this-\u003eSomeWindowMethod()\u0027 with \u0027SomeWindowMethod()\u0027. There is inconsistency in using it",
+      "revId": "d6bc68ec86fe9678f52c9a93babc0facb2276802",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_41e878b4",
+        "filename": "MineZPRft/Common/Timer.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-03T13:44:42Z",
+      "side": 1,
+      "message": "declaration",
+      "range": {
+        "startLine": 4,
+        "startChar": 23,
+        "endLine": 4,
+        "endChar": 57
+      },
+      "revId": "d6bc68ec86fe9678f52c9a93babc0facb2276802",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_e1c1842f",
+        "filename": "MineZPRft/Common/Timer.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-03T13:44:42Z",
+      "side": 1,
+      "message": "#endif // defined(WIN32)",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 6
+      },
+      "revId": "d6bc68ec86fe9678f52c9a93babc0facb2276802",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_a1230c04",
+        "filename": "MineZPRft/Common/Win/Window.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-03T13:44:42Z",
+      "side": 1,
+      "message": "shouldn\u0027t\n\u0027Window-\u003eOnKeyUp((int)wParam);\u0027\nbe added here?",
+      "range": {
+        "startLine": 295,
+        "startChar": 8,
+        "endLine": 299,
+        "endChar": 9
+      },
+      "revId": "d6bc68ec86fe9678f52c9a93babc0facb2276802",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_217ffce1",
+        "filename": "MineZPRft/Game/GameManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-03T13:44:42Z",
+      "side": 1,
+      "message": "should be in some const or define",
+      "range": {
+        "startLine": 24,
+        "startChar": 22,
+        "endLine": 24,
+        "endChar": 37
+      },
+      "revId": "d6bc68ec86fe9678f52c9a93babc0facb2276802",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_6189f4ea",
+        "filename": "MineZPRft/Game/GameManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-03T13:44:42Z",
+      "side": 1,
+      "message": "rm, it\u0027s done in WindowManager destructor",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 24
+      },
+      "revId": "d6bc68ec86fe9678f52c9a93babc0facb2276802",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_816d3035",
+        "filename": "MineZPRft/Game/GameManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-03T13:44:42Z",
+      "side": 1,
+      "message": "move \u0027double frameTime \u003d 0;\u0027 outside the loop,\nleave the rest inside it.",
+      "range": {
+        "startLine": 50,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 28
+      },
+      "revId": "d6bc68ec86fe9678f52c9a93babc0facb2276802",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_017a00f1",
+        "filename": "MineZPRft/Game/GameManager.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-03T13:44:42Z",
+      "side": 1,
+      "message": "insert newline above",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 17
+      },
+      "revId": "d6bc68ec86fe9678f52c9a93babc0facb2276802",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_415b1887",
+        "filename": "MineZPRft/Game/GameWindow.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-03T13:44:42Z",
+      "side": 1,
+      "message": "add newline below",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "d6bc68ec86fe9678f52c9a93babc0facb2276802",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

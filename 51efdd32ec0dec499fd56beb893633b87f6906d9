@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_a1106c4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-03T12:37:55Z",
+      "side": 1,
+      "message": "Verification: Read and understand\n:P",
+      "revId": "51efdd32ec0dec499fd56beb893633b87f6906d9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_8113705b",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-03T12:37:55Z",
+      "side": 1,
+      "message": "I think that we should add Mint in here, so we can add informations little by little, instead of writing whole chunk at once.",
+      "revId": "51efdd32ec0dec499fd56beb893633b87f6906d9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_01004000",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-03T12:37:55Z",
+      "side": 1,
+      "message": "MineZPRft :/ ?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 12
+      },
+      "revId": "51efdd32ec0dec499fd56beb893633b87f6906d9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_21053c11",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-03T12:37:55Z",
+      "side": 1,
+      "message": "So we don\u0027t need x11?\n\nI remember, that one of the first commits needed this on Mint:\nsudo apt-get install cmake g++ mesa-common-dev libx11-dev libgl1-mesa-dev",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 51
+      },
+      "revId": "51efdd32ec0dec499fd56beb893633b87f6906d9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

@@ -18,22 +18,29 @@ void GamePlayer::Init(Camera* camera)
 {
     mCameraPtr = camera;
 
-    mPos = Vector(2.0f, 0.25f, 2.0f, 1.0f);
-    mDir = Vector(0.0f, 0.25f, 0.0f, 1.0f);
+    mPos = Vector(0.0f, 0.25f, 2.0f, 1.0f);
+    mDir = Vector(0.0f, 0.0f, -1.0f, 0.0f);
     mUp = Vector(0.0f, 1.0f, 0.0f, 0.0f);
 }
 
-void GamePlayer::Update(const Vector& shift)
+void GamePlayer::Update()
 {
-    // update Player position
-    mPos += shift;
-
     // send the update to Camera
     CameraUpdateDesc cud;
     cud.pos = mPos;
     cud.dir = mDir;
     cud.up = mUp;
     mCameraPtr->Update(cud);
+}
+
+void GamePlayer::SetPosition(const Vector& pos)
+{
+    mPos = pos;
+}
+
+void GamePlayer::SetDirection(const Vector& dir)
+{
+    mDir = dir;
 }
 
 const Vector& GamePlayer::GetPosition()

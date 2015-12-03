@@ -26,11 +26,19 @@ public:
     void Init(Camera* camera);
 
     /**
-     * Apply changes to GamePlayer attributes.
-     *
-     * @param shift Vector which will be added to Player's position.
+     * Apply set vectors.
      */
-    void Update(const Vector& shift);
+    void Update();
+
+    /**
+     * Set new Position vector
+     */
+    void SetPosition(const Vector& pos);
+
+    /**
+     * Set new Direction vector
+     */
+    void SetDirection(const Vector& dir);
 
     /**
      * Acquire Player position vector.

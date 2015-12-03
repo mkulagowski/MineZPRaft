@@ -28,6 +28,8 @@ enum Key
 /// mouse key codes
 enum Mouse
 {
+    LMB = 0,
+    MMB = 2,
     RMB = 1
 };
 
@@ -46,6 +48,8 @@ enum Key
 /// mouse key codes
 enum Mouse
 {
+    LMB = 0,
+    MMB = 1,
     RMB = 2,
 };
 

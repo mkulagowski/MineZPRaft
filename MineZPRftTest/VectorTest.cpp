@@ -5,7 +5,9 @@
  */
 
 #include <gtest/gtest.h>
+#include "Common\Exception.hpp"
 #include "Math/Vector.hpp"
+#include <iostream>
 
 
 TEST(Vector, Constructor)
@@ -161,4 +163,12 @@ TEST(Vector, LessEqual)
 
     ASSERT_LE(a, b);
     ASSERT_LE(a, c);
+}
+
+TEST(Vector, DivisionBy0)
+{
+    Vector a(1.0f);
+    float zero = 0;
+
+    ASSERT_THROW(a = a / zero, MathException);
 }

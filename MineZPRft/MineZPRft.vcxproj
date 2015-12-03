@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Common\Exception.cpp" />
     <ClCompile Include="Common\WindowTest.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -45,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\Common.hpp" />
+    <ClInclude Include="Common\Exception.hpp" />
     <ClInclude Include="Common\FileSystem.hpp" />
     <ClInclude Include="Common\GetExtension.hpp" />
     <ClInclude Include="Common\Timer.hpp" />

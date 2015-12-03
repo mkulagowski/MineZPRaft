@@ -73,6 +73,9 @@
     <ClCompile Include="Renderer\Defines.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="Common\Exception.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\GameWindow.hpp">
@@ -134,6 +137,9 @@
     </ClInclude>
     <ClInclude Include="Renderer\Defines.hpp">
       <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Exception.hpp">
+      <Filter>Common</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

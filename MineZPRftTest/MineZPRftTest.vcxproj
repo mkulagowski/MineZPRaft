@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\MineZPRft\Common\Exception.cpp" />
     <ClCompile Include="..\MineZPRft\Common\Win\Common.cpp" />
     <ClCompile Include="..\MineZPRft\Common\Win\FileSystem.cpp" />
     <ClCompile Include="..\MineZPRft\Math\Matrix.cpp" />

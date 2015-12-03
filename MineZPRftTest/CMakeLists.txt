@@ -16,9 +16,11 @@ FILE(GLOB TEST_UNIT_HEADERS ${MZPR_ROOT_DIRECTORY}/MineZPRft/Math/Vector.hpp
 
 # Requirements
 FILE(GLOB TEST_REQ_SOURCES   ${MZPR_ROOT_DIRECTORY}/MineZPRft/Common/Linux/FileSystem.cpp
-                             ${MZPR_ROOT_DIRECTORY}/MineZPRft/Common/Linux/Common.cpp)
+                             ${MZPR_ROOT_DIRECTORY}/MineZPRft/Common/Linux/Common.cpp
+                             ${MZPR_ROOT_DIRECTORY}/MineZPRft/Common/Exception.cpp)
 FILE(GLOB TEST_REQ_HEADERS   ${MZPR_ROOT_DIRECTORY}/MineZPRft/Common/Common.hpp
-                             ${MZPR_ROOT_DIRECTORY}/MineZPRft/Common/FileSystem.hpp)
+                             ${MZPR_ROOT_DIRECTORY}/MineZPRft/Common/FileSystem.hpp
+                             ${MZPR_ROOT_DIRECTORY}/MineZPRft/Common/Exception.hpp)
 
 
 # setup directories

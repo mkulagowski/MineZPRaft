@@ -24,5 +24,8 @@
     </ClCompile>
     <ClCompile Include="MatrixTest.cpp" />
     <ClCompile Include="VectorTest.cpp" />
+    <ClCompile Include="..\MineZPRft\Common\Exception.cpp">
+      <Filter>Requirements</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

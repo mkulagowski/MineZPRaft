@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_9651f864",
+        "filename": "MineZPRft/Game/GameKeycodes.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-03T12:31:43Z",
+      "side": 1,
+      "message": "How about normal documentation like:\n/*\n *\n */ ?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 22
+      },
+      "revId": "8582276e6d8ca016275f0d2872798bdb156ca124",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_b64ef4bf",
+        "filename": "MineZPRft/Game/GameKeycodes.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-03T12:31:43Z",
+      "side": 1,
+      "message": "as above",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "8582276e6d8ca016275f0d2872798bdb156ca124",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_d64b70ae",
+        "filename": "MineZPRft/Game/GameKeycodes.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-03T12:31:43Z",
+      "side": 1,
+      "message": "as above",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 27
+      },
+      "revId": "8582276e6d8ca016275f0d2872798bdb156ca124",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_f6c78c10",
+        "filename": "MineZPRft/Game/GameKeycodes.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-03T12:31:43Z",
+      "side": 1,
+      "message": "as above",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "8582276e6d8ca016275f0d2872798bdb156ca124",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_b62fd4a0",
+        "filename": "MineZPRft/Game/GamePlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-03T12:31:43Z",
+      "side": 1,
+      "message": "wasn\u0027t definition in GamePlayer.hpp?",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 41
+      },
+      "revId": "8582276e6d8ca016275f0d2872798bdb156ca124",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_56bcc069",
+        "filename": "MineZPRft/Game/GamePlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-03T12:31:43Z",
+      "side": 1,
+      "message": "If we do:\n*\nGamePlayer KukaszPlayah;\nKukaszPlayah-\u003eUpdate();\n*\nI wonder what error would we get...access violation \u0027d be my guess.\n\ncheck in first line if mCameraPtr is set. If not, throw...or should we just return?",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 28
+      },
+      "revId": "8582276e6d8ca016275f0d2872798bdb156ca124",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_161ec870",
+        "filename": "MineZPRft/Game/GamePlayer.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-03T12:31:43Z",
+      "side": 1,
+      "message": "This is needed in GamePlayer.cpp I think - all subclasses that need to use GamePlayer does not always need GameKeycodes.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 27
+      },
+      "revId": "8582276e6d8ca016275f0d2872798bdb156ca124",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_d6e2909e",
+        "filename": "MineZPRft/Game/GamePlayer.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-03T12:31:43Z",
+      "side": 1,
+      "message": "Not sure what it does. Maybe some more info, like:\n\"Update players position based on set vectors.\"?",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 29,
+        "endChar": 25
+      },
+      "revId": "8582276e6d8ca016275f0d2872798bdb156ca124",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_9622d8b7",
+        "filename": "MineZPRft/Game/GameWindow.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-03T12:31:43Z",
+      "side": 1,
+      "message": "insert space under this line",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "8582276e6d8ca016275f0d2872798bdb156ca124",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_166968f9",
+        "filename": "MineZPRft/Game/GameWindow.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-03T12:31:43Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this get changed?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 31
+      },
+      "revId": "8582276e6d8ca016275f0d2872798bdb156ca124",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_36458470",
+        "filename": "MineZPRft/Game/GameWindow.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-03T12:31:43Z",
+      "side": 1,
+      "message": "Funny thing, when u write \"dir *\u003d rotMatrix\", think twice and then discard comment ;d",
+      "range": {
+        "startLine": 81,
+        "startChar": 8,
+        "endLine": 81,
+        "endChar": 30
+      },
+      "revId": "8582276e6d8ca016275f0d2872798bdb156ca124",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_d655301e",
+        "filename": "MineZPRft/Math/Matrix.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-03T12:31:43Z",
+      "side": 1,
+      "message": "Is some \u0027merged\u0027 function to Create all 3 matrices and multiply them needed? You know...to return RotationMatrix along all axes",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 48
+      },
+      "revId": "8582276e6d8ca016275f0d2872798bdb156ca124",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

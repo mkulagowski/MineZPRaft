@@ -101,7 +101,7 @@ Matrix CreateRHLookAtMatrix(const Vector& pos, const Vector& dir, const Vector& 
 /**
  * Creates a right-handed Perspective Matrix (aka. Projection Matrix)
  *
- * @param fov         Field of View
+ * @param fov         Field of View in degrees
  * @param aspectRatio Screen width to screen height ratio
  * @param nearDist    Near distance of the Perspective. Any objects closer than this distance
  *                    will clip.
@@ -112,6 +112,36 @@ Matrix CreateRHLookAtMatrix(const Vector& pos, const Vector& dir, const Vector& 
  */
 Matrix CreateRHPerspectiveMatrix(const float fov, const float aspectRatio,
                                  const float nearDist, const float farDist);
+
+/**
+ * Creates a rotation matrix, which multiplied by a Vector will rotate it by @p angle radians along
+ * X axis.
+ *
+ * @param angle Angle in radians with which rotation is applied
+ *
+ * @return Rotation matrix along X axis
+ */
+Matrix CreateRotationMatrixX(const float angle);
+
+/**
+ * Creates a rotation matrix, which multiplied by a Vector will rotate it by @p angle radians along
+ * Y axis.
+ *
+ * @param angle Angle in radians with which rotation is applied
+ *
+ * @return Rotation matrix along Y axis
+ */
+Matrix CreateRotationMatrixY(const float angle);
+
+/**
+ * Creates a rotation matrix, which multiplied by a Vector will rotate it by @p angle radians along
+ * Z axis.
+ *
+ * @param angle Angle in radians with which rotation is applied
+ *
+ * @return Rotation matrix along Z axis
+ */
+Matrix CreateRotationMatrixZ(const float angle);
 
 
 #endif // __MATH_MATRIX_HPP__

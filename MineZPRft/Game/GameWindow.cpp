@@ -6,7 +6,7 @@
 
 #include "GameWindow.hpp"
 
-#include "../Common/Common.hpp"
+#include "Common/Common.hpp"
 #include "Math/Vector.hpp"
 #include "GameKeycodes.hpp"
 
@@ -48,7 +48,8 @@ void GameWindow::Update(double deltaTime) noexcept
     if (IsKeyPressed(Key::LShift))
         playerShift *= 5.0f;
 
-    mPlayerPtr->Update(playerShift);
+    mPlayerPtr->SetPosition(pos + playerShift);
+    mPlayerPtr->Update();
 }
 
 void GameWindow::OnKeyPress(int key)
@@ -69,9 +70,18 @@ void GameWindow::OnMouseMove(int x, int y, int deltaX, int deltaY)
 {
     UNUSED(x);
     UNUSED(y);
-    UNUSED(deltaX);
-    UNUSED(deltaY);
-    // moves camera and movement direction
+
+    // scale the deltas to produce a rotation angle
+    if (IsMouseButtonDown(Mouse::LMB))
+    {
+        float angleX = -deltaX * 0.005f;
+        float angleY = -deltaY * 0.005f;
+
+        Vector dir = mPlayerPtr->GetDirection();
+        Matrix rotMatrix = CreateRotationMatrixX(angleY) * CreateRotationMatrixY(angleX);
+        dir = rotMatrix * dir;
+        mPlayerPtr->SetDirection(dir);
+    }
 }
 
 void GameWindow::OnMouseUp(uint32_t button)

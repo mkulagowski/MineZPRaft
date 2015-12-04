@@ -754,6 +754,30 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_1a5982fe",
+        "filename": "MineZPRft/Renderer/Renderer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-04T20:52:26Z",
+      "side": 1,
+      "message": "k",
+      "parentUuid": "5ac4a560_041e8970",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 21
+      },
+      "revId": "d38bf3752a9cf8c76bbd38a1b3278472c09d4b46",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_41279864",
         "filename": "MineZPRft/Renderer/Renderer.cpp",
         "patchSetId": 4
@@ -977,6 +1001,30 @@
       "side": 1,
       "message": "And that\u0027s the whole point about it. We can then change the typedef to anything if we consider it worth - changing vector\u003cMesh*\u003e to ex. map\u003cint, Mesh\u003e will not require renaming the typedef to MeshMapWithIntegerAndMeshObject. Which of course means, less code changed later on. :)",
       "parentUuid": "5ac4a560_21645cb8",
+      "range": {
+        "startLine": 76,
+        "startChar": 37,
+        "endLine": 76,
+        "endChar": 51
+      },
+      "revId": "d38bf3752a9cf8c76bbd38a1b3278472c09d4b46",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_fa63e6ae",
+        "filename": "MineZPRft/Renderer/Renderer.hpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-04T20:52:26Z",
+      "side": 1,
+      "message": "Renaming in VS is simple. You right-click on name, choose \u0027Rename\u0027 and ask VS to rename it everywhere in solution.\nSooo...number of code changed later on does not matter in this case ;)",
+      "parentUuid": "5ac4a560_243c65e2",
       "range": {
         "startLine": 76,
         "startChar": 37,
@@ -1259,6 +1307,30 @@
       "side": 1,
       "message": "Do we have any File handling inside filesystem for this?",
       "parentUuid": "5ac4a560_21a7fcbe",
+      "range": {
+        "startLine": 101,
+        "startChar": 4,
+        "endLine": 101,
+        "endChar": 41
+      },
+      "revId": "d38bf3752a9cf8c76bbd38a1b3278472c09d4b46",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_9a6cb29e",
+        "filename": "MineZPRft/Renderer/Shader.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-04T20:52:26Z",
+      "side": 1,
+      "message": "just checked and yea - we don\u0027t. Sorry for this",
+      "parentUuid": "5ac4a560_ff2bd87f",
       "range": {
         "startLine": 101,
         "startChar": 4,

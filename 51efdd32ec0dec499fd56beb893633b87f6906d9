@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_ffee7821",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-04T17:11:03Z",
+      "side": 1,
+      "message": "Added some info... Dunno if this is what you meant.",
+      "parentUuid": "5ac4a560_8113705b",
+      "revId": "51efdd32ec0dec499fd56beb893633b87f6906d9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_01004000",
         "filename": "README.md",
         "patchSetId": 3
@@ -59,6 +77,30 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_3f747098",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-04T17:11:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_01004000",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 12
+      },
+      "revId": "51efdd32ec0dec499fd56beb893633b87f6906d9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_21053c11",
         "filename": "README.md",
         "patchSetId": 3
@@ -70,6 +112,30 @@
       "writtenOn": "2015-12-03T12:37:55Z",
       "side": 1,
       "message": "So we don\u0027t need x11?\n\nI remember, that one of the first commits needed this on Mint:\nsudo apt-get install cmake g++ mesa-common-dev libx11-dev libgl1-mesa-dev",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 51
+      },
+      "revId": "51efdd32ec0dec499fd56beb893633b87f6906d9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_ff791894",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-04T17:11:03Z",
+      "side": 1,
+      "message": "On my Trusty it was not needed... However I will add it just to be sure.",
+      "parentUuid": "5ac4a560_21053c11",
       "range": {
         "startLine": 16,
         "startChar": 0,

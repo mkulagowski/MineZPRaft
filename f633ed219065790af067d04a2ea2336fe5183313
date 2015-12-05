@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_b569818d",
+        "filename": "MineZPRft/Common/Exceptions.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-05T12:59:00Z",
+      "side": 1,
+      "message": "\"Exception\" should be enough.",
+      "range": {
+        "startLine": 21,
+        "startChar": 10,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "f633ed219065790af067d04a2ea2336fe5183313",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_956c859e",
+        "filename": "MineZPRft/Common/Exceptions.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-05T12:59:00Z",
+      "side": 1,
+      "message": "Good start, but IMO not flexible enough. It needs some tweaks:\n\n* Create a constructor in Exception which will accept an error message argument. This will allow to modify the message to our heart\u0027s contents (for example, by adding a path to a Shader which failed to load).\n* ErrorMsg goes out of standard. I suggest overriding virtual method what() provided by std::exception().\n\nMoreover, what() should return the string in following format:\n\n  \u003cexception_type\u003e at \u003cfile\u003e@\u003cline\u003e: \u003cmessage_from_ctor\u003e.\n\nExample for ShaderFileException which was constructed with message \"Failed to load Data/Shaders/MainVS.glsl\":\n\n  ShaderFileException at Shader.cpp@35: Failed to open Data/Shaders/MainVS.glsl\n\nAdditionally, a default constructor could exist, which would just create a message:\n\n  \u003cexception_type\u003e at \u003cfile\u003e@\u003cline\u003e\n\nThis much for now. Tell me what you think, further ideas after you do these.",
+      "revId": "f633ed219065790af067d04a2ea2336fe5183313",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_95c80576",
+        "filename": "MineZPRft/Common/Exceptions.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-05T12:59:00Z",
+      "side": 1,
+      "message": "The way of creating these exceptions is a common, repetative schema. How about creating a function macro, which will do all this work for us?\n\nFor example, writing:\n\n  DECLARE_EXCEPTION(Exception, ShaderException)\n\nyou would get ready to use class ShaderException, which:\n* Derives from Exception (the first arg is a base after which we shall derive)\n* Creates a constructor with arg \"msg\" which will automagically construct the contents of message to print using what() method\n\nThen we would be able to influence the contents of the error message in-code, plus it will take less space.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "f633ed219065790af067d04a2ea2336fe5183313",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

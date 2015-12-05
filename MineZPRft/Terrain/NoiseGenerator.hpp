@@ -1,7 +1,7 @@
 /**
  * @file
  * @author mkkulagowski (mkkulagowski(at)gmail.com)
- * @brief  PerlinNoiseGenerator class declaration.
+ * @brief  NoiseGenerator class declaration.
  */
 
 #pragma once

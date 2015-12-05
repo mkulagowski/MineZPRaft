@@ -7,8 +7,11 @@
 #include "GameManager.hpp"
 
 GameManager::GameManager()
-    : mPlayer()
+    : mFrameTimer()
+    , mPlayer()
     , mWindow(&mPlayer)
+    , mRenderer(Renderer::GetInstance())
+    , mTerrain(TerrainManager::GetInstance())
 {
     // TODO: Add possibility to change the resolution
     mWindow.SetSize(800, 600);
@@ -28,6 +31,9 @@ GameManager::GameManager()
 
     // forward camera from Renderer to mPlayer
     mPlayer.Init(mRenderer.GetCameraPtr());
+
+    TerrainDesc td;
+    mTerrain.Init(td);
 }
 
 GameManager::~GameManager()
@@ -59,4 +65,3 @@ void GameManager::GameLoop()
         mWindow.SwapBuffers();
     }
 }
-

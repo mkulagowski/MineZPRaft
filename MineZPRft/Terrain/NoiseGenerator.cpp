@@ -1,10 +1,10 @@
 /**
  * @file
  * @author mkkulagowski (mkkulagowski(at)gmail.com)
- * @brief  PerlinNoiseGeneration class implementation.
+ * @brief  NoiseGenerator class implementation.
  */
 
-#include "Perlin.hpp"
+#include "NoiseGenerator.hpp"
 
 NoiseGenerator::NoiseGenerator()
 {

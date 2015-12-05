@@ -9,6 +9,7 @@
 
 #include "GameWindow.hpp"
 #include "Renderer/Renderer.hpp"
+#include "Terrain/TerrainManager.hpp"
 #include "Common/Timer.hpp"
 
 #include <memory>
@@ -38,7 +39,8 @@ private:
     Timer mFrameTimer;
     GamePlayer mPlayer;
     GameWindow mWindow;
-    Renderer mRenderer;
+    Renderer& mRenderer;
+    TerrainManager& mTerrain;
 };
 
 #endif // __GAME_GAMEMANAGER_HPP__

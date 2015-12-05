@@ -20,8 +20,9 @@ void GamePlayer::Init(Camera* camera)
 {
     mCameraPtr = camera;
 
-    mPos = Vector(0.0f, 0.25f, 2.0f, 1.0f);
-    mDir = Vector(0.0f, 0.0f, -1.0f, 0.0f);
+    mPos = Vector(5.0f, 5.0f, 5.0f, 1.0f);
+    mDir = Vector(-1.0f, -1.0f, -1.0f, 0.0f);
+    mDir.Normalize();
     mUp = Vector(0.0f, 1.0f, 0.0f, 0.0f);
 }
 

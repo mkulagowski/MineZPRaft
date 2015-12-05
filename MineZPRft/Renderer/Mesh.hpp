@@ -7,6 +7,8 @@
 #ifndef __RENDERER_MESH_HPP__
 #define __RENDERER_MESH_HPP__
 
+#include "Defines.hpp"
+
 #include <cstdlib>
 
 /**
@@ -47,6 +49,11 @@ public:
     void Init(const MeshDesc& desc);
 
     /**
+     * Bind Mesh to OpenGL.
+     */
+    void Bind() const noexcept;
+
+    /**
      * Update Mesh with new data.
      *
      * @param desc Mesh update description structure
@@ -58,7 +65,7 @@ public:
     void Update(const MeshUpdateDesc& desc) noexcept;
 
 private:
-    // TODO OpenGL VBO ID should be here, along with other required parameters
+    GLuint mVBO;
 };
 
 #endif // __RENDERER_MESH_HPP__

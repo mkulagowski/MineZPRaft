@@ -35,10 +35,8 @@ public:
      */
     void SetPosition(const Vector& pos);
 
-    /**
-     * Set new Direction vector
-     */
-    void SetDirection(const Vector& dir);
+    void ShiftRotationX(const float deltaX);
+    void ShiftRotationY(const float deltaY);
 
     /**
      * Acquire Player position vector.
@@ -61,6 +59,8 @@ private:
     Vector mPos;
     Vector mDir;
     Vector mUp;
+    float mAngleX;
+    float mAngleY;
 };
 
 #endif // __GAME_GAMEPLAYER_H__

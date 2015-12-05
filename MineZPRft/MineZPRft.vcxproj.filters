@@ -76,6 +76,12 @@
     <ClCompile Include="Common\Exception.cpp">
       <Filter>Common</Filter>
     </ClCompile>
+    <ClCompile Include="Terrain\TerrainManager.cpp">
+      <Filter>Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="Terrain\NoiseGenerator.cpp">
+      <Filter>Terrain</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\GameWindow.hpp">
@@ -140,6 +146,12 @@
     </ClInclude>
     <ClInclude Include="Common\Exception.hpp">
       <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Terrain\TerrainManager.hpp">
+      <Filter>Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="Terrain\NoiseGenerator.hpp">
+      <Filter>Terrain</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

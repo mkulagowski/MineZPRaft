@@ -26,15 +26,13 @@ void GameWindow::Update(double deltaTime) noexcept
     const Vector& pos = mPlayerPtr->GetPosition();
     const Vector& dir = mPlayerPtr->GetDirection();
 
-    Vector front = dir - pos;
-    front.Normalize();
-    Vector right = front.Cross(mPlayerPtr->GetUp());
+    Vector right = dir.Cross(mPlayerPtr->GetUp());
     right.Normalize();
 
     if (IsKeyPressed(Key::W))
-        playerShift += front;
+        playerShift += dir;
     if (IsKeyPressed(Key::S))
-        playerShift -= front;
+        playerShift -= dir;
     if (IsKeyPressed(Key::A))
         playerShift -= right;
     if (IsKeyPressed(Key::D))

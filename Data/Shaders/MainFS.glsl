@@ -1,8 +1,8 @@
-in vec4 VSColor;
+in vec4 GSColor;
 
 out vec4 Color;
 
 void main()
 {
-    Color = VSColor;
+    Color = GSColor;
 }

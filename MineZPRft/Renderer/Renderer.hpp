@@ -27,8 +27,12 @@ struct RendererDesc
 class Renderer
 {
 public:
-    Renderer();
-    ~Renderer();
+    /**
+     * Retrieve an instance of Renderer object.
+     *
+     * @return Reference to Renderer instance.
+     */
+    static Renderer& GetInstance();
 
     /**
      * Initializes the Renderer Object.
@@ -78,13 +82,17 @@ public:
     Camera* GetCameraPtr();
 
 private:
+    Renderer();
+    Renderer(const Renderer&) = delete;
+    Renderer& operator=(const Renderer&) = delete;
+    ~Renderer();
+
     typedef std::vector<const Mesh*> MeshArrayType;
 
     Camera mCamera;
     Shader mMainShader; // TODO name is subject to change
     GLint mMainShaderViewMatrixLoc;
     GLint mMainShaderPerspectiveMatrixLoc;
-    GLuint mVB; // TODO temporary, will be replaced by mMeshArray
     GLuint mDummyVAO; // We don't need this, but OGL has its needs and won't cooperate without it
     MeshArrayType mMeshArray;
 };

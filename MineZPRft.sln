@@ -5,10 +5,6 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MineZPRft", "MineZPRft\MineZPRft.vcxproj", "{FF5ECD0B-2B27-4195-8349-9440A16B82E3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Var", "Var", "{33CB6295-01E3-4DF6-8BA3-19D25D154BFD}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PerlinNoiseGenerator", "Var\PerlinNoiseGenerator\Perlin.vcxproj", "{3173BCB6-37AE-4AC3-BC50-C97DEFC29363}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gtest", "gtest\gtest.vcxproj", "{B5346744-FB8E-4AF6-807E-65540BF32395}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MineZPRftTest", "MineZPRftTest\MineZPRftTest.vcxproj", "{11015C42-C44D-4945-AEC5-BDA45F17CD63}"
@@ -32,14 +28,6 @@ Global
 		{FF5ECD0B-2B27-4195-8349-9440A16B82E3}.Release|x64.Build.0 = Release|x64
 		{FF5ECD0B-2B27-4195-8349-9440A16B82E3}.Release|x86.ActiveCfg = Release|Win32
 		{FF5ECD0B-2B27-4195-8349-9440A16B82E3}.Release|x86.Build.0 = Release|Win32
-		{3173BCB6-37AE-4AC3-BC50-C97DEFC29363}.Debug|x64.ActiveCfg = Debug|x64
-		{3173BCB6-37AE-4AC3-BC50-C97DEFC29363}.Debug|x64.Build.0 = Debug|x64
-		{3173BCB6-37AE-4AC3-BC50-C97DEFC29363}.Debug|x86.ActiveCfg = Debug|Win32
-		{3173BCB6-37AE-4AC3-BC50-C97DEFC29363}.Debug|x86.Build.0 = Debug|Win32
-		{3173BCB6-37AE-4AC3-BC50-C97DEFC29363}.Release|x64.ActiveCfg = Release|x64
-		{3173BCB6-37AE-4AC3-BC50-C97DEFC29363}.Release|x64.Build.0 = Release|x64
-		{3173BCB6-37AE-4AC3-BC50-C97DEFC29363}.Release|x86.ActiveCfg = Release|Win32
-		{3173BCB6-37AE-4AC3-BC50-C97DEFC29363}.Release|x86.Build.0 = Release|Win32
 		{B5346744-FB8E-4AF6-807E-65540BF32395}.Debug|x64.ActiveCfg = Debug|x64
 		{B5346744-FB8E-4AF6-807E-65540BF32395}.Debug|x64.Build.0 = Debug|x64
 		{B5346744-FB8E-4AF6-807E-65540BF32395}.Debug|x86.ActiveCfg = Debug|Win32
@@ -59,8 +47,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{3173BCB6-37AE-4AC3-BC50-C97DEFC29363} = {33CB6295-01E3-4DF6-8BA3-19D25D154BFD}
 	EndGlobalSection
 EndGlobal

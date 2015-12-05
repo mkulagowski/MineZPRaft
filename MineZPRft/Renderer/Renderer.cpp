@@ -19,7 +19,6 @@ Renderer::Renderer()
     , mMainShader()
     , mMainShaderViewMatrixLoc(GL_NONE)
     , mMainShaderPerspectiveMatrixLoc(GL_NONE)
-    , mVB(GL_NONE)
     , mDummyVAO(GL_NONE)
 {
 }
@@ -31,8 +30,13 @@ Renderer::~Renderer()
     glBindVertexArray(GL_NONE);
 
     // destroy
-    glDeleteBuffers(1, &mVB);
     glDeleteVertexArrays(1, &mDummyVAO);
+}
+
+Renderer& Renderer::GetInstance()
+{
+    static Renderer instance;
+    return instance;
 }
 
 void Renderer::Init(const RendererDesc& desc)
@@ -53,6 +57,7 @@ void Renderer::Init(const RendererDesc& desc)
     glViewport(0, 0, desc.windowWidth, desc.windowHeight);
     glCullFace(GL_FRONT_AND_BACK);
     glFrontFace(GL_CW);
+    glEnable(GL_DEPTH_TEST);
 
     // Generate VAO and bind it because OGL
     glGenVertexArrays(1, &mDummyVAO);
@@ -72,34 +77,9 @@ void Renderer::Init(const RendererDesc& desc)
     // Load shader
     ShaderDesc sd;
     sd.vsPath = desc.shaderPath + "/MainVS.glsl";
+    sd.gsPath = desc.shaderPath + "/MainGS.glsl";
     sd.fsPath = desc.shaderPath + "/MainFS.glsl";
     mMainShader.Init(sd);
-
-    // Create VBO
-    float verts[] =
-    {
-    // Structure in this temporary VBO is following:
-    //  pos.xyz,          color.rgba
-        0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
-        0.0f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f,
-        0.5f, 0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f,
-    };
-
-    glGenBuffers(1, &mVB);
-    glBindBuffer(GL_ARRAY_BUFFER, mVB);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(verts), verts, GL_STATIC_DRAW);
-
-    // Define Vertex Attributes
-    glEnableVertexAttribArray(0);
-    glEnableVertexAttribArray(1);
-
-    // Attribute 0 - Vertex position, at stride = 0 (the beginning of specified vertex)
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 28,
-                          reinterpret_cast<const void*>(0));
-    // Attribute 1 - Vertex color at stride = 3 * sizeof(float) (in other words, right after
-    //               Vertex Position attribute).
-    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 28,
-                          reinterpret_cast<const void*>(3 * sizeof(float)));
 
     // Color used to clear buffers
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
@@ -127,7 +107,13 @@ void Renderer::Draw() noexcept
     mMainShader.MakeCurrent();
     glUniformMatrix4fv(mMainShaderViewMatrixLoc, 1, false, mCamera.GetViewRaw());
 
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    for (const auto& mesh : mMeshArray)
+    {
+        mesh->Bind();
+
+        glDrawArrays(GL_POINTS, 0, 3);
+    }
+
     glFinish();
 }
 

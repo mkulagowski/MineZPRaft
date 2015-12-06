@@ -9,6 +9,9 @@
 
 #include "../Common.hpp"
 
+#include <GL/gl.h>
+#include "GL/wglext.h"
+
 namespace
 {
 const DWORD gWindowedExStyle = WS_EX_WINDOWEDGE;
@@ -174,6 +177,12 @@ bool WindowManager::Open()
     if (!mHRC)
         return false;
     wglMakeCurrent(mHDC, mHRC);
+
+    PFNWGLSWAPINTERVALEXTPROC wglSwapIntervalEXT =
+        (PFNWGLSWAPINTERVALEXTPROC)wglGetProcAddress("wglSwapIntervalEXT");
+
+    if (wglSwapIntervalEXT)
+        wglSwapIntervalEXT(0);
 
     SetWindowLongPtr(mHandle, GWLP_USERDATA, (LONG_PTR)this);
     SetWindowText(mHandle, UTF8ToUTF16(mTitle).c_str());

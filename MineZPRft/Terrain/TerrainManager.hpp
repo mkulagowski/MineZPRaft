@@ -8,6 +8,8 @@
 #define __TERRAIN_TERRAINMANAGER_HPP__
 
 #include "NoiseGenerator.hpp"
+#include "Chunk.hpp"
+
 #include "Renderer/Renderer.hpp"
 #include "Renderer/Mesh.hpp"
 
@@ -61,6 +63,7 @@ private:
     NoiseGenerator& mNoiseGen;
     Renderer& mRenderer;
     Mesh mTerrain;
+    Chunk mChunk;
 };
 
 #endif // __TERRAIN_TERRAINMANAGER_HPP__

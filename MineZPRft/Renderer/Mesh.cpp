@@ -38,11 +38,18 @@ void Mesh::Init(const MeshDesc& desc)
     //               Vertex Position attribute).
     glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 28,
                           reinterpret_cast<const void*>(3 * sizeof(float)));
+
+    mVertCount = static_cast<GLsizei>(desc.vertCount);
 }
 
 void Mesh::Bind() const noexcept
 {
     glBindBuffer(GL_ARRAY_BUFFER, mVBO);
+}
+
+GLsizei Mesh::GetVertCount() const noexcept
+{
+    return mVertCount;
 }
 
 void Mesh::Update(const MeshUpdateDesc& desc) noexcept

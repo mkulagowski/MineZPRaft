@@ -18,6 +18,7 @@ struct MeshDesc
 {
     void* dataPtr;      ///< Pointer for data to use during mesh initialization.
     size_t dataSize;    ///< Size of the data.
+    size_t vertCount;   ///< Amount of vertices.
     // TODO format of kept data and other stuff that VBO might need to initialize.
 };
 
@@ -54,6 +55,11 @@ public:
     void Bind() const noexcept;
 
     /**
+     * Get vertex count for current mesh.
+     */
+    GLsizei GetVertCount() const noexcept;
+
+    /**
      * Update Mesh with new data.
      *
      * @param desc Mesh update description structure
@@ -66,6 +72,7 @@ public:
 
 private:
     GLuint mVBO;
+    GLsizei mVertCount;
 };
 
 #endif // __RENDERER_MESH_HPP__

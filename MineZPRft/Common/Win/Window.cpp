@@ -9,6 +9,9 @@
 
 #include "../Common.hpp"
 
+#include <GL/gl.h>
+#include "GL/wglext.h"
+
 namespace
 {
 const DWORD gWindowedExStyle = WS_EX_WINDOWEDGE;
@@ -175,6 +178,20 @@ bool WindowManager::Open()
         return false;
     wglMakeCurrent(mHDC, mHRC);
 
+    // extract wglSwapIntervalEXT function to give us v-sync control
+    PFNWGLSWAPINTERVALEXTPROC wglSwapIntervalEXT =
+            reinterpret_cast <PFNWGLSWAPINTERVALEXTPROC> (
+                wglGetProcAddress("wglSwapIntervalEXT")
+            );
+
+    // If the wglSwapIntervalEXT is successfully extracted, disable v-sync for better
+    // performance measurement. In layman's terms, now the application will not synchronize
+    // to screen synchronization frequency and will use 100% of CPU/GPU as much as possible.
+    // Thanks to it, we will have much better knowledge on how fast are our rendering algorithms.
+    if (wglSwapIntervalEXT)
+        wglSwapIntervalEXT(0);
+
+    // Final setups for window.
     SetWindowLongPtr(mHandle, GWLP_USERDATA, (LONG_PTR)this);
     SetWindowText(mHandle, UTF8ToUTF16(mTitle).c_str());
     ShowWindow(mHandle, SW_SHOW);

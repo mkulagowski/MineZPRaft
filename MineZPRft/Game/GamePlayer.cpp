@@ -28,9 +28,9 @@ void GamePlayer::Init(Camera* camera)
 {
     mCameraPtr = camera;
 
-    mPos = Vector(0.0f, 0.0f, -5.0f, 1.0f);
+    mPos = Vector(0.0f, 1.0f, 0.0f, 1.0f);
     mAngleX = 0.0f;
-    mAngleY = 0.0f;
+    mAngleY = MATH_PIF/4.0f;
     mUp = Vector(0.0f, 1.0f, 0.0f, 0.0f);
     Update();
 }

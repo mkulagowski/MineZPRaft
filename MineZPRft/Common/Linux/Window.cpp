@@ -235,6 +235,16 @@ bool WindowManager::Open()
     glXMakeCurrent(mDisplay, mWindow, mContext);
     mDrawable = glXGetCurrentDrawable();
 
+    // retrieve glXSwapIntervalEXT for v-sync control
+    PFNGLXSWAPINTERVALEXTPROC glXSwapIntervalEXT =
+            reinterpret_cast<PFNGLXSWAPINTERVALEXTPROC>(
+                glXGetProcAddress((const GLubyte*) "glXSwapIntervalEXT")
+            );
+
+    // Disable v-sync if possible. Refer to Win/Window.cpp for explanation.
+    if (glXSwapIntervalEXT)
+        glXSwapIntervalEXT(mDisplay, mDrawable, 0);
+
     // for information purposes
     if (!glXIsDirect(mDisplay, mContext))
         LOG_I("Indirect GLX rendering context obtained");

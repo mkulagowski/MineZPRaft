@@ -45,6 +45,7 @@
     <ClCompile Include="Renderer\Mesh.cpp" />
     <ClCompile Include="Renderer\Renderer.cpp" />
     <ClCompile Include="Renderer\Shader.cpp" />
+    <ClCompile Include="Terrain\Chunk.cpp" />
     <ClCompile Include="Terrain\NoiseGenerator.cpp" />
     <ClCompile Include="Terrain\TerrainManager.cpp" />
   </ItemGroup>
@@ -76,6 +77,7 @@
     <ClInclude Include="Renderer\Mesh.hpp" />
     <ClInclude Include="Renderer\Renderer.hpp" />
     <ClInclude Include="Renderer\Shader.hpp" />
+    <ClInclude Include="Terrain\Chunk.hpp" />
     <ClInclude Include="Terrain\NoiseGenerator.hpp" />
     <ClInclude Include="Terrain\TerrainManager.hpp" />
   </ItemGroup>

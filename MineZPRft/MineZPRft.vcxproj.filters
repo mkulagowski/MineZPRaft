@@ -88,6 +88,9 @@
     <ClCompile Include="Common\Logger.cpp">
       <Filter>Common</Filter>
     </ClCompile>
+    <ClCompile Include="Terrain\Chunk.cpp">
+      <Filter>Terrain</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\GameWindow.hpp">
@@ -161,6 +164,9 @@
 	</ClInclude>
     <ClInclude Include="Common\Logger.hpp">
       <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Terrain\Chunk.hpp">
+      <Filter>Terrain</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

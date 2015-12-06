@@ -42,6 +42,7 @@ PFNGLGETPROGRAMINFOLOGPROC glGetProgramInfoLog = nullptr;
 PFNGLDELETEPROGRAMPROC glDeleteProgram = nullptr;
 PFNGLUSEPROGRAMPROC glUseProgram = nullptr;
 PFNGLGETUNIFORMLOCATIONPROC glGetUniformLocation = nullptr;
+PFNGLUNIFORM4FPROC glUniform4f = nullptr;
 PFNGLUNIFORMMATRIX4FVPROC glUniformMatrix4fv = nullptr;
 
 bool ExtensionsInit()
@@ -82,6 +83,7 @@ bool ExtensionsInit()
     OGL_GET_EXTENSION(PFNGLDELETEPROGRAMPROC, glDeleteProgram);
     OGL_GET_EXTENSION(PFNGLUSEPROGRAMPROC, glUseProgram);
     OGL_GET_EXTENSION(PFNGLGETUNIFORMLOCATIONPROC, glGetUniformLocation);
+    OGL_GET_EXTENSION(PFNGLUNIFORM4FPROC, glUniform4f);
     OGL_GET_EXTENSION(PFNGLUNIFORMMATRIX4FVPROC, glUniformMatrix4fv);
 
     return allExtensionsAvailable;

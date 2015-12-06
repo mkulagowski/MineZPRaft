@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_5d0693cf",
+        "filename": "MineZPRft/Renderer/Renderer.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-06T10:29:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_15131567",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 35
+      },
+      "revId": "bde946e178334a5daf5056dd02e385fc30b2afc9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_35181181",
         "filename": "MineZPRft/Renderer/Renderer.hpp",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-12-05T20:49:30Z",
       "side": 1,
       "message": "delete BOTH copy and move constructors/operators",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 50
+      },
+      "revId": "bde946e178334a5daf5056dd02e385fc30b2afc9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_1d6dfb98",
+        "filename": "MineZPRft/Renderer/Renderer.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-06T10:29:12Z",
+      "side": 1,
+      "message": "Then this will have to be applied to OTHER singletons which were created by SOMEONE... :P\n\nThe definition here is the same as in every other part of the project. Plus, it matches whatever is shown on ZPR keynotes.",
+      "parentUuid": "5ac4a560_35181181",
       "range": {
         "startLine": 81,
         "startChar": 4,

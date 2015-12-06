@@ -44,6 +44,7 @@ extern PFNGLGETPROGRAMINFOLOGPROC glGetProgramInfoLog;
 extern PFNGLDELETEPROGRAMPROC glDeleteProgram;
 extern PFNGLUSEPROGRAMPROC glUseProgram;
 extern PFNGLGETUNIFORMLOCATIONPROC glGetUniformLocation;
+extern PFNGLUNIFORM4FPROC glUniform4f;
 extern PFNGLUNIFORMMATRIX4FVPROC glUniformMatrix4fv;
 
 /**

@@ -21,6 +21,8 @@ enum Key
     S = 'S',
     A = 'A',
     D = 'D',
+    R = 'R',
+    F = 'F',
 
     /// All special signs are Virtual Key-Codes
     /// Taken from https://msdn.microsoft.com/en-us/library/windows/desktop/dd375731(v=vs.85).aspx
@@ -48,6 +50,8 @@ enum Key
     S = 39,
     A = 38,
     D = 40,
+    R = 27,
+    F = 41,
     LShift = 50
 };
 

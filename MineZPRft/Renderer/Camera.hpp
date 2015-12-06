@@ -65,6 +65,15 @@ public:
     void Update(const CameraUpdateDesc& desc) noexcept;
 
     /**
+     * Retrieve raw version of Camera Position vector.
+     *
+     * @return Pointer to 4-element float array with Camera vector
+     *
+     * The method is used to provide Camera position for light calculations to shaders.
+     */
+    const float* GetPosRaw() noexcept;
+
+    /**
      * Acquire pointer to raw data of Camera's View Matrix
      */
     const float* GetViewRaw() noexcept;
@@ -77,6 +86,7 @@ public:
 private:
     Matrix mView;
     Matrix mPerspective;
+    Vector mPos;
 };
 
 #endif // __RENDERER_CAMERA_HPP__

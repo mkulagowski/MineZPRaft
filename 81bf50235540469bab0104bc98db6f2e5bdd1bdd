@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_9df4abf3",
+        "filename": "MineZPRftTest/VectorTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-06T02:53:17Z",
+      "side": 1,
+      "message": "ASSERT_THROW(a \u003d a / zero, AnyException)",
+      "range": {
+        "startLine": 173,
+        "startChar": 4,
+        "endLine": 180,
+        "endChar": 5
+      },
+      "revId": "81bf50235540469bab0104bc98db6f2e5bdd1bdd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

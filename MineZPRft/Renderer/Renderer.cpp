@@ -55,8 +55,9 @@ void Renderer::Init(const RendererDesc& desc)
 
     // renderer viewport & pipeline setups
     glViewport(0, 0, desc.windowWidth, desc.windowHeight);
-    glCullFace(GL_FRONT_AND_BACK);
-    glFrontFace(GL_CW);
+    glCullFace(GL_BACK);
+    glFrontFace(GL_CCW);
+    glEnable(GL_CULL_FACE);
     glEnable(GL_DEPTH_TEST);
 
     // Generate VAO and bind it because OGL
@@ -65,7 +66,7 @@ void Renderer::Init(const RendererDesc& desc)
 
     // Load camera
     CameraDesc cd;
-    cd.fov = 45.0f;
+    cd.fov = 60.0f;
     cd.aspectRatio = static_cast<float>(desc.windowWidth) / static_cast<float>(desc.windowHeight);
     cd.nearDist = 0.1f;
     cd.farDist = 1000.0f;
@@ -88,6 +89,7 @@ void Renderer::Init(const RendererDesc& desc)
     mMainShader.MakeCurrent();
     mMainShaderViewMatrixLoc = mMainShader.GetUniform("viewMat");
     mMainShaderPerspectiveMatrixLoc = mMainShader.GetUniform("perspMat");
+    mMainShaderPlayerPosLoc = mMainShader.GetUniform("playerPos");
     // TODO throw if incorrect uniform locations
 
     glUniformMatrix4fv(mMainShaderPerspectiveMatrixLoc, 1, false, mCamera.GetPerspectiveRaw());
@@ -107,11 +109,14 @@ void Renderer::Draw() noexcept
     mMainShader.MakeCurrent();
     glUniformMatrix4fv(mMainShaderViewMatrixLoc, 1, false, mCamera.GetViewRaw());
 
+    const float* posRaw = mCamera.GetPosRaw();
+    glUniform4f(mMainShaderPlayerPosLoc, posRaw[0], posRaw[1], posRaw[2], posRaw[3]);
+
     for (const auto& mesh : mMeshArray)
     {
         mesh->Bind();
 
-        glDrawArrays(GL_POINTS, 0, 3);
+        glDrawArrays(GL_POINTS, 0, mesh->GetVertCount());
     }
 
     glFinish();

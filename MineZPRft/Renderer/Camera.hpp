@@ -64,6 +64,8 @@ public:
      */
     void Update(const CameraUpdateDesc& desc) noexcept;
 
+    const float* GetPosRaw() noexcept;
+
     /**
      * Acquire pointer to raw data of Camera's View Matrix
      */
@@ -77,6 +79,7 @@ public:
 private:
     Matrix mView;
     Matrix mPerspective;
+    Vector mPos;
 };
 
 #endif // __RENDERER_CAMERA_HPP__

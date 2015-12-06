@@ -30,7 +30,13 @@ void Camera::Init(const CameraDesc& desc)
 
 void Camera::Update(const CameraUpdateDesc& request) noexcept
 {
+    mPos = request.pos;
     mView = CreateRHLookAtMatrix(request.pos, request.pos + request.dir, request.up);
+}
+
+const float* Camera::GetPosRaw() noexcept
+{
+    return mPos.Data();
 }
 
 const float* Camera::GetViewRaw() noexcept

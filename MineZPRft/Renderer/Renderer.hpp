@@ -95,6 +95,7 @@ private:
     Shader mMainShader; // TODO name is subject to change
     GLint mMainShaderViewMatrixLoc;
     GLint mMainShaderPerspectiveMatrixLoc;
+    GLint mMainShaderPlayerPosLoc;
     GLuint mDummyVAO; // We don't need this, but OGL has its needs and won't cooperate without it
     MeshArrayType mMeshArray;
 };

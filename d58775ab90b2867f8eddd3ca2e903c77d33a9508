@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_867d38ea",
+        "filename": "MineZPRft/Common/Exception.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-07T13:53:02Z",
+      "side": 1,
+      "message": "+\u003d, then mMsg can be removed",
+      "range": {
+        "startLine": 28,
+        "startChar": 9,
+        "endLine": 28,
+        "endChar": 10
+      },
+      "revId": "d58775ab90b2867f8eddd3ca2e903c77d33a9508",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_a684f4d4",
+        "filename": "MineZPRft/Common/Exception.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-07T13:53:02Z",
+      "side": 1,
+      "message": "Technically you don\u0027t need this constructor. The operator should understand it and automagically create a string object out of it..",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 22
+      },
+      "revId": "d58775ab90b2867f8eddd3ca2e903c77d33a9508",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_2621c4fb",
+        "filename": "MineZPRft/Common/Exception.hpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-07T13:53:02Z",
+      "side": 1,
+      "message": "separate with two newlines",
+      "revId": "d58775ab90b2867f8eddd3ca2e903c77d33a9508",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_461c00c2",
+        "filename": "MineZPRft/Common/Exception.hpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-07T13:53:02Z",
+      "side": 1,
+      "message": "rm this newline",
+      "revId": "d58775ab90b2867f8eddd3ca2e903c77d33a9508",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

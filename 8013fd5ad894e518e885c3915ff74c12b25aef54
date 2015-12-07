@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_8378ca90",
+        "filename": "MineZPRft/Game/GameWindow.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-07T08:39:16Z",
+      "side": 1,
+      "message": "This is not enough. Rotations are still buggy.",
+      "revId": "8013fd5ad894e518e885c3915ff74c12b25aef54",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

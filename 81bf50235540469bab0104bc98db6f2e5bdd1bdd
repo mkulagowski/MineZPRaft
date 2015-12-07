@@ -22,6 +22,30 @@
       "revId": "81bf50235540469bab0104bc98db6f2e5bdd1bdd",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_063be838",
+        "filename": "MineZPRftTest/VectorTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-07T13:43:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac4a560_9df4abf3",
+      "range": {
+        "startLine": 173,
+        "startChar": 4,
+        "endLine": 180,
+        "endChar": 5
+      },
+      "revId": "81bf50235540469bab0104bc98db6f2e5bdd1bdd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }

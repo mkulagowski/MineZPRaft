@@ -25,6 +25,11 @@ std::string GetExecutableDir();
  */
 void ChangeDirectory(const std::string& dir);
 
+/**
+ * Extract current working directory.
+ */
+std::string GetCurrentWorkingDir();
+
 } // namespace FS
 
 #endif // __COMMON_FILESYSTEM_HPP__

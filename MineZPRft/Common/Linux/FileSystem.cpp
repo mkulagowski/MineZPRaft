@@ -7,13 +7,14 @@
 #include "../FileSystem.hpp"
 #include "../UTFfuncs.hpp"
 #include "../Common.hpp"
+#include "../Logger.hpp"
 
 #include <memory>
 #include <iostream>
-
 #include <unistd.h>
 
-namespace {
+namespace
+{
 
 std::string GetParentDir(const std::string& path)
 {
@@ -23,7 +24,8 @@ std::string GetParentDir(const std::string& path)
 
 } // namespace
 
-namespace FS {
+namespace FS
+{
 
 std::string GetExecutableDir()
 {
@@ -32,8 +34,7 @@ std::string GetExecutableDir()
     char* execPath = realpath(linkPath.data(), nullptr);
 
     if (!execPath)
-        // TODO log
-        std::cerr << "Failed to resolve executable's path : " << GetLastErrorString() << std::endl;
+        LOG_ERROR("Failed to resolve executable's path : " << GetLastErrorString() << std::endl);
     else
     {
         execPathStr = execPath;
@@ -47,15 +48,28 @@ void ChangeDirectory(const std::string& dir)
 {
     if (::chdir(dir.c_str()) != 0)
     {
-        // TODO log
-        std::cerr << "Failed to change current directory to '" << dir.c_str()
-                  << "': " << GetLastErrorString() << std::endl;
+        LOG_ERROR("Failed to change current directory to '" << dir.c_str()
+                  << "': " << GetLastErrorString() << std::endl);
         // TODO exception
         return;
     }
 
-    // TODO log info
-    std::cerr << "Current directory changed to: " << dir.c_str() << std::endl;
+    LOG_INFO("Current directory changed to: " << dir.c_str() << std::endl);
+}
+
+std::string GetCurrentWorkingDir()
+{
+    char* currPath = getcwd(nullptr, 0);
+    if (!currPath)
+    {
+        LOG_WARNING("Error while getting current working directory." << std::endl);
+        return "";
+    }
+
+    std::string currPathStr(currPath);
+    free(currPath);
+
+    return currPathStr;
 }
 
 } // namespace FS

@@ -27,5 +27,14 @@
     <ClCompile Include="..\MineZPRft\Common\Exception.cpp">
       <Filter>Requirements</Filter>
     </ClCompile>
+    <ClCompile Include="..\MineZPRft\Common\Logger.cpp">
+      <Filter>Requirements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MineZPRft\Common\Win\PrintColored.cpp">
+      <Filter>Requirements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MineZPRft\Common\Win\Timer.cpp">
+      <Filter>Requirements</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

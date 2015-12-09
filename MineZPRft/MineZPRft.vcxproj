@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Common\Exception.cpp" />
+    <ClCompile Include="Common\Logger.cpp" />
     <ClCompile Include="Common\WindowTest.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -28,6 +29,7 @@
     </ClCompile>
     <ClCompile Include="Common\Win\Common.cpp" />
     <ClCompile Include="Common\Win\FileSystem.cpp" />
+    <ClCompile Include="Common\Win\PrintColored.cpp" />
     <ClCompile Include="Common\Win\Timer.cpp" />
     <ClCompile Include="Common\Win\UTFfuncs.cpp" />
     <ClCompile Include="Common\Win\Window.cpp" />
@@ -51,6 +53,7 @@
     <ClInclude Include="Common\Exception.hpp" />
     <ClInclude Include="Common\FileSystem.hpp" />
     <ClInclude Include="Common\GetExtension.hpp" />
+    <ClInclude Include="Common\Logger.hpp" />
     <ClInclude Include="Common\Timer.hpp" />
     <ClInclude Include="Common\UTFfuncs.hpp" />
     <ClInclude Include="Common\Window.hpp" />

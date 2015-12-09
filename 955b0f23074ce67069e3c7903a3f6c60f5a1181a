@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_55ae5f86",
+        "filename": "MineZPRft/Game/GamePlayer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-09T09:40:55Z",
+      "side": 1,
+      "message": "Calculate",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 16
+      },
+      "revId": "955b0f23074ce67069e3c7903a3f6c60f5a1181a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_75a99b7a",
+        "filename": "MineZPRft/Game/GamePlayer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-09T09:40:55Z",
+      "side": 1,
+      "message": "Send",
+      "range": {
+        "startLine": 47,
+        "startChar": 7,
+        "endLine": 47,
+        "endChar": 12
+      },
+      "revId": "955b0f23074ce67069e3c7903a3f6c60f5a1181a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_f59dab5a",
+        "filename": "MineZPRft/Game/GamePlayer.hpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-09T09:40:55Z",
+      "side": 1,
+      "message": "documentation",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 44
+      },
+      "revId": "955b0f23074ce67069e3c7903a3f6c60f5a1181a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_95b717d8",
+        "filename": "MineZPRft/Game/GamePlayer.hpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-09T09:40:55Z",
+      "side": 1,
+      "message": "const Vector\u0026 GetPosition() const;",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "955b0f23074ce67069e3c7903a3f6c60f5a1181a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_b5ba53be",
+        "filename": "MineZPRft/Game/GamePlayer.hpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-09T09:40:55Z",
+      "side": 1,
+      "message": "const Vector\u0026 GetDirection() const;",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 33
+      },
+      "revId": "955b0f23074ce67069e3c7903a3f6c60f5a1181a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_d5b18fe2",
+        "filename": "MineZPRft/Game/GamePlayer.hpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-09T09:40:55Z",
+      "side": 1,
+      "message": "const Vector\u0026 GetUp() const;",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 26
+      },
+      "revId": "955b0f23074ce67069e3c7903a3f6c60f5a1181a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

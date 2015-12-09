@@ -82,6 +82,12 @@
     <ClCompile Include="Terrain\NoiseGenerator.cpp">
       <Filter>Terrain</Filter>
     </ClCompile>
+	<ClCompile Include="Common\Win\PrintColored.cpp">
+      <Filter>Common\Win</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\Logger.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\GameWindow.hpp">
@@ -152,6 +158,9 @@
     </ClInclude>
     <ClInclude Include="Terrain\NoiseGenerator.hpp">
       <Filter>Terrain</Filter>
+	</ClInclude>
+    <ClInclude Include="Common\Logger.hpp">
+      <Filter>Common</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

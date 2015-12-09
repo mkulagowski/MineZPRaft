@@ -146,8 +146,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\MineZPRft\Common\Exception.cpp" />
+    <ClCompile Include="..\MineZPRft\Common\Logger.cpp" />
     <ClCompile Include="..\MineZPRft\Common\Win\Common.cpp" />
     <ClCompile Include="..\MineZPRft\Common\Win\FileSystem.cpp" />
+    <ClCompile Include="..\MineZPRft\Common\Win\PrintColored.cpp" />
     <ClCompile Include="..\MineZPRft\Math\Matrix.cpp" />
     <ClCompile Include="..\MineZPRft\Math\Vector.cpp" />
     <ClCompile Include="main.cpp" />

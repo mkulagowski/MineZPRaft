@@ -76,6 +76,12 @@
     <ClCompile Include="Common\Exception.cpp">
       <Filter>Common</Filter>
     </ClCompile>
+    <ClCompile Include="Common\Win\PrintColored.cpp">
+      <Filter>Common\Win</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\Logger.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\GameWindow.hpp">
@@ -139,6 +145,9 @@
       <Filter>Renderer</Filter>
     </ClInclude>
     <ClInclude Include="Common\Exception.hpp">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Logger.hpp">
       <Filter>Common</Filter>
     </ClInclude>
   </ItemGroup>

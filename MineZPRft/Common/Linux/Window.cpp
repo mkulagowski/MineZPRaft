@@ -8,8 +8,10 @@
 #include "../Window.hpp"
 
 #include "../Common.hpp"
+#include  "../Logger.hpp"
 
 #include <iostream>
+#include <iomanip>
 
 #include <GL/glx.h>
 
@@ -34,7 +36,7 @@ WindowManager::WindowManager()
         mDisplay = XOpenDisplay(nullptr);
         if (mDisplay == nullptr)
         {
-            printf("Cannot connect to X server\n");
+            LOG_ERROR("Cannot connect to X server\n");
         }
     }
     mRoot = DefaultRootWindow(mDisplay);
@@ -134,7 +136,7 @@ bool WindowManager::Open()
     int fbCount;
     GLXFBConfig* fbc = glXChooseFBConfig(mDisplay, DefaultScreen(mDisplay), fbAttribs, &fbCount);
 
-    printf("Found %d matching FB configs:\n", fbCount);
+    LOG_INFO("Found " << fbCount << " matching FB configs:\n");
 
     // Select the best FB Config according to lowest GLX_SAMPLES attribute value
     // TODO enable Multisampling if needed
@@ -148,8 +150,9 @@ bool WindowManager::Open()
             int samples;
             glXGetFBConfigAttrib(mDisplay, fbc[i], GLX_SAMPLE_BUFFERS, &sampleBuffers);
             glXGetFBConfigAttrib(mDisplay, fbc[i], GLX_SAMPLES, &samples);
-            printf("  #%d: visualID 0x%2lu, SAMPLE_BUFFERS = %d, SAMPLES = %d\n",
-                     i, vi->visualid, sampleBuffers, samples);
+            LOG_INFO("  #" << i << ": visualID 0x" << std::setfill('0')
+                << std::setw(2) << vi->visualid << ", SAMPLE_BUFFERS = "
+                << sampleBuffers << ", SAMPLES = " << samples << std::endl);
 
             if (samples < maxSamples)
             {
@@ -160,7 +163,7 @@ bool WindowManager::Open()
         XFree(vi);
     }
 
-    printf("Choosing FB config #%d\n", bestFBID);
+    LOG_INFO("Choosing FB config #" << bestFBID << std::endl);
     GLXFBConfig bestFB = fbc[bestFBID];
     XFree(fbc);
 
@@ -206,16 +209,15 @@ bool WindowManager::Open()
         if (!mContext)
         {
             // TODO log warning
-            std::cerr << "GL 3.3 core profile not acquired. Falling back to old profile."
-                      << std::endl;
-            std::cerr << "Keep in mind, the renderer MIGHT NOT WORK due to too old OGL version!"
-                      << std::endl;
+            LOG_WARNING("GL 3.3 core profile not acquired. Falling back to old profile."
+                      << std::endl);
+            LOG_WARNING("Keep in mind, the renderer MIGHT NOT WORK due to too old OGL version!"
+                      << std::endl);
             // failed, fallback to classic method
             mContext = glXCreateNewContext(mDisplay, bestFB, GLX_RGBA_TYPE, NULL, GL_TRUE);
             if (!mContext)
             {
-                // TODO log
-                std::cerr << "Cannot create OpenGL Context." << std::endl;
+                LOG_ERROR("Cannot create OpenGL Context." << std::endl);
                 // TODO exception
                 return false;
             }
@@ -224,15 +226,14 @@ bool WindowManager::Open()
     else
     {
         // TODO log warning
-        std::cerr << "glXCreateContextAttribsARB not available. Creating OGL context the old way."
-                  << std::endl;
-        std::cerr << "Keep in mind, the renderer MIGHT NOT WORK due to too old OGL version!"
-                  << std::endl;
+        LOG_WARNING("glXCreateContextAttribsARB not available. Creating OGL context the old way."
+                  << std::endl);
+        LOG_WARNING("Keep in mind, the renderer MIGHT NOT WORK due to too old OGL version!"
+                  << std::endl);
         mContext = glXCreateNewContext(mDisplay, bestFB, GLX_RGBA_TYPE, NULL, GL_TRUE);
         if (!mContext)
         {
-            // TODO log
-            std::cerr << "Cannot create OpenGL Context." << std::endl;
+            LOG_ERROR("Cannot create OpenGL Context." << std::endl);
             // TODO exception
             return false;
         }
@@ -241,11 +242,10 @@ bool WindowManager::Open()
     mDrawable = glXGetCurrentDrawable();
 
     // for information purposes
-    // TODO log info
     if (!glXIsDirect(mDisplay, mContext))
-        std::cerr << "Indirect GLX rendering context obtained" << std::endl;
+        LOG_INFO("Indirect GLX rendering context obtained" << std::endl);
     else
-        std::cerr << "Direct GLX rendering context obtained" << std::endl;
+        LOG_INFO("Direct GLX rendering context obtained" << std::endl);
 
     mClosed = false;
     return true;
@@ -485,7 +485,7 @@ int WindowManager::ErrorHandler(::Display *dpy, XErrorEvent *error)
 {
     char errorCode[1024];
     XGetErrorText(dpy, error->error_code, errorCode, 1024);
-    printf("_X Error of failed request: %s\n", errorCode);
+    LOG_ERROR("_X Error of failed request: " << errorCode << std::endl);
     WindowManager::mWindowError = true;
     return 0;
 }

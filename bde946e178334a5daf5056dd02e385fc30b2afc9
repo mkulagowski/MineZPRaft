@@ -117,6 +117,30 @@
       "revId": "bde946e178334a5daf5056dd02e385fc30b2afc9",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_8e162154",
+        "filename": "MineZPRft/Renderer/Renderer.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-10T07:07:59Z",
+      "side": 1,
+      "message": "OK, I\u0027ll leave this to you :3",
+      "parentUuid": "5ac4a560_3159005b",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 50
+      },
+      "revId": "bde946e178334a5daf5056dd02e385fc30b2afc9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }

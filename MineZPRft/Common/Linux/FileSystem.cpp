@@ -48,13 +48,13 @@ void ChangeDirectory(const std::string& dir)
 {
     if (::chdir(dir.c_str()) != 0)
     {
-        LOG_E("Failed to change current directory to '" << dir.c_str()
+        LOG_E("Failed to change current directory to '" << dir
                   << "': " << GetLastErrorString() << std::endl);
         // TODO exception
         return;
     }
 
-    LOG_I("Current directory changed to: " << dir.c_str() << std::endl);
+    LOG_I("Current directory changed to: " << dir << std::endl);
 }
 
 std::string GetCurrentWorkingDir()

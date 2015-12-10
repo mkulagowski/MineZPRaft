@@ -7,6 +7,7 @@
 #include "Shader.hpp"
 
 #include "Extensions.hpp"
+#include "Common/Logger.hpp"
 
 #include <fstream>
 #include <vector>
@@ -61,8 +62,7 @@ void Shader::Init(const ShaderDesc& desc)
     glGetProgramiv(mShaderProgram, GL_LINK_STATUS, &programStatus);
     if (!programStatus)
     {
-        // TODO log
-        std::cerr << "Shader Program failed to link." << std::endl;
+        LOG_E("Shader Program failed to link." << std::endl);
 
         int logLength = 0;
         glGetProgramiv(mShaderProgram, GL_INFO_LOG_LENGTH, &logLength);
@@ -71,15 +71,15 @@ void Shader::Init(const ShaderDesc& desc)
         {
             std::vector<char> log(logLength);
             glGetProgramInfoLog(mShaderProgram, logLength, &logLength, log.data());
-            std::cerr << "Shader Program linking output:\n" << log.data() << std::endl;
+            LOG_I("Shader Program linking output:\n" << log.data()
+                     << std::endl);
         }
 
         // TODO exception
         return;
     }
 
-    // TODO log info
-    std::cerr << "Successfully compiled and linked shader." << std::endl;
+    LOG_I("Successfully compiled and linked shader." << std::endl);
 }
 
 void Shader::MakeCurrent() noexcept
@@ -103,8 +103,7 @@ GLuint Shader::CreateShader(const GLenum shaderType, const std::string& shaderPa
     std::ifstream shaderFile(shaderPath);
     if (!shaderFile)
     {
-        // TODO log
-        std::cerr << "Invalid shader file: " << shaderPath << std::endl;
+        LOG_E("Invalid shader file: " << shaderPath << std::endl);
         // TODO exception
         return GL_NONE;
     }
@@ -116,8 +115,8 @@ GLuint Shader::CreateShader(const GLenum shaderType, const std::string& shaderPa
     GLuint shader = glCreateShader(shaderType);
     if (!shader)
     {
-        // TODO log
-        std::cerr << "Failed to create Shader Object for " << shaderPath << std::endl;
+        LOG_E("Failed to create Shader Object for " << shaderPath
+                  << std::endl);
         // TODO exception
         return GL_NONE;
     }
@@ -130,8 +129,7 @@ GLuint Shader::CreateShader(const GLenum shaderType, const std::string& shaderPa
     glGetShaderiv(shader, GL_COMPILE_STATUS, &shaderStatus);
     if (!shaderStatus)
     {
-        // TODO log
-        std::cerr << "Failed to compile shader " << shaderPath << std::endl;
+        LOG_E("Failed to compile shader " << shaderPath << std::endl);
 
         int logLength = 0;
         glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &logLength);
@@ -141,17 +139,15 @@ GLuint Shader::CreateShader(const GLenum shaderType, const std::string& shaderPa
             std::vector<char> log(logLength);
             glGetShaderInfoLog(shader, logLength, &logLength, log.data());
 
-            // TODO log
-            std::cerr << "Shader '" << shaderPath << "' compilation output:\n" << log.data()
-                      << std::endl;
+            LOG_I("Shader '" << shaderPath << "' compilation output:\n"
+                     << log.data() << std::endl);
         }
 
         // TODO exception
         return GL_NONE;
     }
 
-    // TODO log info
-    std::cerr << "Compiled Shader " << shaderPath << std::endl;
+    LOG_I("Compiled Shader " << shaderPath << std::endl);
 
     return shader;
 }

@@ -23,7 +23,9 @@ private:
 
     NoiseGenerator();
     NoiseGenerator(const NoiseGenerator&) = delete;
+    NoiseGenerator(NoiseGenerator&&) = delete;
     NoiseGenerator& operator=(const NoiseGenerator&) = delete;
+    NoiseGenerator& operator=(NoiseGenerator&&) = delete;
     ~NoiseGenerator();
 
     double Fade(double t) const;

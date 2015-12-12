@@ -76,8 +76,10 @@ private:
     void MouseUp(uint32_t button);
     void MouseMove(int x, int y);
 
-    WindowManager(const WindowManager&);
+    WindowManager(const WindowManager&) = delete;
+    WindowManager(WindowManager&&) = delete;
     WindowManager& operator= (const WindowManager&) = delete;
+    WindowManager& operator= (WindowManager&&) = delete;
 
 public:
     WindowManager();

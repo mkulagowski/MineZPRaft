@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_0dba0e23",
+        "filename": "MineZPRft/Common/Linux/FileSystem.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-13T10:26:29Z",
+      "side": 1,
+      "message": "DEM TABZ",
+      "revId": "c3a5e16ac7d7c32008aa5a5c8dbe7908f863b17f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_ad803a47",
+        "filename": "MineZPRft/Common/Logger.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-13T10:26:29Z",
+      "side": 1,
+      "message": "No need for that. Non-uniform paths will make it easier for us to navigate to specific files.\n\nKeep in mind, only Windows ignores letter case in this company. Linux is case-sensitive and such maneuver will make my favorite shortcut (\"vim \" -\u003e double-click on file name from log -\u003e middle-mouse click to paste the name in the output) useless.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 47
+      },
+      "revId": "c3a5e16ac7d7c32008aa5a5c8dbe7908f863b17f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_6d862267",
+        "filename": "MineZPRft/Common/Logger.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-13T10:26:29Z",
+      "side": 1,
+      "message": "I have a minor correction/update here. IMO more important information for us will be time elapsed after application launch in seconds.\n\nI suggest two updates:\n* In constructor leave a message, something in the likes of \"MineZPRft Log, build \u003c__DATE__\u003e \u003c__TIME__\u003e. Launched \u003cGetDateTime()\u003e\"\n* In that same constructor initialize a Timer object and call Timer::Start(). Each time a Log is produced, output a timestamp by replacing marked GetDateTime() above with Timer::Stop() (no worries here, it should output greater and greater value each time Stop() is called. Start() overwrites the start point). Of course with proper stream formatting options to avoid all kinds of misalignment when printing a double value. ;)",
+      "range": {
+        "startLine": 35,
+        "startChar": 25,
+        "endLine": 35,
+        "endChar": 38
+      },
+      "revId": "c3a5e16ac7d7c32008aa5a5c8dbe7908f863b17f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_cd965694",
+        "filename": "MineZPRft/Common/Logger.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-13T10:26:29Z",
+      "side": 1,
+      "message": "Replace dot with space",
+      "range": {
+        "startLine": 49,
+        "startChar": 46,
+        "endLine": 49,
+        "endChar": 47
+      },
+      "revId": "c3a5e16ac7d7c32008aa5a5c8dbe7908f863b17f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_2db50a31",
+        "filename": "MineZPRft/Common/Logger.hpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-13T10:26:29Z",
+      "side": 1,
+      "message": "add space between } and while",
+      "revId": "c3a5e16ac7d7c32008aa5a5c8dbe7908f863b17f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_4d832656",
+        "filename": "MineZPRft/Common/Logger.hpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-13T10:26:29Z",
+      "side": 1,
+      "message": "Align params. The space between arg name and its description should be aligned.\n\nLook at my comments for reference.",
+      "revId": "c3a5e16ac7d7c32008aa5a5c8dbe7908f863b17f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_ed91529b",
+        "filename": "MineZPRft/Common/Win/FileSystem.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-13T10:26:29Z",
+      "side": 1,
+      "message": "On this stage, Logger does not have CWD provided. I suggest leaving a comment here and in functions below, that the path will be unstripped. Just to leave the fact, that we know about this.",
+      "revId": "c3a5e16ac7d7c32008aa5a5c8dbe7908f863b17f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

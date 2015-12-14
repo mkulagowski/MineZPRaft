@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_a81028a9",
+        "filename": "MineZPRft/Common/Logger.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-14T09:02:44Z",
+      "side": 1,
+      "message": "I do appreciate the effort, however the seconds in double value will be enough (WITH the remainder part - see how ex. Linux Kernel logs the timestamp). Remember about the alignment.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 65
+      },
+      "revId": "86c6a9bfd7d1ce0a77907d38aa28abd191027d28",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_e82140fd",
+        "filename": "MineZPRft/Common/Logger.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-14T09:02:44Z",
+      "side": 1,
+      "message": "These strings should be of uniform length to keep the Log alignment.\n\n\"INFO \" \"ERROR\" \"WARN \" \"OTHER\" etc. (note the spaces inside the strings)",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 29
+      },
+      "revId": "86c6a9bfd7d1ce0a77907d38aa28abd191027d28",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_084afcc4",
+        "filename": "MineZPRft/Common/Logger.hpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-14T09:02:44Z",
+      "side": 1,
+      "message": "IMO it would be a very nice idea to convert this Log type to a LOG_DEBUG, which on Release build would be replaced with a noop \"do { } while(0)\".\n\nMoreover, shorter names would be better IMO. LOG_I, LOG_W, LOG_E etc.",
+      "revId": "86c6a9bfd7d1ce0a77907d38aa28abd191027d28",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_688c5036",
+        "filename": "MineZPRft/Game/main.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-14T09:02:44Z",
+      "side": 1,
+      "message": "NOTE (all capitals, without \":\" )",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 12
+      },
+      "revId": "86c6a9bfd7d1ce0a77907d38aa28abd191027d28",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_48895425",
+        "filename": "MineZPRft/Game/main.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-14T09:02:44Z",
+      "side": 1,
+      "message": "There\u0027s too much \"their filename (un)stripped\" repetition here IMO.\n\n\"Give Logger CWD to enable file path stripping\"",
+      "range": {
+        "startLine": 19,
+        "startChar": 7,
+        "endLine": 19,
+        "endChar": 77
+      },
+      "revId": "86c6a9bfd7d1ce0a77907d38aa28abd191027d28",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_a8866811",
+        "filename": "MineZPRft/Game/main.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-14T09:02:44Z",
+      "side": 1,
+      "message": "As above. This way it will be more recognizable for some IDEs.",
+      "range": {
+        "startLine": 22,
+        "startChar": 7,
+        "endLine": 22,
+        "endChar": 12
+      },
+      "revId": "86c6a9bfd7d1ce0a77907d38aa28abd191027d28",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

@@ -1,0 +1,688 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_9e5ba62d",
+        "filename": "MineZPRft/Common/Win/Window.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "comment it, cause I have no idea what is going on",
+      "range": {
+        "startLine": 181,
+        "startChar": 4,
+        "endLine": 185,
+        "endChar": 30
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_fe4bba56",
+        "filename": "MineZPRft/Renderer/Camera.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "comment",
+      "range": {
+        "startLine": 67,
+        "startChar": 4,
+        "endLine": 67,
+        "endChar": 38
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_1e47964c",
+        "filename": "MineZPRft/Renderer/Mesh.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "could it return const GLsizei or it can\u0027t/shouldn\u0027t ?",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 60,
+        "endChar": 42
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_3e753298",
+        "filename": "MineZPRft/Renderer/Renderer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "comment plz",
+      "range": {
+        "startLine": 112,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 85
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_9e5e4675",
+        "filename": "MineZPRft/Terrain/Chunk.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "spaces",
+      "range": {
+        "startLine": 13,
+        "startChar": 24,
+        "endLine": 13,
+        "endChar": 47
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_7e5b2a87",
+        "filename": "MineZPRft/Terrain/Chunk.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "Please give a comment here what is a structure of our array. Is it array[x][y][z]?",
+      "range": {
+        "startLine": 43,
+        "startChar": 21,
+        "endLine": 43,
+        "endChar": 61
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_3e61b239",
+        "filename": "MineZPRft/Terrain/Chunk.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "I\u0027m sorry, but if it\u0027s possible to give wrong coordinates, then it\u0027s possible to make whole loop with it \u003d\u003e better check if x, y \u0026 z are within limits BEFORE calculating result... and if they are, then result cannot be bigger then a size of our array - isn\u0027t that right?\nPlease move and change this \u0027if\u0027 accordingly.",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 6
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_fe4e5ac0",
+        "filename": "MineZPRft/Terrain/Chunk.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "rm",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 74
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_1e4a36ac",
+        "filename": "MineZPRft/Terrain/Chunk.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "Imho it should be VoxelType instead of Voxel.",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 32
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_9e72c6ab",
+        "filename": "MineZPRft/Terrain/Chunk.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "couldn\u0027t we just write \u0027look at SetVoxel\u0027 or sth?",
+      "range": {
+        "startLine": 79,
+        "startChar": 54,
+        "endLine": 90,
+        "endChar": 14
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_3e2d3247",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "rm",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 4
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_3ede1212",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "You do this in several places. Just write a comment at the beginning that across Y axis first 2 indexes are skipped, because they will be filled with bedrock at the last pass.",
+      "range": {
+        "startLine": 34,
+        "startChar": 25,
+        "endLine": 34,
+        "endChar": 31
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_fef1facd",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "spaces",
+      "range": {
+        "startLine": 36,
+        "startChar": 28,
+        "endLine": 36,
+        "endChar": 37
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_3e89b226",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "of course these should be commented as well...\n...even \"// progress bar\" would be better than staring and thinking \"why the hell is he logging dots in random spots?\"",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 21
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_3ea292ae",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "// pass 2.2 - turn voxels above 1/4 of height to stone according to the heightmap",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 37
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_3ed4521f",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "magic number? What if we were to set CHUNK_Y to \u003c\u003d16 some time later on?\nHow about y \u003c CHUNK_Y / 2?",
+      "range": {
+        "startLine": 55,
+        "startChar": 47,
+        "endLine": 55,
+        "endChar": 50
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_1eedd6ef",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "spaces",
+      "range": {
+        "startLine": 55,
+        "startChar": 21,
+        "endLine": 55,
+        "endChar": 30
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_3ebb72e6",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "spaces",
+      "range": {
+        "startLine": 55,
+        "startChar": 37,
+        "endLine": 55,
+        "endChar": 46
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_5ebe6ed5",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "spaces",
+      "range": {
+        "startLine": 59,
+        "startChar": 30,
+        "endLine": 59,
+        "endChar": 39
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_7eb5eaec",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "spaces",
+      "range": {
+        "startLine": 59,
+        "startChar": 73,
+        "endLine": 59,
+        "endChar": 82
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_1eeeb6b4",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "instead of creating double var every pass of the loop here and @line48, just create it once - before line44",
+      "range": {
+        "startLine": 72,
+        "startChar": 16,
+        "endLine": 72,
+        "endChar": 31
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_bed142fd",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "maybe make a const? AIR_THRESHOLD_LVL or sth.",
+      "range": {
+        "startLine": 74,
+        "startChar": 31,
+        "endLine": 74,
+        "endChar": 34
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_decc3e64",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "pass 4?",
+      "range": {
+        "startLine": 80,
+        "startChar": 6,
+        "endLine": 80,
+        "endChar": 19
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_fedbba18",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "why?",
+      "range": {
+        "startLine": 81,
+        "startChar": 24,
+        "endLine": 81,
+        "endChar": 31
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_1ed796ee",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "why?",
+      "range": {
+        "startLine": 83,
+        "startChar": 32,
+        "endLine": 83,
+        "endChar": 39
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_9e39e643",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "please add here why Y is different (divided by 4)",
+      "range": {
+        "startLine": 97,
+        "startChar": 20,
+        "endLine": 97,
+        "endChar": 75
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_5e2f4ef6",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "why ?",
+      "range": {
+        "startLine": 100,
+        "startChar": 59,
+        "endLine": 100,
+        "endChar": 68
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_3e1372b9",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "those values HAVE TO be somewhere, they cannot be magic numbers. Best would be map/array.\nIf this is temporary, I can let it go (dunno how it\u0027s connected to giving voxels right texture file), BUT if so, then comment is a must here.",
+      "range": {
+        "startLine": 104,
+        "startChar": 23,
+        "endLine": 113,
+        "endChar": 46
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_5e166ea8",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "instead of comment make a const FLOATS_PER_VERTEX or sth",
+      "range": {
+        "startLine": 124,
+        "startChar": 34,
+        "endLine": 124,
+        "endChar": 82
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_7e840ad4",
+        "filename": "MineZPRft/Terrain/TerrainManager.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-14T14:57:56Z",
+      "side": 1,
+      "message": "why space?",
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

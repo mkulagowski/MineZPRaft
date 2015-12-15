@@ -14,11 +14,6 @@ namespace
 const int HEIGHTMAP_HEIGHT = 16;
 const double AIR_THRESHOLD = 0.3;
 const int FLOAT_COUNT_PER_VERTEX = 7;
-
-// TODO temporary components for Stone and Bedrock.
-//      MUST be replaced with Voxel Database.
-const float STONE_COLOR_COMPONENT = 0.7f;
-const float BEDROCK_COLOR_COMPONENT = 0.1f;
 const float ALPHA_COMPONENT = 1.0f; // Alpha color component should stay at 1,0 (full opacity).
 
 } // namespace
@@ -53,7 +48,7 @@ void TerrainManager::Init(const TerrainDesc& desc)
     for (int z = 0; z < CHUNK_Z; ++z)
         for (int y = 2; y < CHUNK_Y / 4; ++y)
             for (int x = 0; x < CHUNK_X; ++x)
-                mChunk.SetVoxel(x, y, z, Voxel::Stone);
+                mChunk.SetVoxel(x, y, z, VoxelType::Stone);
 
     // stage 2.1 - generate a heightmap using Perlin
     double noise;
@@ -82,7 +77,7 @@ void TerrainManager::Init(const TerrainDesc& desc)
             {
                 // Add a voxel if noise value is higher than currently processed voxel's height
                 if (heightMap[x * CHUNK_Z + z] >= static_cast<double>(y - (CHUNK_Y / 4)))
-                    mChunk.SetVoxel(x, y, z, Voxel::Stone);
+                    mChunk.SetVoxel(x, y, z, VoxelType::Stone);
             }
 
     // stage 3 - cut through the terrain with some Perlin-generated caves
@@ -95,14 +90,14 @@ void TerrainManager::Init(const TerrainDesc& desc)
                 noise = mNoiseGen.Noise(x * 0.1, z * 0.1, y * 0.1);
 
                 if (noise > AIR_THRESHOLD)
-                    mChunk.SetVoxel(x, y, z, Voxel::Air);
+                    mChunk.SetVoxel(x, y, z, VoxelType::Air);
             }
 
     // stage 4 - force-fill first two layers of the ground with bedrock
     for (int z = 0; z < CHUNK_Z; ++z)
         for (int y = 0; y < 2; ++y)
             for (int x = 0; x < CHUNK_X; ++x)
-                mChunk.SetVoxel(x, y, z, Voxel::Bedrock);
+                mChunk.SetVoxel(x, y, z, VoxelType::Bedrock);
 
     // stage 5 - create Mesh from chunk
     std::vector<float> verts;
@@ -110,8 +105,8 @@ void TerrainManager::Init(const TerrainDesc& desc)
         for (int y = 0; y < CHUNK_Y; ++y)
             for (int x = 0; x < CHUNK_X; ++x)
             {
-                Voxel vox = mChunk.GetVoxel(x, y, z);
-                if (vox != Voxel::Air && vox != Voxel::Unknown)
+                VoxelType vox = mChunk.GetVoxel(x, y, z);
+                if (vox != VoxelType::Air && vox != VoxelType::Unknown)
                 {
                     // Shifted to keep the chunk in the middle of the scene.
                     // Because (for performance issues) we fill the chunk only to 1/4 of its size,
@@ -120,22 +115,11 @@ void TerrainManager::Init(const TerrainDesc& desc)
                     verts.push_back(static_cast<float>(y - (CHUNK_Y / 4 + HEIGHTMAP_HEIGHT)));
                     verts.push_back(static_cast<float>(z - CHUNK_Z / 2));
 
-                    // TODO temporary solution to distinguish two available voxel types.
-                    //      Replace with receiving voxel color from Voxel DB.
-                    if (vox == Voxel::Stone)
-                    {
-                        verts.push_back(STONE_COLOR_COMPONENT);
-                        verts.push_back(STONE_COLOR_COMPONENT);
-                        verts.push_back(STONE_COLOR_COMPONENT);
-                        verts.push_back(ALPHA_COMPONENT);
-                    }
-                    else if (vox == Voxel::Bedrock)
-                    {
-                        verts.push_back(BEDROCK_COLOR_COMPONENT);
-                        verts.push_back(BEDROCK_COLOR_COMPONENT);
-                        verts.push_back(BEDROCK_COLOR_COMPONENT);
-                        verts.push_back(ALPHA_COMPONENT);
-                    }
+                    Voxel& voxData = VoxelDB[vox];
+                    verts.push_back(voxData.colorRed);
+                    verts.push_back(voxData.colorGreen);
+                    verts.push_back(voxData.colorBlue);
+                    verts.push_back(ALPHA_COMPONENT);
                 }
             }
 

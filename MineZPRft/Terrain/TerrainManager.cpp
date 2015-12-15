@@ -15,11 +15,6 @@ namespace
 const int HEIGHTMAP_HEIGHT = 16;
 const double AIR_THRESHOLD = 0.3;
 const int FLOAT_COUNT_PER_VERTEX = 7;
-
-// TODO temporary components for Stone and Bedrock.
-//      MUST be replaced with Voxel Database.
-const float STONE_COLOR_COMPONENT = 0.7f;
-const float BEDROCK_COLOR_COMPONENT = 0.1f;
 const float ALPHA_COMPONENT = 1.0f; // Alpha color component should stay at 1,0 (full opacity).
 
 } // namespace
@@ -53,7 +48,7 @@ void TerrainManager::Init(const TerrainDesc& desc)
     for (int z = 0; z < CHUNK_Z; ++z)
         for (int y = 2; y < CHUNK_Y / 4; ++y)
             for (int x = 0; x < CHUNK_X; ++x)
-                mChunk.SetVoxel(x, y, z, Voxel::Stone);
+                mChunk.SetVoxel(x, y, z, VoxelType::Stone);
 
     LOG_D("  Terrain Stage 1 done");
 
@@ -85,7 +80,7 @@ void TerrainManager::Init(const TerrainDesc& desc)
                 // Add a stone voxel if heightmap's value is higher
                 // than currently processed voxel's Y coordinate.
                 if (heightMap[x * CHUNK_Z + z] >= static_cast<double>(y - (CHUNK_Y / 4)))
-                    mChunk.SetVoxel(x, y, z, Voxel::Stone);
+                    mChunk.SetVoxel(x, y, z, VoxelType::Stone);
             }
 
     LOG_D("  Terrain Stage 2 done");
@@ -100,7 +95,7 @@ void TerrainManager::Init(const TerrainDesc& desc)
                 noise = mNoiseGen.Noise(x * 0.1, z * 0.1, y * 0.1);
 
                 if (noise > AIR_THRESHOLD)
-                    mChunk.SetVoxel(x, y, z, Voxel::Air);
+                    mChunk.SetVoxel(x, y, z, VoxelType::Air);
             }
 
     LOG_D("  Terrain Stage 3 done");
@@ -109,7 +104,7 @@ void TerrainManager::Init(const TerrainDesc& desc)
     for (int z = 0; z < CHUNK_Z; ++z)
         for (int y = 0; y < 2; ++y)
             for (int x = 0; x < CHUNK_X; ++x)
-                mChunk.SetVoxel(x, y, z, Voxel::Bedrock);
+                mChunk.SetVoxel(x, y, z, VoxelType::Bedrock);
 
     LOG_D("  Terrain Stage 4 done");
 
@@ -119,9 +114,18 @@ void TerrainManager::Init(const TerrainDesc& desc)
         for (int y = 0; y < CHUNK_Y; ++y)
             for (int x = 0; x < CHUNK_X; ++x)
             {
-                Voxel vox = mChunk.GetVoxel(x, y, z);
-                if (vox != Voxel::Air && vox != Voxel::Unknown)
+                VoxelType vox = mChunk.GetVoxel(x, y, z);
+                if (vox != VoxelType::Air && vox != VoxelType::Unknown)
                 {
+                    auto voxDataIt = VoxelDB.find(vox);
+                    if (voxDataIt == VoxelDB.end())
+                    {
+                        // TODO log error
+                        std::cerr << "Voxel " << static_cast<VoxelUnderType>(vox)
+                                  << " was not found in database!" << std::endl;
+                        continue;
+                    }
+
                     // Shifted to keep the chunk in the middle of the scene.
                     // Because (for performance issues) we fill the chunk only to 1/4 of its size,
                     // (plus the heightmap) we shift the voxels to CHUNK_Y / 4 + HEIGHTMAP_HEIGHT
@@ -129,22 +133,11 @@ void TerrainManager::Init(const TerrainDesc& desc)
                     verts.push_back(static_cast<float>(y - (CHUNK_Y / 4 + HEIGHTMAP_HEIGHT)));
                     verts.push_back(static_cast<float>(z - CHUNK_Z / 2));
 
-                    // TODO temporary solution to distinguish two available voxel types.
-                    //      Replace with receiving voxel color from Voxel DB.
-                    if (vox == Voxel::Stone)
-                    {
-                        verts.push_back(STONE_COLOR_COMPONENT);
-                        verts.push_back(STONE_COLOR_COMPONENT);
-                        verts.push_back(STONE_COLOR_COMPONENT);
-                        verts.push_back(ALPHA_COMPONENT);
-                    }
-                    else if (vox == Voxel::Bedrock)
-                    {
-                        verts.push_back(BEDROCK_COLOR_COMPONENT);
-                        verts.push_back(BEDROCK_COLOR_COMPONENT);
-                        verts.push_back(BEDROCK_COLOR_COMPONENT);
-                        verts.push_back(ALPHA_COMPONENT);
-                    }
+                    const Voxel& voxData = voxDataIt->second;
+                    verts.push_back(voxData.colorRed);
+                    verts.push_back(voxData.colorGreen);
+                    verts.push_back(voxData.colorBlue);
+                    verts.push_back(ALPHA_COMPONENT);
                 }
             }
 

@@ -48,6 +48,7 @@
     <ClCompile Include="Terrain\Chunk.cpp" />
     <ClCompile Include="Terrain\NoiseGenerator.cpp" />
     <ClCompile Include="Terrain\TerrainManager.cpp" />
+    <ClCompile Include="Terrain\Voxel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\Common.hpp" />
@@ -80,6 +81,7 @@
     <ClInclude Include="Terrain\Chunk.hpp" />
     <ClInclude Include="Terrain\NoiseGenerator.hpp" />
     <ClInclude Include="Terrain\TerrainManager.hpp" />
+    <ClInclude Include="Terrain\Voxel.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{FF5ECD0B-2B27-4195-8349-9440A16B82E3}</ProjectGuid>

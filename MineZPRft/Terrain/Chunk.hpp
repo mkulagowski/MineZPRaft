@@ -9,6 +9,8 @@
 
 #include <cstddef>
 
+#include "Voxel.hpp"
+
 /**
  * Chunk dimensions.
  * Will be useful when measuring performance between specific chunk sizes.
@@ -16,18 +18,6 @@
 #define CHUNK_X 64
 #define CHUNK_Y 256
 #define CHUNK_Z 64
-
-
-/**
- * Enumerates voxels available to set inside a Chunk.
- */
-enum class Voxel : unsigned char
-{
-    Air = 0,        ///< Pass-through voxel, aka. "nothing". The default one to initialize.
-    Bedrock,        ///< Unbreakable material, used at the very end of the map.
-    Stone,          ///< Stone block, destructable.
-    Unknown         ///< Maximum possible voxel type. Typically used to return an error.
-};
 
 
 class Chunk
@@ -66,7 +56,7 @@ public:
      * happens, the function will produce a warning log and will return without any modifications
      * done to voxel array.
      */
-    void SetVoxel(size_t x, size_t y, size_t z, Voxel voxel) noexcept;
+    void SetVoxel(size_t x, size_t y, size_t z, VoxelType voxel) noexcept;
 
     /**
      * Retrieve a voxel from the chunk.
@@ -94,7 +84,7 @@ public:
      * happens, the function will produce a warning log and will return without any modifications
      * done to voxel array.
      */
-    Voxel GetVoxel(size_t x, size_t y, size_t z) noexcept;
+    VoxelType GetVoxel(size_t x, size_t y, size_t z) noexcept;
 
 private:
     /**
@@ -115,7 +105,7 @@ private:
     /**
      * 1D Array of voxels, which represent a single chunk.
      */
-    Voxel mVoxels[CHUNK_X*CHUNK_Y*CHUNK_Z];
+    VoxelType mVoxels[CHUNK_X * CHUNK_Y * CHUNK_Z];
 };
 
 #endif // __TERRAIN_CHUNK_HPP__

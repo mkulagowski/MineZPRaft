@@ -11,14 +11,14 @@
 Chunk::Chunk()
 {
     for (int i = 0; i < CHUNK_X * CHUNK_Y * CHUNK_Z; ++i)
-        mVoxels[i] = Voxel::Air;
+        mVoxels[i] = VoxelType::Air;
 }
 
 Chunk::~Chunk()
 {
 }
 
-void Chunk::SetVoxel(size_t x, size_t y, size_t z, Voxel voxel) noexcept
+void Chunk::SetVoxel(size_t x, size_t y, size_t z, VoxelType voxel) noexcept
 {
     // calculate the index
     size_t index = 0;
@@ -28,12 +28,12 @@ void Chunk::SetVoxel(size_t x, size_t y, size_t z, Voxel voxel) noexcept
     mVoxels[index] = voxel;
 }
 
-Voxel Chunk::GetVoxel(size_t x, size_t y, size_t z) noexcept
+VoxelType Chunk::GetVoxel(size_t x, size_t y, size_t z) noexcept
 {
     // calculate the index
     size_t index = 0;
     if (!CalculateIndex(x, y, z, index))
-        return Voxel::Unknown;
+        return VoxelType::Unknown;
 
     return mVoxels[index];
 }

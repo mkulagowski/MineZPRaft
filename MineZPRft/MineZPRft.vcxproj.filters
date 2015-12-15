@@ -85,6 +85,9 @@
     <ClCompile Include="Terrain\Chunk.cpp">
       <Filter>Terrain</Filter>
     </ClCompile>
+    <ClCompile Include="Terrain\VoxelDatabase.cpp">
+      <Filter>Terrain</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\GameWindow.hpp">
@@ -157,6 +160,9 @@
       <Filter>Terrain</Filter>
     </ClInclude>
     <ClInclude Include="Terrain\Chunk.hpp">
+      <Filter>Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="Terrain\VoxelDatabase.hpp">
       <Filter>Terrain</Filter>
     </ClInclude>
   </ItemGroup>

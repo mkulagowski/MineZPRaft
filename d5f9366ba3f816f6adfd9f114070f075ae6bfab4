@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_d56338da",
+        "filename": "MineZPRft/Terrain/VoxelDatabase.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-15T12:54:23Z",
+      "side": 1,
+      "message": "cpp",
+      "range": {
+        "startLine": 15,
+        "startChar": 26,
+        "endLine": 15,
+        "endChar": 29
+      },
+      "revId": "d5f9366ba3f816f6adfd9f114070f075ae6bfab4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

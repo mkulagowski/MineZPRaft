@@ -378,6 +378,30 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_e3ea350e",
+        "filename": "MineZPRft/Terrain/Chunk.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-16T15:26:02Z",
+      "side": 1,
+      "message": "Because it\u0027s useful anyway \u0026 this is just stating the obvious - imho at least. Do as You want with this one.",
+      "parentUuid": "5ac4a560_67bb9a72",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 74
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_1e4a36ac",
         "filename": "MineZPRft/Terrain/Chunk.hpp",
         "patchSetId": 2
@@ -425,6 +449,30 @@
     },
     {
       "key": {
+        "uuid": "5ac4a560_c38c5982",
+        "filename": "MineZPRft/Terrain/Chunk.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-16T15:26:02Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "5ac4a560_87b19691",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 32
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac4a560_9e72c6ab",
         "filename": "MineZPRft/Terrain/Chunk.hpp",
         "patchSetId": 2
@@ -460,6 +508,30 @@
       "side": 1,
       "message": "We could, but I don\u0027t like the documentations which make you go through 15 other functions before getting the info you needed.\n\nThis does not hurt anyone, and is also important in this function. However I will consider moving this to a separate Doxy page and placing references to this.",
       "parentUuid": "5ac4a560_9e72c6ab",
+      "range": {
+        "startLine": 79,
+        "startChar": 54,
+        "endLine": 90,
+        "endChar": 14
+      },
+      "revId": "46d87e5fb011cbe0ae40093e8dc3089d97bff492",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_23f50dee",
+        "filename": "MineZPRft/Terrain/Chunk.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-16T15:26:02Z",
+      "side": 1,
+      "message": "ok, thx",
+      "parentUuid": "5ac4a560_c7ab8e1b",
       "range": {
         "startLine": 79,
         "startChar": 54,

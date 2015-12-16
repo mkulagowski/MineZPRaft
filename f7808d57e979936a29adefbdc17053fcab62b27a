@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac4a560_c3ba9909",
+        "filename": "MineZPRft/Common/Win/Window.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-16T15:26:02Z",
+      "side": 1,
+      "message": "syncrhonize it",
+      "range": {
+        "startLine": 189,
+        "startChar": 17,
+        "endLine": 189,
+        "endChar": 32
+      },
+      "revId": "f7808d57e979936a29adefbdc17053fcab62b27a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_a3911d9b",
+        "filename": "MineZPRft/Terrain/Chunk.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-16T15:26:02Z",
+      "side": 1,
+      "message": "Not quite sure how 2 of these are gonna compile...",
+      "range": {
+        "startLine": 54,
+        "startChar": 51,
+        "endLine": 54,
+        "endChar": 53
+      },
+      "revId": "f7808d57e979936a29adefbdc17053fcab62b27a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_6369c5bd",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-16T15:26:02Z",
+      "side": 1,
+      "message": "Stage 1 - fill bottom quarter of chunk with stone voxels",
+      "range": {
+        "startLine": 52,
+        "startChar": 7,
+        "endLine": 52,
+        "endChar": 60
+      },
+      "revId": "f7808d57e979936a29adefbdc17053fcab62b27a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_836421e6",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-16T15:26:02Z",
+      "side": 1,
+      "message": "Stage, do so for all below *WINK*",
+      "range": {
+        "startLine": 58,
+        "startChar": 7,
+        "endLine": 58,
+        "endChar": 12
+      },
+      "revId": "f7808d57e979936a29adefbdc17053fcab62b27a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_a363ddda",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-16T15:26:02Z",
+      "side": 1,
+      "message": "stage 2.2",
+      "range": {
+        "startLine": 71,
+        "startChar": 23,
+        "endLine": 71,
+        "endChar": 31
+      },
+      "revId": "f7808d57e979936a29adefbdc17053fcab62b27a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_03a011f3",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-16T15:26:02Z",
+      "side": 1,
+      "message": "stone voxels",
+      "range": {
+        "startLine": 78,
+        "startChar": 50,
+        "endLine": 78,
+        "endChar": 61
+      },
+      "revId": "f7808d57e979936a29adefbdc17053fcab62b27a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_23a7cd0d",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-16T15:26:02Z",
+      "side": 1,
+      "message": "stone voxel",
+      "range": {
+        "startLine": 83,
+        "startChar": 24,
+        "endLine": 83,
+        "endChar": 30
+      },
+      "revId": "f7808d57e979936a29adefbdc17053fcab62b27a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_43aa09d5",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-16T15:26:02Z",
+      "side": 1,
+      "message": "heightmap\u0027s",
+      "range": {
+        "startLine": 83,
+        "startChar": 34,
+        "endLine": 83,
+        "endChar": 39
+      },
+      "revId": "f7808d57e979936a29adefbdc17053fcab62b27a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac4a560_63970591",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2015-12-16T15:26:02Z",
+      "side": 1,
+      "message": "Actually if You want, You could make a lambda just below //stage5 comment \u0026 just use it here, to make it shorter and more readable...but it\u0027s up to You, because it\u0027s not like it\u0027s a must here",
+      "range": {
+        "startLine": 127,
+        "startChar": 24,
+        "endLine": 130,
+        "endChar": 57
+      },
+      "revId": "f7808d57e979936a29adefbdc17053fcab62b27a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

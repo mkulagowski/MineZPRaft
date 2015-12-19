@@ -59,7 +59,7 @@ void GameManager::GameLoop()
         mWindow.ProcessMessages();
         mWindow.Update(frameTime);
 
-        // TODO terrain manager will have to update itself here
+        mTerrain.Update();
         mRenderer.Draw();
 
         mWindow.SwapBuffers();

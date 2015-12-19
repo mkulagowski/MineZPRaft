@@ -93,6 +93,9 @@ void Renderer::Init(const RendererDesc& desc)
     // TODO throw if incorrect uniform locations
 
     glUniformMatrix4fv(mMainShaderPerspectiveMatrixLoc, 1, false, mCamera.GetPerspectiveRaw());
+
+    glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(1);
 }
 
 void Renderer::AddMesh(const Mesh* mesh)

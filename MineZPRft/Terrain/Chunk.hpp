@@ -10,14 +10,15 @@
 #include <cstddef>
 
 #include "Voxel.hpp"
+#include "Renderer/Mesh.hpp"
 
 /**
  * Chunk dimensions.
  * Will be useful when measuring performance between specific chunk sizes.
  */
-#define CHUNK_X 64
+#define CHUNK_X 32
 #define CHUNK_Y 256
-#define CHUNK_Z 64
+#define CHUNK_Z 32
 
 
 class Chunk
@@ -86,12 +87,23 @@ public:
      */
     VoxelType GetVoxel(size_t x, size_t y, size_t z) noexcept;
 
+    /**
+     * Fills the Chunk with Perlin-generated voxels.
+     *
+     * @param chunkX Number of X-th chunk in the generated world.
+     * @param chunkZ Number of Z-th chunk in the generated world.
+     *
+     * The chunks in the world create a two-dimensional grid. All are connected and it is assumed,
+     * that the map generated in between them is seamless.
+     */
+    void Generate(int chunkX, int chunkZ) noexcept;
+
 private:
     /**
      * Translates three coordinates to a single index inside mVoxels array. Additionally checks if
      * coordinates are correct and returns an error if they exceed mVoxels dimensions.
      *
-     * @param [in[  x     X coordinate inside voxel array.
+     * @param [in]  x     X coordinate inside voxel array.
      * @param [in]  y     Y coordinate inside voxel array.
      * @param [in]  z     Z coordinate inside voxel array.
      * @param [out] index Index inside mVoxels array.
@@ -106,6 +118,7 @@ private:
      * 1D Array of voxels, which represent a single chunk.
      */
     VoxelType mVoxels[CHUNK_X * CHUNK_Y * CHUNK_Z];
+    Mesh mMesh;
 };
 
 #endif // __TERRAIN_CHUNK_HPP__

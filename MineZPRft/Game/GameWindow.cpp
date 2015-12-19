@@ -47,7 +47,7 @@ void GameWindow::Update(double deltaTime) noexcept
     playerShift *= static_cast<float>(deltaTime);
 
     if (IsKeyPressed(Key::LShift))
-        playerShift *= 10.0f;
+        playerShift *= 20.0f;
 
     mPlayerPtr->SetPosition(pos + playerShift);
     mPlayerPtr->Update();

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ac1b152_db78242e",
+        "filename": "MineZPRft/Common/Linux/Window.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-19T15:51:01Z",
+      "side": 1,
+      "message": "O, rly?\n\nLinux build has issues with this part (and maybe with some others). Please fix ASAP.",
+      "range": {
+        "startLine": 39,
+        "startChar": 12,
+        "endLine": 39,
+        "endChar": 21
+      },
+      "revId": "412635d0b876741e111de0903c6c0fc1bac5a5e4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

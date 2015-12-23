@@ -38,8 +38,12 @@ private:
     GameManager& operator=(GameManager&&) = delete;
     ~GameManager();
 
+    void CalculatePlayerChunk();
+
     Timer mFrameTimer;
     GamePlayer mPlayer;
+    int mPlayerChunkX;
+    int mPlayerChunkZ;
     GameWindow mWindow;
     Renderer& mRenderer;
     TerrainManager& mTerrain;

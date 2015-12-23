@@ -7,6 +7,7 @@
 #include "GameWindow.hpp"
 
 #include "Common/Common.hpp"
+#include "Common/Logger.hpp"
 #include "Math/Vector.hpp"
 #include "GameKeycodes.hpp"
 
@@ -55,8 +56,14 @@ void GameWindow::Update(double deltaTime) noexcept
 
 void GameWindow::OnKeyPress(int key)
 {
-    UNUSED(key);
-    // q,e - switch cube types
+    // TODO:
+    //   q,e - switch cube types
+
+    if (key == Key::P)
+    {
+        const Vector& pos = mPlayerPtr->GetPosition();
+        LOG_I("Player position: " << pos);
+    }
 }
 
 void GameWindow::OnMouseDown(uint32_t button, int x, int y)

@@ -9,6 +9,8 @@
 GameManager::GameManager()
     : mFrameTimer()
     , mPlayer()
+    , mPlayerChunkX(0)
+    , mPlayerChunkZ(0)
     , mWindow(&mPlayer)
     , mRenderer(Renderer::GetInstance())
     , mTerrain(TerrainManager::GetInstance())
@@ -59,9 +61,49 @@ void GameManager::GameLoop()
         mWindow.ProcessMessages();
         mWindow.Update(frameTime);
 
-        mTerrain.Update();
+        CalculatePlayerChunk();
+        mTerrain.Update(mPlayerChunkX, mPlayerChunkZ);
         mRenderer.Draw();
 
         mWindow.SwapBuffers();
+    }
+}
+
+void GameManager::CalculatePlayerChunk()
+{
+    const Vector& PlayerPos = mPlayer.GetPosition();
+    Vector shift;
+
+    float boundX = static_cast<float>(CHUNK_X / 2);
+    float boundZ = static_cast<float>(CHUNK_Z / 2);
+
+    if (PlayerPos[0] > boundX)
+    {
+        shift -= Vector(static_cast<float>(CHUNK_X), 0.0f, 0.0f, 0.0f);
+        mPlayerChunkX--;
+    }
+
+    if (PlayerPos[0] < -boundX)
+    {
+        shift += Vector(static_cast<float>(CHUNK_X), 0.0f, 0.0f, 0.0f);
+        mPlayerChunkX++;
+    }
+
+    if (PlayerPos[2] > boundZ)
+    {
+        shift -= Vector(0.0f, 0.0f, static_cast<float>(CHUNK_Z), 0.0f);
+        mPlayerChunkZ--;
+    }
+
+    if (PlayerPos[2] < -boundZ)
+    {
+        shift += Vector(0.0f, 0.0f, static_cast<float>(CHUNK_Z), 0.0f);
+        mPlayerChunkZ++;
+    }
+
+    if (!(shift == Vector()))
+    {
+        mPlayer.SetPosition(PlayerPos + shift);
+        LOG_D("Shifted to chunk: [" << mPlayerChunkX << ", " << mPlayerChunkZ << "]");
     }
 }

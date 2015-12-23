@@ -18,10 +18,16 @@ Mesh::Mesh()
 
 Mesh::~Mesh()
 {
+    glDeleteBuffers(1, &mVBO);
 }
 
 void Mesh::Init(const MeshDesc& desc)
 {
+    if (mVBO)
+    {
+        glDeleteBuffers(1, &mVBO);
+    }
+
     glGenBuffers(1, &mVBO);
     glBindBuffer(GL_ARRAY_BUFFER, mVBO);
     glBufferData(GL_ARRAY_BUFFER, desc.dataSize, desc.dataPtr, GL_STATIC_DRAW);

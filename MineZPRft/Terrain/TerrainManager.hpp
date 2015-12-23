@@ -46,7 +46,7 @@ public:
      *
      * @remarks The function for performance will not throw.
      */
-    void Update() noexcept;
+    void Update(int chunkX, int chunkZ) noexcept;
 
 private:
     TerrainManager();
@@ -61,6 +61,12 @@ private:
     Chunk mChunk3;
     Chunk mChunk4;
     Chunk mChunk5;
+    Chunk mChunk6;
+    Chunk mChunk7;
+    Chunk mChunk8;
+    Chunk mChunk9;
+    int mCurrentChunkX;
+    int mCurrentChunkZ;
 };
 
 #endif // __TERRAIN_TERRAINMANAGER_HPP__

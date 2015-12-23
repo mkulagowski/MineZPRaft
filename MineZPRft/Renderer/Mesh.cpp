@@ -12,27 +12,40 @@
 using namespace OGLExt;
 
 Mesh::Mesh()
-    : mWorldMatrix(MATRIX_IDENTITY)
+    : mVBO(GL_NONE)
+    , mVertCount(0)
+    , mWorldMatrix(MATRIX_IDENTITY)
 {
 }
 
 Mesh::~Mesh()
 {
+    glDeleteBuffers(1, &mVBO);
 }
 
 void Mesh::Init(const MeshDesc& desc)
 {
-    glGenBuffers(1, &mVBO);
-    glBindBuffer(GL_ARRAY_BUFFER, mVBO);
-    glBufferData(GL_ARRAY_BUFFER, desc.dataSize, desc.dataPtr, GL_STATIC_DRAW);
+    if (mVBO != 0)
+    {
+        LOG_E("Mesh is already initialized! Use Mesh::Update() to update its contents.");
+        // TODO exception
+        return;
+    }
 
-    mVertCount = static_cast<GLsizei>(desc.vertCount);
+    glGenBuffers(1, &mVBO);
+
+    if (desc.dataPtr != 0)
+    {
+        Update({desc.dataPtr, desc.dataSize, desc.vertCount});
+    }
 }
 
 void Mesh::Bind() const noexcept
 {
     glBindBuffer(GL_ARRAY_BUFFER, mVBO);
 
+    // TODO Probably the attributes are chunk-specific. Introduction of new Meshes might
+    //      be then problematic. Consider adding "VertexLayout" class or similar.
     // Attribute 0 - Vertex position, at stride = 0 (the beginning of specified vertex)
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 28,
                           reinterpret_cast<const void*>(0));
@@ -59,5 +72,7 @@ GLsizei Mesh::GetVertCount() const noexcept
 
 void Mesh::Update(const MeshUpdateDesc& desc) noexcept
 {
-    UNUSED(desc);
+    glBindBuffer(GL_ARRAY_BUFFER, mVBO);
+    glBufferData(GL_ARRAY_BUFFER, desc.dataSize, desc.dataPtr, GL_STATIC_DRAW);
+    mVertCount = desc.vertCount;
 }

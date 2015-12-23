@@ -30,6 +30,7 @@ struct MeshUpdateDesc
 {
     void* dataPtr;      ///< Pointer for data to use during mesh initialization.
     size_t dataSize;    ///< Size of the data.
+    size_t vertCount;   ///< Amount of vertices.
 };
 
 class Mesh

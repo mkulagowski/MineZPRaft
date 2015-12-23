@@ -7,6 +7,7 @@
 #include "Chunk.hpp"
 
 #include "Common/Logger.hpp"
+#include "Math/Common.hpp"
 #include "NoiseGenerator.hpp"
 #include "Renderer/Renderer.hpp"
 
@@ -32,6 +33,15 @@ Chunk::~Chunk()
 {
 }
 
+void Chunk::Init()
+{
+    MeshDesc md;
+    md.dataPtr = 0;
+    md.dataSize = 0;
+    md.vertCount = 0;
+    mMesh.Init(md);
+}
+
 void Chunk::SetVoxel(size_t x, size_t y, size_t z, VoxelType voxel) noexcept
 {
     // calculate the index
@@ -52,12 +62,16 @@ VoxelType Chunk::GetVoxel(size_t x, size_t y, size_t z) noexcept
     return mVoxels[index];
 }
 
-void Chunk::Generate(int chunkX, int chunkZ) noexcept
+void Chunk::Generate(int chunkX, int chunkZ, int currentChunkX, int currentChunkZ) noexcept
 {
     NoiseGenerator& noiseGen = NoiseGenerator::GetInstance();
 
     // Further "generation loops" will assume that bottom two layers of chunk are
     // filled with Bedrock, so their Y iterator will begin from 2.
+
+    // Stage 0 - cleanup before use
+    for (int i = 0; i < CHUNK_X * CHUNK_Y * CHUNK_Z; ++i)
+        mVoxels[i] = VoxelType::Air;
 
     // Stage 1 - fill bottom quarter of chunk with stone
     for (int z = 0; z < CHUNK_Z; ++z)
@@ -76,9 +90,9 @@ void Chunk::Generate(int chunkX, int chunkZ) noexcept
             // TODO adjust scaling
             // Noise arguments are shifted according to Chunk::Generate() arguments.
             // This way the map will be seamless and the chunks connected.
-            noise = noiseGen.Noise((x + (CHUNK_X * chunkX)) / 16.0,
+            noise = noiseGen.Noise((x + (CHUNK_Z * chunkZ)) / 32.0,
                                    0.0,
-                                   (z + (CHUNK_Z * chunkZ)) / 16.0);
+                                   (z + (CHUNK_X * chunkX)) / 32.0);
 
             // Noise-returned values span -1..1 range,
             // Add 1 to them to convert it to 0..2 range.
@@ -103,7 +117,7 @@ void Chunk::Generate(int chunkX, int chunkZ) noexcept
             }
 
     LOG_D("  Chunk [" << chunkX << ", " << chunkZ << "] Stage 2 done");
-
+/*
     // Stage 3 - cut through the terrain with some Perlin-generated caves
     for (int z = 0; z < CHUNK_Z; ++z)
         for (int y = 2; y < CHUNK_Y; ++y)
@@ -121,7 +135,7 @@ void Chunk::Generate(int chunkX, int chunkZ) noexcept
                     SetVoxel(x, y, z, VoxelType::Air);
             }
 
-    LOG_D("  Chunk [" << chunkX << ", " << chunkZ << "] Stage 3 done");
+    LOG_D("  Chunk [" << chunkX << ", " << chunkZ << "] Stage 3 done");*/
 
     // Stage 4 - force-fill first two layers of the ground with bedrock
     for (int z = 0; z < CHUNK_Z; ++z)
@@ -149,9 +163,9 @@ void Chunk::Generate(int chunkX, int chunkZ) noexcept
                         continue;
                     }
 
-                    verts.push_back(static_cast<float>(x));
-                    verts.push_back(static_cast<float>(y));
-                    verts.push_back(static_cast<float>(z));
+                    verts.push_back(static_cast<float>(x - (CHUNK_X / 2)));
+                    verts.push_back(static_cast<float>(y - (CHUNK_Y / 4) - HEIGHTMAP_HEIGHT));
+                    verts.push_back(static_cast<float>(z - (CHUNK_Z / 2)));
 
                     const Voxel& voxData = voxDataIt->second;
                     verts.push_back(voxData.colorRed);
@@ -161,25 +175,26 @@ void Chunk::Generate(int chunkX, int chunkZ) noexcept
                 }
             }
 
-    MeshDesc md;
+    MeshUpdateDesc md;
     md.dataPtr = verts.data();
     md.dataSize = verts.size() * sizeof(float);
     md.vertCount = verts.size() / FLOAT_COUNT_PER_VERTEX;
-    mMesh.Init(md);
+    mMesh.Update(md);
 
-    // Do two shifts at once:
-    //   * Shift the Voxel to the center of the world
-    //   * According to chunkX and chunkZ shift it to the correct position.
-    mMesh.SetWorldMatrix(CreateTranslationMatrix(
-        Vector(static_cast<float>(-CHUNK_X / 2 + chunkZ * CHUNK_Z),
-               static_cast<float>(-CHUNK_Y / 4 - HEIGHTMAP_HEIGHT),
-               static_cast<float>(-CHUNK_X / 2 + chunkX * CHUNK_X),
-               0.0f)
-    ));
-    Renderer::GetInstance().AddMesh(&mMesh);
+    // Shift the chunk according to chunkX and chunkZ to the correct position.
+    Vector shift(static_cast<float>((chunkX - currentChunkX) * (CHUNK_X+1)),
+                 0.0f,
+                 static_cast<float>((chunkZ - currentChunkZ) * (CHUNK_Z+1)),
+                 0.0f);
+    mMesh.SetWorldMatrix(CreateTranslationMatrix(shift) * CreateRotationMatrixY(MATH_PIF));
 
     // Inform that the terrain has finally been generated.
     LOG_D("  Chunk [" << chunkX << ", " << chunkZ << "] Stage 5 done");
+}
+
+const Mesh* Chunk::GetMeshPtr()
+{
+    return &mMesh;
 }
 
 bool Chunk::CalculateIndex(size_t x, size_t y, size_t z, size_t& index) noexcept

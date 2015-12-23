@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa7fdbe_389a0d15",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2015-12-23T09:05:03Z",
+      "side": 1,
+      "message": "The lines shifted and I forgot to correct it. @141 is the correct line.",
+      "range": {
+        "startLine": 20,
+        "startChar": 21,
+        "endLine": 20,
+        "endChar": 24
+      },
+      "revId": "c2b5d069b1e5caf8ef622f3d6b60ad952afde0cc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

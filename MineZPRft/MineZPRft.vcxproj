@@ -56,6 +56,7 @@
     <ClInclude Include="Common\FileSystem.hpp" />
     <ClInclude Include="Common\GetExtension.hpp" />
     <ClInclude Include="Common\Logger.hpp" />
+    <ClInclude Include="Common\TaskQueue.hpp" />
     <ClInclude Include="Common\Timer.hpp" />
     <ClInclude Include="Common\UTFfuncs.hpp" />
     <ClInclude Include="Common\Window.hpp" />

@@ -82,7 +82,7 @@
     <ClCompile Include="Terrain\NoiseGenerator.cpp">
       <Filter>Terrain</Filter>
     </ClCompile>
-	<ClCompile Include="Common\Win\PrintColored.cpp">
+    <ClCompile Include="Common\Win\PrintColored.cpp">
       <Filter>Common\Win</Filter>
     </ClCompile>
     <ClCompile Include="Common\Logger.cpp">
@@ -164,7 +164,7 @@
     </ClInclude>
     <ClInclude Include="Terrain\NoiseGenerator.hpp">
       <Filter>Terrain</Filter>
-	</ClInclude>
+    </ClInclude>
     <ClInclude Include="Common\Logger.hpp">
       <Filter>Common</Filter>
     </ClInclude>
@@ -173,6 +173,9 @@
     </ClInclude>
     <ClInclude Include="Terrain\Voxel.hpp">
       <Filter>Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\TaskQueue.hpp">
+      <Filter>Common</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

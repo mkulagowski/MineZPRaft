@@ -36,5 +36,6 @@
     <ClCompile Include="..\MineZPRft\Common\Win\Timer.cpp">
       <Filter>Requirements</Filter>
     </ClCompile>
+    <ClCompile Include="QueueTest.cpp" />
   </ItemGroup>
 </Project>

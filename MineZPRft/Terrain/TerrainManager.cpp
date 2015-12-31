@@ -10,6 +10,8 @@
 #include "Common/Logger.hpp"
 #include "Renderer/Renderer.hpp"
 
+#include <thread>
+
 
 TerrainManager::TerrainManager()
     : mCurrentChunkX(0)
@@ -29,45 +31,24 @@ TerrainManager& TerrainManager::GetInstance()
 
 void TerrainManager::Init(const TerrainDesc& desc)
 {
-    UNUSED(desc);
-
-    // initialize chunks
-    mChunk.Init();
-    mChunk2.Init();
-    mChunk3.Init();
-    mChunk4.Init();
-    mChunk5.Init();
-    mChunk6.Init();
-    mChunk7.Init();
-    mChunk8.Init();
-    mChunk9.Init();
+    // Set chunk amount
+    mChunkCount = CalculateChunkCount(desc.visibleRadius);
+    LOG_D("Chunk count: " << mChunkCount << " on radius " << desc.visibleRadius);
+    mChunks.resize(mChunkCount);
+    mVisibleRadius = desc.visibleRadius;
 
     LOG_I("Generating terrain...");
 
-    // Temporary chunks to generate a + pattern as a temporary map.
-    // Dynamic multichunking will replace this with an array of chunks.
-    mChunk.Generate(0, 0, mCurrentChunkX, mCurrentChunkZ);
-    mChunk2.Generate(1, 0, mCurrentChunkX, mCurrentChunkZ);
-    mChunk3.Generate(-1, 0, mCurrentChunkX, mCurrentChunkZ);
-    mChunk4.Generate(0, 1, mCurrentChunkX, mCurrentChunkZ);
-    mChunk5.Generate(0, -1, mCurrentChunkX, mCurrentChunkZ);
-    mChunk6.Generate(1, 1, mCurrentChunkX, mCurrentChunkZ);
-    mChunk7.Generate(1, -1, mCurrentChunkX, mCurrentChunkZ);
-    mChunk8.Generate(-1, 1, mCurrentChunkX, mCurrentChunkZ);
-    mChunk9.Generate(-1, -1, mCurrentChunkX, mCurrentChunkZ);
+    // Initialize chunks
+    for (auto& chunk : mChunks)
+        chunk.Init();
 
-    // Add meshes to render.
-    // When chunks will be regenerated, their Mesh pointers will remain the same (but the contents
-    // will be updated).
-    Renderer::GetInstance().AddMesh(mChunk.GetMeshPtr());
-    Renderer::GetInstance().AddMesh(mChunk2.GetMeshPtr());
-    Renderer::GetInstance().AddMesh(mChunk3.GetMeshPtr());
-    Renderer::GetInstance().AddMesh(mChunk4.GetMeshPtr());
-    Renderer::GetInstance().AddMesh(mChunk5.GetMeshPtr());
-    Renderer::GetInstance().AddMesh(mChunk6.GetMeshPtr());
-    Renderer::GetInstance().AddMesh(mChunk7.GetMeshPtr());
-    Renderer::GetInstance().AddMesh(mChunk8.GetMeshPtr());
-    Renderer::GetInstance().AddMesh(mChunk9.GetMeshPtr());
+    // Generate chunks
+    GenerateChunks();
+
+    // Add chunks to render pool
+    for (auto& chunk : mChunks)
+        Renderer::GetInstance().AddMesh(chunk.GetMeshPtr());
 
     LOG_I("Done generating terrain.");
 }
@@ -78,15 +59,70 @@ void TerrainManager::Update(int chunkX, int chunkZ) noexcept
     {
         mCurrentChunkX = chunkX;
         mCurrentChunkZ = chunkZ;
+        GenerateChunks();
+    }
+}
 
-        mChunk.Generate(chunkX,      chunkZ, mCurrentChunkX, mCurrentChunkZ);
-        mChunk2.Generate(chunkX + 1, chunkZ, mCurrentChunkX, mCurrentChunkZ);
-        mChunk3.Generate(chunkX - 1, chunkZ, mCurrentChunkX, mCurrentChunkZ);
-        mChunk4.Generate(chunkX, chunkZ + 1, mCurrentChunkX, mCurrentChunkZ);
-        mChunk5.Generate(chunkX, chunkZ - 1, mCurrentChunkX, mCurrentChunkZ);
-        mChunk6.Generate(chunkX + 1, chunkZ + 1, mCurrentChunkX, mCurrentChunkZ);
-        mChunk7.Generate(chunkX + 1, chunkZ - 1, mCurrentChunkX, mCurrentChunkZ);
-        mChunk8.Generate(chunkX - 1, chunkZ + 1, mCurrentChunkX, mCurrentChunkZ);
-        mChunk9.Generate(chunkX - 1, chunkZ - 1, mCurrentChunkX, mCurrentChunkZ);
+void TerrainManager::GenerateChunks()
+{
+    unsigned int chunkIndex = 0;
+    for (unsigned int i = 0; i <= mVisibleRadius; ++i)
+    {
+        // initialize the values for currently processed radius
+        int xChunk = i;
+        int zChunk = 0;
+        GeneratorState state = GeneratorState::ZIncXDec;
+        unsigned int chunksInRadius;
+
+        if (i == 0)
+            chunksInRadius = 1;
+        else
+            chunksInRadius = i * 4;
+
+        for (unsigned int j = 0; j < chunksInRadius; ++j)
+        {
+            mChunks[chunkIndex++].Generate(xChunk, zChunk, mCurrentChunkX, mCurrentChunkZ);
+            ShiftChunkCoords(xChunk, zChunk, state);
+        }
+    }
+}
+
+unsigned int TerrainManager::CalculateChunkCount(unsigned int radius)
+{
+    if (radius == 0)
+        return 1;
+    else
+        return radius * 4 + CalculateChunkCount(radius - 1);
+}
+
+void TerrainManager::ShiftChunkCoords(int& xChunk, int& zChunk, GeneratorState& state)
+{
+    // Switch xChunk and zChunk according to GeneratorState
+    switch (state)
+    {
+    case GeneratorState::ZIncXDec:
+        xChunk--;
+        zChunk++;
+        if (xChunk == 0)
+            state = GeneratorState::ZDecXDec;
+        break;
+    case GeneratorState::ZDecXDec:
+        xChunk--;
+        zChunk--;
+        if (zChunk == 0)
+            state = GeneratorState::ZDecXInc;
+        break;
+    case GeneratorState::ZDecXInc:
+        xChunk++;
+        zChunk--;
+        if (xChunk == 0)
+            state = GeneratorState::ZIncXInc;
+        break;
+    case GeneratorState::ZIncXInc:
+        xChunk++;
+        zChunk++;
+        if (zChunk == 0)
+            state = GeneratorState::ZIncXDec;
+        break;
     }
 }

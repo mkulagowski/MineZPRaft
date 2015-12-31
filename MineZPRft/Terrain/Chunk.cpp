@@ -90,9 +90,9 @@ void Chunk::Generate(int chunkX, int chunkZ, int currentChunkX, int currentChunk
             // TODO adjust scaling
             // Noise arguments are shifted according to Chunk::Generate() arguments.
             // This way the map will be seamless and the chunks connected.
-            noise = noiseGen.Noise((x + (CHUNK_Z * chunkZ)) / 32.0,
+            noise = noiseGen.Noise((x + (CHUNK_Z * (chunkZ + currentChunkZ))) / 32.0,
                                    0.0,
-                                   (z + (CHUNK_X * chunkX)) / 32.0);
+                                   (z + (CHUNK_X * (chunkX + currentChunkX))) / 32.0);
 
             // Noise-returned values span -1..1 range,
             // Add 1 to them to convert it to 0..2 range.
@@ -127,9 +127,9 @@ void Chunk::Generate(int chunkX, int chunkZ, int currentChunkX, int currentChunk
                 // NOTE chunkZ applies to X coordinate and chunkX applies to Z coordinate.
                 //      Otherwise, the chunk would be rotated and the map would lost its
                 //      seamlessness.
-                noise = noiseGen.Noise((x + CHUNK_Z * chunkZ) * 0.1,
+                noise = noiseGen.Noise((x + CHUNK_Z * (chunkZ + currentChunkZ)) * 0.1,
                                         y * 0.1,
-                                       (z + CHUNK_X * chunkX) * 0.1);
+                                       (z + CHUNK_X * (chunkX + currentChunkX)) * 0.1);
 
                 if (noise > AIR_THRESHOLD)
                     SetVoxel(x, y, z, VoxelType::Air);
@@ -182,9 +182,9 @@ void Chunk::Generate(int chunkX, int chunkZ, int currentChunkX, int currentChunk
     mMesh.Update(md);
 
     // Shift the chunk according to chunkX and chunkZ to the correct position.
-    Vector shift(static_cast<float>((chunkX - currentChunkX) * (CHUNK_X+1)),
+    Vector shift(static_cast<float>(chunkX * CHUNK_X),
                  0.0f,
-                 static_cast<float>((chunkZ - currentChunkZ) * (CHUNK_Z+1)),
+                 static_cast<float>(chunkZ * CHUNK_Z),
                  0.0f);
     mMesh.SetWorldMatrix(CreateTranslationMatrix(shift) * CreateRotationMatrixY(MATH_PIF));
 

@@ -95,8 +95,10 @@ public:
     /**
      * Fills the Chunk with Perlin-generated voxels.
      *
-     * @param chunkX Number of X-th chunk in the generated world.
-     * @param chunkZ Number of Z-th chunk in the generated world.
+     * @param chunkX        Number of X-th chunk in the generated world, relative to currentChunkX.
+     * @param chunkZ        Number of Z-th chunk in the generated world, relative to currentChunkZ.
+     * @param currentChunkX Number of X-th chunk on which player currently is.
+     * @param currentChunkZ Number of Z-th chunk on which player currently is.
      *
      * The chunks in the world create a two-dimensional grid. All are connected and it is assumed,
      * that the map generated in between them is seamless.

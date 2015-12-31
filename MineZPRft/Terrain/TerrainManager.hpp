@@ -9,10 +9,26 @@
 
 #include "Chunk.hpp"
 
+#include <vector>
 
 struct TerrainDesc
 {
-    std::string terrainPath;
+    std::string terrainPath;        ///< Path to current save directory with terrain data.
+    unsigned int visibleRadius;     ///< Visible chunks in straight line from current chunk.
+};
+
+/**
+ * Defines states which Generator uses to calculate X and Z chunk coordinate during generation
+ * process.
+ *
+ * "Dec" is short for "Decreases", "Inc" is short for "Increases".
+ */
+enum class GeneratorState: unsigned char
+{
+    ZIncXDec = 0,
+    ZDecXDec,
+    ZDecXInc,
+    ZIncXInc
 };
 
 class TerrainManager
@@ -56,17 +72,30 @@ private:
     TerrainManager& operator=(TerrainManager&&) = delete;
     ~TerrainManager();
 
-    Chunk mChunk;
-    Chunk mChunk2;
-    Chunk mChunk3;
-    Chunk mChunk4;
-    Chunk mChunk5;
-    Chunk mChunk6;
-    Chunk mChunk7;
-    Chunk mChunk8;
-    Chunk mChunk9;
+    /**
+     * Calls Chunk::Generate() per each available chunk.
+     */
+    void GenerateChunks();
+
+    /**
+     * Calculate how many chunks we need for @p radius visible chunks.
+     */
+    unsigned int CalculateChunkCount(unsigned int radius);
+
+    /**
+     * Shifts coordinates of chunk to next available in order. If needed, generator state is also
+     * shifted to next available.
+     *
+     * Function works in place. There is no error-sensitive work to be done here, so no errors are
+     * to be returned.
+     */
+    void ShiftChunkCoords(int& xChunk, int& zChunk, GeneratorState& state);
+
+    std::vector<Chunk> mChunks;
     int mCurrentChunkX;
     int mCurrentChunkZ;
+    unsigned int mChunkCount;
+    unsigned int mVisibleRadius;
 };
 
 #endif // __TERRAIN_TERRAINMANAGER_HPP__

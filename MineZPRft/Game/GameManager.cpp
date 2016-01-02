@@ -35,7 +35,7 @@ GameManager::GameManager()
     mPlayer.Init(mRenderer.GetCameraPtr());
 
     TerrainDesc td;
-    td.visibleRadius = 3; // TODO increase after terrain rendering is optimized
+    td.visibleRadius = 7;
     mTerrain.Init(td);
 }
 

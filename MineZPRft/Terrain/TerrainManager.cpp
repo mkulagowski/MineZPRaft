@@ -10,8 +10,6 @@
 #include "Common/Logger.hpp"
 #include "Renderer/Renderer.hpp"
 
-#include <thread>
-
 
 TerrainManager::TerrainManager()
     : mCurrentChunkX(0)

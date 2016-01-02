@@ -117,7 +117,7 @@ void Chunk::Generate(int chunkX, int chunkZ, int currentChunkX, int currentChunk
             }
 
     LOG_D("  Chunk [" << chunkX << ", " << chunkZ << "] Stage 2 done");
-/*
+    /*
     // Stage 3 - cut through the terrain with some Perlin-generated caves
     for (int z = 0; z < CHUNK_Z; ++z)
         for (int y = 2; y < CHUNK_Y; ++y)
@@ -127,9 +127,9 @@ void Chunk::Generate(int chunkX, int chunkZ, int currentChunkX, int currentChunk
                 // NOTE chunkZ applies to X coordinate and chunkX applies to Z coordinate.
                 //      Otherwise, the chunk would be rotated and the map would lost its
                 //      seamlessness.
-                noise = noiseGen.Noise((x + CHUNK_Z * (chunkZ + currentChunkZ)) * 0.1,
+                noise = noiseGen.Noise((x + CHUNK_X * (chunkX + currentChunkX)) * 0.1,
                                         y * 0.1,
-                                       (z + CHUNK_X * (chunkX + currentChunkX)) * 0.1);
+                                       (z + CHUNK_Z * (chunkZ + currentChunkZ)) * 0.1);
 
                 if (noise > AIR_THRESHOLD)
                     SetVoxel(x, y, z, VoxelType::Air);
@@ -154,6 +154,33 @@ void Chunk::Generate(int chunkX, int chunkZ, int currentChunkX, int currentChunk
                 VoxelType vox = GetVoxel(x, y, z);
                 if (vox != VoxelType::Air && vox != VoxelType::Unknown)
                 {
+                    // do some checks before adding a voxel to VBO
+                    // first of all, test only if we are not a bounding voxel chunk
+                    // otherwise we must add it anyway
+                    if ((x > 0) && (x < CHUNK_X) &&
+                        (y > 0) && (y < CHUNK_Y) &&
+                        (z > 0) && (z < CHUNK_Z))
+                    {
+                        // Now see if there is VoxelType::Air in our neighbourhood
+                        // If it is, continue to add voxel to VBO. Otherwise, discard.
+                        VoxelType voxPlusX = GetVoxel(x+1, y, z);
+                        VoxelType voxMinusX = GetVoxel(x-1, y, z);
+                        VoxelType voxPlusY = GetVoxel(x, y+1, z);
+                        VoxelType voxMinusY = GetVoxel(x, y-1, z);
+                        VoxelType voxPlusZ = GetVoxel(x, y, z+1);
+                        VoxelType voxMinusZ = GetVoxel(x, y, z-1);
+
+                        if ((voxPlusX != VoxelType::Air) &&
+                            (voxMinusX != VoxelType::Air) &&
+                            (voxPlusY != VoxelType::Air) &&
+                            (voxMinusY != VoxelType::Air) &&
+                            (voxPlusZ != VoxelType::Air) &&
+                            (voxMinusZ != VoxelType::Air))
+                            // We are surrounded by voxels. Ergo, we are not visible.
+                            // Discard current voxel to not render unseen voxels.
+                            continue;
+                    }
+
                     auto voxDataIt = VoxelDB.find(vox);
                     if (voxDataIt == VoxelDB.end())
                     {

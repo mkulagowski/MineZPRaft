@@ -36,5 +36,9 @@
     <ClCompile Include="..\MineZPRft\Common\Win\Timer.cpp">
       <Filter>Requirements</Filter>
     </ClCompile>
+    <ClCompile Include="FPSCounterTest.cpp" />
+    <ClCompile Include="..\MineZPRft\Common\FPSCounter.cpp">
+      <Filter>Requirements</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -37,5 +37,9 @@
       <Filter>Requirements</Filter>
     </ClCompile>
     <ClCompile Include="QueueTest.cpp" />
+    <ClCompile Include="FPSCounterTest.cpp" />
+    <ClCompile Include="..\MineZPRft\Common\FPSCounter.cpp">
+      <Filter>Requirements</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

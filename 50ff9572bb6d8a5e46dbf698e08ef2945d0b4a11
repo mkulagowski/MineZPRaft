@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_f3ba6209",
+        "filename": "MineZPRft/Renderer/Mesh.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-01-03T16:23:56Z",
+      "side": 1,
+      "message": "Should it be GL_NONE, or is it 0 in there, when u initialize with GL_NONE?",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "50ff9572bb6d8a5e46dbf698e08ef2945d0b4a11",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_333cfa93",
+        "filename": "MineZPRft/Terrain/Chunk.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-01-03T16:23:56Z",
+      "side": 1,
+      "message": "I really like to use ranged-for-loops, where indexes are not used. How about:\nfor (VoxelType \u0026i : mVoxels)\n        i \u003d VoxelType::Air;\n?\n\nI leave the decision to You.",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 36
+      },
+      "revId": "50ff9572bb6d8a5e46dbf698e08ef2945d0b4a11",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_1337f6b1",
+        "filename": "MineZPRft/Terrain/Chunk.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-01-03T16:23:56Z",
+      "side": 1,
+      "message": "there are 4 parameters now",
+      "range": {
+        "startLine": 96,
+        "startChar": 6,
+        "endLine": 100,
+        "endChar": 6
+      },
+      "revId": "50ff9572bb6d8a5e46dbf698e08ef2945d0b4a11",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_73467225",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-01-03T16:23:56Z",
+      "side": 1,
+      "message": "please align them nicely",
+      "range": {
+        "startLine": 82,
+        "startChar": 8,
+        "endLine": 90,
+        "endChar": 81
+      },
+      "revId": "50ff9572bb6d8a5e46dbf698e08ef2945d0b4a11",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

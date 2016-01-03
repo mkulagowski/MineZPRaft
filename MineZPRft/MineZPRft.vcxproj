@@ -22,6 +22,7 @@
     <ClCompile Include="Common\Exception.cpp" />
     <ClCompile Include="Common\FPSCounter.cpp" />
     <ClCompile Include="Common\Logger.cpp" />
+    <ClCompile Include="Common\TaskQueue.cpp" />
     <ClCompile Include="Common\WindowTest.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>

@@ -124,12 +124,15 @@ void Renderer::Draw() noexcept
     GLsizei vertCount;
     for (const auto& mesh : mMeshArray)
     {
-        mesh->Bind();
-        glUniformMatrix4fv(mMainShaderWorldMatrixLoc, 1, false, mesh->GetWorldMatrixRaw());
+        if (mesh->IsLocked() == false)
+        {
+            mesh->Bind();
+            glUniformMatrix4fv(mMainShaderWorldMatrixLoc, 1, false, mesh->GetWorldMatrixRaw());
 
-        vertCount = mesh->GetVertCount();
-        if (vertCount > 0)
-            glDrawArrays(GL_POINTS, 0, mesh->GetVertCount());
+            vertCount = mesh->GetVertCount();
+            if (vertCount > 0)
+                glDrawArrays(GL_POINTS, 0, mesh->GetVertCount());
+        }
     }
 
     // When v-sync is off, this function assures that the application will not move on

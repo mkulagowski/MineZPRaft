@@ -152,6 +152,7 @@
     <ClCompile Include="..\MineZPRft\Common\Exception.cpp" />
     <ClCompile Include="..\MineZPRft\Common\FPSCounter.cpp" />
     <ClCompile Include="..\MineZPRft\Common\Logger.cpp" />
+    <ClCompile Include="..\MineZPRft\Common\TaskQueue.cpp" />
     <ClCompile Include="..\MineZPRft\Common\Win\Common.cpp" />
     <ClCompile Include="..\MineZPRft\Common\Win\FileSystem.cpp" />
     <ClCompile Include="..\MineZPRft\Common\Win\PrintColored.cpp" />

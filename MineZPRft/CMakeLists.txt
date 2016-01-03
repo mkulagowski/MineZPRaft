@@ -31,6 +31,9 @@ ADD_EXECUTABLE(MineZPRft ${COMMON_SOURCES} ${COMMON_HEADERS}
                          ${MATH_SOURCES} ${MATH_HEADERS}
                          ${RENDERER_SOURCES} ${RENDERER_HEADERS}
                          ${TERRAIN_SOURCES} ${TERRAIN_HEADERS})
+SET_TARGET_PROPERTIES(MineZPRft PROPERTIES
+                      COMPILE_FLAGS "-pthread"
+                      LINK_FLAGS "-pthread")
 TARGET_LINK_LIBRARIES(MineZPRft ${MINEZPRFT_DEPS_LIBRARIES})
 ADD_CUSTOM_COMMAND(TARGET MineZPRft POST_BUILD COMMAND
                    ${CMAKE_COMMAND} -E copy $<TARGET_FILE:MineZPRft> ${MZPR_OUTPUT_DIRECTORY}/${targetfile})

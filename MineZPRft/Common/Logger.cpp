@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <iomanip>
 
+
 Logger::Logger()
     : mCurrentWorkingDir("unknown")
 {

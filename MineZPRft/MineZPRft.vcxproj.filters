@@ -97,6 +97,9 @@
     <ClCompile Include="Common\FPSCounter.cpp">
       <Filter>Common</Filter>
     </ClCompile>
+    <ClCompile Include="Common\TaskQueue.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\GameWindow.hpp">

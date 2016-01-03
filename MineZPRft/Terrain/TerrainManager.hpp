@@ -11,6 +11,8 @@
 
 #include <vector>
 
+#include "Common/TaskQueue.hpp"
+
 struct TerrainDesc
 {
     std::string terrainPath;        ///< Path to current save directory with terrain data.
@@ -96,6 +98,7 @@ private:
     int mCurrentChunkZ;
     unsigned int mChunkCount;
     unsigned int mVisibleRadius;
+    TaskQueue<> mGeneratorQueue;
 };
 
 #endif // __TERRAIN_TERRAINMANAGER_HPP__

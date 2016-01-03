@@ -11,6 +11,7 @@
 
 #include "Math/Matrix.hpp"
 #include <cstdlib>
+#include <atomic>
 
 /**
  * Structure for Mesh initialization.
@@ -86,10 +87,27 @@ public:
      */
     void Update(const MeshUpdateDesc& desc) noexcept;
 
+    /**
+     * Sets a "locked" flag for Mesh object.
+     *
+     * @param locked True if mesh is supposed to be locked from rendering, false otherwise.
+     *
+     * When locked flag is set to True, Renderer will skip the mesh during rendering process.
+     * This is usually used when other thread is about to change the contents of the Mesh (ex. its
+     * world matrix).
+     */
+    void SetLocked(bool locked) noexcept;
+
+    /**
+     * Acquires current state of "locked" flag.
+     */
+    bool IsLocked() const noexcept;
+
 private:
     GLuint mVBO;
     GLsizei mVertCount;
     Matrix mWorldMatrix;
+    std::atomic<bool> mLocked;
 };
 
 #endif // __RENDERER_MESH_HPP__

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_853b91ea",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-01-03T23:47:52Z",
+      "side": 1,
+      "message": "no default",
+      "range": {
+        "startLine": 101,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 5
+      },
+      "revId": "2468b36c87389a73145f126e893f8fcfb00427f9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

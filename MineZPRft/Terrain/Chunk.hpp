@@ -8,6 +8,7 @@
 #define __TERRAIN_CHUNK_HPP__
 
 #include <cstddef>
+#include <vector>
 
 #include "Voxel.hpp"
 #include "Renderer/Mesh.hpp"
@@ -25,6 +26,7 @@ class Chunk
 {
 public:
     Chunk();
+    Chunk(const Chunk& other);
     ~Chunk();
 
     /**
@@ -110,6 +112,13 @@ public:
      */
     const Mesh* GetMeshPtr();
 
+    /**
+     * Commits update to Mesh object.
+     *
+     * @remarks This call triggers OpenGL calls. It must be called by main rendering thread.
+     */
+    void CommitMeshUpdate();
+
 private:
     /**
      * Translates three coordinates to a single index inside mVoxels array. Additionally checks if
@@ -130,6 +139,7 @@ private:
      * 1D Array of voxels, which represent a single chunk.
      */
     VoxelType mVoxels[CHUNK_X * CHUNK_Y * CHUNK_Z];
+    std::vector<float> mVerts;
     Mesh mMesh;
 };
 

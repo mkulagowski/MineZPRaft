@@ -29,6 +29,19 @@ Chunk::Chunk()
         voxel = VoxelType::Air;
 }
 
+Chunk::Chunk(const Chunk& other)
+{
+    for (int i = 0; i < CHUNK_X * CHUNK_Y * CHUNK_Z; ++i)
+        mVoxels[i] = other.mVoxels[i];
+
+    mVerts = other.mVerts;
+    MeshDesc md;
+    md.dataPtr = mVerts.data();
+    md.dataSize = mVerts.size() * sizeof(float);
+    md.vertCount = mVerts.size() / FLOAT_COUNT_PER_VERTEX;
+    mMesh.Init(md);
+}
+
 Chunk::~Chunk()
 {
 }
@@ -146,7 +159,7 @@ void Chunk::Generate(int chunkX, int chunkZ, int currentChunkX, int currentChunk
     LOG_D("  Chunk [" << chunkX << ", " << chunkZ << "] Stage 4 done");
 
     // Stage 5 - create Mesh from chunk
-    std::vector<float> verts;
+    mVerts.clear();
     for (int z = 0; z < CHUNK_Z; ++z)
         for (int y = 0; y < CHUNK_Y / 4 + HEIGHTMAP_HEIGHT; ++y)
             for (int x = 0; x < CHUNK_X; ++x)
@@ -190,23 +203,17 @@ void Chunk::Generate(int chunkX, int chunkZ, int currentChunkX, int currentChunk
                         continue;
                     }
 
-                    verts.push_back(static_cast<float>(x - (CHUNK_X / 2)));
-                    verts.push_back(static_cast<float>(y - (CHUNK_Y / 4) - HEIGHTMAP_HEIGHT));
-                    verts.push_back(static_cast<float>(z - (CHUNK_Z / 2)));
+                    mVerts.push_back(static_cast<float>(x - (CHUNK_X / 2)));
+                    mVerts.push_back(static_cast<float>(y - (CHUNK_Y / 4) - HEIGHTMAP_HEIGHT));
+                    mVerts.push_back(static_cast<float>(z - (CHUNK_Z / 2)));
 
                     const Voxel& voxData = voxDataIt->second;
-                    verts.push_back(voxData.colorRed);
-                    verts.push_back(voxData.colorGreen);
-                    verts.push_back(voxData.colorBlue);
-                    verts.push_back(ALPHA_COMPONENT);
+                    mVerts.push_back(voxData.colorRed);
+                    mVerts.push_back(voxData.colorGreen);
+                    mVerts.push_back(voxData.colorBlue);
+                    mVerts.push_back(ALPHA_COMPONENT);
                 }
             }
-
-    MeshUpdateDesc md;
-    md.dataPtr = verts.data();
-    md.dataSize = verts.size() * sizeof(float);
-    md.vertCount = verts.size() / FLOAT_COUNT_PER_VERTEX;
-    mMesh.Update(md);
 
     // Shift the chunk according to chunkX and chunkZ to the correct position.
     Vector shift(static_cast<float>(chunkX * CHUNK_X),
@@ -222,6 +229,15 @@ void Chunk::Generate(int chunkX, int chunkZ, int currentChunkX, int currentChunk
 const Mesh* Chunk::GetMeshPtr()
 {
     return &mMesh;
+}
+
+void Chunk::CommitMeshUpdate()
+{
+    MeshUpdateDesc md;
+    md.dataPtr = mVerts.data();
+    md.dataSize = mVerts.size() * sizeof(float);
+    md.vertCount = mVerts.size() / FLOAT_COUNT_PER_VERTEX;
+    mMesh.Update(md);
 }
 
 bool Chunk::CalculateIndex(size_t x, size_t y, size_t z, size_t& index) noexcept

@@ -46,7 +46,10 @@ void TerrainManager::Init(const TerrainDesc& desc)
 
     // Add chunks to render pool
     for (auto& chunk : mChunks)
+    {
+        chunk.CommitMeshUpdate();
         Renderer::GetInstance().AddMesh(chunk.GetMeshPtr());
+    }
 
     LOG_I("Done generating terrain.");
 }
@@ -58,6 +61,9 @@ void TerrainManager::Update(int chunkX, int chunkZ) noexcept
         mCurrentChunkX = chunkX;
         mCurrentChunkZ = chunkZ;
         GenerateChunks();
+
+        for (auto& chunk : mChunks)
+            chunk.CommitMeshUpdate();
     }
 }
 

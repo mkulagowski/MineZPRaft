@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_d36b9e83",
+        "filename": "MineZPRft/Common/FPSCounter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2016-01-03T19:59:03Z",
+      "side": 1,
+      "message": "space between , and mFPSAvg",
+      "revId": "a0719bd10a182815bf42005a592b9d64e0ca32b9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_f368a289",
+        "filename": "MineZPRft/Common/FPSCounter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2016-01-03T19:59:03Z",
+      "side": 1,
+      "message": "This part is a bit problematic for me. I am kind of afraid, that this will not give us the best result. Any slight peak in FPS count will distract this value.\n\nThus, I have a small suggestion to this part - create an array of values (ex. 100) and each Run() call add current FPS to next field. Then mFPSAvg :\u003d sum of all values from array / 100. Of course, if you write more than 100 values, start overwriting the ones from the beginning.\n\n100 is an example number for this comment. Please, experiment with different values and choose the best ones.",
+      "revId": "a0719bd10a182815bf42005a592b9d64e0ca32b9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

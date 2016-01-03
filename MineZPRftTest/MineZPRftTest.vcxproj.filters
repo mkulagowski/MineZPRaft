@@ -39,7 +39,10 @@
     <ClCompile Include="QueueTest.cpp" />
     <ClCompile Include="FPSCounterTest.cpp" />
     <ClCompile Include="..\MineZPRft\Common\FPSCounter.cpp">
-      <Filter>Requirements</Filter>
+      <Filter>Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MineZPRft\Common\TaskQueue.cpp">
+      <Filter>Units</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

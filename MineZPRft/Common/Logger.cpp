@@ -10,6 +10,7 @@
 #include <fstream>
 #include <algorithm>
 #include <iomanip>
+#include <thread>
 
 Logger::Logger()
     : mCurrentWorkingDir("unknown")

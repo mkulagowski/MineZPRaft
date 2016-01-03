@@ -15,6 +15,7 @@ Mesh::Mesh()
     : mVBO(GL_NONE)
     , mVertCount(0)
     , mWorldMatrix(MATRIX_IDENTITY)
+    , mLocked(false)
 {
 }
 
@@ -75,4 +76,14 @@ void Mesh::Update(const MeshUpdateDesc& desc) noexcept
     glBindBuffer(GL_ARRAY_BUFFER, mVBO);
     glBufferData(GL_ARRAY_BUFFER, desc.dataSize, desc.dataPtr, GL_STATIC_DRAW);
     mVertCount = static_cast<GLsizei>(desc.vertCount);
+}
+
+void Mesh::SetLocked(bool locked) noexcept
+{
+    mLocked = locked;
+}
+
+bool Mesh::IsLocked() const noexcept
+{
+    return mLocked;
 }

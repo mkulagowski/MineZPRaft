@@ -60,6 +60,12 @@ public:
      */
     T Pop();
 
+    /**
+     * Clears all tasks inside a Queue. This will drop all the tasks from the Queue and revert it
+     * to a state without any tasks to perform.
+     */
+    void Clear();
+
 private:
     typedef std::list<TaskType> QueueType;
 
@@ -77,33 +83,36 @@ void TaskQueue<T>::Push(const TaskType& task)
     mCV.notify_all();
 }
 
-template <>
-void TaskQueue<void>::Pop()
-{
-    Lock lock(mMutex);
-
-    // wait until we have something to process
-    while (mList.empty())
-        mCV.wait(lock);
-
-    // call the function
-    mList.front()();
-    mList.pop_front();
-}
-
 template <typename T>
 T TaskQueue<T>::Pop()
 {
-    Lock lock(mMutex);
+    TaskType task;
 
-    // wait until we have something to process
-    while (mList.empty())
-        mCV.wait(lock);
+    {
+        Lock lock(mMutex);
 
-    // call the function and return its value
-    T ret = mList.front()();
-    mList.pop_front();
-    return ret;
+        // wait until we have something to process
+        while (mList.empty())
+            mCV.wait(lock);
+
+        task = mList.front();
+        mList.pop_front();
+    }
+
+    // we can unlock here and allow producer to continue adding new tasks for us
+    // in the meantime, call the function and return its value
+    return task();
 }
+
+template <typename T>
+void TaskQueue<T>::Clear()
+{
+    Lock lock(mMutex);
+    mList.clear();
+}
+
+// specialization declarations
+template <>
+void TaskQueue<void>::Pop();
 
 #endif // __COMMON_TASKQUEUE_HPP__

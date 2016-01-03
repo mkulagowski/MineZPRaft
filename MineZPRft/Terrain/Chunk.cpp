@@ -24,9 +24,24 @@ const float ALPHA_COMPONENT = 1.0f; // Alpha color component should stay at 1,0 
 
 
 Chunk::Chunk()
+    : mState(ChunkState::NotGenerated)
 {
     for (VoxelType& voxel : mVoxels)
         voxel = VoxelType::Air;
+}
+
+Chunk::Chunk(const Chunk& other)
+{
+    for (int i = 0; i < CHUNK_X * CHUNK_Y * CHUNK_Z; ++i)
+        mVoxels[i] = other.mVoxels[i];
+
+    mVerts = other.mVerts;
+    MeshDesc md;
+    md.dataPtr = mVerts.data();
+    md.dataSize = mVerts.size() * sizeof(float);
+    md.vertCount = mVerts.size() / FLOAT_COUNT_PER_VERTEX;
+    mMesh.Init(md);
+    mMesh.SetLocked(false);
 }
 
 Chunk::~Chunk()
@@ -40,6 +55,7 @@ void Chunk::Init()
     md.dataSize = 0;
     md.vertCount = 0;
     mMesh.Init(md);
+    mMesh.SetLocked(true);
 }
 
 void Chunk::SetVoxel(size_t x, size_t y, size_t z, VoxelType voxel) noexcept
@@ -146,7 +162,7 @@ void Chunk::Generate(int chunkX, int chunkZ, int currentChunkX, int currentChunk
     LOG_D("  Chunk [" << chunkX << ", " << chunkZ << "] Stage 4 done");
 
     // Stage 5 - create Mesh from chunk
-    std::vector<float> verts;
+    mVerts.clear();
     for (int z = 0; z < CHUNK_Z; ++z)
         for (int y = 0; y < CHUNK_Y / 4 + HEIGHTMAP_HEIGHT; ++y)
             for (int x = 0; x < CHUNK_X; ++x)
@@ -157,9 +173,9 @@ void Chunk::Generate(int chunkX, int chunkZ, int currentChunkX, int currentChunk
                     // do some checks before adding a voxel to VBO
                     // first of all, test only if we are not a bounding voxel chunk
                     // otherwise we must add it anyway
-                    if ((x > 0) && (x < CHUNK_X) &&
-                        (y > 0) && (y < CHUNK_Y) &&
-                        (z > 0) && (z < CHUNK_Z))
+                    if ((x > 0) && (x < CHUNK_X - 1) &&
+                        (y > 0) && (y < CHUNK_Y - 1) &&
+                        (z > 0) && (z < CHUNK_Z - 1))
                     {
                         // Now see if there is VoxelType::Air in our neighbourhood
                         // If it is, continue to add voxel to VBO. Otherwise, discard.
@@ -190,23 +206,17 @@ void Chunk::Generate(int chunkX, int chunkZ, int currentChunkX, int currentChunk
                         continue;
                     }
 
-                    verts.push_back(static_cast<float>(x - (CHUNK_X / 2)));
-                    verts.push_back(static_cast<float>(y - (CHUNK_Y / 4) - HEIGHTMAP_HEIGHT));
-                    verts.push_back(static_cast<float>(z - (CHUNK_Z / 2)));
+                    mVerts.push_back(static_cast<float>(x - (CHUNK_X / 2)));
+                    mVerts.push_back(static_cast<float>(y - (CHUNK_Y / 4) - HEIGHTMAP_HEIGHT));
+                    mVerts.push_back(static_cast<float>(z - (CHUNK_Z / 2)));
 
                     const Voxel& voxData = voxDataIt->second;
-                    verts.push_back(voxData.colorRed);
-                    verts.push_back(voxData.colorGreen);
-                    verts.push_back(voxData.colorBlue);
-                    verts.push_back(ALPHA_COMPONENT);
+                    mVerts.push_back(voxData.colorRed);
+                    mVerts.push_back(voxData.colorGreen);
+                    mVerts.push_back(voxData.colorBlue);
+                    mVerts.push_back(ALPHA_COMPONENT);
                 }
             }
-
-    MeshUpdateDesc md;
-    md.dataPtr = verts.data();
-    md.dataSize = verts.size() * sizeof(float);
-    md.vertCount = verts.size() / FLOAT_COUNT_PER_VERTEX;
-    mMesh.Update(md);
 
     // Shift the chunk according to chunkX and chunkZ to the correct position.
     Vector shift(static_cast<float>(chunkX * CHUNK_X),
@@ -217,11 +227,24 @@ void Chunk::Generate(int chunkX, int chunkZ, int currentChunkX, int currentChunk
 
     // Inform that the terrain has finally been generated.
     LOG_D("  Chunk [" << chunkX << ", " << chunkZ << "] Stage 5 done");
+
+    mState = ChunkState::Generated;
 }
 
 const Mesh* Chunk::GetMeshPtr()
 {
     return &mMesh;
+}
+
+void Chunk::CommitMeshUpdate()
+{
+    MeshUpdateDesc md;
+    md.dataPtr = mVerts.data();
+    md.dataSize = mVerts.size() * sizeof(float);
+    md.vertCount = mVerts.size() / FLOAT_COUNT_PER_VERTEX;
+    mMesh.Update(md);
+    mState = ChunkState::Updated;
+    mMesh.SetLocked(false);
 }
 
 bool Chunk::CalculateIndex(size_t x, size_t y, size_t z, size_t& index) noexcept
@@ -238,4 +261,15 @@ bool Chunk::CalculateIndex(size_t x, size_t y, size_t z, size_t& index) noexcept
     // which is easily accessible by Renderer, can be used as a 3D array.
     index = x * CHUNK_Y * CHUNK_Z + y * CHUNK_Z + z;
     return true;
+}
+
+void Chunk::ResetState() noexcept
+{
+    mState = ChunkState::NotGenerated;
+    mMesh.SetLocked(true);
+}
+
+bool Chunk::IsGenerated() const noexcept
+{
+    return mState == ChunkState::Generated;
 }

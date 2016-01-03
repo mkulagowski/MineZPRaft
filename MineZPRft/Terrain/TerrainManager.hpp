@@ -10,6 +10,9 @@
 #include "Chunk.hpp"
 
 #include <vector>
+#include <thread>
+
+#include "Common/TaskQueue.hpp"
 
 struct TerrainDesc
 {
@@ -96,6 +99,7 @@ private:
     int mCurrentChunkZ;
     unsigned int mChunkCount;
     unsigned int mVisibleRadius;
+    TaskQueue<> mGeneratorQueue;
 };
 
 #endif // __TERRAIN_TERRAINMANAGER_HPP__

@@ -8,6 +8,8 @@
 #define __TERRAIN_CHUNK_HPP__
 
 #include <cstddef>
+#include <vector>
+#include <atomic>
 
 #include "Voxel.hpp"
 #include "Renderer/Mesh.hpp"
@@ -20,15 +22,23 @@
 #define CHUNK_Y 128
 #define CHUNK_Z 32
 
+enum class ChunkState: unsigned char
+{
+    NotGenerated = 0,
+    Generated,
+    Updated
+};
+
 
 class Chunk
 {
 public:
     Chunk();
+    Chunk(const Chunk& other);
     ~Chunk();
 
     /**
-     * Triggers initialization of resources used by Voxel.
+     * Triggers initialization of resources used by Chunk.
      */
     void Init();
 
@@ -110,6 +120,29 @@ public:
      */
     const Mesh* GetMeshPtr();
 
+    /**
+     * Commits update to Mesh object. As a result, Chunk will switch itself to "Updated" state and
+     * Mesh object will become unlocked to use for Renderer.
+     *
+     * @remarks This call triggers OpenGL calls. It must be called by main rendering thread.
+     */
+    void CommitMeshUpdate();
+
+    /**
+     * Sets a Chunk to be in a "not generated" state, locks Chunk's Mesh to withhold it from
+     * rendering.
+     */
+    void ResetState() noexcept;
+
+    /**
+     * Returns whether the mesh has finished generation and is ready to commit the changes to
+     * Mesh object.
+     *
+     * @return True if the Chunk was generated, but not commited to VBO. False in all other
+     * situations.
+     */
+    bool IsGenerated() const noexcept;
+
 private:
     /**
      * Translates three coordinates to a single index inside mVoxels array. Additionally checks if
@@ -130,7 +163,9 @@ private:
      * 1D Array of voxels, which represent a single chunk.
      */
     VoxelType mVoxels[CHUNK_X * CHUNK_Y * CHUNK_Z];
+    std::vector<float> mVerts;
     Mesh mMesh;
+    std::atomic<ChunkState> mState;
 };
 
 #endif // __TERRAIN_CHUNK_HPP__

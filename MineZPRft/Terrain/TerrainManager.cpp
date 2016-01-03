@@ -10,6 +10,8 @@
 #include "Common/Logger.hpp"
 #include "Renderer/Renderer.hpp"
 
+#include <functional>
+
 
 TerrainManager::TerrainManager()
     : mCurrentChunkX(0)
@@ -35,18 +37,28 @@ void TerrainManager::Init(const TerrainDesc& desc)
     mChunks.resize(mChunkCount);
     mVisibleRadius = desc.visibleRadius;
 
+    auto generatorLambda = [this]() {
+        while(true)
+            mGeneratorQueue.Pop();
+    };
+    std::thread generatorThread(generatorLambda);
+    generatorThread.detach();
+
     LOG_I("Generating terrain...");
 
     // Initialize chunks
     for (auto& chunk : mChunks)
         chunk.Init();
 
-    // Generate chunks
+    // Generate chunks (this will push tasks to do for generator thread)
     GenerateChunks();
 
     // Add chunks to render pool
     for (auto& chunk : mChunks)
+    {
+        //chunk.CommitMeshUpdate();
         Renderer::GetInstance().AddMesh(chunk.GetMeshPtr());
+    }
 
     LOG_I("Done generating terrain.");
 }
@@ -59,10 +71,24 @@ void TerrainManager::Update(int chunkX, int chunkZ) noexcept
         mCurrentChunkZ = chunkZ;
         GenerateChunks();
     }
+
+    for (auto& chunk : mChunks)
+    {
+        if (chunk.IsGenerated())
+            chunk.CommitMeshUpdate();
+    }
 }
 
 void TerrainManager::GenerateChunks()
 {
+    // Clear task queue 
+    mGeneratorQueue.Clear();
+
+    // Mark chunks as not generated
+    for (auto& chunk : mChunks)
+        chunk.ResetState();
+
+    // Add chunk generation to pool for separate thread.
     unsigned int chunkIndex = 0;
     for (unsigned int i = 0; i <= mVisibleRadius; ++i)
     {
@@ -79,7 +105,9 @@ void TerrainManager::GenerateChunks()
 
         for (unsigned int j = 0; j < chunksInRadius; ++j)
         {
-            mChunks[chunkIndex++].Generate(xChunk, zChunk, mCurrentChunkX, mCurrentChunkZ);
+            mGeneratorQueue.Push(std::bind(&Chunk::Generate, &mChunks[chunkIndex],
+                                           xChunk, zChunk, mCurrentChunkX, mCurrentChunkZ));
+            chunkIndex++;
             ShiftChunkCoords(xChunk, zChunk, state);
         }
     }

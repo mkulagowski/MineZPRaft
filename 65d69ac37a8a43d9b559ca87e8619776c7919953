@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_d3547ecc",
+        "filename": "MineZPRft/Common/TaskQueue.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-01-03T16:41:47Z",
+      "side": 1,
+      "message": "FINISH HIM!\nAA-\u003e-\u003eB\u003c-AB-\u003e\u003c-\n...COMMENTALITY!",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 11
+      },
+      "revId": "65d69ac37a8a43d9b559ca87e8619776c7919953",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_f35182d9",
+        "filename": "MineZPRft/Common/TaskQueue.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-01-03T16:41:47Z",
+      "side": 1,
+      "message": "make a typedef",
+      "range": {
+        "startLine": 39,
+        "startChar": 20,
+        "endLine": 39,
+        "endChar": 38
+      },
+      "revId": "65d69ac37a8a43d9b559ca87e8619776c7919953",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_135e16ea",
+        "filename": "MineZPRft/Common/TaskQueue.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-01-03T16:41:47Z",
+      "side": 1,
+      "message": "rm",
+      "range": {
+        "startLine": 68,
+        "startChar": 13,
+        "endLine": 68,
+        "endChar": 14
+      },
+      "revId": "65d69ac37a8a43d9b559ca87e8619776c7919953",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

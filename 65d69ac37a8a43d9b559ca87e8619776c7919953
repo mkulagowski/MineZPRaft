@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fa81d914_73e2f204",
+        "filename": "MineZPRft/Common/TaskQueue.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2016-01-03T20:18:26Z",
+      "side": 1,
+      "message": "Oh... right",
+      "parentUuid": "fa81d914_d3547ecc",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 11
+      },
+      "revId": "65d69ac37a8a43d9b559ca87e8619776c7919953",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_f35182d9",
         "filename": "MineZPRft/Common/TaskQueue.hpp",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "fa81d914_d3f0fecb",
+        "filename": "MineZPRft/Common/TaskQueue.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2016-01-03T20:18:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81d914_f35182d9",
+      "range": {
+        "startLine": 39,
+        "startChar": 20,
+        "endLine": 39,
+        "endChar": 38
+      },
+      "revId": "65d69ac37a8a43d9b559ca87e8619776c7919953",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_135e16ea",
         "filename": "MineZPRft/Common/TaskQueue.hpp",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2016-01-03T16:41:47Z",
       "side": 1,
       "message": "rm",
+      "range": {
+        "startLine": 68,
+        "startChar": 13,
+        "endLine": 68,
+        "endChar": 14
+      },
+      "revId": "65d69ac37a8a43d9b559ca87e8619776c7919953",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_f3ed02f1",
+        "filename": "MineZPRft/Common/TaskQueue.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2016-01-03T20:18:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81d914_135e16ea",
       "range": {
         "startLine": 68,
         "startChar": 13,

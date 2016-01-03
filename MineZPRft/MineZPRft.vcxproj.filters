@@ -94,6 +94,9 @@
     <ClCompile Include="Terrain\Voxel.cpp">
       <Filter>Terrain</Filter>
     </ClCompile>
+    <ClCompile Include="Common\FPSCounter.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\GameWindow.hpp">
@@ -175,6 +178,9 @@
       <Filter>Terrain</Filter>
     </ClInclude>
     <ClInclude Include="Common\TaskQueue.hpp">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\FPSCounter.hpp">
       <Filter>Common</Filter>
     </ClInclude>
   </ItemGroup>

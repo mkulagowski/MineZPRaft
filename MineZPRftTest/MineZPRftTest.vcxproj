@@ -150,6 +150,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\MineZPRft\Common\Exception.cpp" />
+    <ClCompile Include="..\MineZPRft\Common\FPSCounter.cpp" />
     <ClCompile Include="..\MineZPRft\Common\Logger.cpp" />
     <ClCompile Include="..\MineZPRft\Common\Win\Common.cpp" />
     <ClCompile Include="..\MineZPRft\Common\Win\FileSystem.cpp" />
@@ -157,6 +158,7 @@
     <ClCompile Include="..\MineZPRft\Common\Win\Timer.cpp" />
     <ClCompile Include="..\MineZPRft\Math\Matrix.cpp" />
     <ClCompile Include="..\MineZPRft\Math\Vector.cpp" />
+    <ClCompile Include="FPSCounterTest.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MatrixTest.cpp" />
     <ClCompile Include="QueueTest.cpp" />

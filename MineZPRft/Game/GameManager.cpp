@@ -5,6 +5,7 @@
  */
 
 #include "GameManager.hpp"
+#include "Common/FPSCounter.hpp"
 
 GameManager::GameManager()
     : mFrameTimer()
@@ -54,13 +55,19 @@ void GameManager::GameLoop()
     mFrameTimer.Start();
 
     double frameTime;
+    FPSCounter frameCounter;
     while (!mWindow.IsClosed())
     {
         frameTime = mFrameTimer.Stop();
         mFrameTimer.Start();
 
+        frameCounter.Run();
+
         mWindow.ProcessMessages();
         mWindow.Update(frameTime);
+        mWindow.SetTitle(("MineZPRft [" +
+                          std::to_string(frameCounter.GetAvgFrameCount()) +
+                          " FPS]").c_str());
 
         CalculatePlayerChunk();
         mTerrain.Update(mPlayerChunkX, mPlayerChunkZ);

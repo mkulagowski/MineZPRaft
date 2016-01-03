@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Common\Exception.cpp" />
+    <ClCompile Include="Common\FPSCounter.cpp" />
     <ClCompile Include="Common\Logger.cpp" />
     <ClCompile Include="Common\WindowTest.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -54,6 +55,7 @@
     <ClInclude Include="Common\Common.hpp" />
     <ClInclude Include="Common\Exception.hpp" />
     <ClInclude Include="Common\FileSystem.hpp" />
+    <ClInclude Include="Common\FPSCounter.hpp" />
     <ClInclude Include="Common\GetExtension.hpp" />
     <ClInclude Include="Common\Logger.hpp" />
     <ClInclude Include="Common\TaskQueue.hpp" />

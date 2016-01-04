@@ -11,6 +11,8 @@
 #include "Math/Vector.hpp"
 #include "GameKeycodes.hpp"
 
+#include <functional>
+
 GameWindow::GameWindow(GamePlayer* playerPtr)
     : mPlayerPtr(playerPtr)
 {
@@ -64,6 +66,11 @@ void GameWindow::OnKeyPress(int key)
         const Vector& pos = mPlayerPtr->GetPosition();
         LOG_I("Player position: " << pos);
     }
+
+    if (key == Key::Enter && IsKeyPressed(Key::Alt))
+    {
+        SetFullscreenMode(!GetFullscreenMode());
+    }
 }
 
 void GameWindow::OnMouseDown(uint32_t button, int x, int y)
@@ -97,4 +104,9 @@ void GameWindow::OnMouseUp(uint32_t button)
     //       the button, then move the below over there
     // LMB - create cube
     // RMB - delete cube
+}
+
+void GameWindow::OnResize(uint32_t width, uint32_t height)
+{
+    Renderer::GetInstance().ResizeViewport(width, height);
 }

@@ -27,7 +27,9 @@ enum Key
 
     /// All special signs are Virtual Key-Codes
     /// Taken from https://msdn.microsoft.com/en-us/library/windows/desktop/dd375731(v=vs.85).aspx
-    LShift = VK_SHIFT
+    LShift = VK_SHIFT,
+    Enter = VK_RETURN,
+    Alt = VK_MENU
 };
 
 /**
@@ -54,7 +56,9 @@ enum Key
     R = 27,
     F = 41,
     P = 33,
-    LShift = 50
+    LShift = 50,
+    Enter = 13,
+    Alt = 18
 };
 
 /**

@@ -22,6 +22,7 @@ Renderer::Renderer()
     , mMainShaderViewMatrixLoc(GL_NONE)
     , mMainShaderPerspectiveMatrixLoc(GL_NONE)
     , mDummyVAO(GL_NONE)
+    , initDone(false)
 {
 }
 
@@ -98,6 +99,7 @@ void Renderer::Init(const RendererDesc& desc)
 
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
+    initDone = true;
 }
 
 void Renderer::AddMesh(const Mesh* mesh)
@@ -133,6 +135,27 @@ void Renderer::Draw() noexcept
     // When v-sync is off, this function assures that the application will not move on
     // until all OpenGL calls are processed by the driver.
     glFinish();
+}
+
+void Renderer::ResizeViewport(GLsizei w, GLsizei h)
+{
+    if (w < 1 || h < 1)
+        return;
+
+    glViewport(0, 0, w, h);
+
+    CameraDesc cd;
+
+    cd.fov = 60.0f;
+    cd.aspectRatio = static_cast<float>(w) / static_cast<float>(h);
+    cd.nearDist = 0.1f;
+    cd.farDist = 1000.0f;
+
+    mCamera.UpdatePerspective(cd);
+
+    if (initDone)
+        glUniformMatrix4fv(mMainShaderPerspectiveMatrixLoc, 1, false,
+                           mCamera.GetPerspectiveRaw());
 }
 
 Camera* Renderer::GetCameraPtr()

@@ -77,6 +77,11 @@ public:
     void Draw() noexcept;
 
     /**
+     * Resize viewport and all dependent etities
+     */
+    void Renderer::ResizeViewport(GLsizei w, GLsizei h);
+
+    /**
      * Acquire pointer to Renderer's Camera
      */
     Camera* GetCameraPtr();
@@ -91,6 +96,7 @@ private:
 
     typedef std::vector<const Mesh*> MeshArrayType;
 
+    bool initDone;
     Camera mCamera;
     Shader mMainShader; // TODO name is subject to change
     GLint mMainShaderWorldMatrixLoc;

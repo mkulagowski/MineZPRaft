@@ -59,6 +59,8 @@ private:
     bool mFullscreen;
     uint32_t mWidth;
     uint32_t mHeight;
+    uint32_t mDesktopWidth;
+    uint32_t mDesktopHeight;
     std::string mTitle;
 
     bool mMouseButtons[3];
@@ -75,6 +77,7 @@ private:
     void MouseDown(uint32_t button, int x, int y);
     void MouseUp(uint32_t button);
     void MouseMove(int x, int y);
+    void GetDesktopResolution();
 
     WindowManager(const WindowManager&) = delete;
     WindowManager(WindowManager&&) = delete;

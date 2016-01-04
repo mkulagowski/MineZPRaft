@@ -77,6 +77,11 @@ public:
     void Draw() noexcept;
 
     /**
+     * Resize viewport and all dependent etities
+     */
+    void ResizeViewport(GLsizei w, GLsizei h);
+
+    /**
      * Acquire pointer to Renderer's Camera
      */
     Camera* GetCameraPtr();
@@ -98,6 +103,7 @@ private:
     GLint mMainShaderPerspectiveMatrixLoc;
     GLint mMainShaderPlayerPosLoc;
     GLuint mDummyVAO; // We don't need this, but OGL has its needs and won't cooperate without it
+    bool initDone;
     MeshArrayType mMeshArray;
 };
 

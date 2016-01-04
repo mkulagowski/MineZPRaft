@@ -10,6 +10,7 @@
 #include "../Common/Window.hpp"
 
 #include "GamePlayer.hpp"
+#include "Renderer/Renderer.hpp"
 
 #include <utility>
 
@@ -36,6 +37,7 @@ private:
     void OnMouseDown(uint32_t button, int x, int y);
     void OnMouseMove(int x, int y, int deltaX, int deltaY);
     void OnMouseUp(uint32_t button);
+    void OnResize(uint32_t width, uint32_t height);
 
     GamePlayer* mPlayerPtr;
 };

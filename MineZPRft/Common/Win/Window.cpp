@@ -61,6 +61,9 @@ WindowManager::WindowManager()
 
     for (int i = 0; i < 255; i++)
         mKeys[i] = false;
+
+    // Get desktops resolution
+    GetDesktopResolution();
 }
 
 WindowManager::~WindowManager()
@@ -101,6 +104,9 @@ void WindowManager::SetFullscreenMode(bool enabled)
 
         SetWindowLong(mHandle, GWL_EXSTYLE, gWindowedExStyle);
         SetWindowLong(mHandle, GWL_STYLE, gWindowedStyle);
+
+        mFullscreen = enabled;
+
         SetWindowPos(mHandle, HWND_NOTOPMOST,
                      mTop, mTop,
                      WindowRect.right - WindowRect.left,
@@ -112,7 +118,10 @@ void WindowManager::SetFullscreenMode(bool enabled)
         // enter fullscreen
         SetWindowLong(mHandle, GWL_EXSTYLE, gFullscreenExStyle);
         SetWindowLong(mHandle, GWL_STYLE, WS_VISIBLE | WS_POPUP);
-        SetWindowPos(mHandle, nullptr, 0, 0, mWidth, mHeight, SWP_NOZORDER);
+
+        mFullscreen = enabled;
+
+        SetWindowPos(mHandle, nullptr, 0, 0, mDesktopWidth, mDesktopHeight, SWP_NOZORDER);
     }
 
     mFullscreen = enabled;
@@ -257,6 +266,20 @@ void WindowManager::MouseMove(int x, int y)
     mMouseDownY[0] = y;
 }
 
+void WindowManager::GetDesktopResolution()
+{
+    RECT desktop;
+    // Get a handle to the desktop window
+    const HWND hDesktop = GetDesktopWindow();
+    // Get the size of screen to the variable desktop
+    GetWindowRect(hDesktop, &desktop);
+    // The top left corner will have coordinates (0,0)
+    // and the bottom right corner will have coordinates
+    // (horizontal, vertical)
+    mDesktopWidth = desktop.right;
+    mDesktopHeight = desktop.bottom;
+}
+
 bool WindowManager::IsKeyPressed(int Key) const
 {
     return mKeys[Key];
@@ -293,9 +316,16 @@ LRESULT CALLBACK WindowManager::WndProc(HWND hWnd, UINT message, WPARAM wParam, 
         {
             if (wParam != SIZE_MINIMIZED)
             {
-                Window->mWidth = LOWORD(lParam);
-                Window->mHeight = HIWORD(lParam);
-                Window->OnResize(Window->mWidth, Window->mHeight);
+                if (Window->mFullscreen)
+                {
+                    Window->OnResize(Window->mDesktopWidth,
+                                     Window->mDesktopHeight);
+                } else
+                {
+                    Window->mWidth = LOWORD(lParam);
+                    Window->mHeight = HIWORD(lParam);
+                    Window->OnResize(Window->mWidth, Window->mHeight);
+                }
 
                 if (Window->mResizeCallback)
                     Window->mResizeCallback(Window->mResizeCallbackUserData);

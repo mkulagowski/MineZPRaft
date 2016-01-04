@@ -34,6 +34,14 @@ void Camera::Update(const CameraUpdateDesc& request) noexcept
     mView = CreateRHLookAtMatrix(request.pos, request.pos + request.dir, request.up);
 }
 
+void Camera::UpdatePerspective(const CameraDesc& desc)
+{
+    mPerspective = CreateRHPerspectiveMatrix(desc.fov,
+                                             desc.aspectRatio,
+                                             desc.nearDist,
+                                             desc.farDist);
+}
+
 const float* Camera::GetPosRaw() noexcept
 {
     return mPos.Data();

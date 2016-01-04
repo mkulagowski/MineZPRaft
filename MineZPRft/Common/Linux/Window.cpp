@@ -298,6 +298,18 @@ void WindowManager::MouseMove(int x, int y)
     mMouseDownY[0] = y;
 }
 
+void WindowManager::GetDesktopResolution()
+{
+    ::Screen* desktop;
+    desktop = DefaultScreenOfDisplay(mDisplay);
+    // Get the size of screen to the variable desktop
+    if (desktop)
+    {
+        mDesktopWidth = desktop->width;
+        mDesktopHeight = desktop->height;
+    }
+}
+
 bool WindowManager::IsKeyPressed(int Key) const
 {
     return mKeys[Key];

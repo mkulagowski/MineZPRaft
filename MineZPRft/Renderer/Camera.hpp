@@ -65,6 +65,15 @@ public:
     void Update(const CameraUpdateDesc& desc) noexcept;
 
     /**
+     * Updates all entities bound with Perspective matrix and
+     * calculates a new one.
+     *
+     * @param desc Camera description structure.
+     *
+     * @remarks CameraUpdateDesc structure is not used in this function.
+     */
+    void UpdatePerspective(const CameraDesc& desc);
+    /**
      * Retrieve raw version of Camera Position vector.
      *
      * @return Pointer to 4-element float array with Camera vector

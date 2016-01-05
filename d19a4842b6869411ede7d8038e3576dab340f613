@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_419c266a",
+        "filename": "MineZPRft/Game/GameKeycodes.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2016-01-05T15:50:23Z",
+      "side": 1,
+      "message": "Want to bet a beer, that these values are not correct on Linux? :)",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 12
+      },
+      "revId": "d19a4842b6869411ede7d8038e3576dab340f613",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_61ddaa14",
+        "filename": "MineZPRft/Renderer/Renderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2016-01-05T15:50:23Z",
+      "side": 1,
+      "message": "I think you can use ResizeViewport here, to avoid code duplication",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 58
+      },
+      "revId": "d19a4842b6869411ede7d8038e3576dab340f613",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

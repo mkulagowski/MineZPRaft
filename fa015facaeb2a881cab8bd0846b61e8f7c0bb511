@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fa81d914_b288d2e8",
+        "filename": "MineZPRft/Game/GameManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-01-06T21:59:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81d914_61d04a54",
+      "revId": "fa015facaeb2a881cab8bd0846b61e8f7c0bb511",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_01da2e78",
         "filename": "MineZPRft/MineZPRft.vcxproj.filters",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2016-01-05T14:33:33Z",
       "side": 1,
       "message": "spaces",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 1
+      },
+      "revId": "fa015facaeb2a881cab8bd0846b61e8f7c0bb511",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_f2696a26",
+        "filename": "MineZPRft/MineZPRft.vcxproj.filters",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-01-06T21:59:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81d914_01da2e78",
       "range": {
         "startLine": 181,
         "startChar": 0,

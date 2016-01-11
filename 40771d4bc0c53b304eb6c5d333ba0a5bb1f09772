@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_29954d40",
+        "filename": "MineZPRft/Game/GameKeycodes.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2016-01-11T09:03:37Z",
+      "side": 1,
+      "message": "I guess I misled you in this.\n\nLet\u0027s stick with Left Alt + Enter combo for fullscreen shortcut. I tested it just now:\nLAlt \u003d 64\nEnter \u003d 36",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 12
+      },
+      "revId": "40771d4bc0c53b304eb6c5d333ba0a5bb1f09772",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

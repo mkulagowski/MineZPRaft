@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_40724e7d",
+        "filename": "MineZPRft/Common/Logger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-01-12T10:41:22Z",
+      "side": 1,
+      "message": "not used. Why in this commit?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 17
+      },
+      "revId": "7e57f801c725ffbdf3a13d9aaaa31e9d95ab8477",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_606f5293",
+        "filename": "MineZPRft/Common/Win/PrintColored.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-01-12T10:41:22Z",
+      "side": 1,
+      "message": "what changes?",
+      "revId": "7e57f801c725ffbdf3a13d9aaaa31e9d95ab8477",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_806c469e",
+        "filename": "MineZPRft/Game/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-01-12T10:41:22Z",
+      "side": 1,
+      "message": "?",
+      "revId": "7e57f801c725ffbdf3a13d9aaaa31e9d95ab8477",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_00105600",
+        "filename": "MineZPRft/MineZPRft.vcxproj.filters",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-01-12T10:41:22Z",
+      "side": 1,
+      "message": "did You convert endings of most of files?\nHave u been working in linux lately? o.O",
+      "revId": "7e57f801c725ffbdf3a13d9aaaa31e9d95ab8477",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_e0d8a255",
+        "filename": "MineZPRft/Terrain/Chunk.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-01-12T10:41:22Z",
+      "side": 1,
+      "message": "i think fill would fill in nicely here ;)\nhttp://www.cplusplus.com/reference/algorithm/fill/",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 31
+      },
+      "revId": "7e57f801c725ffbdf3a13d9aaaa31e9d95ab8477",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_c0a1deaa",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-01-12T10:41:22Z",
+      "side": 1,
+      "message": "rm",
+      "range": {
+        "startLine": 84,
+        "startChar": 23,
+        "endLine": 84,
+        "endChar": 24
+      },
+      "revId": "7e57f801c725ffbdf3a13d9aaaa31e9d95ab8477",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

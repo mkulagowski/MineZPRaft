@@ -103,6 +103,14 @@ public:
     VoxelType GetVoxel(size_t x, size_t y, size_t z) noexcept;
 
     /**
+     * Shift the chunk by changing its World Matrix
+     *
+     * @param chunkX Number of X-th chunk in the generated world, relative to the center
+     * @param chunkZ Number of X-th chunk in the generated world, relative to the center
+     */
+    void Shift(int chunkX, int chunkZ);
+
+    /**
      * Fills the Chunk with Perlin-generated voxels.
      *
      * @param chunkX        Number of X-th chunk in the generated world, relative to currentChunkX.
@@ -135,6 +143,11 @@ public:
     void ResetState() noexcept;
 
     /**
+     * Locks/unlocks a Mesh object
+     */
+    void LockMesh(bool lock) noexcept;
+
+    /**
      * Returns whether the mesh has finished generation and is ready to commit the changes to
      * Mesh object.
      *
@@ -142,6 +155,11 @@ public:
      * situations.
      */
     bool IsGenerated() const noexcept;
+
+    /**
+     * Returns whether the Chunk needs generation
+     */
+    bool NeedsGeneration() const noexcept;
 
 private:
     /**

@@ -102,9 +102,20 @@ void Renderer::Init(const RendererDesc& desc)
     initDone = true;
 }
 
-void Renderer::AddMesh(const Mesh* mesh)
+void Renderer::AddMesh(const Mesh* mesh) noexcept
 {
     mMeshArray.push_back(mesh);
+}
+
+void Renderer::ReplaceTerrainMesh(size_t index, const Mesh* mesh) noexcept
+{
+    mTerrainMeshArray[index] = mesh;
+}
+
+
+void Renderer::ReserveTerrainMeshPool(size_t meshCount) noexcept
+{
+    mTerrainMeshArray.resize(meshCount);
 }
 
 void Renderer::Draw() noexcept
@@ -124,7 +135,21 @@ void Renderer::Draw() noexcept
     GLsizei vertCount;
     for (const auto& mesh : mMeshArray)
     {
-        if (mesh->IsLocked() == false)
+        if (!mesh->IsLocked())
+        {
+            mesh->Bind();
+            glUniformMatrix4fv(mMainShaderWorldMatrixLoc, 1, false, mesh->GetWorldMatrixRaw());
+
+            vertCount = mesh->GetVertCount();
+            if (vertCount > 0)
+                glDrawArrays(GL_POINTS, 0, mesh->GetVertCount());
+        }
+    }
+
+    // Repeat the drawing for Terrain Meshes
+    for (const auto& mesh : mTerrainMeshArray)
+    {
+        if (!mesh->IsLocked())
         {
             mesh->Bind();
             glUniformMatrix4fv(mMainShaderWorldMatrixLoc, 1, false, mesh->GetWorldMatrixRaw());
@@ -137,7 +162,7 @@ void Renderer::Draw() noexcept
 
     // When v-sync is off, this function assures that the application will not move on
     // until all OpenGL calls are processed by the driver.
-    glFinish();
+    //glFinish();
 }
 
 void Renderer::ResizeViewport(GLsizei w, GLsizei h)

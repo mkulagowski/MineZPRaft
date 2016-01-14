@@ -41,7 +41,11 @@ Chunk::Chunk(const Chunk& other)
     md.dataSize = mVerts.size() * sizeof(float);
     md.vertCount = mVerts.size() / FLOAT_COUNT_PER_VERTEX;
     mMesh.Init(md);
-    mMesh.SetLocked(false);
+    mState = other.mState.load();
+    if (mState == ChunkState::Updated)
+        mMesh.SetLocked(false);
+    else
+        mMesh.SetLocked(true);
 }
 
 Chunk::~Chunk()
@@ -78,8 +82,21 @@ VoxelType Chunk::GetVoxel(size_t x, size_t y, size_t z) noexcept
     return mVoxels[index];
 }
 
+void Chunk::Shift(int chunkX, int chunkZ)
+{
+    Vector shift(static_cast<float>(chunkX * CHUNK_X),
+                 0.0f,
+                 static_cast<float>(chunkZ * CHUNK_Z),
+                 0.0f);
+    // TODO rotation should be unnecessary! Probably a bug in Perlin
+    mMesh.SetWorldMatrix(CreateTranslationMatrix(shift) * CreateRotationMatrixY(MATH_PIF));
+}
+
 void Chunk::Generate(int chunkX, int chunkZ, int currentChunkX, int currentChunkZ) noexcept
 {
+    if (mState == ChunkState::Updated)
+        return;
+
     NoiseGenerator& noiseGen = NoiseGenerator::GetInstance();
 
     // Further "generation loops" will assume that bottom two layers of chunk are
@@ -218,13 +235,6 @@ void Chunk::Generate(int chunkX, int chunkZ, int currentChunkX, int currentChunk
                 }
             }
 
-    // Shift the chunk according to chunkX and chunkZ to the correct position.
-    Vector shift(static_cast<float>(chunkX * CHUNK_X),
-                 0.0f,
-                 static_cast<float>(chunkZ * CHUNK_Z),
-                 0.0f);
-    mMesh.SetWorldMatrix(CreateTranslationMatrix(shift) * CreateRotationMatrixY(MATH_PIF));
-
     // Inform that the terrain has finally been generated.
     LOG_D("  Chunk [" << chunkX << ", " << chunkZ << "] Stage 5 done");
 
@@ -269,7 +279,17 @@ void Chunk::ResetState() noexcept
     mMesh.SetLocked(true);
 }
 
+void Chunk::LockMesh(bool lock) noexcept
+{
+    mMesh.SetLocked(lock);
+}
+
 bool Chunk::IsGenerated() const noexcept
 {
     return mState == ChunkState::Generated;
+}
+
+bool Chunk::NeedsGeneration() const noexcept
+{
+    return mState == ChunkState::NotGenerated;
 }

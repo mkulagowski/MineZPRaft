@@ -59,10 +59,23 @@ public:
      *
      * @note Renderer only reads data from Mesh object and assures nothing will be changed inside.
      * Any modifications, or updates to Mesh objects, are to be done by other managers.
-     *
-     * @remarks If the Mesh object is invalid, the function will throw an exception.
      */
-    void AddMesh(const Mesh* mesh);
+    void AddMesh(const Mesh* mesh) noexcept;
+
+    /**
+     * Replaces Terrain Mesh pointer with a new one.
+     *
+     * @param index Index of Mesh to replace
+     * @param mesh  Mesh pointer
+     */
+    void ReplaceTerrainMesh(size_t index, const Mesh* mesh) noexcept;
+
+    /**
+     * Reserves @p meshCount slots for Terrain Meshes.
+     *
+     * @param meshCount Amount of slots to reserve for Terrain Meshes.
+     */
+    void ReserveTerrainMeshPool(size_t meshCount) noexcept;
 
     /**
      * Commence drawing of provided Mesh objects.
@@ -105,6 +118,7 @@ private:
     GLuint mDummyVAO; // We don't need this, but OGL has its needs and won't cooperate without it
     bool initDone;
     MeshArrayType mMeshArray;
+    MeshArrayType mTerrainMeshArray;
 };
 
 #endif // __RENDERER_RENDERER_HPP__

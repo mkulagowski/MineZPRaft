@@ -102,9 +102,20 @@ void Renderer::Init(const RendererDesc& desc)
     initDone = true;
 }
 
-void Renderer::AddMesh(const Mesh* mesh)
+void Renderer::AddMesh(const Mesh* mesh) noexcept
 {
     mMeshArray.push_back(mesh);
+}
+
+void Renderer::ReplaceTerrainMesh(size_t index, const Mesh* mesh) noexcept
+{
+    mTerrainMeshArray[index] = mesh;
+}
+
+
+void Renderer::ReserveTerrainMeshPool(size_t meshCount) noexcept
+{
+    mTerrainMeshArray.resize(meshCount);
 }
 
 void Renderer::Draw() noexcept
@@ -120,11 +131,28 @@ void Renderer::Draw() noexcept
     const float* posRaw = mCamera.GetPosRaw();
     glUniform4f(mMainShaderPlayerPosLoc, posRaw[0], posRaw[1], posRaw[2], posRaw[3]);
 
-    // Draw all meshes provided
+    // Draw all "regular" meshes provided
     GLsizei vertCount;
     for (const auto& mesh : mMeshArray)
     {
-        if (mesh->IsLocked() == false)
+        if (!mesh->IsLocked())
+        {
+            // TODO this needs small improvements for regular meshes
+            /*
+            mesh->Bind();
+            glUniformMatrix4fv(mMainShaderWorldMatrixLoc, 1, false, mesh->GetWorldMatrixRaw());
+
+            vertCount = mesh->GetVertCount();
+            if (vertCount > 0)
+                glDrawArrays(GL_POINTS, 0, mesh->GetVertCount());
+            */
+        }
+    }
+
+    // Do the drawing for Terrain Meshes
+    for (const auto& mesh : mTerrainMeshArray)
+    {
+        if (!mesh->IsLocked())
         {
             mesh->Bind();
             glUniformMatrix4fv(mMainShaderWorldMatrixLoc, 1, false, mesh->GetWorldMatrixRaw());

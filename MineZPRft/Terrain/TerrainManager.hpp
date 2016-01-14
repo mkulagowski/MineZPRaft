@@ -7,7 +7,7 @@
 #ifndef __TERRAIN_TERRAINMANAGER_HPP__
 #define __TERRAIN_TERRAINMANAGER_HPP__
 
-#include "Chunk.hpp"
+#include "ChunkPool.hpp"
 
 #include <vector>
 
@@ -93,7 +93,8 @@ private:
      */
     void ShiftChunkCoords(int& xChunk, int& zChunk, GeneratorState& state);
 
-    std::vector<Chunk> mChunks;
+    ChunkPool mChunkPool;
+    std::vector<Chunk*> mChunks;
     int mCurrentChunkX;
     int mCurrentChunkZ;
     unsigned int mChunkCount;

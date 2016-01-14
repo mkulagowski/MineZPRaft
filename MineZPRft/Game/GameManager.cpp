@@ -112,6 +112,7 @@ void GameManager::CalculatePlayerChunk()
     if (!(shift == Vector()))
     {
         mPlayer.SetPosition(PlayerPos + shift);
+        mPlayer.Update();
         LOG_D("Shifted to chunk: [" << mPlayerChunkX << ", " << mPlayerChunkZ << "]");
     }
 }

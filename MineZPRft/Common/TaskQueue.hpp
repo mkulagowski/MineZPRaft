@@ -73,6 +73,11 @@ public:
      */
     void Clear();
 
+    /**
+     * Informs whether the queue is empty.
+     */
+    bool IsEmpty();
+
 private:
     typedef std::list<TaskType> QueueType;
 
@@ -132,6 +137,13 @@ void TaskQueue<T>::Clear()
 {
     Lock lock(mMutex);
     mList.clear();
+}
+
+template <typename T>
+bool TaskQueue<T>::IsEmpty()
+{
+    Lock lock(mMutex);
+    return mList.empty();
 }
 
 // specialization declarations

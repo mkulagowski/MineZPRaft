@@ -40,16 +40,11 @@ void TerrainManager::Init(const TerrainDesc& desc)
 
     LOG_I("Generating terrain...");
 
-    // Initialize chunks
-    for (auto& chunk : mChunks)
-        chunk.Init();
+    // Reserve some space in Renderer
+    Renderer::GetInstance().ReserveTerrainMeshPool(mChunkCount);
 
     // Generate chunks (this will push tasks to do for generator thread)
     GenerateChunks();
-
-    // Add chunks to render pool
-    for (auto& chunk : mChunks)
-        Renderer::GetInstance().AddMesh(chunk.GetMeshPtr());
 
     LOG_I("Done generating terrain.");
 }
@@ -60,25 +55,19 @@ void TerrainManager::Update(int chunkX, int chunkZ) noexcept
     {
         mCurrentChunkX = chunkX;
         mCurrentChunkZ = chunkZ;
+
         GenerateChunks();
     }
 
     for (auto& chunk : mChunks)
     {
-        if (chunk.IsGenerated())
-            chunk.CommitMeshUpdate();
+        if (chunk->IsGenerated())
+            chunk->CommitMeshUpdate();
     }
 }
 
 void TerrainManager::GenerateChunks()
 {
-    // Clear task queue
-    mGeneratorQueue.Clear();
-
-    // Mark chunks as not generated
-    for (auto& chunk : mChunks)
-        chunk.ResetState();
-
     // Add chunk generation to pool for separate thread.
     unsigned int chunkIndex = 0;
     for (unsigned int i = 0; i <= mVisibleRadius; ++i)
@@ -96,18 +85,37 @@ void TerrainManager::GenerateChunks()
 
         for (unsigned int j = 0; j < chunksInRadius; ++j)
         {
-            mGeneratorQueue.Push(std::bind(&Chunk::Generate, &mChunks[chunkIndex],
-                                           xChunk, zChunk, mCurrentChunkX, mCurrentChunkZ));
+            // Get chunk pointer from pool
+            mChunks[chunkIndex] = mChunkPool.GetChunk(mCurrentChunkX + xChunk,
+                                                      mCurrentChunkZ + zChunk);
+
+            // Generate the Chunk if needed
+            if (mChunks[chunkIndex]->NeedsGeneration())
+            {
+                mChunks[chunkIndex]->ResetState();
+                mGeneratorQueue.Push(std::bind(&Chunk::Generate, mChunks[chunkIndex],
+                                               xChunk, zChunk, mCurrentChunkX, mCurrentChunkZ));
+            }
+
+            mChunks[chunkIndex]->Shift(xChunk, zChunk);
+
+            // Send our chunk to Renderer
+            Renderer::GetInstance().ReplaceTerrainMesh(chunkIndex,
+                                                       mChunks[chunkIndex]->GetMeshPtr());
+
             chunkIndex++;
             ShiftChunkCoords(xChunk, zChunk, state);
         }
     }
 
     // create a detached thread which will do the tasks in parallel
-    std::thread generatorThread([this]() {
-        mGeneratorQueue.EmptyWait();
-    });
-    generatorThread.detach();
+    if (!mGeneratorQueue.IsEmpty())
+    {
+        std::thread generatorThread([this]() {
+            mGeneratorQueue.EmptyWait();
+        });
+        generatorThread.detach();
+    }
 }
 
 unsigned int TerrainManager::CalculateChunkCount(unsigned int radius)

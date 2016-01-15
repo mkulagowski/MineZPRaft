@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_724ba1b0",
+        "filename": "MineZPRft/Common/TaskQueue.hpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-01-15T23:08:46Z",
+      "side": 1,
+      "message": "Ooooh... You meant \"process tasks until queue is empty\"? Srry, but it may be a little bit confusing, so just change the comment ^^",
+      "range": {
+        "startLine": 121,
+        "startChar": 4,
+        "endLine": 121,
+        "endChar": 46
+      },
+      "revId": "836412409ac2c44f1999d8a0e21bc801e3766973",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

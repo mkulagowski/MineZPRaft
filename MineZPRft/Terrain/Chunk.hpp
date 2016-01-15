@@ -29,6 +29,13 @@ enum class ChunkState: unsigned char
     Updated
 };
 
+struct quad
+{
+    Vector start; // starting points
+    int w, h; // width and height
+    VoxelType v; // type of voxel to which the quad belongs
+};
+
 
 class Chunk
 {
@@ -193,6 +200,29 @@ private:
     void GenerateVBOGreedy();
 
     /**
+     * Processes Chunk from X plane perspective.
+     */
+    void ProcessPlaneX(const VoxelType* voxels, const Vector& shift,
+                       std::vector<quad>& resultQuads);
+
+    /**
+     * Processes Chunk from Y plane perspective.
+     */
+    void ProcessPlaneY(const VoxelType* voxels, const Vector& shift,
+                       std::vector<quad>& resultQuads);
+
+    /**
+     * Processes Chunk from Z plane perspective.
+     */
+    void ProcessPlaneZ(const VoxelType* voxels, const Vector& shift,
+                       std::vector<quad>& resultQuads);
+
+    /**
+     * Pushes generated quads to mVerts array
+     */
+    void PushVertsFromQuads(const std::vector<quad>& quads, const Vector& normal);
+
+    /**
      * 1D Array of voxels, which represent a single chunk.
      */
     VoxelType mVoxels[CHUNK_X * CHUNK_Y * CHUNK_Z];
@@ -200,6 +230,7 @@ private:
     Mesh mMesh;
     std::atomic<ChunkState> mState;
     int mCoordX, mCoordZ;
+    bool mGreedyGenerated;
 };
 
 #endif // __TERRAIN_CHUNK_HPP__

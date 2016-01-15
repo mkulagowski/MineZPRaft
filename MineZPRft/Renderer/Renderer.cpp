@@ -76,9 +76,9 @@ void Renderer::Init(const RendererDesc& desc)
     mCamera.Init(cd);
 
     // Color used to clear buffers
-    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    glClearColor(0.1f, 0.3f, 0.7f, 0.0f);
 
-    // Load shader
+    // Load terrain shader
     ShaderDesc sd;
     sd.vsPath = desc.shaderPath + "/TerrainNaiveVS.glsl";
     sd.gsPath = desc.shaderPath + "/TerrainNaiveGS.glsl";
@@ -93,8 +93,19 @@ void Renderer::Init(const RendererDesc& desc)
     mTerrainShaderUniforms.playerPos = mTerrainShaderNaive.GetUniform("playerPos");
     // TODO throw if incorrect uniform locations
 
-    glUniformMatrix4fv(mTerrainShaderUniforms.perspectiveMatrix, 1, false,
-                       mCamera.GetPerspectiveRaw());
+    // Load main shader
+    sd.vsPath = desc.shaderPath + "/MainVS.glsl";
+    sd.gsPath.clear();
+    sd.fsPath = desc.shaderPath + "/MainFS.glsl";
+    mMainShader.Init(sd);
+
+    // Initialize uniforms constant throughout program lifetime
+    mMainShader.MakeCurrent();
+    mMainShaderUniforms.worldMatrix = mMainShader.GetUniform("worldMat");
+    mMainShaderUniforms.viewMatrix = mMainShader.GetUniform("viewMat");
+    mMainShaderUniforms.perspectiveMatrix = mMainShader.GetUniform("perspMat");
+    mMainShaderUniforms.playerPos = mMainShader.GetUniform("playerPos");
+    // TODO throw if incorrect uniform locations
 
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
@@ -111,7 +122,6 @@ void Renderer::ReplaceTerrainMesh(size_t index, const Mesh* mesh) noexcept
     mTerrainMeshArray[index] = mesh;
 }
 
-
 void Renderer::ReserveTerrainMeshPool(size_t meshCount) noexcept
 {
     mTerrainMeshArray.resize(meshCount);
@@ -121,10 +131,6 @@ void Renderer::Draw() noexcept
 {
     // Clear the buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-    // Provide the shader with Camera position for lighting/shading calculations
-    const float* posRaw = mCamera.GetPosRaw();
-    glUniform4f(mTerrainShaderUniforms.playerPos, posRaw[0], posRaw[1], posRaw[2], posRaw[3]);
 
     // Draw all "regular" meshes provided
     GLsizei vertCount;
@@ -155,10 +161,28 @@ void Renderer::Draw() noexcept
             if (primType == GL_POINTS)
             {
                 mTerrainShaderNaive.MakeCurrent();
-                glUniformMatrix4fv(mTerrainShaderUniforms.viewMatrix, 1, false,
-                                   mCamera.GetViewRaw());
                 glUniformMatrix4fv(mTerrainShaderUniforms.worldMatrix, 1, false,
                                    mesh->GetWorldMatrixRaw());
+                glUniformMatrix4fv(mTerrainShaderUniforms.viewMatrix, 1, false,
+                                   mCamera.GetViewRaw());
+                glUniformMatrix4fv(mTerrainShaderUniforms.perspectiveMatrix, 1, false,
+                                   mCamera.GetPerspectiveRaw());
+                const float* posRaw = mCamera.GetPosRaw();
+                glUniform4f(mTerrainShaderUniforms.playerPos,
+                            posRaw[0], posRaw[1], posRaw[2], 1.0f);
+            }
+            else if (primType == GL_TRIANGLES)
+            {
+                mMainShader.MakeCurrent();
+                glUniformMatrix4fv(mMainShaderUniforms.worldMatrix, 1, false,
+                                   mesh->GetWorldMatrixRaw());
+                glUniformMatrix4fv(mMainShaderUniforms.viewMatrix, 1, false,
+                                   mCamera.GetViewRaw());
+                glUniformMatrix4fv(mMainShaderUniforms.perspectiveMatrix, 1, false,
+                                   mCamera.GetPerspectiveRaw());
+                const float* posRaw = mCamera.GetPosRaw();
+                glUniform4f(mMainShaderUniforms.playerPos,
+                            posRaw[0], posRaw[1], posRaw[2], 1.0f);
             }
 
             vertCount = mesh->GetVertCount();

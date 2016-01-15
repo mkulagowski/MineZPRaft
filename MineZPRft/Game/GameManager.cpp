@@ -36,7 +36,7 @@ GameManager::GameManager()
     mPlayer.Init(mRenderer.GetCameraPtr());
 
     TerrainDesc td;
-    td.visibleRadius = 7;
+    td.visibleRadius = 0;
     mTerrain.Init(td);
 }
 
@@ -69,7 +69,7 @@ void GameManager::GameLoop()
                           std::to_string(frameCounter.GetAvgFrameCount()) +
                           " FPS]").c_str());
 
-        CalculatePlayerChunk();
+        //CalculatePlayerChunk();
         mTerrain.Update(mPlayerChunkX, mPlayerChunkZ);
         mRenderer.Draw();
 

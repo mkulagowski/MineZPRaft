@@ -20,7 +20,8 @@ FILE(GLOB TERRAIN_HEADERS      Terrain/*.hpp)
 # Search for dependencies
 PKG_CHECK_MODULES(MINEZPRFT_DEPS REQUIRED
                   x11
-                  gl)
+                  gl
+                  glu)
 
 # setup directories
 INCLUDE_DIRECTORIES(${MINEZPRFT_DEPS_INCLUDE_DIRS} ${MZPR_ROOT_DIRECTORY}/MineZPRft)

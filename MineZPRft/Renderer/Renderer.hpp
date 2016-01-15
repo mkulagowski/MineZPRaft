@@ -124,10 +124,15 @@ private:
         {}
     };
 
+    void DrawPerMeshArray(const MeshArrayType& mesh);
+
     Camera mCamera;
     Shader mTerrainShaderNaive;
     TerrainShaderLocs mTerrainShaderUniforms;
+    Shader mMainShader;
+    TerrainShaderLocs mMainShaderUniforms; // right now both shaders use same uniform sets
     GLuint mDummyVAO; // We don't need this, but OGL has its needs and won't cooperate without it
+    GLenum mCurrentPrimitiveType; // to reduce switching between shaders
     bool initDone;
     MeshArrayType mMeshArray;
     MeshArrayType mTerrainMeshArray;

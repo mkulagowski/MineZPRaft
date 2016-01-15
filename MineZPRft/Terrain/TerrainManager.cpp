@@ -39,6 +39,7 @@ void TerrainManager::Init(const TerrainDesc& desc)
     LOG_D("Chunk count: " << mChunkCount << " on radius " << desc.visibleRadius);
     mChunks.resize(mChunkCount);
     mVisibleRadius = desc.visibleRadius;
+    mUseGreedyMeshing = desc.useGreedyMeshing;
 
     LOG_I("Generating terrain...");
 
@@ -99,7 +100,10 @@ void TerrainManager::Update(int chunkX, int chunkZ, Vector pos, Vector dir,
                                static_cast<size_t>(rayCoords[1]),
                                static_cast<size_t>(rayCoords[2]),
                                VoxelType::Bedrock);
-            rayChunk->GenerateVBONaive();
+            if (mUseGreedyMeshing)
+                rayChunk->GenerateVBOGreedy();
+            else
+                rayChunk->GenerateVBONaive();
 
              LOG_D("Ray intersection done. Chunk found!" << " Voxel["
                    << rayCoords[0] << "," << rayCoords[1] << "," << rayCoords[2]
@@ -137,7 +141,8 @@ void TerrainManager::GenerateChunks()
             {
                 chunk->ResetState();
                 mGeneratorQueue.Push(std::bind(&Chunk::Generate, mChunks[chunkIndex],
-                                               xChunk, zChunk, mCurrentChunkX, mCurrentChunkZ));
+                                               xChunk, zChunk, mCurrentChunkX, mCurrentChunkZ,
+                                               mUseGreedyMeshing));
             }
 
             chunk->Shift(xChunk, zChunk);

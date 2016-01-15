@@ -35,6 +35,14 @@ struct ChunkDesc
     std::string chunkFileExt;       ///< File extension for chunk files.
 };
 
+struct quad
+{
+    Vector start; // starting points
+    int w, h; // width and height
+    VoxelType v; // type of voxel to which the quad belongs
+};
+
+
 class Chunk
 {
 public:
@@ -122,11 +130,13 @@ public:
      * @param chunkZ        Number of Z-th chunk in the generated world, relative to currentChunkZ.
      * @param currentChunkX Number of X-th chunk on which player currently is.
      * @param currentChunkZ Number of Z-th chunk on which player currently is.
+     * @param useGreedyMeshing False to use Naive, true to use Greedy Meshing.
      *
      * The chunks in the world create a two-dimensional grid. All are connected and it is assumed,
      * that the map generated in between them is seamless.
      */
-    void Generate(int chunkX, int chunkZ, int currentChunkX, int currentChunkZ) noexcept;
+    void Generate(int chunkX, int chunkZ, int currentChunkX, int currentChunkZ,
+                  bool useGreedyMeshing) noexcept;
 
     /**
      * Acquire pointer to a Mesh object managed by Chunk.
@@ -201,6 +211,15 @@ public:
      * generated using Chunk::GenerateVBOGreedy().
      */
     void GenerateVBONaive();
+
+    /**
+     * Generates a VBO from current state of mVoxels array using Greedy Meshing algorithm.
+     *
+     * Created Mesh will contain a typical triangle mesh. No Geometry Shader work is needed
+     * to render the Chunk, giving us more GPU workload for graphical effects.
+     */
+    void GenerateVBOGreedy();
+
 private:
     /**
      * Translates three coordinates to a single index inside mVoxels array. Additionally checks if
@@ -218,14 +237,6 @@ private:
     bool CalculateIndex(size_t x, size_t y, size_t z, size_t& index) noexcept;
 
     /**
-     * Generates a VBO from current state of mVoxels array using Greedy Meshing algorithm.
-     *
-     * Created Mesh will contain a typical triangle mesh. No Geometry Shader work is needed
-     * to render the Chunk, giving us more GPU workload for graphical effects.
-     */
-    void GenerateVBOGreedy();
-
-    /**
      * Checks intersection with single OBB
      *
      * @param pos              Ray origin, in world space.
@@ -241,6 +252,29 @@ private:
                             Matrix worldMat, float& intersectionDist);
 
     /**
+     * Processes Chunk from X plane perspective.
+     */
+    void ProcessPlaneX(const VoxelType* voxels, const Vector& shift,
+                       std::vector<quad>& resultQuads);
+
+    /**
+     * Processes Chunk from Y plane perspective.
+     */
+    void ProcessPlaneY(const VoxelType* voxels, const Vector& shift,
+                       std::vector<quad>& resultQuads);
+
+    /**
+     * Processes Chunk from Z plane perspective.
+     */
+    void ProcessPlaneZ(const VoxelType* voxels, const Vector& shift,
+                       std::vector<quad>& resultQuads);
+
+    /**
+     * Pushes generated quads to mVerts array
+     */
+    void PushVertsFromQuads(const std::vector<quad>& quads, const Vector& normal);
+
+    /**
      * 1D Array of voxels, which represent a single chunk.
      */
     VoxelType mVoxels[CHUNK_X * CHUNK_Y * CHUNK_Z];
@@ -248,6 +282,7 @@ private:
     Mesh mMesh;
     std::atomic<ChunkState> mState;
     int mCoordX, mCoordZ;
+    bool mGreedyGenerated;
 };
 
 #endif // __TERRAIN_CHUNK_HPP__

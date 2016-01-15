@@ -38,6 +38,7 @@ GameManager::GameManager()
 
     TerrainDesc td;
     td.visibleRadius = 7;
+    td.useGreedyMeshing = true;
     mTerrain.Init(td);
 }
 

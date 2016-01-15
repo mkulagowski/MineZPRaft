@@ -17,6 +17,7 @@ struct TerrainDesc
 {
     std::string terrainPath;        ///< Path to current save directory with terrain data.
     unsigned int visibleRadius;     ///< Visible chunks in straight line from current chunk.
+    bool useGreedyMeshing;
 };
 
 /**
@@ -99,6 +100,7 @@ private:
     int mCurrentChunkZ;
     unsigned int mChunkCount;
     unsigned int mVisibleRadius;
+    bool mUseGreedyMeshing;
     TaskQueue<> mGeneratorQueue;
 };
 

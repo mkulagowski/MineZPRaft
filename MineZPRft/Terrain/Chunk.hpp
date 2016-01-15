@@ -199,6 +199,7 @@ private:
     std::vector<float> mVerts;
     Mesh mMesh;
     std::atomic<ChunkState> mState;
+    bool mGreedyGenerated;
 };
 
 #endif // __TERRAIN_CHUNK_HPP__

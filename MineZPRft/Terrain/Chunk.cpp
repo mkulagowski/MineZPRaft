@@ -17,7 +17,8 @@ namespace
 
 const int HEIGHTMAP_HEIGHT = 16;
 const double AIR_THRESHOLD = 0.3;
-const int FLOAT_COUNT_PER_VERTEX = 7;
+const int FLOAT_COUNT_PER_VERTEX_NAIVE = 7;
+const int FLOAT_COUNT_PER_VERTEX_GREEDY = 10;
 const float ALPHA_COMPONENT = 1.0f; // Alpha color component should stay at 1,0 (full opacity).
 
 } // namespace
@@ -36,10 +37,12 @@ Chunk::Chunk(const Chunk& other)
         mVoxels[i] = other.mVoxels[i];
 
     mVerts = other.mVerts;
+    mGreedyGenerated = other.mGreedyGenerated;
     MeshDesc md;
     md.dataPtr = mVerts.data();
     md.dataSize = mVerts.size() * sizeof(float);
-    md.vertCount = mVerts.size() / FLOAT_COUNT_PER_VERTEX;
+    md.vertCount = mVerts.size() / (mGreedyGenerated ? FLOAT_COUNT_PER_VERTEX_GREEDY
+                                                     : FLOAT_COUNT_PER_VERTEX_NAIVE);
     mMesh.Init(md);
     mState = other.mState.load();
     if (mState == ChunkState::Updated)
@@ -175,7 +178,7 @@ void Chunk::Generate(int chunkX, int chunkZ, int currentChunkX, int currentChunk
 
     LOG_D("  Chunk [" << chunkX << ", " << chunkZ << "] Stage 4 done");
 
-    GenerateVBONaive();
+    GenerateVBOGreedy();
     LOG_D("  Chunk [" << chunkX << ", " << chunkZ << "] generated.");
 
     mState = ChunkState::Generated;
@@ -191,7 +194,8 @@ void Chunk::CommitMeshUpdate()
     MeshUpdateDesc md;
     md.dataPtr = mVerts.data();
     md.dataSize = mVerts.size() * sizeof(float);
-    md.vertCount = mVerts.size() / FLOAT_COUNT_PER_VERTEX;
+    md.vertCount = mVerts.size() / (mGreedyGenerated ? FLOAT_COUNT_PER_VERTEX_GREEDY
+                                                     : FLOAT_COUNT_PER_VERTEX_NAIVE);
     mMesh.Update(md);
     mState = ChunkState::Updated;
     mMesh.SetLocked(false);
@@ -286,14 +290,129 @@ void Chunk::GenerateVBONaive()
                 }
             }
     mMesh.SetPrimitiveType(MeshPrimitiveType::Points);
+    mGreedyGenerated = false;
 }
 
 void Chunk::GenerateVBOGreedy()
 {
+    VoxelType voxelsCulled[CHUNK_X * CHUNK_Y * CHUNK_Z];
+    for (auto& voxel : voxelsCulled)
+        voxel = VoxelType::Air;
+
+    mVerts.clear();
+    // First stage of greedy meshing - cull invisible voxels like in Naive alg
     for (int z = 0; z < CHUNK_Z; ++z)
         for (int y = 0; y < CHUNK_Y / 4 + HEIGHTMAP_HEIGHT; ++y)
             for (int x = 0; x < CHUNK_X; ++x)
             {
+                VoxelType vox = GetVoxel(x, y, z);
+                if (vox != VoxelType::Air && vox != VoxelType::Unknown)
+                {
+                    // first of all, test only if we are not a bounding voxel chunk
+                    // otherwise we must add it anyway
+                    if ((x > 0) && (x < CHUNK_X - 1) &&
+                        (y > 0) && (y < CHUNK_Y - 1) &&
+                        (z > 0) && (z < CHUNK_Z - 1))
+                    {
+                        // Now see if there is VoxelType::Air in our neighbourhood
+                        // If there is none, discard the Voxel.
+                        VoxelType voxPlusX = GetVoxel(x+1, y, z);
+                        VoxelType voxMinusX = GetVoxel(x-1, y, z);
+                        VoxelType voxPlusY = GetVoxel(x, y+1, z);
+                        VoxelType voxMinusY = GetVoxel(x, y-1, z);
+                        VoxelType voxPlusZ = GetVoxel(x, y, z+1);
+                        VoxelType voxMinusZ = GetVoxel(x, y, z-1);
+
+                        if ((voxPlusX != VoxelType::Air) &&
+                            (voxMinusX != VoxelType::Air) &&
+                            (voxPlusY != VoxelType::Air) &&
+                            (voxMinusY != VoxelType::Air) &&
+                            (voxPlusZ != VoxelType::Air) &&
+                            (voxMinusZ != VoxelType::Air))
+                            // We are surrounded by voxels. Ergo, we are not visible.
+                            // Discard current voxel to not render unseen voxels.
+                            continue;
+                        else
+                        {
+                            size_t index;
+                            CalculateIndex(x, y, z, index);
+                            voxelsCulled[index] = vox;
+                        }
+                    }
+                }
             }
+/*
+    // With culled Mesh, we have to do three passes now.
+    // Stage 1 along X axis
+    for (int z = 0; z < CHUNK_Z; ++z)
+        for (int y = 0; y < CHUNK_Y / 4 + HEIGHTMAP_HEIGHT; ++y)
+            for (int x = 0; x < CHUNK_X; ++x)
+            {
+                size_t index;
+                CalculateIndex(x, y, z, index);
+                VoxelType vox = voxelsCulled[index];
+                if (vox != VoxelType::Air && vox != VoxelType::Unknown)
+                {
+                    auto voxDataIt = VoxelDB.find(vox);
+                    if (voxDataIt == VoxelDB.end())
+                    {
+                        LOG_E("Voxel " << static_cast<VoxelUnderType>(vox)
+                              << " was not found in database!");
+                        continue;
+                    }
+
+                    // pos.xyz
+                    mVerts.push_back(static_cast<float>(x - (CHUNK_X / 2)));
+                    mVerts.push_back(static_cast<float>(y - (CHUNK_Y / 4) - HEIGHTMAP_HEIGHT));
+                    mVerts.push_back(static_cast<float>(z - (CHUNK_Z / 2)));
+                    // norm.xyz
+                    mVerts.push_back(static_cast<float>(0.0f));
+                    mVerts.push_back(static_cast<float>(1.0f));
+                    mVerts.push_back(static_cast<float>(0.0f));
+                    // color.rgba
+                    const Voxel& voxData = voxDataIt->second;
+                    mVerts.push_back(voxData.colorRed);
+                    mVerts.push_back(voxData.colorGreen);
+                    mVerts.push_back(voxData.colorBlue);
+                    mVerts.push_back(ALPHA_COMPONENT);
+                }
+            }*/
+    // test vert 0
+    mVerts.push_back(static_cast<float>(0.0f));
+    mVerts.push_back(static_cast<float>(0.0f));
+    mVerts.push_back(static_cast<float>(0.0f));
+    mVerts.push_back(static_cast<float>(0.0f));
+    mVerts.push_back(static_cast<float>(1.0f));
+    mVerts.push_back(static_cast<float>(0.0f));
+    mVerts.push_back(static_cast<float>(0.0f));
+    mVerts.push_back(static_cast<float>(1.0f));
+    mVerts.push_back(static_cast<float>(0.0f));
+    mVerts.push_back(static_cast<float>(1.0f));
+
+    // test vert 1
+    mVerts.push_back(static_cast<float>(1.0f));
+    mVerts.push_back(static_cast<float>(0.0f));
+    mVerts.push_back(static_cast<float>(0.0f));
+    mVerts.push_back(static_cast<float>(0.0f));
+    mVerts.push_back(static_cast<float>(1.0f));
+    mVerts.push_back(static_cast<float>(0.0f));
+    mVerts.push_back(static_cast<float>(0.0f));
+    mVerts.push_back(static_cast<float>(1.0f));
+    mVerts.push_back(static_cast<float>(0.0f));
+    mVerts.push_back(static_cast<float>(1.0f));
+
+    // test vert 2
+    mVerts.push_back(static_cast<float>(1.0f));
+    mVerts.push_back(static_cast<float>(0.0f));
+    mVerts.push_back(static_cast<float>(1.0f));
+    mVerts.push_back(static_cast<float>(0.0f));
+    mVerts.push_back(static_cast<float>(1.0f));
+    mVerts.push_back(static_cast<float>(0.0f));
+    mVerts.push_back(static_cast<float>(0.0f));
+    mVerts.push_back(static_cast<float>(1.0f));
+    mVerts.push_back(static_cast<float>(0.0f));
+    mVerts.push_back(static_cast<float>(1.0f));
+
     mMesh.SetPrimitiveType(MeshPrimitiveType::Triangles);
+    mGreedyGenerated = true;
 }

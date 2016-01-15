@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_aefccd3f",
+        "filename": "MineZPRft/Terrain/Chunk.hpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-01-15T23:33:03Z",
+      "side": 1,
+      "message": "Z-th",
+      "range": {
+        "startLine": 109,
+        "startChar": 30,
+        "endLine": 109,
+        "endChar": 35
+      },
+      "revId": "dd0b538dc53c083656c2a2b34f98be90f23b41a1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_4ea51152",
+        "filename": "MineZPRft/Terrain/ChunkPool.hpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-01-15T23:33:03Z",
+      "side": 1,
+      "message": "Not really",
+      "range": {
+        "startLine": 4,
+        "startChar": 11,
+        "endLine": 4,
+        "endChar": 39
+      },
+      "revId": "dd0b538dc53c083656c2a2b34f98be90f23b41a1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_ae93edf8",
+        "filename": "MineZPRft/Terrain/ChunkPool.hpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-01-15T23:33:03Z",
+      "side": 1,
+      "message": "center?",
+      "range": {
+        "startLine": 60,
+        "startChar": 51,
+        "endLine": 60,
+        "endChar": 56
+      },
+      "revId": "dd0b538dc53c083656c2a2b34f98be90f23b41a1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_ce9021ef",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-01-15T23:33:03Z",
+      "side": 1,
+      "message": "In the case when mChunkCount is bigger than current size (which IS the case), it will automagically call constructor for each created element, right-o?",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 37
+      },
+      "revId": "dd0b538dc53c083656c2a2b34f98be90f23b41a1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_eebc056f",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-01-15T23:33:03Z",
+      "side": 1,
+      "message": "I thought that You use dots with reference?",
+      "range": {
+        "startLine": 64,
+        "startChar": 17,
+        "endLine": 64,
+        "endChar": 19
+      },
+      "revId": "dd0b538dc53c083656c2a2b34f98be90f23b41a1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_0ec239e9",
+        "filename": "MineZPRft/Terrain/TerrainManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-01-15T23:33:03Z",
+      "side": 1,
+      "message": "Could You create a pointer to current mChunks[chunkIndex] and use it afterwards?\nOptimisation will surely eat it away, yet code would visually look better imho.",
+      "range": {
+        "startLine": 89,
+        "startChar": 12,
+        "endLine": 104,
+        "endChar": 74
+      },
+      "revId": "dd0b538dc53c083656c2a2b34f98be90f23b41a1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

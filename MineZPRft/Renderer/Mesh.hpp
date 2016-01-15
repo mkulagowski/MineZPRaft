@@ -34,6 +34,13 @@ struct MeshUpdateDesc
     size_t vertCount;   ///< Amount of vertices.
 };
 
+
+enum class MeshPrimitiveType: unsigned char
+{
+    Points = 0,
+    Triangles
+};
+
 class Mesh
 {
 public:
@@ -103,11 +110,24 @@ public:
      */
     bool IsLocked() const noexcept;
 
+    /**
+     * Sets a primitive type for this Mesh object.
+     *
+     * @param type Primitive type used in Mesh.
+     */
+    void SetPrimitiveType(MeshPrimitiveType type) noexcept;
+
+    /**
+     * Acquires Mesh Primitive type translated to OpenGL macro form.
+     */
+    GLenum GetGLPrimitiveType() const noexcept;
+
 private:
     GLuint mVBO;
     GLsizei mVertCount;
     Matrix mWorldMatrix;
     std::atomic<bool> mLocked;
+    MeshPrimitiveType mPrimitiveType;
 };
 
 #endif // __RENDERER_MESH_HPP__

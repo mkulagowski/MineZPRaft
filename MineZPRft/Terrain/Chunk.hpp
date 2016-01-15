@@ -173,6 +173,26 @@ private:
     bool CalculateIndex(size_t x, size_t y, size_t z, size_t& index) noexcept;
 
     /**
+     * Generates a VBO from current state of mVoxels array using naive method.
+     *
+     * Created Mesh will contain a cloud of points, which shall be evolved into triangles
+     * by Geometry Shader.
+     *
+     * The Naive generator is faster and more reliable, but enforces more workload on GPU. Thus,
+     * it is mostly used for debugging purposes. Release code should contain Chunk Mesh
+     * generated using Chunk::GenerateVBOGreedy().
+     */
+    void GenerateVBONaive();
+
+    /**
+     * Generates a VBO from current state of mVoxels array using Greedy Meshing algorithm.
+     *
+     * Created Mesh will contain a typical triangle mesh. No Geometry Shader work is needed
+     * to render the Chunk, giving us more GPU workload for graphical effects.
+     */
+    void GenerateVBOGreedy();
+
+    /**
      * 1D Array of voxels, which represent a single chunk.
      */
     VoxelType mVoxels[CHUNK_X * CHUNK_Y * CHUNK_Z];

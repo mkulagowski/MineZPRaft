@@ -17,10 +17,8 @@ using namespace OGLExt;
 
 Renderer::Renderer()
     : mCamera()
-    , mMainShader()
-    , mMainShaderWorldMatrixLoc(GL_NONE)
-    , mMainShaderViewMatrixLoc(GL_NONE)
-    , mMainShaderPerspectiveMatrixLoc(GL_NONE)
+    , mTerrainShaderNaive()
+    , mTerrainShaderUniforms()
     , mDummyVAO(GL_NONE)
     , initDone(false)
 {
@@ -77,25 +75,26 @@ void Renderer::Init(const RendererDesc& desc)
     cd.initialView.up = Vector(0.0f, 1.0f, 0.0f, 0.0f);
     mCamera.Init(cd);
 
-    // Load shader
-    ShaderDesc sd;
-    sd.vsPath = desc.shaderPath + "/MainVS.glsl";
-    sd.gsPath = desc.shaderPath + "/MainGS.glsl";
-    sd.fsPath = desc.shaderPath + "/MainFS.glsl";
-    mMainShader.Init(sd);
-
     // Color used to clear buffers
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
+    // Load shader
+    ShaderDesc sd;
+    sd.vsPath = desc.shaderPath + "/TerrainNaiveVS.glsl";
+    sd.gsPath = desc.shaderPath + "/TerrainNaiveGS.glsl";
+    sd.fsPath = desc.shaderPath + "/TerrainNaiveFS.glsl";
+    mTerrainShaderNaive.Init(sd);
+
     // Initialize uniforms constant throughout program lifetime
-    mMainShader.MakeCurrent();
-    mMainShaderWorldMatrixLoc = mMainShader.GetUniform("worldMat");
-    mMainShaderViewMatrixLoc = mMainShader.GetUniform("viewMat");
-    mMainShaderPerspectiveMatrixLoc = mMainShader.GetUniform("perspMat");
-    mMainShaderPlayerPosLoc = mMainShader.GetUniform("playerPos");
+    mTerrainShaderNaive.MakeCurrent();
+    mTerrainShaderUniforms.worldMatrix = mTerrainShaderNaive.GetUniform("worldMat");
+    mTerrainShaderUniforms.viewMatrix = mTerrainShaderNaive.GetUniform("viewMat");
+    mTerrainShaderUniforms.perspectiveMatrix = mTerrainShaderNaive.GetUniform("perspMat");
+    mTerrainShaderUniforms.playerPos = mTerrainShaderNaive.GetUniform("playerPos");
     // TODO throw if incorrect uniform locations
 
-    glUniformMatrix4fv(mMainShaderPerspectiveMatrixLoc, 1, false, mCamera.GetPerspectiveRaw());
+    glUniformMatrix4fv(mTerrainShaderUniforms.perspectiveMatrix, 1, false,
+                       mCamera.GetPerspectiveRaw());
 
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
@@ -123,13 +122,9 @@ void Renderer::Draw() noexcept
     // Clear the buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    // Drawing pass
-    mMainShader.MakeCurrent();
-    glUniformMatrix4fv(mMainShaderViewMatrixLoc, 1, false, mCamera.GetViewRaw());
-
     // Provide the shader with Camera position for lighting/shading calculations
     const float* posRaw = mCamera.GetPosRaw();
-    glUniform4f(mMainShaderPlayerPosLoc, posRaw[0], posRaw[1], posRaw[2], posRaw[3]);
+    glUniform4f(mTerrainShaderUniforms.playerPos, posRaw[0], posRaw[1], posRaw[2], posRaw[3]);
 
     // Draw all "regular" meshes provided
     GLsizei vertCount;
@@ -154,12 +149,21 @@ void Renderer::Draw() noexcept
     {
         if (!mesh->IsLocked())
         {
+            const GLenum primType = mesh->GetGLPrimitiveType();
             mesh->Bind();
-            glUniformMatrix4fv(mMainShaderWorldMatrixLoc, 1, false, mesh->GetWorldMatrixRaw());
+
+            if (primType == GL_POINTS)
+            {
+                mTerrainShaderNaive.MakeCurrent();
+                glUniformMatrix4fv(mTerrainShaderUniforms.viewMatrix, 1, false,
+                                   mCamera.GetViewRaw());
+                glUniformMatrix4fv(mTerrainShaderUniforms.worldMatrix, 1, false,
+                                   mesh->GetWorldMatrixRaw());
+            }
 
             vertCount = mesh->GetVertCount();
             if (vertCount > 0)
-                glDrawArrays(GL_POINTS, 0, mesh->GetVertCount());
+                glDrawArrays(primType, 0, mesh->GetVertCount());
         }
     }
 
@@ -185,7 +189,7 @@ void Renderer::ResizeViewport(GLsizei w, GLsizei h)
     mCamera.UpdatePerspective(cd);
 
     if (initDone)
-        glUniformMatrix4fv(mMainShaderPerspectiveMatrixLoc, 1, false,
+        glUniformMatrix4fv(mTerrainShaderUniforms.perspectiveMatrix, 1, false,
                            mCamera.GetPerspectiveRaw());
 }
 

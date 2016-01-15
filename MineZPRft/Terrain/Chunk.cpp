@@ -175,7 +175,62 @@ void Chunk::Generate(int chunkX, int chunkZ, int currentChunkX, int currentChunk
 
     LOG_D("  Chunk [" << chunkX << ", " << chunkZ << "] Stage 4 done");
 
-    // Stage 5 - create Mesh from chunk
+    GenerateVBONaive();
+    LOG_D("  Chunk [" << chunkX << ", " << chunkZ << "] generated.");
+
+    mState = ChunkState::Generated;
+}
+
+const Mesh* Chunk::GetMeshPtr()
+{
+    return &mMesh;
+}
+
+void Chunk::CommitMeshUpdate()
+{
+    MeshUpdateDesc md;
+    md.dataPtr = mVerts.data();
+    md.dataSize = mVerts.size() * sizeof(float);
+    md.vertCount = mVerts.size() / FLOAT_COUNT_PER_VERTEX;
+    mMesh.Update(md);
+    mState = ChunkState::Updated;
+    mMesh.SetLocked(false);
+}
+
+void Chunk::ResetState() noexcept
+{
+    mState = ChunkState::NotGenerated;
+    mMesh.SetLocked(true);
+}
+
+bool Chunk::IsGenerated() const noexcept
+{
+    return mState == ChunkState::Generated;
+}
+
+bool Chunk::NeedsGeneration() const noexcept
+{
+    return mState == ChunkState::NotGenerated;
+}
+
+bool Chunk::CalculateIndex(size_t x, size_t y, size_t z, size_t& index) noexcept
+{
+    if ((x > CHUNK_X) || (y > CHUNK_Y) || (z > CHUNK_Z))
+    {
+        LOG_W("Chunk coordinates [" << x << ", " << y << ", " << z
+              << "] exceed available Chunk dimensions! (which are ["
+              << CHUNK_X << ", " << CHUNK_Y << ", " << CHUNK_Z << "])");
+        return false;
+    }
+
+    // Convert 3D coordinates to a 1D array index. This way the one-dimensional array,
+    // which is easily accessible by Renderer, can be used as a 3D array.
+    index = x * CHUNK_Y * CHUNK_Z + y * CHUNK_Z + z;
+    return true;
+}
+
+void Chunk::GenerateVBONaive()
+{
     mVerts.clear();
     for (int z = 0; z < CHUNK_Z; ++z)
         for (int y = 0; y < CHUNK_Y / 4 + HEIGHTMAP_HEIGHT; ++y)
@@ -214,7 +269,6 @@ void Chunk::Generate(int chunkX, int chunkZ, int currentChunkX, int currentChunk
                     auto voxDataIt = VoxelDB.find(vox);
                     if (voxDataIt == VoxelDB.end())
                     {
-                        // TODO log error
                         LOG_E("Voxel " << static_cast<VoxelUnderType>(vox)
                               << " was not found in database!");
                         continue;
@@ -231,57 +285,15 @@ void Chunk::Generate(int chunkX, int chunkZ, int currentChunkX, int currentChunk
                     mVerts.push_back(ALPHA_COMPONENT);
                 }
             }
-
-    // Inform that the terrain has finally been generated.
-    LOG_D("  Chunk [" << chunkX << ", " << chunkZ << "] Stage 5 done");
-
-    mState = ChunkState::Generated;
+    mMesh.SetPrimitiveType(MeshPrimitiveType::Points);
 }
 
-const Mesh* Chunk::GetMeshPtr()
+void Chunk::GenerateVBOGreedy()
 {
-    return &mMesh;
-}
-
-void Chunk::CommitMeshUpdate()
-{
-    MeshUpdateDesc md;
-    md.dataPtr = mVerts.data();
-    md.dataSize = mVerts.size() * sizeof(float);
-    md.vertCount = mVerts.size() / FLOAT_COUNT_PER_VERTEX;
-    mMesh.Update(md);
-    mState = ChunkState::Updated;
-    mMesh.SetLocked(false);
-}
-
-bool Chunk::CalculateIndex(size_t x, size_t y, size_t z, size_t& index) noexcept
-{
-    if ((x > CHUNK_X) || (y > CHUNK_Y) || (z > CHUNK_Z))
-    {
-        LOG_W("Chunk coordinates [" << x << ", " << y << ", " << z
-              << "] exceed available Chunk dimensions! (which are ["
-              << CHUNK_X << ", " << CHUNK_Y << ", " << CHUNK_Z << "])");
-        return false;
-    }
-
-    // Convert 3D coordinates to a 1D array index. This way the one-dimensional array,
-    // which is easily accessible by Renderer, can be used as a 3D array.
-    index = x * CHUNK_Y * CHUNK_Z + y * CHUNK_Z + z;
-    return true;
-}
-
-void Chunk::ResetState() noexcept
-{
-    mState = ChunkState::NotGenerated;
-    mMesh.SetLocked(true);
-}
-
-bool Chunk::IsGenerated() const noexcept
-{
-    return mState == ChunkState::Generated;
-}
-
-bool Chunk::NeedsGeneration() const noexcept
-{
-    return mState == ChunkState::NotGenerated;
+    for (int z = 0; z < CHUNK_Z; ++z)
+        for (int y = 0; y < CHUNK_Y / 4 + HEIGHTMAP_HEIGHT; ++y)
+            for (int x = 0; x < CHUNK_X; ++x)
+            {
+            }
+    mMesh.SetPrimitiveType(MeshPrimitiveType::Triangles);
 }

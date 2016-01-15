@@ -109,12 +109,24 @@ private:
 
     typedef std::vector<const Mesh*> MeshArrayType;
 
+    struct TerrainShaderLocs
+    {
+        GLint worldMatrix;
+        GLint viewMatrix;
+        GLint perspectiveMatrix;
+        GLint playerPos;
+
+        TerrainShaderLocs()
+            : worldMatrix(GL_NONE)
+            , viewMatrix(GL_NONE)
+            , perspectiveMatrix(GL_NONE)
+            , playerPos(GL_NONE)
+        {}
+    };
+
     Camera mCamera;
-    Shader mMainShader; // TODO name is subject to change
-    GLint mMainShaderWorldMatrixLoc;
-    GLint mMainShaderViewMatrixLoc;
-    GLint mMainShaderPerspectiveMatrixLoc;
-    GLint mMainShaderPlayerPosLoc;
+    Shader mTerrainShaderNaive;
+    TerrainShaderLocs mTerrainShaderUniforms;
     GLuint mDummyVAO; // We don't need this, but OGL has its needs and won't cooperate without it
     bool initDone;
     MeshArrayType mMeshArray;

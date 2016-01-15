@@ -87,3 +87,21 @@ bool Mesh::IsLocked() const noexcept
 {
     return mLocked;
 }
+
+void Mesh::SetPrimitiveType(MeshPrimitiveType type) noexcept
+{
+    mPrimitiveType = type;
+}
+
+GLenum Mesh::GetGLPrimitiveType() const noexcept
+{
+    switch (mPrimitiveType)
+    {
+    case MeshPrimitiveType::Points:
+        return GL_POINTS;
+    case MeshPrimitiveType::Triangles:
+        return GL_TRIANGLES;
+    default:
+        return GL_NONE;
+    }
+}

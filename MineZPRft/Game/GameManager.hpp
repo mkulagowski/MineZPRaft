@@ -26,6 +26,11 @@ public:
     void GameLoop();
 
     /**
+     * Get pointer to used GameWindow object
+     */
+    GameWindow* GetWindow();
+
+    /**
      * Get GameManager instance
      */
     static GameManager& GetInstance();

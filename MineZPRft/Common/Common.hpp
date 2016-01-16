@@ -26,4 +26,12 @@
  */
 std::string GetLastErrorString();
 
+/**
+ * Check if given string is a numeric value.
+ *
+ * @param string Input string.
+ * @return True if input is numeric. False otherwise.
+ */
+bool IsNumeric(char const *string);
+
 #endif // __COMMON_COMMON_HPP__

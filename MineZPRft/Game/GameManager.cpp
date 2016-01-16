@@ -77,6 +77,11 @@ void GameManager::GameLoop()
     }
 }
 
+GameWindow* GameManager::GetWindow()
+{
+    return &mWindow;
+}
+
 void GameManager::CalculatePlayerChunk()
 {
     const Vector& PlayerPos = mPlayer.GetPosition();

@@ -8,8 +8,9 @@
 
 #include "Common/FileSystem.hpp"
 #include "Common/Logger.hpp"
+#include "Common/Common.hpp"
 
-int main()
+int main(int argc, char * argv[])
 {
     // NOTE logs from here on will have their filename unstripped
 
@@ -20,6 +21,14 @@ int main()
     Logger::GetInstance().SetCurrentWorkingDir(FS::GetCurrentWorkingDir());
 
     // NOTE logs from here on will have their filename stripped
+
+    // Check for 2 numeric args. If given, use them as window size.
+    if (argc == 3 && IsNumeric(argv[1]) && IsNumeric(argv[2]))
+    {
+        int w = std::stoi(argv[1]);
+        int h = std::stoi(argv[2]);
+        GameManager::GetInstance().GetWindow()->SetSize(w, h);
+    }
 
     // Start the main game loop
     GameManager::GetInstance().GameLoop();

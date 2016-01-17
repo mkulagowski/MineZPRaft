@@ -12,6 +12,9 @@
 #include <memory>
 #include <iostream>
 #include <unistd.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <cstring>
 
 namespace
 {
@@ -31,10 +34,10 @@ std::string GetExecutableDir()
 {
     std::string linkPath = "/proc/self/exe";
     std::string execPathStr = "";
-    char* execPath = realpath(linkPath.data(), nullptr);
+    char* execPath = ::realpath(linkPath.data(), nullptr);
 
     if (!execPath)
-        LOG_E("Failed to resolve executable's path : " << GetLastErrorString());
+        LOG_E("Failed to resolve executable's path : " << ::GetLastErrorString());
     else
     {
         execPathStr = execPath;
@@ -49,7 +52,7 @@ void ChangeDirectory(const std::string& dir)
     if (::chdir(dir.c_str()) != 0)
     {
         LOG_E("Failed to change current directory to '" << dir
-                  << "': " << GetLastErrorString());
+                  << "': " << ::GetLastErrorString());
         // TODO exception
         return;
     }
@@ -70,6 +73,31 @@ std::string GetCurrentWorkingDir()
     free(currPath);
 
     return currPathStr;
+}
+
+bool CreateDir(const std::string& path)
+{
+    if (::mkdir(path.c_str(), 0777) != 0)
+    {
+        LOG_E("Failed to create directory '" << path << "' : "
+                  << ::strerror(errno));
+        return false;
+    }
+
+    LOG_I("Created directory '" << path << "'");
+    return true;
+}
+
+bool IsDir(const std::string& path)
+{
+    struct stat st;
+    if (::stat(path.c_str(), &st) != 0)
+        return false;
+
+    if (S_ISDIR(st.st_mode))
+        return true;
+
+    return false;
 }
 
 } // namespace FS

@@ -10,11 +10,16 @@
 #include "Math/Common.hpp"
 #include "NoiseGenerator.hpp"
 #include "Renderer/Renderer.hpp"
+#include "Common/FileSystem.hpp"
 
+#include <fstream>
 
 namespace
 {
-
+// TODO Get rid of CHUNK_* consts. They should be customizable.
+// TODO Consider moving CHUNK_DIR to user home directory
+const std::string CHUNK_DIR = "ChunkBank";
+const std::string CHUNK_FILEEXT = ".riQrll";
 const int HEIGHTMAP_HEIGHT = 16;
 const double AIR_THRESHOLD = 0.3;
 const int FLOAT_COUNT_PER_VERTEX = 7;
@@ -98,6 +103,16 @@ void Chunk::Generate(int chunkX, int chunkZ, int currentChunkX, int currentChunk
     mCoordX = chunkX + currentChunkX;
     mCoordZ = chunkZ + currentChunkZ;
 
+    // If Chunk was saved to disk, load it from file.
+    if (LoadFromDisk())
+    {
+        GenerateVBONaive();
+        mState = ChunkState::Generated;
+        LOG_D("Chunk [" << mCoordX << ", "
+              << mCoordZ << "] was successfully read from disk.");
+        return;
+    }
+
     NoiseGenerator& noiseGen = NoiseGenerator::GetInstance();
 
     // Further "generation loops" will assume that bottom two layers of chunk are
@@ -180,9 +195,10 @@ void Chunk::Generate(int chunkX, int chunkZ, int currentChunkX, int currentChunk
     LOG_D("  Chunk [" << mCoordX << ", " << mCoordZ << "] Stage 4 done");
 
     GenerateVBONaive();
-    LOG_D("  Chunk [" << mCoordX << ", " << mCoordZ << "] generated.");
 
     mState = ChunkState::Generated;
+
+    return;
 }
 
 const Mesh* Chunk::GetMeshPtr()
@@ -300,4 +316,98 @@ void Chunk::GenerateVBOGreedy()
             {
             }
     mMesh.SetPrimitiveType(MeshPrimitiveType::Triangles);
+}
+
+bool Chunk::SaveToDisk()
+{
+    // Check if there is data to save
+    if (NeedsGeneration())
+        return false;
+
+    if (!FS::IsDir("./" + CHUNK_DIR))
+        FS::CreateDir("./" + CHUNK_DIR);
+
+    std::fstream file;
+
+    // Construct filename
+    std::string fileName(CHUNK_DIR + "/Chunk_" + std::to_string(mCoordX) + '_'
+                         + std::to_string(mCoordZ) + CHUNK_FILEEXT);
+
+    file.open(fileName, std::ios::out | std::ios::trunc);
+
+    if (file.is_open())
+    {
+        VoxelType tempVox = mVoxels[0];
+        VoxelType lastVox;
+        uint32_t counter;
+        for (int i = 0; i < CHUNK_X * CHUNK_Y * CHUNK_Z; )
+        {
+            lastVox = tempVox;
+            counter = 1;
+            i++;
+
+            while (lastVox == tempVox && i < CHUNK_X * CHUNK_Y * CHUNK_Z)
+            {
+                counter++;
+                tempVox = mVoxels[i++];
+            }
+
+            if (i < CHUNK_X * CHUNK_Y * CHUNK_Z)
+            {
+                counter--;
+                i--;
+            }
+
+            file << counter;
+            file << static_cast<VoxelUnderType>(lastVox);
+
+            if (!file)
+            {
+                LOG_E("Writing to file \"" << fileName << "\" failed.");
+                return false;
+            }
+        }
+
+        file.close();
+        return true;
+    } else
+    {
+        LOG_E("Failed to open file \"" << fileName << "\" for writing.");
+        return false;
+    }
+}
+
+bool Chunk::LoadFromDisk()
+{
+    std::fstream file;
+
+    // Construct filename
+    std::string fileName(CHUNK_DIR + "/Chunk_" + std::to_string(mCoordX) + '_'
+                         + std::to_string(mCoordZ) + CHUNK_FILEEXT);
+
+    file.open(fileName, std::ios::in);
+
+    if (file.is_open())
+    {
+        VoxelUnderType tempVox;
+        uint32_t counter;
+        for (int i = 0; i < CHUNK_X * CHUNK_Y * CHUNK_Z; )
+        {
+            file >> counter;
+            file >> tempVox;
+
+            do
+            {
+                counter--;
+                mVoxels[i++] = static_cast<VoxelType>(tempVox);
+            } while (counter && i < CHUNK_X * CHUNK_Y * CHUNK_Z);
+
+            if (!file)
+                return false;
+        }
+
+        file.close();
+        return true;
+    } else
+        return false;
 }

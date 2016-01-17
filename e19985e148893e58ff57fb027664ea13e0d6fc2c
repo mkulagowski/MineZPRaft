@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_bb008eab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2016-01-17T07:36:44Z",
+      "side": 1,
+      "message": "Terrain: Implement...",
+      "revId": "e19985e148893e58ff57fb027664ea13e0d6fc2c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_9b03cab7",
+        "filename": "MineZPRft/Terrain/Chunk.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2016-01-17T07:36:44Z",
+      "side": 1,
+      "message": "I tend to disagree with existence of this variable.\n\nLook at TerrainManagerDesc structure. :)",
+      "range": {
+        "startLine": 18,
+        "startChar": 18,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "e19985e148893e58ff57fb027664ea13e0d6fc2c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_7bf616d9",
+        "filename": "MineZPRft/Terrain/Chunk.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2016-01-17T07:36:44Z",
+      "side": 1,
+      "message": "I think this is a bad idea.\n\nFurther on we have Picking in our TODOs. This would mean, that in the current form we would have to save the contents of Chunk each time we add/remove a block inside a chunk.\n\nInstead, I propose a better solution. Just save each chunk when it is destructed. This way we won\u0027t cause any disk usage overhaul each time a voxel is created/destroyed.\n\nOf course, here comes the question - what if our app crashes so horribly that std::terminate will be called upon it. I would answer - our application is flawless, it does not crash. At least it should not. ;)",
+      "revId": "e19985e148893e58ff57fb027664ea13e0d6fc2c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_1b10ba00",
+        "filename": "MineZPRft/Terrain/Chunk.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2016-01-17T07:36:44Z",
+      "side": 1,
+      "message": "I think this could be more objective-based. However this is a matter for another commit.\n\nJust leave a TODO to remove these arguments, here and in LoadFromDisk",
+      "range": {
+        "startLine": 167,
+        "startChar": 20,
+        "endLine": 167,
+        "endChar": 42
+      },
+      "revId": "e19985e148893e58ff57fb027664ea13e0d6fc2c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

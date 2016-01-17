@@ -41,7 +41,7 @@ std::string GetExecutableDir()
     for (; len < maxPathWide; len *= 2)
     {
         execPath.reset(new TCHAR[len]);
-        sizeRead = GetModuleFileName(nullptr, execPath.get(), len);
+        sizeRead = ::GetModuleFileName(nullptr, execPath.get(), len);
 
         if (sizeRead < len && sizeRead != 0)
             break;
@@ -52,7 +52,7 @@ std::string GetExecutableDir()
     if (len >= maxPathWide)
     {
         LOG_E("Failed to resolve executable's path : %s"
-                  << GetLastErrorString().c_str());
+                  << GetLastErrorString());
         // TODO exception
         return "";
     }
@@ -64,8 +64,8 @@ void ChangeDirectory(const std::string& dir)
 {
     if (::SetCurrentDirectory(dir.c_str()) == 0)
     {
-        LOG_E("Failed to change directory to '" << dir.c_str()
-                  << "': " << GetLastErrorString().c_str());
+        LOG_E("Failed to change directory to '" << dir
+                  << "': " << GetLastErrorString());
         // TODO exception
         return;
     }
@@ -76,7 +76,7 @@ void ChangeDirectory(const std::string& dir)
 std::string GetCurrentWorkingDir()
 {
     char currPath[MAX_PATH];
-    _getcwd(currPath, MAX_PATH);
+    ::_getcwd(currPath, MAX_PATH);
     if (!currPath)
     {
         LOG_W("Current working directory longer than MAX_PATH.");
@@ -85,6 +85,32 @@ std::string GetCurrentWorkingDir()
 
     std::string currPathStr(currPath);
     return currPathStr;
+}
+
+bool CreateDir(const std::string& path)
+{
+    if (::CreateDirectory(path.c_str(), nullptr) == 0)
+    {
+        LOG_E("Failed to create directory '" << path << "' : "
+                  << GetLastErrorString());
+        return false;
+    }
+
+    LOG_I("Created directory '" << path << "'");
+    return true;
+}
+
+bool IsDir(const std::string& path)
+{
+    DWORD attrs = ::GetFileAttributes(path.c_str());
+
+    if (attrs == INVALID_FILE_ATTRIBUTES)
+        return false;
+
+    if (attrs & FILE_ATTRIBUTE_DIRECTORY)
+        return true;
+
+    return false;
 }
 
 } // namespace FS

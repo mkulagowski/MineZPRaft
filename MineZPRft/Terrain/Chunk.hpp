@@ -29,6 +29,11 @@ enum class ChunkState: unsigned char
     Updated
 };
 
+struct ChunkDesc
+{
+    std::string chunkPath;          ///< Path to current save directory with chunk data.
+    std::string chunkFileExt;       ///< File extension for chunk files.
+};
 
 class Chunk
 {
@@ -155,6 +160,23 @@ public:
      * Returns whether the Chunk needs generation
      */
     bool NeedsGeneration() const noexcept;
+
+    /**
+     * Loads Chunk's voxel data from disk.
+     *
+     * @return True, if loading was successfull. False otherwise.
+     */
+    bool LoadFromDisk();
+
+    /**
+     * Writes Chunk's voxel data to disk.
+     *
+     * @return True, if writing was successfull. False otherwise.
+     *
+     * @remarks Chunk needs to be generated beforehand. Otherwise this function
+     * will fail.
+     */
+    bool SaveToDisk();
 
 private:
     /**

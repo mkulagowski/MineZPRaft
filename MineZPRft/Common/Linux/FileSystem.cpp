@@ -72,4 +72,29 @@ std::string GetCurrentWorkingDir()
     return currPathStr;
 }
 
+bool CreateDir(const std::string& path)
+{
+    if (::mkdir(path.c_str(), 0777) != 0)
+    {
+        LOG_E("Failed to create directory '" << path.c_str() << "' : "
+                  << strerror(errno));
+        return false;
+    }
+
+    LOG_I("Created directory '" << path.c_str() << "'");
+    return true;
+}
+
+bool IsDir(const std::string& path)
+{
+    struct stat stat;
+    if (::stat(path.c_str(), &stat) != 0)
+        return false;
+
+    if (S_ISDIR(stat.st_mode))
+        return true;
+
+    return false;
+}
+
 } // namespace FS

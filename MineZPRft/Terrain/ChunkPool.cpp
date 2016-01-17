@@ -13,6 +13,8 @@ ChunkPool::ChunkPool()
 
 ChunkPool::~ChunkPool()
 {
+    for (auto& chunk : mChunks)
+        chunk.second.SaveToDisk();
 }
 
 Chunk* ChunkPool::GetChunk(int x, int z)

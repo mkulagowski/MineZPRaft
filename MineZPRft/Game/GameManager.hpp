@@ -31,6 +31,11 @@ public:
     GameWindow* GetWindow();
 
     /**
+     * Choose to draw ray intersection from players view in next loop.
+     */
+    void DrawRay();
+
+    /**
      * Get GameManager instance
      */
     static GameManager& GetInstance();
@@ -52,6 +57,7 @@ private:
     GameWindow mWindow;
     Renderer& mRenderer;
     TerrainManager& mTerrain;
+    bool mDrawRay;
 };
 
 #endif // __GAME_GAMEMANAGER_HPP__

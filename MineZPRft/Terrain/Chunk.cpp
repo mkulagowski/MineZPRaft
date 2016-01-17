@@ -10,6 +10,8 @@
 #include "Math/Common.hpp"
 #include "NoiseGenerator.hpp"
 #include "Renderer/Renderer.hpp"
+#include "Math/Vector.hpp"
+#include "Math/Matrix.hpp"
 
 #include <fstream>
 
@@ -414,4 +416,111 @@ bool Chunk::LoadFromDisk()
         return true;
     } else
         return false;
+}
+
+bool Chunk::TestOBBRay(Vector pos, Vector dir, float &distance, Vector &coords)
+{
+    float retDist = 100000.0f;
+    Vector retCoords;
+    Vector voxShift(0.5, 0.5, 0.5, 0);
+
+    //Matrix worldMat(GetMeshPtr()->GetWorldMatrixRaw());
+    Matrix worldMat(MATRIX_IDENTITY);
+    Vector OBBposition_worldspace(worldMat[12], worldMat[13], worldMat[14], 1);
+    Vector delta = OBBposition_worldspace - pos;
+
+    // Each for every coordinate (x, y, z)
+    Vector axis[3]; ///< Vector that models are moved in each axis
+    float e[3];     ///< Distance that "we" move on each axis
+    float f[3];     ///< Distance that "ray" moves on each axis
+
+    for (int i = 0; i < 3; i++)
+    {
+        axis[i] = Vector(worldMat[4 * i],
+                         worldMat[4 * i + 1],
+                         worldMat[4 * i + 2], 1);
+        e[i] = axis[i].Dot(delta);
+        f[i] = dir.Dot(axis[i]);
+    }
+
+    {
+        for (int z = 0; z < CHUNK_Z; ++z)
+            for (int y = 0; y < CHUNK_Y; ++y)
+                for (int x = 0; x < CHUNK_X; ++x)
+                    if (GetVoxel(x, y, z) != VoxelType::Air)
+                    {
+                        // Minimum and maximum points of OBB
+                        Vector aabb_min(x, y, z, 1);
+                        Vector aabb_max(aabb_min);
+                        aabb_min -= voxShift;
+                        aabb_max += voxShift;
+
+                        float tMax = 100000.0f;
+                        float tMin = -tMax;
+                        float tempDist = tMax;
+                        Vector tempCoords;
+
+                        // Each loop for every coordinate (x, y, z)
+                        for (int i = 0; i < 3; ++i)
+                        {
+                            // Check if the ray is NOT parallel to currently checked axis
+                            if (fabs(f[i]) > 0.001f)
+                            {
+
+                                float t1 = (e[i] + aabb_min[0]) / f[i]; // Intersection with the "left" plane
+                                float t2 = (e[i] + aabb_max[0]) / f[i]; // Intersection with the "right" plane
+
+                                // if wrong order
+                                if (t1 > t2)
+                                    std::swap(t1, t2);
+
+                                if (t2 < tMax)
+                                    tMax = t2;
+
+                                // tMin is the farthest "near" intersection (amongst the X,Y and Z planes pairs)
+                                if (t1 > tMin)
+                                    tMin = t1;
+
+                                // And here's the trick :
+                                // If "far" is closer than "near", then there is NO intersection.
+                                // See the images in the tutorials for the visual explanation.
+                                // if (tMax < tMin)
+                                //     return false;
+                                /*
+                                if (tMax >= tMin)
+                                    if (tMin < tempDist)
+                                    {
+                                        tempDist = tMin;
+                                        tempCoords = Vector(x, y, z, 1);
+                                    }
+                                  */
+                            }
+                            /* With ray almost parallel to the planes , no intersection.
+                            else
+                            { // Rare case : the ray is almost parallel to the planes, so they don't have any "intersection"
+                                if (-e[i] + aabb_min[0] > 0.0f || -e[i] + aabb_max[1] < 0.0f)
+                                    return false;
+                            }
+                            */
+                        }
+
+                        if (tMax >= tMin)
+                            if (tMin < retDist)
+                            {
+                                retDist = tMin;
+                                retCoords = Vector(x, y, z, 1);
+                            }
+
+                    }
+    }
+
+    if (retDist == 100000.0f)
+        return false;
+
+    distance = retDist;
+    coords = retCoords;
+    LOG_I("Ray intersection worked for chunk [" << mCoordX << "," << mCoordZ
+          << "], voxel[" << coords[0] << "," << coords[1] << "," << coords[2] << "]. Distance"
+          << " = " << distance << ".");
+    return true;
 }

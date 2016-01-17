@@ -168,6 +168,7 @@ public:
      */
     bool LoadFromDisk();
 
+    bool TestOBBRay(Vector pos, Vector dir, float &distance, Vector &coords);
 private:
     /**
      * Translates three coordinates to a single index inside mVoxels array. Additionally checks if

@@ -15,6 +15,7 @@ GameManager::GameManager()
     , mWindow(&mPlayer)
     , mRenderer(Renderer::GetInstance())
     , mTerrain(TerrainManager::GetInstance())
+    , mDrawRay(false)
 {
     // TODO: Add possibility to change the resolution
     mWindow.SetSize(800, 600);
@@ -50,6 +51,11 @@ GameManager& GameManager::GetInstance()
     return instance;
 }
 
+void GameManager::DrawRay()
+{
+    mDrawRay = true;
+}
+
 void GameManager::GameLoop()
 {
     mFrameTimer.Start();
@@ -70,7 +76,10 @@ void GameManager::GameLoop()
                           " FPS]").c_str());
 
         CalculatePlayerChunk();
-        mTerrain.Update(mPlayerChunkX, mPlayerChunkZ);
+        mTerrain.Update(mPlayerChunkX, mPlayerChunkZ, mPlayer.GetPosition(),
+                        mPlayer.GetDirection(), mDrawRay);
+        mDrawRay = false;
+
         mRenderer.Draw();
 
         mWindow.SwapBuffers();

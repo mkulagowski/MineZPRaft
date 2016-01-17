@@ -64,7 +64,7 @@ public:
      *
      * @remarks The function for performance will not throw.
      */
-    void Update(int chunkX, int chunkZ) noexcept;
+    void Update(int chunkX, int chunkZ, Vector pos, Vector dir, bool ray) noexcept;
 
 private:
     TerrainManager();

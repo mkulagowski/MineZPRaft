@@ -49,7 +49,8 @@ void TerrainManager::Init(const TerrainDesc& desc)
     LOG_I("Done generating terrain.");
 }
 
-void TerrainManager::Update(int chunkX, int chunkZ) noexcept
+void TerrainManager::Update(int chunkX, int chunkZ, Vector pos, Vector dir,
+                            bool ray) noexcept
 {
     if ((mCurrentChunkX != chunkX) || (mCurrentChunkZ != chunkZ))
     {
@@ -58,11 +59,31 @@ void TerrainManager::Update(int chunkX, int chunkZ) noexcept
 
         GenerateChunks();
     }
+    if (ray)
+        LOG_I("Ray intersect TBD");
 
     for (auto& chunk : mChunks)
     {
         if (chunk->IsGenerated())
             chunk->CommitMeshUpdate();
+    }
+
+    float rayDistance = 10000.0f;
+    Vector rayCoords;
+    // Use picking to get voxel we point to
+    if (ray && !mChunks[0]->NeedsGeneration())
+    {
+        float tempDistance = rayDistance;
+        Vector tempCoords;
+        bool rayFound = mChunks[0]->TestOBBRay(pos, dir, rayDistance, rayCoords);
+        if (rayFound)
+            mChunks[0]->SetVoxel(rayCoords[0], rayCoords[1], rayCoords[2],
+                              VoxelType::Bedrock);
+
+        LOG_I("Ray intersection done. Chunk "
+                << (rayFound ? "not found." : "found.")
+                << " Voxel[" << rayCoords[0] << "," << rayCoords[1] << "," << rayCoords[2]
+                << "]. Distance = " << rayDistance << ".");
     }
 }
 

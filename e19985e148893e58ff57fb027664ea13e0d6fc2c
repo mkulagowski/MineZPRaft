@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fa81d914_dbdd4216",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-01-17T10:23:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81d914_bb008eab",
+      "revId": "e19985e148893e58ff57fb027664ea13e0d6fc2c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_9b03cab7",
         "filename": "MineZPRft/Terrain/Chunk.cpp",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2016-01-17T07:36:44Z",
       "side": 1,
       "message": "I tend to disagree with existence of this variable.\n\nLook at TerrainManagerDesc structure. :)",
+      "range": {
+        "startLine": 18,
+        "startChar": 18,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "e19985e148893e58ff57fb027664ea13e0d6fc2c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_3b601e32",
+        "filename": "MineZPRft/Terrain/Chunk.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-01-17T10:23:37Z",
+      "side": 1,
+      "message": "I\u0027ll leave it as it is with a TODO. You will change it according to Your will, when You\u0027ll be working on textures (so all data is in single dir)",
+      "parentUuid": "fa81d914_9b03cab7",
       "range": {
         "startLine": 18,
         "startChar": 18,
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "fa81d914_fbe206d4",
+        "filename": "MineZPRft/Terrain/Chunk.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-01-17T10:23:37Z",
+      "side": 1,
+      "message": "If our app crashes, then it\u0027s crashed. It\u0027s normal for crashed applications to not recover everything fully :P\n\nOnly problem would be stopping Saving to file in the middle - even though no .Close() was called, the file will be created and will persist. :/",
+      "parentUuid": "fa81d914_7bf616d9",
+      "revId": "e19985e148893e58ff57fb027664ea13e0d6fc2c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa81d914_1b10ba00",
         "filename": "MineZPRft/Terrain/Chunk.hpp",
         "patchSetId": 1
@@ -70,6 +130,30 @@
       "writtenOn": "2016-01-17T07:36:44Z",
       "side": 1,
       "message": "I think this could be more objective-based. However this is a matter for another commit.\n\nJust leave a TODO to remove these arguments, here and in LoadFromDisk",
+      "range": {
+        "startLine": 167,
+        "startChar": 20,
+        "endLine": 167,
+        "endChar": 42
+      },
+      "revId": "e19985e148893e58ff57fb027664ea13e0d6fc2c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_3bed7ec4",
+        "filename": "MineZPRft/Terrain/Chunk.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-01-17T10:23:37Z",
+      "side": 1,
+      "message": "Did another commit and it uses class fields.",
+      "parentUuid": "fa81d914_1b10ba00",
       "range": {
         "startLine": 167,
         "startChar": 20,

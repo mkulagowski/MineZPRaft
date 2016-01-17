@@ -29,6 +29,11 @@ enum class ChunkState: unsigned char
     Updated
 };
 
+struct ChunkDesc
+{
+    std::string chunkPath;          ///< Path to current save directory with chunk data.
+    std::string chunkFileExt;       ///< File extension for chunk files.
+};
 
 class Chunk
 {
@@ -156,6 +161,13 @@ public:
      */
     bool NeedsGeneration() const noexcept;
 
+    /**
+     * Loads Chunk's voxel data from disk.
+     *
+     * @return True, if loading was successfull. False otherwise.
+     */
+    bool LoadFromDisk();
+
 private:
     /**
      * Translates three coordinates to a single index inside mVoxels array. Additionally checks if
@@ -191,6 +203,16 @@ private:
      * to render the Chunk, giving us more GPU workload for graphical effects.
      */
     void GenerateVBOGreedy();
+
+    /**
+     * Writes Chunk's voxel data to disk.
+     *
+     * @return True, if writing was successfull. False otherwise.
+     *
+     * @remarks Chunk needs to be generated beforehand. Otherwise this function
+     * will fail.
+     */
+    bool SaveToDisk();
 
     /**
      * 1D Array of voxels, which represent a single chunk.

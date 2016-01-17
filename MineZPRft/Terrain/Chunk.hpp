@@ -156,6 +156,26 @@ public:
      */
     bool NeedsGeneration() const noexcept;
 
+    /**
+     * Writes Chunk's voxel data to disk.
+     *
+     * @param coordX Number of X-th chunk in the generated world, relative to the center
+     * @param coordZ Number of Z-th chunk in the generated world, relative to the center
+     *
+     * @return True, if writing was successfull. False otherwise.
+     */
+    bool SaveToDisk(int coordX, int coordZ);
+
+    /**
+     * Loads Chunk's voxel data from disk.
+     *
+     * @param coordX Number of X-th chunk in the generated world, relative to the center
+     * @param coordZ Number of Z-th chunk in the generated world, relative to the center
+     *
+     * @return True, if loading was successfull. False otherwise.
+     */
+    bool LoadFromDisk(int coordX, int coordZ);
+
 private:
     /**
      * Translates three coordinates to a single index inside mVoxels array. Additionally checks if

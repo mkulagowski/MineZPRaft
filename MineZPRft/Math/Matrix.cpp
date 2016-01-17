@@ -23,6 +23,12 @@ Matrix::Matrix(float a)
         f[i] = a;
 }
 
+Matrix::Matrix(const float* a)
+{
+    for (int i = 0; i < 16; ++i)
+        f[i] = a[i];
+}
+
 Matrix::Matrix(float a1, float a2, float a3, float a4,
                float b1, float b2, float b3, float b4,
                float c1, float c2, float c3, float c4,

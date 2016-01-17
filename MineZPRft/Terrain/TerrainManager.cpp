@@ -4,6 +4,8 @@
  * @brief  Terrain Manager definitions.
  */
 
+#define NOMINMAX
+
 #include "TerrainManager.hpp"
 
 #include "Common/Common.hpp"
@@ -49,7 +51,8 @@ void TerrainManager::Init(const TerrainDesc& desc)
     LOG_I("Done generating terrain.");
 }
 
-void TerrainManager::Update(int chunkX, int chunkZ) noexcept
+void TerrainManager::Update(int chunkX, int chunkZ, Vector pos, Vector dir,
+                            bool ray) noexcept
 {
     if ((mCurrentChunkX != chunkX) || (mCurrentChunkZ != chunkZ))
     {
@@ -63,6 +66,45 @@ void TerrainManager::Update(int chunkX, int chunkZ) noexcept
     {
         if (chunk->IsGenerated())
             chunk->CommitMeshUpdate();
+    }
+
+    // Use picking on center chunk and adjacent ones
+    if (ray)
+    {
+        // Final results
+        float rayDist = std::numeric_limits<float>::max();
+        Vector rayCoords;
+        Chunk* rayChunk = nullptr;
+
+        // Temporary results
+        float tempDist = std::numeric_limits<float>::max();
+        Vector tempCoords;
+
+        // For each out of 5 middle chunks calculate picking.
+        // Final result will be voxel with smallest distance from players eyes.
+        for (int i = 0; i < 4; ++i)
+            if (!mChunks[i]->NeedsGeneration())
+                if (mChunks[i]->ChunkRayIntersection(pos, dir, tempDist, tempCoords))
+                    if (tempDist < rayDist)
+                    {
+                        rayDist = tempDist;
+                        rayCoords = tempCoords;
+                        rayChunk = mChunks[i];
+                    }
+
+        // If any voxel was picked, turn it into Bedrock, so we can see it
+        if (rayChunk != nullptr)
+        {
+            rayChunk->SetVoxel(static_cast<size_t>(rayCoords[0]),
+                               static_cast<size_t>(rayCoords[1]),
+                               static_cast<size_t>(rayCoords[2]),
+                               VoxelType::Bedrock);
+            rayChunk->GenerateVBONaive();
+
+             LOG_D("Ray intersection done. Chunk found!" << " Voxel["
+                   << rayCoords[0] << "," << rayCoords[1] << "," << rayCoords[2]
+                   << "]. Distance = " << rayDist << ".");
+        }
     }
 }
 

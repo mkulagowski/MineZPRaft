@@ -4,6 +4,7 @@
  * @brief  Chunk methods definition.
  */
 
+#define NOMINMAX
 #include "Chunk.hpp"
 
 #include "Common/Logger.hpp"
@@ -11,6 +12,8 @@
 #include "NoiseGenerator.hpp"
 #include "Renderer/Renderer.hpp"
 #include "Common/FileSystem.hpp"
+#include "Math/Vector.hpp"
+#include "Math/Matrix.hpp"
 
 #include <fstream>
 
@@ -89,9 +92,9 @@ VoxelType Chunk::GetVoxel(size_t x, size_t y, size_t z) noexcept
 
 void Chunk::Shift(int chunkX, int chunkZ)
 {
-    Vector shift(static_cast<float>(chunkX * CHUNK_X),
-                 0.0f,
-                 static_cast<float>(chunkZ * CHUNK_Z),
+    Vector shift(static_cast<float>((chunkX - 0.5) * CHUNK_X),
+                 static_cast<float>((-(CHUNK_Y / 4) - HEIGHTMAP_HEIGHT)),
+                 static_cast<float>((chunkZ - 0.5) * CHUNK_Z),
                  0.0f);
     // TODO rotation should be unnecessary! Probably a bug in Perlin
     mMesh.SetWorldMatrix(CreateTranslationMatrix(shift) * CreateRotationMatrixY(MATH_PIF));
@@ -107,7 +110,6 @@ void Chunk::Generate(int chunkX, int chunkZ, int currentChunkX, int currentChunk
     if (LoadFromDisk())
     {
         GenerateVBONaive();
-        mState = ChunkState::Generated;
         LOG_D("Chunk [" << mCoordX << ", "
               << mCoordZ << "] was successfully read from disk.");
         return;
@@ -195,8 +197,6 @@ void Chunk::Generate(int chunkX, int chunkZ, int currentChunkX, int currentChunk
     LOG_D("  Chunk [" << mCoordX << ", " << mCoordZ << "] Stage 4 done");
 
     GenerateVBONaive();
-
-    mState = ChunkState::Generated;
 
     return;
 }
@@ -294,9 +294,9 @@ void Chunk::GenerateVBONaive()
                         continue;
                     }
 
-                    mVerts.push_back(static_cast<float>(x - (CHUNK_X / 2)));
-                    mVerts.push_back(static_cast<float>(y - (CHUNK_Y / 4) - HEIGHTMAP_HEIGHT));
-                    mVerts.push_back(static_cast<float>(z - (CHUNK_Z / 2)));
+                    mVerts.push_back(static_cast<float>(x));
+                    mVerts.push_back(static_cast<float>(y));
+                    mVerts.push_back(static_cast<float>(z));
 
                     const Voxel& voxData = voxDataIt->second;
                     mVerts.push_back(voxData.colorRed);
@@ -306,6 +306,9 @@ void Chunk::GenerateVBONaive()
                 }
             }
     mMesh.SetPrimitiveType(MeshPrimitiveType::Points);
+    // TODO Consider if this won't race with rest of the code
+    // If so check Chunk::Generate() and TerrainManager::Update()
+    mState = ChunkState::Generated;
 }
 
 void Chunk::GenerateVBOGreedy()
@@ -324,6 +327,7 @@ bool Chunk::SaveToDisk()
     if (NeedsGeneration())
         return false;
 
+    // Check if our directory exists
     if (!FS::IsDir("./" + CHUNK_DIR))
         FS::CreateDir("./" + CHUNK_DIR);
 
@@ -410,4 +414,167 @@ bool Chunk::LoadFromDisk()
         return true;
     } else
         return false;
+}
+
+bool Chunk::ChunkRayIntersection(Vector pos, Vector dir, float &distance, Vector &coords)
+{
+    Matrix worldMat(GetMeshPtr()->GetWorldMatrixRaw());
+    float retDist = std::numeric_limits<float>::max();
+    Vector retCoords;
+    Vector voxShift(0.5, 0.5, 0.5, 0);
+
+    for (int z = 0; z < CHUNK_Z; ++z)
+        for (int y = 0; y < CHUNK_Y; ++y)
+            for (int x = 0; x < CHUNK_X; ++x)
+                if (GetVoxel(x, y, z) != VoxelType::Air)
+                {
+                    Vector obb_min(static_cast<float>(x),
+                                    static_cast<float>(y),
+                                    static_cast<float>(z),
+                                    1);
+                    Vector obb_max(obb_min);
+                    obb_min -= voxShift;
+                    obb_max += voxShift;
+                    float tempDist;
+                    if (OBBRayIntersection(pos, dir, obb_min, obb_max,
+                                               worldMat, tempDist))
+                        if (tempDist < retDist)
+                        {
+                            retDist = tempDist;
+                            retCoords = Vector(static_cast<float>(x),
+                                               static_cast<float>(y),
+                                               static_cast<float>(z),
+                                               1.0f);
+                        }
+                }
+    if (retCoords == Vector())
+        return false;
+
+    distance = retDist;
+    coords = retCoords;
+
+    LOG_D("Ray intersection worked for chunk [" << mCoordX << "," << mCoordZ
+          << "], voxel[" << coords[0] << "," << coords[1] << "," << coords[2] << "]. Distance"
+          << " = " << distance << ".");
+
+    return true;
+}
+
+bool Chunk::OBBRayIntersection(Vector pos, Vector dir, Vector obb_min, Vector obb_max,
+                               Matrix worldMat, float& intersectionDist)
+{
+    // Intersection method from Real-Time Rendering and Essential Mathematics for Games
+
+    float tMin = 0.0f;
+    float tMax = 100000.0f;
+
+    Vector OBBposition_worldspace(worldMat[12], worldMat[13], worldMat[14], 1.0f);
+
+    Vector delta = OBBposition_worldspace - pos;
+
+    // Test intersection with the 2 planes perpendicular to the OBB's X axis
+    {
+        Vector xaxis(worldMat[0], worldMat[1], worldMat[2], 1.0f);
+        float e = xaxis.Dot(delta);
+        float f = dir.Dot(xaxis);
+
+        if (fabs(f) > 0.001f)
+        { // Standard case
+
+            float t1 = (e + obb_min[0]) / f; // Intersection with the "left" plane
+            float t2 = (e + obb_max[0]) / f; // Intersection with the "right" plane
+                                             // t1 and t2 now contain distances betwen ray origin and ray-plane intersections
+
+                                             // We want t1 to represent the nearest intersection,
+                                             // so if it's not the case, invert t1 and t2
+            if (t1>t2)
+            {
+                float w = t1; t1 = t2; t2 = w; // swap t1 and t2
+            }
+
+            // tMax is the nearest "far" intersection (amongst the X,Y and Z planes pairs)
+            if (t2 < tMax)
+                tMax = t2;
+            // tMin is the farthest "near" intersection (amongst the X,Y and Z planes pairs)
+            if (t1 > tMin)
+                tMin = t1;
+
+            // And here's the trick :
+            // If "far" is closer than "near", then there is NO intersection.
+            // See the images in the tutorials for the visual explanation.
+            if (tMax < tMin)
+                return false;
+
+        }
+        else
+        { // Rare case : the ray is almost parallel to the planes, so they don't have any "intersection"
+            if (-e + obb_min[0] > 0.0f || -e + obb_max[0] < 0.0f)
+                return false;
+        }
+    }
+
+
+    // Test intersection with the 2 planes perpendicular to the OBB's Y axis
+    // Exactly the same thing than above.
+    {
+        Vector yaxis(worldMat[4], worldMat[5], worldMat[6], 1.0f);
+        float e = yaxis.Dot(delta);
+        float f = dir.Dot(yaxis);
+
+        if (fabs(f) > 0.001f)
+        {
+
+            float t1 = (e + obb_min[1]) / f;
+            float t2 = (e + obb_max[1]) / f;
+
+            if (t1>t2) { float w = t1; t1 = t2; t2 = w; }
+
+            if (t2 < tMax)
+                tMax = t2;
+            if (t1 > tMin)
+                tMin = t1;
+            if (tMin > tMax)
+                return false;
+
+        }
+        else
+        {
+            if (-e + obb_min[1] > 0.0f || -e + obb_max[1] < 0.0f)
+                return false;
+        }
+    }
+
+
+    // Test intersection with the 2 planes perpendicular to the OBB's Z axis
+    // Exactly the same thing than above.
+    {
+        Vector zaxis(worldMat[8], worldMat[9], worldMat[10], 1.0f);
+        float e = zaxis.Dot(delta);
+        float f = dir.Dot(zaxis);
+
+        if (fabs(f) > 0.001f)
+        {
+
+            float t1 = (e + obb_min[2]) / f;
+            float t2 = (e + obb_max[2]) / f;
+
+            if (t1>t2) { float w = t1; t1 = t2; t2 = w; }
+
+            if (t2 < tMax)
+                tMax = t2;
+            if (t1 > tMin)
+                tMin = t1;
+            if (tMin > tMax)
+                return false;
+
+        }
+        else
+        {
+            if (-e + obb_min[2] > 0.0f || -e + obb_max[2] < 0.0f)
+                return false;
+        }
+    }
+
+    intersectionDist = tMin;
+    return true;
 }

@@ -178,6 +178,29 @@ public:
      */
     bool SaveToDisk();
 
+    /**
+     * Checks intersection with every non-air voxel in the chunk
+     *
+     * @param pos      Ray origin, in world space.
+     * @param dir      Ray direction, in world space. Must be normalized!
+     * @param distance Output : distance between @p pos and the intersection with the voxel
+     * @param coords   Output : coordinates of the intersected voxel within chunk
+     *
+     * @return True, if intersection was found. False otherwise.
+     */
+    bool ChunkRayIntersection(Vector pos, Vector dir, float &distance, Vector &coords);
+
+    /**
+     * Generates a VBO from current state of mVoxels array using naive method.
+     *
+     * Created Mesh will contain a cloud of points, which shall be evolved into triangles
+     * by Geometry Shader.
+     *
+     * The Naive generator is faster and more reliable, but enforces more workload on GPU. Thus,
+     * it is mostly used for debugging purposes. Release code should contain Chunk Mesh
+     * generated using Chunk::GenerateVBOGreedy().
+     */
+    void GenerateVBONaive();
 private:
     /**
      * Translates three coordinates to a single index inside mVoxels array. Additionally checks if
@@ -195,24 +218,27 @@ private:
     bool CalculateIndex(size_t x, size_t y, size_t z, size_t& index) noexcept;
 
     /**
-     * Generates a VBO from current state of mVoxels array using naive method.
-     *
-     * Created Mesh will contain a cloud of points, which shall be evolved into triangles
-     * by Geometry Shader.
-     *
-     * The Naive generator is faster and more reliable, but enforces more workload on GPU. Thus,
-     * it is mostly used for debugging purposes. Release code should contain Chunk Mesh
-     * generated using Chunk::GenerateVBOGreedy().
-     */
-    void GenerateVBONaive();
-
-    /**
      * Generates a VBO from current state of mVoxels array using Greedy Meshing algorithm.
      *
      * Created Mesh will contain a typical triangle mesh. No Geometry Shader work is needed
      * to render the Chunk, giving us more GPU workload for graphical effects.
      */
     void GenerateVBOGreedy();
+
+    /**
+     * Checks intersection with single OBB
+     *
+     * @param pos              Ray origin, in world space.
+     * @param dir              Ray direction, in world space. Must be normalized!
+     * @param obb_min          Minimum X,Y,Z coords of the mesh when not transformed at all
+     * @param obb_max          Maximum X,Y,Z coords of the mesh when not transformed at all
+     * @param worldMat         Transformation applied to the mesh
+     * @param intersectionDist Output : distance between @p pos and the intersection with the OBB
+     *
+     * @return True, if intersection was found. False otherwise.
+     */
+    bool OBBRayIntersection(Vector pos, Vector dir, Vector obb_min, Vector obb_max,
+                            Matrix worldMat, float& intersectionDist);
 
     /**
      * 1D Array of voxels, which represent a single chunk.

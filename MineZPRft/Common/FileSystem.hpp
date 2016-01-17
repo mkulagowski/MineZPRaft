@@ -30,6 +30,20 @@ void ChangeDirectory(const std::string& dir);
  */
 std::string GetCurrentWorkingDir();
 
+/**
+ * Create @p dir
+ *
+ * @param dir Directory which will be created.
+ */
+bool CreateDir(const std::string& path);
+
+/**
+ * Check if @p is a directory.
+ *
+ * @param dir Directory to check.
+ */
+bool IsDir(const std::string& path);
+
 } // namespace FS
 
 #endif // __COMMON_FILESYSTEM_HPP__

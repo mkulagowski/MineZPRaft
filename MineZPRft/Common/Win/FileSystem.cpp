@@ -87,4 +87,30 @@ std::string GetCurrentWorkingDir()
     return currPathStr;
 }
 
+bool CreateDir(const std::string& path)
+{
+    if (CreateDirectory(path.c_str(), nullptr) == 0)
+    {
+        LOG_E("Failed to create directory '" << path.c_str() << "' : "
+                  << GetLastErrorString().c_str());
+        return false;
+    }
+
+    LOG_I("Created directory '" << path.c_str() << "'");
+    return true;
+}
+
+bool IsDir(const std::string& path)
+{
+    DWORD attrs = GetFileAttributes(path.c_str());
+
+    if (attrs == INVALID_FILE_ATTRIBUTES)
+        return false;
+
+    if (attrs & FILE_ATTRIBUTE_DIRECTORY)
+        return true;
+
+    return false;
+}
+
 } // namespace FS

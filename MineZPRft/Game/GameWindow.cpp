@@ -10,6 +10,7 @@
 #include "Common/Logger.hpp"
 #include "Math/Vector.hpp"
 #include "GameKeycodes.hpp"
+#include "Game/GameManager.hpp"
 
 #include <functional>
 
@@ -75,9 +76,11 @@ void GameWindow::OnKeyPress(int key)
 
 void GameWindow::OnMouseDown(uint32_t button, int x, int y)
 {
-    UNUSED(button);
     UNUSED(x);
     UNUSED(y);
+
+    if (button == Mouse::RMB)
+        GameManager::GetInstance().DrawRay();
     // draw LAZOR to see where to create/delete cube
 }
 

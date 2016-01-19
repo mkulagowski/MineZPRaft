@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_05584f31",
+        "filename": "MineZPRft/Terrain/Chunk.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2016-01-19T17:09:36Z",
+      "side": 1,
+      "message": "Remove instead of commenting",
+      "revId": "10e8b570ecb4c8d8e5cfb90e097b0c3a570cc40f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa81d914_255d5322",
+        "filename": "MineZPRft/Terrain/Chunk.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2016-01-19T17:09:36Z",
+      "side": 1,
+      "message": "As above",
+      "revId": "10e8b570ecb4c8d8e5cfb90e097b0c3a570cc40f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

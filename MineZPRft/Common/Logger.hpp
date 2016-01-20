@@ -8,6 +8,7 @@
 #define __COMMON_LOGGER_HPP__
 
 #include "Timer.hpp"
+#include <mutex>
 
 #include <sstream>
 
@@ -89,6 +90,7 @@ private:
 
     std::string mCurrentWorkingDir;
     Timer mTimer;
+    std::mutex mLock;
 };
 
 #endif // __COMMON_LOGGER_HPP__

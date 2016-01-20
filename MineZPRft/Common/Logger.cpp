@@ -56,6 +56,7 @@ void Logger::Log(LogType type, std::string file, const std::string& func,
     output << std::setfill(' ') << std::left << std::setw(80) << prologue
            << message << std::endl;
 
+    mLock.lock();
     // Append to the log file
     std::ofstream logFile;
     logFile.open("MineZPRft.log", std::ios::out | std::ios::app);
@@ -65,6 +66,7 @@ void Logger::Log(LogType type, std::string file, const std::string& func,
 
     // Print message to the console
     PrintMessage(type, output.str());
+    mLock.unlock();
 }
 
 // Get current date/time, format is Mmm DD YYYY HH:mm:ss (compliant to __DATE__ and __TIME__)

@@ -47,6 +47,8 @@ extern PFNGLGETUNIFORMLOCATIONPROC glGetUniformLocation;
 extern PFNGLUNIFORM4FPROC glUniform4f;
 extern PFNGLUNIFORMMATRIX4FVPROC glUniformMatrix4fv;
 
+extern PFNGLGENERATEMIPMAPPROC glGenerateMipmap;
+
 /**
  * Initialize OpenGL extensions used by Renderer
  *

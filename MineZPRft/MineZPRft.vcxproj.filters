@@ -103,6 +103,9 @@
     <ClCompile Include="Terrain\ChunkPool.cpp">
       <Filter>Terrain</Filter>
     </ClCompile>
+    <ClCompile Include="Renderer\Texture.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\GameWindow.hpp">
@@ -191,6 +194,9 @@
     </ClInclude>
     <ClInclude Include="Terrain\ChunkPool.hpp">
       <Filter>Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\Texture.hpp">
+      <Filter>Renderer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

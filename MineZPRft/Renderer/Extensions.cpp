@@ -45,6 +45,8 @@ PFNGLGETUNIFORMLOCATIONPROC glGetUniformLocation = nullptr;
 PFNGLUNIFORM4FPROC glUniform4f = nullptr;
 PFNGLUNIFORMMATRIX4FVPROC glUniformMatrix4fv = nullptr;
 
+PFNGLGENERATEMIPMAPPROC glGenerateMipmap = nullptr;
+
 bool ExtensionsInit()
 {
     bool allExtensionsAvailable = true;
@@ -86,6 +88,7 @@ bool ExtensionsInit()
     OGL_GET_EXTENSION(PFNGLUNIFORM4FPROC, glUniform4f);
     OGL_GET_EXTENSION(PFNGLUNIFORMMATRIX4FVPROC, glUniformMatrix4fv);
 
+    OGL_GET_EXTENSION(PFNGLGENERATEMIPMAPPROC, glGenerateMipmap);
     return allExtensionsAvailable;
 }
 

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a6ff13c_a45df74a",
+        "filename": "MineZPRft/Renderer/Texture.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1003055
+      },
+      "writtenOn": "2016-03-13T19:33:02Z",
+      "side": 1,
+      "message": "This ain\u0027t working...dunno why :/",
+      "range": {
+        "startLine": 113,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 36
+      },
+      "revId": "e54490e0a710b6e1c23c1670a27ca2a6eafab185",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

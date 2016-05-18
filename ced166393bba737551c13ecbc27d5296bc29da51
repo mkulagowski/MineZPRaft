@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a72e520_30f2139b",
+        "filename": "MineZPRft/Renderer/Renderer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2016-05-18T10:53:42Z",
+      "side": 1,
+      "message": "Because TerrainShader renders with Geometry Shader - it takes the points and naively evolves them into 1x1x1 voxels.\n\nMainShader skips the Geometry Shader pass, plus moves part of the calculation to Vertex Shader.",
+      "parentUuid": "5a72e520_30c85374",
+      "range": {
+        "startLine": 180,
+        "startChar": 11,
+        "endLine": 205,
+        "endChar": 13
+      },
+      "revId": "ced166393bba737551c13ecbc27d5296bc29da51",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a72e520_90a667c0",
         "filename": "MineZPRft/Terrain/Chunk.cpp",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "baa041b7_78799ac7",
+        "filename": "MineZPRft/Terrain/Chunk.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2016-05-18T10:53:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a72e520_90a667c0",
+      "range": {
+        "startLine": 53,
+        "startChar": 35,
+        "endLine": 54,
+        "endChar": 85
+      },
+      "revId": "ced166393bba737551c13ecbc27d5296bc29da51",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a72e520_d0b0dff6",
         "filename": "MineZPRft/Terrain/Chunk.cpp",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2016-02-29T18:07:49Z",
       "side": 1,
       "message": "There could be function pointer that we\u0027d bind in constructor and change with a method (along with useGreedyMeshing or floatCountPerVertex or sth). It would be much cleaner and there would be no need to give greedyMeshing argument every time we use Chunk::Generate().\n\nWhaddya think?",
+      "range": {
+        "startLine": 117,
+        "startChar": 8,
+        "endLine": 120,
+        "endChar": 31
+      },
+      "revId": "ced166393bba737551c13ecbc27d5296bc29da51",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_58013637",
+        "filename": "MineZPRft/Terrain/Chunk.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2016-05-18T10:53:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a72e520_d0b0dff6",
       "range": {
         "startLine": 117,
         "startChar": 8,
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "baa041b7_18f72e5a",
+        "filename": "MineZPRft/Terrain/Chunk.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2016-05-18T10:53:42Z",
+      "side": 1,
+      "message": "It\u0027s because of our coordinate system. I think it is mostly an internal situation, which needs resolving - similarly to PushVertsFromQuads\u0027s comment related to normals. If we were to make Z axis upright and go left-handed, I think all would sort itself out.",
+      "parentUuid": "5a72e520_3076933f",
+      "range": {
+        "startLine": 459,
+        "startChar": 7,
+        "endLine": 464,
+        "endChar": 45
+      },
+      "revId": "ced166393bba737551c13ecbc27d5296bc29da51",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a72e520_50730f4d",
         "filename": "MineZPRft/Terrain/Chunk.cpp",
         "patchSetId": 3
@@ -128,6 +224,30 @@
       "writtenOn": "2016-02-29T18:07:49Z",
       "side": 1,
       "message": "Processing",
+      "range": {
+        "startLine": 528,
+        "startChar": 14,
+        "endLine": 528,
+        "endChar": 25
+      },
+      "revId": "ced166393bba737551c13ecbc27d5296bc29da51",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_d89b0617",
+        "filename": "MineZPRft/Terrain/Chunk.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2016-05-18T10:53:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a72e520_50730f4d",
       "range": {
         "startLine": 528,
         "startChar": 14,
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "baa041b7_98a1fe48",
+        "filename": "MineZPRft/Terrain/Chunk.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2016-05-18T10:53:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a72e520_9094a738",
+      "range": {
+        "startLine": 529,
+        "startChar": 11,
+        "endLine": 531,
+        "endChar": 96
+      },
+      "revId": "ced166393bba737551c13ecbc27d5296bc29da51",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a72e520_d0b53fce",
         "filename": "MineZPRft/Terrain/Chunk.cpp",
         "patchSetId": 3
@@ -174,6 +318,30 @@
       "writtenOn": "2016-02-29T18:07:49Z",
       "side": 1,
       "message": "You can swap all of these with a simple lambda, that takes either v0 or v1,v2,v3.\n\nThen You can make lambda function readable, instead of stacking all of these lines together, moreover there would be less code in the rest of the method, so it\u0027d be more readable as well.",
+      "range": {
+        "startLine": 577,
+        "startChar": 12,
+        "endLine": 580,
+        "endChar": 83
+      },
+      "revId": "ced166393bba737551c13ecbc27d5296bc29da51",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_986fbefb",
+        "filename": "MineZPRft/Terrain/Chunk.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2016-05-18T10:53:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a72e520_d0b53fce",
       "range": {
         "startLine": 577,
         "startChar": 12,
@@ -209,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "5a72e520_50ef8fb0",
+        "filename": "MineZPRft/Terrain/Chunk.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2016-05-18T10:53:42Z",
+      "side": 1,
+      "message": "This is a part of a render loop (each time we need to update the terrain, this is called), so performance is crucial here. IMO Cpp11 magic would be slower, than a plaintext if.",
+      "parentUuid": "5a72e520_50c14f2d",
+      "range": {
+        "startLine": 646,
+        "startChar": 24,
+        "endLine": 660,
+        "endChar": 81
+      },
+      "revId": "ced166393bba737551c13ecbc27d5296bc29da51",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a72e520_50c5cf59",
         "filename": "MineZPRft/Terrain/Chunk.hpp",
         "patchSetId": 3
@@ -220,6 +412,30 @@
       "writtenOn": "2016-02-29T18:07:49Z",
       "side": 1,
       "message": "@param values should be properly aligned - last line is not.\n\nAlso \"Naive\" and \"Greedy Meshing\" don\u0027t need capital letters imho.",
+      "range": {
+        "startLine": 129,
+        "startChar": 6,
+        "endLine": 133,
+        "endChar": 78
+      },
+      "revId": "ced166393bba737551c13ecbc27d5296bc29da51",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_8e39caf4",
+        "filename": "MineZPRft/Terrain/Chunk.hpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1002655
+      },
+      "writtenOn": "2016-05-18T10:53:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a72e520_50c5cf59",
       "range": {
         "startLine": 129,
         "startChar": 6,
